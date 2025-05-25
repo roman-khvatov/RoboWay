@@ -3865,16 +3865,6 @@
 	)
 	(wire
 		(pts
-			(xy 236.22 110.49) (xy 232.41 110.49)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "304acedc-7847-4f21-af72-f70baa1b35c5")
-	)
-	(wire
-		(pts
 			(xy 254 58.42) (xy 257.81 58.42)
 		)
 		(stroke
@@ -4745,16 +4735,6 @@
 	)
 	(wire
 		(pts
-			(xy 238.76 107.95) (xy 232.41 107.95)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "9fd3d7db-e801-46d9-a4b7-7849f1173f34")
-	)
-	(wire
-		(pts
 			(xy 200.66 77.47) (xy 214.63 77.47)
 		)
 		(stroke
@@ -4792,6 +4772,16 @@
 			(type default)
 		)
 		(uuid "a83d602f-9366-4d0e-9125-9d0a77f4d48d")
+	)
+	(wire
+		(pts
+			(xy 232.41 110.49) (xy 236.22 110.49)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a886b533-1d6e-4b28-8bc6-2c3ba866ef6d")
 	)
 	(wire
 		(pts
@@ -5222,6 +5212,16 @@
 			(type default)
 		)
 		(uuid "e5b54977-0645-46c5-a2b3-d75f18e8bf2b")
+	)
+	(wire
+		(pts
+			(xy 232.41 107.95) (xy 238.76 107.95)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e6737b7a-cc0c-4656-9f38-892ba37de2dc")
 	)
 	(wire
 		(pts
@@ -10516,7 +10516,7 @@
 			(uuid "ee7ccd92-c70b-48c4-a619-bb8fb21c3785")
 		)
 		(pin "S1" output
-			(at 232.41 107.95 0)
+			(at 232.41 110.49 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10526,7 +10526,7 @@
 			(uuid "1ff371c3-6e15-42b2-928d-f541a075c198")
 		)
 		(pin "S2" output
-			(at 232.41 110.49 0)
+			(at 232.41 107.95 0)
 			(effects
 				(font
 					(size 1.27 1.27)
