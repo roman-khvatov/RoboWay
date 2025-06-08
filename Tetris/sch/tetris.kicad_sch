@@ -3423,6 +3423,14 @@
 		(color 0 0 0 0)
 		(uuid "f10fcb49-3d3f-4dad-9232-c476575d0efe")
 	)
+	(no_connect
+		(at 254 55.88)
+		(uuid "dc0489cc-153d-4d66-b2c2-922c52b1871c")
+	)
+	(no_connect
+		(at 228.6 48.26)
+		(uuid "f43b89b4-d0b2-4790-a8f3-f950b7f9045c")
+	)
 	(wire
 		(pts
 			(xy 210.82 102.87) (xy 210.82 105.41)
@@ -10338,26 +10346,16 @@
 			(uuid "b7c6a94d-f771-4bde-ad2f-e29f3b2f1db3")
 		)
 		(pin "B2" output
-			(at 78.74 149.86 180)
+			(at 99.06 142.24 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
+				(justify right)
 			)
 			(uuid "84dafa14-79d8-4f04-91e7-7c601a0e10d6")
 		)
 		(pin "B3" output
-			(at 78.74 147.32 180)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-			(uuid "f32b7518-996e-4a12-aa58-4693ac8c516f")
-		)
-		(pin "B4" output
 			(at 93.98 142.24 90)
 			(effects
 				(font
@@ -10365,20 +10363,30 @@
 				)
 				(justify right)
 			)
-			(uuid "57173d75-35c7-4796-a4b2-10c67e561f4a")
+			(uuid "f32b7518-996e-4a12-aa58-4693ac8c516f")
 		)
-		(pin "B5" output
-			(at 96.52 142.24 90)
+		(pin "B4" output
+			(at 78.74 147.32 180)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify right)
+				(justify left)
+			)
+			(uuid "57173d75-35c7-4796-a4b2-10c67e561f4a")
+		)
+		(pin "B5" output
+			(at 78.74 149.86 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
 			)
 			(uuid "b1aefb3f-65e6-46d2-87ce-2e86fa61b3c6")
 		)
 		(pin "B6" output
-			(at 99.06 142.24 90)
+			(at 101.6 142.24 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10388,7 +10396,7 @@
 			(uuid "d095b41b-d949-4816-9dcc-ee30f1f0d9da")
 		)
 		(pin "B7" output
-			(at 101.6 142.24 90)
+			(at 96.52 142.24 90)
 			(effects
 				(font
 					(size 1.27 1.27)
