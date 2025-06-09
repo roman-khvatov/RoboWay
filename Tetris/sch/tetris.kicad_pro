@@ -58,7 +58,10 @@
           "width": 0.0
         }
       ],
-      "drc_exclusions": [],
+      "drc_exclusions": [
+        "footprint_type_mismatch|115980000|108450000|4d1e9de6-d837-4af0-8f3b-33d5450b719e|00000000-0000-0000-0000-000000000000",
+        "starved_thermal|111885000|47540000|90639cb6-16b6-4db0-8dc3-a45a9d7a835f|5d202aef-bca0-4f85-8a60-fd2ec25072b8|F.Cu"
+      ],
       "meta": {
         "version": 2
       },
@@ -518,7 +521,7 @@
       "gencad": "",
       "idf": "",
       "netlist": "",
-      "plot": "",
+      "plot": "gerbers/",
       "pos_files": "",
       "specctra_dsn": "",
       "step": "",
@@ -634,7 +637,7 @@
     },
     "net_format_name": "",
     "page_layout_descr_file": "",
-    "plot_directory": "",
+    "plot_directory": ".",
     "spice_current_sheet_as_root": false,
     "spice_external_command": "spice \"%I\"",
     "spice_model_current_sheet_as_root": true,
