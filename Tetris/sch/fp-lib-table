@@ -1,0 +1,6 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "WCH")(type "Altium Designer")(uri "W:/home/roman/RoboWay/Libs/CHXXX.pcblib")(options "")(descr ""))
+  (lib (name "Local")(type "KiCad")(uri ".")(options "")(descr ""))
+  (lib (name "LocalLib")(type "KiCad")(uri "${KIPRJMOD}/LocalLib.pretty")(options "")(descr ""))
+)
