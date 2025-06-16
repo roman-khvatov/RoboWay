@@ -30,6 +30,7 @@
 ## Другие документы и описания
 
 * [Программа RoboWay](docs/RoboWayRoadmap.md)
+* [Расписание и состав участников](docs/TimeTable.md)
   
 
 
