@@ -510,6 +510,165 @@
 				)
 			)
 		)
+		(symbol "Device:C_Polarized_Small_US"
+			(pin_numbers hide)
+			(pin_names
+				(offset 0.254) hide)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "C"
+				(at 0.254 1.778 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "C_Polarized_Small_US"
+				(at 0.254 -2.032 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Polarized capacitor, small US symbol"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "cap capacitor"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "CP_*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "C_Polarized_Small_US_0_1"
+				(polyline
+					(pts
+						(xy -1.524 0.508) (xy 1.524 0.508)
+					)
+					(stroke
+						(width 0.3048)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.27 1.524) (xy -0.762 1.524)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.016 1.27) (xy -1.016 1.778)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 1.524 -0.762)
+					(mid 0 -0.3734)
+					(end -1.524 -0.762)
+					(stroke
+						(width 0.3048)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "C_Polarized_Small_US_1_1"
+				(pin passive line
+					(at 0 2.54 270)
+					(length 2.032)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -2.54 90)
+					(length 2.032)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
 		(symbol "Device:Q_Dual_PMOS_S1G1S2G2D2D2D1D1"
 			(pin_names
 				(offset 0) hide)
@@ -1542,175 +1701,6 @@
 						)
 					)
 					(number "9"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-		)
-		(symbol "EasyEDA:220uF16V8*5"
-			(pin_numbers hide)
-			(pin_names hide)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "C"
-				(at 0 5.08 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "220uF 16V 8*5"
-				(at 0 -5.08 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" "easyeda2kicad:CAP-TH_BD8.0-P3.50-D0.6-FD"
-				(at 0 -7.62 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "https://lcsc.com/product-detail/Aluminum-Electrolytic-Capacitors-Leaded_220uF-16V_C47853.html"
-				(at 0 -10.16 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "LCSC Part" "C47853"
-				(at 0 -12.7 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "220uF16V8*5_0_1"
-				(polyline
-					(pts
-						(xy -2.54 0.76) (xy -1.52 0.76)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -2.03 1.27) (xy -2.03 0.25)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -1.27 0) (xy -0.51 0)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -0.51 2.03) (xy -0.51 -2.03)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0.51 0) (xy 1.27 0)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(arc
-					(start 1.33 1.95)
-					(mid 1.22 -1.99)
-					(end 1.21 -1.83)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(pin input line
-					(at -3.81 0 0)
-					(length 2.54)
-					(name "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin input line
-					(at 3.81 0 180)
-					(length 2.54)
-					(name "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -4486,16 +4476,6 @@
 	)
 	(wire
 		(pts
-			(xy 269.24 106.68) (xy 269.24 111.76)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "3ed4936b-a724-4639-ae4f-c7ef9a3c54d0")
-	)
-	(wire
-		(pts
 			(xy 151.13 166.37) (xy 151.13 167.64)
 		)
 		(stroke
@@ -5196,7 +5176,7 @@
 	)
 	(wire
 		(pts
-			(xy 269.24 88.9) (xy 269.24 99.06)
+			(xy 269.24 88.9) (xy 269.24 100.33)
 		)
 		(stroke
 			(width 0)
@@ -5926,6 +5906,16 @@
 	)
 	(wire
 		(pts
+			(xy 269.24 105.41) (xy 269.24 111.76)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cb561845-cd35-477d-a882-21137a151e63")
+	)
+	(wire
+		(pts
 			(xy 148.59 167.64) (xy 148.59 166.37)
 		)
 		(stroke
@@ -6414,7 +6404,7 @@
 		)
 		(uuid "175e8b41-ead9-4096-947b-b65d195e5aca")
 	)
-	(text "1.65V Midscale -> Move to 1.75\nI through R9 is 10.3mA\nR12 current adjustment is ±0.34 mA (169/0.5)\nR12 is 1.75V/0.34 (5.15K)"
+	(text "1.65V Midscale -> Move to 1.75\nI through R9 is 10.3mA\nV across R12 is 1.05V (1.75 ± 0.5 <-> 1.75 ± 1.55)\nR12 current adjustment is ±3 mA (0.5/169)\nR12 is 1.05V/3 (330)\n"
 		(exclude_from_sim no)
 		(at 230.378 151.892 0)
 		(effects
@@ -8660,7 +8650,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "5K1"
+		(property "Value" "330"
 			(at 217.17 114.2999 0)
 			(effects
 				(font
@@ -9139,8 +9129,8 @@
 		)
 	)
 	(symbol
-		(lib_id "EasyEDA:220uF16V8*5")
-		(at 269.24 102.87 270)
+		(lib_id "Device:C_Polarized_Small_US")
+		(at 269.24 102.87 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -9148,7 +9138,7 @@
 		(dnp no)
 		(uuid "7df118d5-3e1b-4c5c-bbd2-904fceb902d7")
 		(property "Reference" "C11"
-			(at 272.288 103.124 90)
+			(at 272.542 104.648 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9157,7 +9147,7 @@
 			)
 		)
 		(property "Value" "220uF 16V 8*5"
-			(at 270.002 107.442 90)
+			(at 275.082 110.236 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9166,7 +9156,7 @@
 			)
 		)
 		(property "Footprint" "easyeda2kicad:CAP-TH_BD8.0-P3.50-D0.6-FD"
-			(at 261.62 102.87 0)
+			(at 269.24 102.87 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9174,8 +9164,8 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://lcsc.com/product-detail/Aluminum-Electrolytic-Capacitors-Leaded_220uF-16V_C47853.html"
-			(at 259.08 102.87 0)
+		(property "Datasheet" "~"
+			(at 269.24 102.87 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9183,7 +9173,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Polarized capacitor, small US symbol"
 			(at 269.24 102.87 0)
 			(effects
 				(font
@@ -9193,7 +9183,7 @@
 			)
 		)
 		(property "LCSC Part" "C47853"
-			(at 256.54 102.87 0)
+			(at 269.24 115.57 0)
 			(effects
 				(font
 					(size 1.27 1.27)
