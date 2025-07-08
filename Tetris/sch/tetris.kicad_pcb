@@ -788,7 +788,7 @@
 			(pintype "passive")
 			(uuid "3c053cea-6561-4cfe-87de-1d0755206ed7")
 		)
-		(model "${KICAD8_3DMODEL_DIR}/Package_SO.3dshapes/SOP-8_3.9x4.9mm_P1.27mm.wrl"
+		(model "${KICAD8_3DMODEL_DIR}/Package_SO.3dshapes/SOIC-8_3.9x4.9mm_P1.27mm.wrl"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -1344,7 +1344,7 @@
 			(pintype "passive")
 			(uuid "d7277058-1279-420f-b17f-6fb8c07f0687")
 		)
-		(model "${KICAD8_3DMODEL_DIR}/Package_SO.3dshapes/SOP-8_3.9x4.9mm_P1.27mm.wrl"
+		(model "${KICAD8_3DMODEL_DIR}/Package_SO.3dshapes/SOIC-8_3.9x4.9mm_P1.27mm.wrl"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -7543,7 +7543,7 @@
 			(pintype "passive")
 			(uuid "bbb7e68d-eba6-47fb-ad3d-97d44463daab")
 		)
-		(model "${KICAD8_3DMODEL_DIR}/Package_SO.3dshapes/SOP-8_3.9x4.9mm_P1.27mm.wrl"
+		(model "${KICAD8_3DMODEL_DIR}/Package_SO.3dshapes/SOIC-8_3.9x4.9mm_P1.27mm.wrl"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -7873,7 +7873,7 @@
 			(pintype "passive")
 			(uuid "dd7951f5-1dac-47d3-87fd-2fb72d0af59a")
 		)
-		(model "${KICAD8_3DMODEL_DIR}/Package_SO.3dshapes/SOP-8_3.9x4.9mm_P1.27mm.wrl"
+		(model "${KICAD8_3DMODEL_DIR}/Package_SO.3dshapes/SOIC-8_3.9x4.9mm_P1.27mm.wrl"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -11720,6 +11720,17 @@
 			(pintype "power_in")
 			(solder_mask_margin 0.0508)
 			(uuid "22e28f4c-9a87-4262-b1c3-80e0fc3dc77d")
+		)
+		(model "${KICAD8_3DMODEL_DIR}/Package_QFP.3dshapes/LQFP-48_7x7mm_P0.5mm.wrl"
+			(offset
+				(xyz 2.75 4.5 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 -90)
+			)
 		)
 	)
 	(footprint "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
@@ -15574,7 +15585,7 @@
 		)
 		(model "${EASYEDA2KICAD}/easyeda2kicad.3dshapes/KEY-TH_4P-L6.0-W6.0-P4.50-LS6.50.wrl"
 			(offset
-				(xyz 0 -0 0)
+				(xyz 0 -0 4)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -16282,7 +16293,7 @@
 		)
 		(model "${EASYEDA2KICAD}/easyeda2kicad.3dshapes/CAP-TH_D4.0-H7.0-P1.5.wrl"
 			(offset
-				(xyz 0 -0 0)
+				(xyz 0 -0 3.5)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -16541,7 +16552,7 @@
 		)
 		(model "${EASYEDA2KICAD}/easyeda2kicad.3dshapes/KEY-TH_4P-L6.0-W6.0-P4.50-LS6.50.wrl"
 			(offset
-				(xyz 0 -0 0)
+				(xyz 0 -0 4)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -16627,7 +16638,7 @@
 		(path "/b8d1e72f-9354-4784-8534-0c5287e553d7")
 		(sheetname "Root")
 		(sheetfile "tetris.kicad_sch")
-		(attr through_hole)
+		(attr through_hole dnp)
 		(fp_line
 			(start 3.87 1.33)
 			(end 1.27 1.33)
@@ -17259,7 +17270,7 @@
 		)
 		(model "${EASYEDA2KICAD}/easyeda2kicad.3dshapes/SW-TH_TSX101G100-250.wrl"
 			(offset
-				(xyz -0 0 0)
+				(xyz -0 0 4)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -17518,7 +17529,7 @@
 		)
 		(model "${EASYEDA2KICAD}/easyeda2kicad.3dshapes/KEY-TH_4P-L6.0-W6.0-P4.50-LS6.50.wrl"
 			(offset
-				(xyz 0 -0 0)
+				(xyz 0 -0 4)
 			)
 			(scale
 				(xyz 1 1 1)

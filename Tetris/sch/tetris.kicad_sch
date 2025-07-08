@@ -3633,16 +3633,6 @@
 	)
 	(wire
 		(pts
-			(xy 212.09 105.41) (xy 212.09 107.95)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "19af0ebd-2de0-49f2-92f6-c9b30fb343b8")
-	)
-	(wire
-		(pts
 			(xy 214.63 53.34) (xy 228.6 53.34)
 		)
 		(stroke
@@ -10444,7 +10434,7 @@
 			)
 		)
 		(pin "~{CS}" input
-			(at 212.09 105.41 180)
+			(at 212.09 107.95 180)
 			(effects
 				(font
 					(size 1.27 1.27)
