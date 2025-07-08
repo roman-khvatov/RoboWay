@@ -31,6 +31,7 @@
 
 * [Программа RoboWay](docs/RoboWayRoadmap.md)
 * [Расписание и состав участников](docs/TimeTable.md)
+* [Программа Летнего Лагеря](docs/SCSchedule.md)
   
 
 
