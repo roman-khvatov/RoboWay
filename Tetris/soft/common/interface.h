@@ -43,4 +43,4 @@ uint32_t get_random();
 
 ///////////////////////////
 // Main entry. Implemeted in common part
-void entry();
+extern "C" void entry();
