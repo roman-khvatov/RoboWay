@@ -2,35 +2,45 @@
 #include "../Peripheral/inc/ch32v20x.h"
 #include "../Core/core_riscv.h"
 
-Pixels pixs;
+Pixels pixs;  // Working image of screen (to be updated by top level code)
 
-static Pixels working_pixels;
-static uint8_t col_index;
-static uint8_t phase;
+static Pixels working_pixels; // Copy of pixels to output to LED
+static uint8_t col_index;     // Column index (scans by them) 0-7
+static uint8_t phase;         // Scan phase: 0-2. In phase 0 pixels from 'br1' emited, in phase 1 pixels from 'br2' emited, in phase 2 no pixel update performed, so 'br2' still intact
 
-static uint8_t cur_keys;
-static uint8_t changed_keys;
-static uint8_t debounce;
-static uint8_t active_keys;
+static uint8_t cur_keys;      // Real current state of pressed keys
+static uint8_t changed_keys;  // All keys which state changed from 'cur_keys' during current scan cycle
+static uint8_t debounce;      // Debounce downcounter. If not zero all key scan suppressed
+static uint8_t active_keys;   // Copy of 'cur_keys' but with posibility to top level code shut down separate bits from 1 to 0 (depress them)
 
-static constexpr int debounce_time = 5;
+static constexpr int debounce_time = 5; // How many full scans perform before unlocking keyboard
 
-static uint16_t led_voltage;
-static uint8_t led_cnt;
-static uint8_t leds_to_sample;
+static uint16_t led_voltage;  // LED voltage accumulator (4 samples accumulated)
+static uint8_t led_cnt;       // LED voltage sample number. Sample #0 discarded, sammples #1-4 accumulated into 'led_voltage'
+static uint8_t leds_to_sample; // Bitset of LED to sample. Bit 0 - samle high LED cluster, bit 1 - sample low LED cluster
 
-
+// Status of LED voltage sampling
 enum class LEDVoltageReq : uint8_t {
-    Idle,
-    Request,
-    InProgress,
-    Ready
+    Idle,       // Do nothing
+    Request,    // Sampling request got
+    InProgress, // Sampling started (in progress)
+    Ready       // Sampling done
 };
 
-volatile uint16_t leds_voltage[2];
-volatile LEDVoltageReq request_led_voltages;
+uint16_t leds_voltage[2];   // Output voltages for LED sampling. 0 means that this LED cluster wasn't sampled
+static volatile LEDVoltageReq request_led_voltages; // Current LED sampling status
 
-static volatile bool done;
+static volatile bool done; // Set to 'true' when LED scan cycle done
+
+
+//// LED Voltage sampling external interface
+
+// Request LED Voltage sampling
+void led_sence_start() {request_led_voltages = LEDVoltageReq::Request;}
+// Reset status of LED Voltage samplier to Idle
+void led_sence_off()   {request_led_voltages = LEDVoltageReq::Idle;}
+// Test is LED Voltage sampler done sampling
+bool led_sence_ready() {return request_led_voltages == LEDVoltageReq::Ready;}
 
 
 /*
@@ -110,8 +120,7 @@ void select_adc_channel()
     led_cnt=0;
     leds_to_sample=0;
 
-    int ch = get_active_adc();
-    ADC_RegularChannelConfig(ADC1, ch ? 8 : 9, 1, ADC_SampleTime_1Cycles5);
+    ADC_RegularChannelConfig(ADC1, get_active_adc() ? 8 : 9, 1, ADC_SampleTime_1Cycles5);
 }
 
 void seed_rnd_value(uint32_t val)
@@ -122,7 +131,7 @@ void seed_rnd_value(uint32_t val)
 
 void seed_rnd_value()
 {
-    CRC->DATAR = val;
+    CRC->DATAR = SysTick->CNT;
 }
 
 uint32_t get_random()
@@ -194,20 +203,22 @@ void ADC1_2_IRQHandler()
     ++led_cnt;
     if (led_cnt == 5)
     {
-        led_voltage >>= 2;
-        leds_voltage[get_active_adc()] = led_voltage;
+        leds_voltage[get_active_adc()] = led_voltage >> 2;
         leds_to_sample &= leds_to_sample - 1;
         if (leds_to_sample)
         {
             select_adc_channel();
+            start_adc();
         }
         else 
         {
             request_led_voltages = LEDVoltageReq::Ready;
-            return;
         }
     }
-    start_adc();
+    else
+    {
+        start_adc();
+    }
 }
 
 uint8_t read_key()
