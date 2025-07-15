@@ -59,8 +59,8 @@ PA7 - B8   BUT1
 
 PB0/PB1 - CS (analog)
 
-PB0 - Rows 8-15
-PB1 - Rows 0-7
+PB0 - Rows 8-15    Ch1   ADC_IN8
+PB1 - Rows 0-7     Ch0   ADC_IN9
 
 PB10 - PWM       (TIM2_CH3_2/3, alt mapping)
 PB11 - LED OE
@@ -99,14 +99,19 @@ int get_active_adc()
     return -1;
 }
 
-void start_adc()
+inline void start_adc()
 {
-
+    ADC_Cmd(ADC1, ENABLE);
 }
 
 void select_adc_channel()
 {
+    led_voltage=0;
+    led_cnt=0;
+    leds_to_sample=0;
 
+    int ch = get_active_adc();
+    ADC_RegularChannelConfig(ADC1, ch ? 8 : 9, 1, ADC_SampleTime_1Cycles5);
 }
 
 void seed_rnd_value(uint32_t val)
@@ -149,12 +154,9 @@ void TIM3_IRQHandler()
         changed_keys |= cur_keys ^ buttons;
     }
     // ADC
-    if (phase == 2 && request_led_voltages == LEDVoltageReq::Request && ((working_pixels.br2[0]&1) || (working_pixels.br2[8]&1))
+    if (phase == 2 && request_led_voltages == LEDVoltageReq::Request && ((working_pixels.br2[0]&1) || (working_pixels.br2[8]&1)))
     {
-        request_led_voltages == LEDVoltageReq::InProgress;
-        led_voltage=0;
-        led_cnt=0;
-        leds_to_sample=0;
+        request_led_voltages = LEDVoltageReq::InProgress;
         if (working_pixels.br2[0]&1) leds_to_sample |= 1;
         if (working_pixels.br2[8]&1) leds_to_sample |= 2;
         leds_voltage[0]=leds_voltage[1]=0;
@@ -197,9 +199,6 @@ void ADC1_2_IRQHandler()
         leds_to_sample &= leds_to_sample - 1;
         if (leds_to_sample)
         {
-            led_voltage=0;
-            led_cnt=0;
-            leds_to_sample=0;
             select_adc_channel();
         }
         else 
