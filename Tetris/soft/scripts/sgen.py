@@ -31,6 +31,30 @@ class Sprite:
             mask <<= 1
         return pixels1, pixels2
 
+    @property
+    def logo(self) -> str:
+        assert self.palete, "Palete expected in Logo"
+        pixels1 = []
+        pixels2 = []
+        for line in self.pixels:
+            mask = 1
+            px1 = 0
+            px2 = 0
+            for sym in line[1:]:
+                if sym != ' ':
+                    idx = self.palete.find(sym)
+                    assert idx != -1, f'Symbol {sym} of Logo {line} not found in sprite palete {self.palete}'
+                    if idx != 1: px1 |= mask
+                    if idx != 0: px2 |= mask
+                mask <<= 1
+            pixels1.append(f'0x{px1:02X}')
+            pixels2.append(f'0x{px2:02X}')
+        while len(pixels1) < 14:
+            pixels1.append('0')
+            pixels2.append('0')
+        return '{' + ','.join(pixels1+pixels2) + '}'
+
+
     def __str__(self):
         pixels, pixels2 = self.get_pixels()
         result = f'  {{0x{pixels:X}, {len(self.pixels[0])}, {len(self.pixels)}, {self.group_span}, {1 if self.palete else 0}}},'
@@ -56,9 +80,9 @@ def load_sprite(stream, prefetch: Optional[str] = None) -> tuple[Optional[Sprite
             break
         if ':' in line:
             key, _, arg = line.partition(':')
-            match key:
-                case 'name':  name = arg
-                case 'palete': paleter = arg
+            match key.strip():
+                case 'name':  name = arg.strip()
+                case 'palete': palete = arg.strip()
                 case _: print(f'ERROR: Unknown keyword {key} in {line}')
             continue
         if not line:
@@ -86,6 +110,7 @@ def gen_rotated(sprite: Sprite) -> list[Sprite]:
 class Parser:
     def __init__(self, fname):
         self.sprites : list[Sprite] = []
+        self.logos : list[Sprite] = []
         self.names : dict[str, int] = {}
         self.tetris_indexes : list[int] = []
 
@@ -99,28 +124,41 @@ class Parser:
                 print('// ' + '\n// '.join(spr.pixels))
                 print(spr)
 
+    def print_logos(self):
+        for logo in self.logos:
+            print(f'const uint8_t logo_{logo.name} = {logo.logo};')
+
     def get_tetris_array(self) -> str:
         return ', '.join(str(x) for x in self.tetris_indexes)
 
     def load_file(self, stream):
         prefetch = None
         in_tetris = False
+        in_logo = False
         while True:
             sprite, prefetch = load_sprite(stream, prefetch)
             if not sprite and not prefetch:
                 break
             if prefetch == '%tetris':
                 in_tetris = True
+                in_logo = False
                 assert not self.tetris_indexes
                 prefetch = None
+            elif prefetch == '%logo':
+                in_logo = True
+                in_tetris = False
+                prefetch = None
             if sprite:
-                s_idx = self.add_sprite(sprite)
+                if not in_logo:
+                    s_idx = self.add_sprite(sprite)
                 if in_tetris:
                     self.tetris_indexes.append(s_idx)
                     t_list = gen_rotated(sprite)
                     sprite.group_span = len(t_list)
                     for item in t_list:
                         self.add_sprite(item)
+                elif in_logo:
+                    self.logos.append(sprite)
 
     def add_sprite(self, sprite) -> int:
         result = len(self.sprites)
@@ -138,5 +176,6 @@ print('''#include "sprite.h"
 const SpriteDef sprites[] = {''')
 spr.print_sprites()
 print('};')
+spr.print_logos()
 print(f'const int tetris_figures[] = {{{spr.get_tetris_array()}}};')
 print(f'const int total_tetris_figures = {len(spr.tetris_indexes)};')
