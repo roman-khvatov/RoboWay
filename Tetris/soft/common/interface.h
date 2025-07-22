@@ -44,3 +44,4 @@ uint32_t get_random();
 ///////////////////////////
 // Main entry. Implemeted in common part
 extern "C" void entry();
+extern "C" void OurPlatformInit();

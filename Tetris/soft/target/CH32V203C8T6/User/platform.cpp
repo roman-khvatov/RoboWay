@@ -4,7 +4,7 @@
 
 Pixels pixs;  // Working image of screen (to be updated by top level code)
 
-static Pixels working_pixels; // Copy of pixels to output to LED
+static Pixels  working_pixels; // Copy of pixels to output to LED
 static uint8_t col_index;     // Column index (scans by them) 0-7
 static uint8_t phase;         // Scan phase: 0-2. In phase 0 pixels from 'br1' emited, in phase 1 pixels from 'br2' emited, in phase 2 no pixel update performed, so 'br2' still intact
 
@@ -15,9 +15,9 @@ static uint8_t active_keys;   // Copy of 'cur_keys' but with posibility to top l
 
 static constexpr int debounce_time = 5; // How many full scans perform before unlocking keyboard
 
-static uint16_t led_voltage;  // LED voltage accumulator (4 samples accumulated)
-static uint8_t led_cnt;       // LED voltage sample number. Sample #0 discarded, sammples #1-4 accumulated into 'led_voltage'
-static uint8_t leds_to_sample; // Bitset of LED to sample. Bit 0 - samle high LED cluster, bit 1 - sample low LED cluster
+static uint16_t led_voltage[10];  // LED voltage DMA buffer (2 x 1+4 samples accumulated)
+static uint8_t  leds_to_sample;   // Bitset of LED to sample. Bit 0 - samle high LED cluster, bit 1 - sample low LED cluster
+static int16_t  adc_calibration = 0;
 
 // Status of LED voltage sampling
 enum class LEDVoltageReq : uint8_t {
@@ -27,21 +27,81 @@ enum class LEDVoltageReq : uint8_t {
     Ready       // Sampling done
 };
 
-uint16_t leds_voltage[2];   // Output voltages for LED sampling. 0 means that this LED cluster wasn't sampled
 static volatile LEDVoltageReq request_led_voltages; // Current LED sampling status
 
 static volatile bool done; // Set to 'true' when LED scan cycle done
+//////////////////////////////////////////////////////////////////////////////////////////
 
+static void dma_init()
+{
+    DMA_InitTypeDef DMA_InitStructure = {0};
+
+//    RCC_AHBPeriphClockCmd(RCC_AHBPeriph_DMA1, ENABLE);
+
+    DMA_DeInit(DMA1_Channel1);
+    DMA_InitStructure.DMA_PeripheralBaseAddr = (u32)&ADC1->RDATAR;
+    DMA_InitStructure.DMA_MemoryBaseAddr = (u32)led_voltage;
+    DMA_InitStructure.DMA_DIR = DMA_DIR_PeripheralSRC;
+    DMA_InitStructure.DMA_BufferSize = 10;
+    DMA_InitStructure.DMA_PeripheralInc = DMA_PeripheralInc_Disable;
+    DMA_InitStructure.DMA_MemoryInc = DMA_MemoryInc_Enable;
+    DMA_InitStructure.DMA_PeripheralDataSize = DMA_PeripheralDataSize_HalfWord;
+    DMA_InitStructure.DMA_MemoryDataSize = DMA_MemoryDataSize_HalfWord;
+    DMA_InitStructure.DMA_Mode = DMA_Mode_Normal;
+    DMA_InitStructure.DMA_Priority = DMA_Priority_VeryHigh;
+    DMA_InitStructure.DMA_M2M = DMA_M2M_Disable;
+    DMA_Init(DMA1_Channel1, &DMA_InitStructure);
+}
+
+void OurPlatformInit()
+{
+    // ClockInit
+    // IO init
+    // dma_init()
+    // ADC init
+    // ADC calibration
+    // SPI init (2 ch)
+    // Zero SPI chns (turn off LEDs)
+    // TIM3 init (sys clock)
+    // TIM2 init (PWM)
+    // SysTick init (RND)
+    // CRC init
+    // EXTI0-EXTI7 init (+ interrupts)
+    // EI
+    // LED OE on
+}
 
 //// LED Voltage sampling external interface
 
 // Request LED Voltage sampling
-void led_sence_start() {request_led_voltages = LEDVoltageReq::Request;}
-// Reset status of LED Voltage samplier to Idle
-void led_sence_off()   {request_led_voltages = LEDVoltageReq::Idle;}
+void led_sence_start() {dma_init(); request_led_voltages = LEDVoltageReq::Request;}
+
 // Test is LED Voltage sampler done sampling
 bool led_sence_ready() {return request_led_voltages == LEDVoltageReq::Ready;}
 
+std::pair<uint16_t, uint16_t> led_sence_get()
+{
+    std::pair<uint16_t, uint16_t> result;
+
+    auto sum = [](int idx)
+    {
+        uint16_t result = 0;
+        for(int i=0; i<4; ++i)
+        {
+            uint16_t v = led_voltage[idx+i];
+            int16_t val = v + adc_calibration;
+            if (val < 0 || v == 0) val = 0; else
+            if (val > 4095 || v == 4095) val = 4095;
+            result += val
+        }
+        return result >> 2;
+    };
+
+    result.first = (leds_to_sample & 1) ? sum(1) : 0xFFFF;
+    result.second = (leds_to_sample & 2) ? sum(6): 0xFFFF;
+    request_led_voltages = LEDVoltageReq::Idle;
+    return result;
+}
 
 /*
 
@@ -102,26 +162,8 @@ EXTI9_5_IRQHandler
 // SPI1 - Cols
 // SPI2 - Rows
 
-int get_active_adc()
-{
-    if (leds_to_sample&1) return 0;
-    if (leds_to_sample&2) return 1;
-    return -1;
-}
 
-inline void start_adc()
-{
-    ADC_Cmd(ADC1, ENABLE);
-}
-
-void select_adc_channel()
-{
-    led_voltage=0;
-    led_cnt=0;
-    leds_to_sample=0;
-
-    ADC_RegularChannelConfig(ADC1, get_active_adc() ? 8 : 9, 1, ADC_SampleTime_1Cycles5);
-}
+//    ADC_RegularChannelConfig(ADC1, get_active_adc() ? 8 : 9, 1, ADC_SampleTime_1Cycles5);
 
 void seed_rnd_value(uint32_t val)
 {
@@ -141,7 +183,6 @@ uint32_t get_random()
 }
 
 extern "C" void TIM3_IRQHandler() __attribute__((interrupt("WCH-Interrupt-fast")));
-extern "C" void ADC1_2_IRQHandler() __attribute__((interrupt("WCH-Interrupt-fast")));
 
 void TIM3_IRQHandler()
 {
@@ -166,11 +207,15 @@ void TIM3_IRQHandler()
     if (phase == 2 && request_led_voltages == LEDVoltageReq::Request && ((working_pixels.br2[0]&1) || (working_pixels.br2[8]&1)))
     {
         request_led_voltages = LEDVoltageReq::InProgress;
+        leds_to_sample = 0;
         if (working_pixels.br2[0]&1) leds_to_sample |= 1;
         if (working_pixels.br2[8]&1) leds_to_sample |= 2;
-        leds_voltage[0]=leds_voltage[1]=0;
-        switch_adc_channel();
-        start_adc();        
+        ADC_SoftwareStartConvCmd(ADC1, ENABLE);
+    }
+    if (phase == 0 && request_led_voltages == LEDVoltageReq::InProgress)
+    {
+        request_led_voltages = LEDVoltageReq::Ready;
+        ADC_SoftwareStartConvCmd(ADC1, DISABLE);
     }
     ++phase;
     if (phase == 3)
@@ -192,33 +237,6 @@ void TIM3_IRQHandler()
         }
     }
     GPIOA->BSHR = 1<<31;    // Reset PA15 to '0'
-}
-
-void ADC1_2_IRQHandler()
-{
-    uint16_t adc = ADC_GetConversionValue(ADC1);
-    seed_rnd_value(adc);
-    if (!led_cnt) {led_cnt=1; start_adc(); return;}
-    led_voltage += adc;
-    ++led_cnt;
-    if (led_cnt == 5)
-    {
-        leds_voltage[get_active_adc()] = led_voltage >> 2;
-        leds_to_sample &= leds_to_sample - 1;
-        if (leds_to_sample)
-        {
-            select_adc_channel();
-            start_adc();
-        }
-        else 
-        {
-            request_led_voltages = LEDVoltageReq::Ready;
-        }
-    }
-    else
-    {
-        start_adc();
-    }
 }
 
 uint8_t read_key()
