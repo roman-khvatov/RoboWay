@@ -35,9 +35,6 @@ static volatile bool done; // Set to 'true' when LED scan cycle done
 static void dma_init()
 {
     DMA_InitTypeDef DMA_InitStructure = {0};
-
-//    RCC_AHBPeriphClockCmd(RCC_AHBPeriph_DMA1, ENABLE);
-
     DMA_DeInit(DMA1_Channel1);
     DMA_InitStructure.DMA_PeripheralBaseAddr = (u32)&ADC1->RDATAR;
     DMA_InitStructure.DMA_MemoryBaseAddr = (u32)led_voltage;
@@ -56,18 +53,59 @@ static void dma_init()
 void OurPlatformInit()
 {
     // ClockInit
+    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA|RCC_APB2Periph_GPIOB|RCC_APB2Periph_SPI1|RCC_APB2Periph_ADC1|RCC_APB2Periph_AFIO, ENABLE);
+    RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2|RCC_APB1Periph_SPI2, ENABLE);
+    RCC_AHBPeriphClockCmd(RCC_AHBPeriph_DMA1|RCC_AHBPeriph_CRC, ENABLE);
+    RCC_ADCCLKConfig(RCC_PCLK2_Div16);
+
     // IO init
-    // dma_init()
+    GPIO_InitTypeDef GPIO_InitStructure = {0};
+    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+
+    // Buttons
+    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0|GPIO_Pin_1|GPIO_Pin_2|GPIO_Pin_3|GPIO_Pin_4|GPIO_Pin_5|GPIO_Pin_6|GPIO_Pin_7;
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU;
+    GPIO_Init(GPIOA, &GPIO_InitStructure);
+
+    // ADC
+    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0|GPIO_Pin_1;
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AIN;
+    GPIO_Init(GPIOB, &GPIO_InitStructure);
+
+    // LED OE
+    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_11;
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
+    GPIOB->BSHR = 1<<11;
+    GPIO_Init(GPIOB, &GPIO_InitStructure);
+
+    //PA15 - InInt indicator
+    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_15;
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
+    GPIOA->BSHR = 1<<31;
+    GPIO_Init(GPIOA, &GPIO_InitStructure);
+
+    // SPI1 GPIO
+    GPIO_InitStructure.GPIO_Pin   = GPIO_Pin_5|GPIO_Pin_3; // CLK + MOSI
+    GPIO_InitStructure.GPIO_Mode  = GPIO_Mode_AF_PP;
+    GPIO_Init(GPIOB, &GPIO_InitStructure);
+    GPIO_PinRemapConfig(GPIO_Remap_SPI1, ENABLE);
+
+    // SPI2 GPIO
+    GPIO_InitStructure.GPIO_Pin   = GPIO_Pin_12|GPIO_Pin_13|GPIO_Pin_15; // CLK + CS + MOSI
+    GPIO_InitStructure.GPIO_Mode  = GPIO_Mode_AF_PP;
+    GPIO_Init(GPIOB, &GPIO_InitStructure);
+
     // ADC init
+
     // ADC calibration
     // SPI init (2 ch)
-    // Zero SPI chns (turn off LEDs)
+    // Zero SPI chans (turn off LEDs)
     // TIM3 init (sys clock)
     // TIM2 init (PWM)
     // SysTick init (RND)
     // CRC init
-    // EXTI0-EXTI7 init (+ interrupts)
-    // EI
+    // EXTI0-EXTI7 init
+    // EI: EXTI0-EXTI7 and TIM3
     // LED OE on
 }
 
