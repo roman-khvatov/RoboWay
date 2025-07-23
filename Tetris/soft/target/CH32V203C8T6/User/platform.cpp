@@ -95,11 +95,67 @@ void OurPlatformInit()
     GPIO_InitStructure.GPIO_Mode  = GPIO_Mode_AF_PP;
     GPIO_Init(GPIOB, &GPIO_InitStructure);
 
+    // PB10 - TIM2_CH3_2 (alt mapping)
+    GPIO_InitStructure.GPIO_Pin   = GPIO_Pin_10;
+    GPIO_InitStructure.GPIO_Mode  = GPIO_Mode_AF_PP;
+    GPIO_Init(GPIOB, &GPIO_InitStructure);
+    GPIO_PinRemapConfig(GPIO_FullRemap_TIM2, ENABLE);
+
     // ADC init
+    ADC_InitTypeDef  ADC_InitStructure = {0};
+    ADC_DeInit(ADC1);
+    ADC_InitStructure.ADC_Mode = ADC_Mode_Independent;
+    ADC_InitStructure.ADC_ScanConvMode = ENABLE;
+    ADC_InitStructure.ADC_ContinuousConvMode = DISABLE;
+    ADC_InitStructure.ADC_ExternalTrigConv = ADC_ExternalTrigConv_None;
+    ADC_InitStructure.ADC_DataAlign = ADC_DataAlign_Right;
+    ADC_InitStructure.ADC_NbrOfChannel = 10;
+    ADC_Init(ADC1, &ADC_InitStructure);
+
+    ADC_DMACmd(ADC1, ENABLE);
+    ADC_Cmd(ADC1, ENABLE);
 
     // ADC calibration
-    // SPI init (2 ch)
+    ADC_BufferCmd(ADC1, DISABLE); //disable buffer
+    ADC_ResetCalibration(ADC1);
+    while(ADC_GetResetCalibrationStatus(ADC1));
+    ADC_StartCalibration(ADC1);
+    while(ADC_GetCalibrationStatus(ADC1));
+    adc_calibration = Get_CalibrationValue(ADC1);
+    ADC_BufferCmd(ADC1, ENABLE); //enable buffer
+
+    for(int i=0; i<5; ++i)
+    {
+        ADC_RegularChannelConfig(ADC1, 1, i+1, ADC_SampleTime_239Cycles5);
+        ADC_RegularChannelConfig(ADC1, 0, i+6, ADC_SampleTime_239Cycles5);
+    }
+
+    // SPI1 init
+    SPI_InitTypeDef SPI_InitStructure={0};
+    SPI_InitStructure.SPI_Direction = SPI_Direction_1Line_Tx;
+	SPI_InitStructure.SPI_Mode = SPI_Mode_Master;
+	SPI_InitStructure.SPI_DataSize = SPI_DataSize_8b;
+	SPI_InitStructure.SPI_CPOL = SPI_CPOL_Low;
+	SPI_InitStructure.SPI_CPHA = SPI_CPHA_1Edge;
+	SPI_InitStructure.SPI_NSS = SPI_NSS_Soft;
+	SPI_InitStructure.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_8;
+	SPI_InitStructure.SPI_FirstBit = SPI_FirstBit_MSB;
+	SPI_InitStructure.SPI_CRCPolynomial = 7;
+	SPI_Init( SPI1, &SPI_InitStructure );
+
+	SPI_Cmd( SPI1, ENABLE );
+
+    // SPI2 init
+	SPI_InitStructure.SPI_DataSize = SPI_DataSize_16b;
+	SPI_InitStructure.SPI_NSS = SPI_NSS_Hard;
+	SPI_Init( SPI2, &SPI_InitStructure );
+
+    SPI_Cmd( SPI2, ENABLE );
+
     // Zero SPI chans (turn off LEDs)
+    SPI1->DATAR = 0xFF;
+    SPI2->DATAR = 0;
+
     // TIM3 init (sys clock)
     // TIM2 init (PWM)
     // SysTick init (RND)
