@@ -50,9 +50,9 @@ class Sprite:
             pixels1.append(f'0x{px1:02X}')
             pixels2.append(f'0x{px2:02X}')
         while len(pixels1) < 14:
-            pixels1.append('0')
-            pixels2.append('0')
-        return '{' + ','.join(pixels1+pixels2) + '}'
+            pixels1.append('0x00')
+            pixels2.append('0x00')
+        return ','.join(pixels1+pixels2)
 
 
     def __str__(self):
@@ -125,8 +125,10 @@ class Parser:
                 print(spr)
 
     def print_logos(self):
+        print('const uint8_t logos[] = {')
         for logo in self.logos:
-            print(f'const uint8_t logo_{logo.name} = {logo.logo};')
+            print(f'   {logo.logo}, /*{logo.name}*/')
+        print('};')
 
     def get_tetris_array(self) -> str:
         return ', '.join(str(x) for x in self.tetris_indexes)
@@ -173,9 +175,18 @@ class Parser:
 spr = Parser(sys.argv[1])
 
 print('''#include "sprite.h"
+#include "spr_defs.h"
 const SpriteDef sprites[] = {''')
 spr.print_sprites()
 print('};')
 spr.print_logos()
 print(f'const int tetris_figures[] = {{{spr.get_tetris_array()}}};')
-print(f'const int total_tetris_figures = {len(spr.tetris_indexes)};')
+
+with open('spr_defs.h', 'wt') as f:
+    print('#pragma once', file=f)
+    print(f'constexpr int total_tetris_figures = {len(spr.tetris_indexes)};', file=f)
+    print('enum Logos {', file=f)
+    for icon in spr.logos:
+        print(f'  Logo_{icon.name},', file=f)
+    print('  LogosTotal\n};', file=f)
+
