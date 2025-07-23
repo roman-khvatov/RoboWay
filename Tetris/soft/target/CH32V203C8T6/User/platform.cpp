@@ -54,9 +54,12 @@ void OurPlatformInit()
 {
     // ClockInit
     RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA|RCC_APB2Periph_GPIOB|RCC_APB2Periph_SPI1|RCC_APB2Periph_ADC1|RCC_APB2Periph_AFIO, ENABLE);
-    RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2|RCC_APB1Periph_SPI2, ENABLE);
+    RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2|RCC_APB1Periph_TIM3|RCC_APB1Periph_SPI2, ENABLE);
     RCC_AHBPeriphClockCmd(RCC_AHBPeriph_DMA1|RCC_AHBPeriph_CRC, ENABLE);
     RCC_ADCCLKConfig(RCC_PCLK2_Div16);
+
+    // NVIC - Enable nesting interrupts
+    NVIC_PriorityGroupConfig(NVIC_PriorityGroup_1);
 
     // IO init
     GPIO_InitTypeDef GPIO_InitStructure = {0};
@@ -75,14 +78,15 @@ void OurPlatformInit()
     // LED OE
     GPIO_InitStructure.GPIO_Pin = GPIO_Pin_11;
     GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
-    GPIOB->BSHR = 1<<11;
+    GPIO_SetBits(GPIOB, GPIO_Pin_11);
     GPIO_Init(GPIOB, &GPIO_InitStructure);
+    GPIO_SetBits(GPIOB, GPIO_Pin_11);
 
     //PA15 - InInt indicator
     GPIO_InitStructure.GPIO_Pin = GPIO_Pin_15;
     GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
-    GPIOA->BSHR = 1<<31;
     GPIO_Init(GPIOA, &GPIO_InitStructure);
+    GPIO_ResetBits(GPIOA, GPIO_Pin_15);
 
     // SPI1 GPIO
     GPIO_InitStructure.GPIO_Pin   = GPIO_Pin_5|GPIO_Pin_3; // CLK + MOSI
@@ -156,13 +160,75 @@ void OurPlatformInit()
     SPI1->DATAR = 0xFF;
     SPI2->DATAR = 0;
 
-    // TIM3 init (sys clock)
+    // TIM3 init (sys clock) & Int
+    NVIC_InitTypeDef NVIC_InitStructure={0};
+    TIM_TimeBaseInitTypeDef TIM_TimeBaseInitStructure={0};
+
+    TIM_TimeBaseInitStructure.TIM_Period = 1125*tick_time-1;
+    TIM_TimeBaseInitStructure.TIM_Prescaler = 127;
+    TIM_TimeBaseInitStructure.TIM_ClockDivision = TIM_CKD_DIV1;
+    TIM_TimeBaseInitStructure.TIM_CounterMode = TIM_CounterMode_Up;
+    TIM_TimeBaseInit( TIM1, &TIM_TimeBaseInitStructure);
+
+    TIM_ClearITPendingBit( TIM3, TIM_IT_Update );
+
+    NVIC_InitStructure.NVIC_IRQChannel =TIM3_UP_IRQn;
+    NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority =1;
+    NVIC_InitStructure.NVIC_IRQChannelSubPriority =1;
+    NVIC_InitStructure.NVIC_IRQChannelCmd =ENABLE;
+    NVIC_Init(&NVIC_InitStructure);
+
+    TIM_ITConfig(TIM3, TIM_IT_Update, ENABLE);
+
     // TIM2 init (PWM)
+	TIM_TimeBaseInitStructure.TIM_Period = 0xFFFF;
+	TIM_TimeBaseInitStructure.TIM_Prescaler = 0;
+	TIM_TimeBaseInit( TIM2, &TIM_TimeBaseInitStructure);
+
+    TIM_OCInitTypeDef TIM_OCInitStructure={0};
+    TIM_OCInitStructure.TIM_OCMode = TIM_OCMode_PWM1;
+	TIM_OCInitStructure.TIM_OutputState = TIM_OutputState_Enable;
+	TIM_OCInitStructure.TIM_Pulse = 34734; // 1.75V on output
+	TIM_OCInitStructure.TIM_OCPolarity = TIM_OCPolarity_High;
+	TIM_OC1Init( TIM2, &TIM_OCInitStructure );
+
+	TIM_CtrlPWMOutputs(TIM2, ENABLE );
+	TIM_OC1PreloadConfig( TIM2, TIM_OCPreload_Disable );
+	TIM_ARRPreloadConfig( TIM2, ENABLE );
+	TIM_Cmd( TIM2, ENABLE );
+
     // SysTick init (RND)
+    SysTick->CTLR =5;
+
     // CRC init
-    // EXTI0-EXTI7 init
-    // EI: EXTI0-EXTI7 and TIM3
+    CRC_ResetDR();
+
+    // EXTI0-EXTI7 init & EI
+    for(uint8_t pin_source = 0; pin_source < 8; ++pin_source) GPIO_EXTILineConfig(GPIO_PortSourceGPIOA, pin_source);
+
+    EXTI_InitTypeDef EXTI_InitStructure = {0};
+
+    EXTI_InitStructure.EXTI_Mode = EXTI_Mode_Interrupt;
+    EXTI_InitStructure.EXTI_Trigger = EXTI_Trigger_Rising_Falling;
+    EXTI_InitStructure.EXTI_LineCmd = ENABLE;
+    EXTI_InitStructure.EXTI_Line = EXTI_Line0|EXTI_Line1|EXTI_Line2|EXTI_Line3|EXTI_Line4|EXTI_Line5|EXTI_Line6|EXTI_Line7;
+    EXTI_Init(&EXTI_InitStructure);
+
+    NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;
+    NVIC_InitStructure.NVIC_IRQChannelSubPriority = 1;
+    NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+
+    for(auto intn: {EXTI0_IRQn, EXTI1_IRQn, EXTI2_IRQn, EXTI3_IRQn, EXTI4_IRQn, EXTI9_5_IRQn})
+    {
+        NVIC_InitStructure.NVIC_IRQChannel = intn;
+        NVIC_Init(&NVIC_InitStructure);
+    }
+
+    // EI: TIM3
+    TIM_Cmd( TIM3, ENABLE );
+
     // LED OE on
+    GPIO_ResetBits(GPIOB, GPIO_Pin_11);
 }
 
 //// LED Voltage sampling external interface
@@ -234,13 +300,10 @@ PA15 - InInt indicator
 Timers:
 
 SysTick - CRC feed register (free running on max speed)
-
 TIM3 - System clock (for timer interrupt)
 TIM2 - PWM for LEDs LDO
 
-
 EXTI0-EXTI7 - Connected to PA0-7. Feed RND generator ob any button state change
-
 
 EXTI* int handlers:
 
@@ -280,7 +343,7 @@ extern "C" void TIM3_IRQHandler() __attribute__((interrupt("WCH-Interrupt-fast")
 
 void TIM3_IRQHandler()
 {
-    GPIOA->BSHR = 1<<15;    // Set PA15 to '1'
+    GPIO_SetBits(GPIOA, GPIO_Pin_15); // Set 'InInt' indicator
 
     // Pixels
     uint16_t row=0;
@@ -330,7 +393,8 @@ void TIM3_IRQHandler()
             }
         }
     }
-    GPIOA->BSHR = 1<<31;    // Reset PA15 to '0'
+    TIM_ClearITPendingBit( TIM3, TIM_IT_Update );
+    GPIO_ResetBits(GPIOA, GPIO_Pin_15); // Reset 'InInt' indicator
 }
 
 uint8_t read_key()
@@ -350,13 +414,13 @@ void clr_keys(uint8_t keys)
     __enable_irq();
 }
 
-#define H(nm) \
+#define H(nm, ln) \
 extern "C" void nm() __attribute__((interrupt("WCH-Interrupt-fast"))); \
-void nm() {seed_rnd_value();}
+void nm() {seed_rnd_value(); EXTI_ClearITPendingBit(ln);}
 
-H(EXTI0_IRQHandler)
-H(EXTI1_IRQHandler)
-H(EXTI2_IRQHandler)
-H(EXTI3_IRQHandler)
-H(EXTI4_IRQHandler)
-H(EXTI9_5_IRQHandler)
+H(EXTI0_IRQHandler, EXTI_Line0)
+H(EXTI1_IRQHandler, EXTI_Line1)
+H(EXTI2_IRQHandler, EXTI_Line2)
+H(EXTI3_IRQHandler, EXTI_Line3)
+H(EXTI4_IRQHandler, EXTI_Line4)
+H(EXTI9_5_IRQHandler, EXTI_Line5|EXTI_Line6|EXTI_Line7)
