@@ -1,4 +1,5 @@
 ﻿#include "../common/sprite.h"
+#include "../common/spr_defs.h"
 #include "../common/timer.h"
 
 /* Color map for Tetris:
