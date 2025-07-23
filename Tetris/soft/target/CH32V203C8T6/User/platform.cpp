@@ -58,9 +58,6 @@ void OurPlatformInit()
     RCC_AHBPeriphClockCmd(RCC_AHBPeriph_DMA1|RCC_AHBPeriph_CRC, ENABLE);
     RCC_ADCCLKConfig(RCC_PCLK2_Div16);
 
-    // NVIC - Enable nesting interrupts
-    NVIC_PriorityGroupConfig(NVIC_PriorityGroup_1);
-
     // IO init
     GPIO_InitTypeDef GPIO_InitStructure = {0};
     GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
