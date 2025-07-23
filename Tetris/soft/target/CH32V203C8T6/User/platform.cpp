@@ -161,7 +161,7 @@ void OurPlatformInit()
     NVIC_InitTypeDef NVIC_InitStructure={0};
     TIM_TimeBaseInitTypeDef TIM_TimeBaseInitStructure={0};
 
-    TIM_TimeBaseInitStructure.TIM_Period = 1125*tick_time-1;
+    TIM_TimeBaseInitStructure.TIM_Period = 1125*tick_time/24-1;
     TIM_TimeBaseInitStructure.TIM_Prescaler = 127;
     TIM_TimeBaseInitStructure.TIM_ClockDivision = TIM_CKD_DIV1;
     TIM_TimeBaseInitStructure.TIM_CounterMode = TIM_CounterMode_Up;
