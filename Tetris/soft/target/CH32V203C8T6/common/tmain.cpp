@@ -72,7 +72,6 @@ static int scroll_hor(int icon, int delta)
             t.wait();
         }
     }
-    draw_icon(icon2);
     return icon2;
 }
 
@@ -96,7 +95,6 @@ static int scroll_ver(int icon, int delta)
             t.wait();
         }
     }
-    draw_icon(icon2);
     return icon2;
 }
 
@@ -116,6 +114,7 @@ static void select_game(int& game)
             case K_Left:  game = scroll_hor(game, 1); break;
             case K_Hit: return;
         }
+        draw_icon(game);
     }
 }
 
