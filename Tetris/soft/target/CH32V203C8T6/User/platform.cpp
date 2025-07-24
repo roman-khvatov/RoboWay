@@ -1,8 +1,8 @@
+#include <utility>
+
 #include "../../../common/interface.h"
 #include "../Peripheral/inc/ch32v20x.h"
 #include "../Core/core_riscv.h"
-
-Pixels pixs;  // Working image of screen (to be updated by top level code)
 
 static Pixels  working_pixels; // Copy of pixels to output to LED
 static uint8_t col_index;     // Column index (scans by them) 0-7
@@ -56,7 +56,7 @@ void OurPlatformInit()
     RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA|RCC_APB2Periph_GPIOB|RCC_APB2Periph_SPI1|RCC_APB2Periph_ADC1|RCC_APB2Periph_AFIO, ENABLE);
     RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2|RCC_APB1Periph_TIM3|RCC_APB1Periph_SPI2, ENABLE);
     RCC_AHBPeriphClockCmd(RCC_AHBPeriph_DMA1|RCC_AHBPeriph_CRC, ENABLE);
-    RCC_ADCCLKConfig(RCC_PCLK2_Div16);
+    RCC_ADCCLKConfig(RCC_PCLK2_Div8);
 
     // IO init
     GPIO_InitTypeDef GPIO_InitStructure = {0};
@@ -139,7 +139,7 @@ void OurPlatformInit()
 	SPI_InitStructure.SPI_CPOL = SPI_CPOL_Low;
 	SPI_InitStructure.SPI_CPHA = SPI_CPHA_1Edge;
 	SPI_InitStructure.SPI_NSS = SPI_NSS_Soft;
-	SPI_InitStructure.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_8;
+	SPI_InitStructure.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_4; // SPI1 on PB2 (at HCLK/2)
 	SPI_InitStructure.SPI_FirstBit = SPI_FirstBit_MSB;
 	SPI_InitStructure.SPI_CRCPolynomial = 7;
 	SPI_Init( SPI1, &SPI_InitStructure );
@@ -149,6 +149,7 @@ void OurPlatformInit()
     // SPI2 init
 	SPI_InitStructure.SPI_DataSize = SPI_DataSize_16b;
 	SPI_InitStructure.SPI_NSS = SPI_NSS_Hard;
+	SPI_InitStructure.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_8; // SPI2 on PB1 (at HCLK)
 	SPI_Init( SPI2, &SPI_InitStructure );
 
     SPI_Cmd( SPI2, ENABLE );
@@ -161,7 +162,7 @@ void OurPlatformInit()
     NVIC_InitTypeDef NVIC_InitStructure={0};
     TIM_TimeBaseInitTypeDef TIM_TimeBaseInitStructure={0};
 
-    TIM_TimeBaseInitStructure.TIM_Period = 1125*tick_time/24-1;
+    TIM_TimeBaseInitStructure.TIM_Period = 1125*tick_time/24-1; // On PB1 (at HCLK)
     TIM_TimeBaseInitStructure.TIM_Prescaler = 127;
     TIM_TimeBaseInitStructure.TIM_ClockDivision = TIM_CKD_DIV1;
     TIM_TimeBaseInitStructure.TIM_CounterMode = TIM_CounterMode_Up;
@@ -169,7 +170,7 @@ void OurPlatformInit()
 
     TIM_ClearITPendingBit( TIM3, TIM_IT_Update );
 
-    NVIC_InitStructure.NVIC_IRQChannel =TIM3_UP_IRQn;
+    NVIC_InitStructure.NVIC_IRQChannel =TIM3_IRQn;
     NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority =1;
     NVIC_InitStructure.NVIC_IRQChannelSubPriority =1;
     NVIC_InitStructure.NVIC_IRQChannelCmd =ENABLE;
@@ -178,7 +179,7 @@ void OurPlatformInit()
     TIM_ITConfig(TIM3, TIM_IT_Update, ENABLE);
 
     // TIM2 init (PWM)
-	TIM_TimeBaseInitStructure.TIM_Period = 0xFFFF;
+	TIM_TimeBaseInitStructure.TIM_Period = 0xFFFF; // On PB1 (at HCLK)
 	TIM_TimeBaseInitStructure.TIM_Prescaler = 0;
 	TIM_TimeBaseInit( TIM2, &TIM_TimeBaseInitStructure);
 
@@ -246,10 +247,11 @@ std::pair<uint16_t, uint16_t> led_sence_get()
         for(int i=0; i<4; ++i)
         {
             uint16_t v = led_voltage[idx+i];
+            CRC->DATAR = v;
             int16_t val = v + adc_calibration;
             if (val < 0 || v == 0) val = 0; else
             if (val > 4095 || v == 4095) val = 4095;
-            result += val
+            result += val;
         }
         return result >> 2;
     };
@@ -318,12 +320,6 @@ EXTI9_5_IRQHandler
 
 
 //    ADC_RegularChannelConfig(ADC1, get_active_adc() ? 8 : 9, 1, ADC_SampleTime_1Cycles5);
-
-void seed_rnd_value(uint32_t val)
-{
-    CRC->DATAR = val;
-    CRC->DATAR = SysTick->CNT;
-}
 
 void seed_rnd_value()
 {
