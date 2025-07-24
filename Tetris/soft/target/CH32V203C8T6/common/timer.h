@@ -29,4 +29,13 @@ public:
         }
         return false;
     }
+
+    void wait() 
+    {
+        for(;;)
+        {
+            read_key();
+            if (tick()) return;
+        }
+    }
 };

@@ -45,6 +45,11 @@ public:
                 auto key = read_key();
                 clr_keys(-1);
                 process_key(key);
+                if (key & K_3)
+                {
+                    freeze();
+                    return;
+                }
                 if (timer.tick() && !figure.move(0, 1, 0))
                 {
                     settle_down();
@@ -169,20 +174,5 @@ void TetrisGame::freeze()
 
 void tetris_game()
 {
-    for (;;)
-    {
-        pixs.clear();
-        TetrisGame().run();
-        for (;;)
-        {
-            auto key = read_key();
-            clr_keys(-1);
-            if (key & K_1) break;
-            if (key & K_2) 
-            {
-                pixs.clear();
-                return;
-            }
-        }
-    }
+    TetrisGame().run();
 }

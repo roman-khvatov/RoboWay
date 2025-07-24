@@ -63,6 +63,16 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
   </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\target\CH32V203C8T6\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\target\CH32V203C8T6\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
     <ClCompile>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
@@ -102,19 +112,20 @@
     </QtMoc>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\common\sprite.h" />
-    <ClInclude Include="..\common\timer.h" />
+    <ClInclude Include="..\target\CH32V203C8T6\common\interface.h" />
+    <ClInclude Include="..\target\CH32V203C8T6\common\sprite.h" />
+    <ClInclude Include="..\target\CH32V203C8T6\common\spr_defs.h" />
+    <ClInclude Include="..\target\CH32V203C8T6\common\timer.h" />
     <QtRcc Include="tetrisemulator.qrc" />
     <QtUic Include="tetrisemulator.ui" />
     <QtMoc Include="tetrisemulator.h" />
-    <ClCompile Include="..\common\interface.cpp" />
-    <ClCompile Include="..\common\sprite.cpp" />
-    <ClCompile Include="..\common\spr_defs.cpp" />
-    <ClCompile Include="..\common\tetris.cpp" />
-    <ClCompile Include="..\common\tmain.cpp" />
+    <ClCompile Include="..\target\CH32V203C8T6\common\interface.cpp" />
+    <ClCompile Include="..\target\CH32V203C8T6\common\sprite.cpp" />
+    <ClCompile Include="..\target\CH32V203C8T6\common\spr_defs.cpp" />
+    <ClCompile Include="..\target\CH32V203C8T6\common\tetris.cpp" />
+    <ClCompile Include="..\target\CH32V203C8T6\common\tmain.cpp" />
     <ClCompile Include="tetrisemulator.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClInclude Include="..\common\interface.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

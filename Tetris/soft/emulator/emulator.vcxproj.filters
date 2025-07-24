@@ -40,30 +40,33 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\common\interface.cpp">
+    <ClCompile Include="..\target\CH32V203C8T6\common\interface.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\common\tmain.cpp">
+    <ClCompile Include="..\target\CH32V203C8T6\common\spr_defs.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\common\sprite.cpp">
+    <ClCompile Include="..\target\CH32V203C8T6\common\sprite.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\common\spr_defs.cpp">
+    <ClCompile Include="..\target\CH32V203C8T6\common\tetris.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\common\tetris.cpp">
+    <ClCompile Include="..\target\CH32V203C8T6\common\tmain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\common\interface.h">
+    <ClInclude Include="..\target\CH32V203C8T6\common\interface.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\common\timer.h">
+    <ClInclude Include="..\target\CH32V203C8T6\common\spr_defs.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\common\sprite.h">
+    <ClInclude Include="..\target\CH32V203C8T6\common\sprite.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\target\CH32V203C8T6\common\timer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

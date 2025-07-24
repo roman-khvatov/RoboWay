@@ -15,6 +15,7 @@ struct SpriteDef {
 
 extern const SpriteDef sprites[];
 extern const int tetris_figures[];
+extern const uint8_t logos[];
 
 enum SprColor {
     SC_Off, // Turn off
