@@ -112,6 +112,7 @@
     </QtMoc>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\target\CH32V203C8T6\common\arena.h" />
     <ClInclude Include="..\target\CH32V203C8T6\common\interface.h" />
     <ClInclude Include="..\target\CH32V203C8T6\common\sprite.h" />
     <ClInclude Include="..\target\CH32V203C8T6\common\spr_defs.h" />
@@ -120,6 +121,7 @@
     <QtUic Include="tetrisemulator.ui" />
     <QtMoc Include="tetrisemulator.h" />
     <ClCompile Include="..\target\CH32V203C8T6\common\interface.cpp" />
+    <ClCompile Include="..\target\CH32V203C8T6\common\snake.cpp" />
     <ClCompile Include="..\target\CH32V203C8T6\common\sprite.cpp" />
     <ClCompile Include="..\target\CH32V203C8T6\common\spr_defs.cpp" />
     <ClCompile Include="..\target\CH32V203C8T6\common\tetris.cpp" />

@@ -1,6 +1,8 @@
 ﻿#include "interface.h"
+#include "arena.h"
 
 Pixels pixs;
+Arena arena;
 
 int Pixels::get_br(int x, int y)
 {

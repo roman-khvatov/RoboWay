@@ -1,6 +1,6 @@
-﻿#include "../common/sprite.h"
-#include "../common/spr_defs.h"
-#include "../common/timer.h"
+﻿#include "sprite.h"
+#include "spr_defs.h"
+#include "timer.h"
 
 /* Color map for Tetris:
 
@@ -28,7 +28,6 @@ class TetrisGame {
     Timer timer = 1;
 
     bool place_figure(); // Retrun true if successfully placed
-    void freeze();
     void process_key(int key);
     void settle_down();
     void squeeze();
@@ -47,7 +46,6 @@ public:
                 process_key(key);
                 if (key & K_3)
                 {
-                    freeze();
                     return;
                 }
                 if (timer.tick() && !figure.move(0, 1, 0))
@@ -58,7 +56,6 @@ public:
                 }
             }
         }
-        freeze();
     }
 };
 
@@ -160,15 +157,6 @@ void TetrisGame::squeeze()
     {
         if (level < max_level) ++level;
         collapsed_lines -= lines_per_level;
-    }
-}
-
-void TetrisGame::freeze()
-{
-    for (int y = 0; y < 16; ++y)
-    {
-        pixs.br1[y] = pixs.br2[y];
-        pixs.br2[y] = 0;
     }
 }
 

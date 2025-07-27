@@ -8,6 +8,8 @@
 static constexpr int scroll_mul = 2;
 
 void tetris_game();
+void snake_game();
+
 
 // Mix <bits_first> of 'icon1' with 'icon2'
 //  icon1  icon2
@@ -98,6 +100,15 @@ static int scroll_ver(int icon, int delta)
     return icon2;
 }
 
+static void freeze()
+{
+    for (int y = 0; y < 16; ++y)
+    {
+        pixs.br1[y] |= pixs.br2[y];
+        pixs.br2[y] = 0;
+    }
+}
+
 static void select_game(int& game)
 {
     draw_icon(game);
@@ -125,7 +136,7 @@ static bool rd_key()
         auto key = read_key();
         clr_keys(-1);
         if (key & K_1) return false;
-        if (key && !(key & K_3)) return true;
+        if (key & K_2) return true;
     }
 
 }
@@ -140,7 +151,13 @@ void entry()
         for(;;)
         {
             pixs.clear();
-            tetris_game();
+            switch (game)
+            {
+                case Logo_tetris: tetris_game(); break;
+                case Logo_snake: snake_game(); break;
+                //case Logo_invation: invation_game(); break;
+            }
+            freeze();
             if (rd_key()) break;
         }
     }
