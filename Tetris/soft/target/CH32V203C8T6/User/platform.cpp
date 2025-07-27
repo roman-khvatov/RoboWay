@@ -1,7 +1,7 @@
 #include <utility>
 
-#include "../../../common/interface.h"
-#include "../Peripheral/inc/ch32v20x.h"
+#include "../common/interface.h"
+#include "ch32v20x.h"
 #include "../Core/core_riscv.h"
 
 static Pixels  working_pixels; // Copy of pixels to output to LED
