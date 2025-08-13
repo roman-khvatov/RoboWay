@@ -377,7 +377,7 @@ void TIM3_IRQHandler()
             col_index = 0;
             done = true;
             working_pixels = pixs;
-            if (debounce) --debounce;
+            if (debounce) --debounce; else
             if (changed_keys)
             {
                 cur_keys ^= changed_keys;
