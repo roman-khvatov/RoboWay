@@ -372,7 +372,7 @@ void TIM3_IRQHandler()
     {
         phase = 0;
         ++col_index;
-        if (col_index == 7)
+        if (col_index == 8)
         {
             col_index = 0;
             done = true;
