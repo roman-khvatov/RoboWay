@@ -35,6 +35,9 @@ void entry(void);
  *
  * @return  none
  */
+
+void OurPlatformInit(void);
+
 int main(void)
 {
     NVIC_PriorityGroupConfig(NVIC_PriorityGroup_1);

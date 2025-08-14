@@ -604,7 +604,7 @@
 		"address": "0x08000000",
 		"target_path": "obj/CH32V203C8T6.hex",
 		"clkSpeed": "High",
-		"debug_interface_mode": "1-wire serial",
+		"debug_interface_mode": "",
 		"erase": true,
 		"program": true,
 		"verify": true,
