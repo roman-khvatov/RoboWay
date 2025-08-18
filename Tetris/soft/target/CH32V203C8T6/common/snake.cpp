@@ -83,16 +83,18 @@ class Snake {
 
     static void draw(Coord coord, Color color)
     {
-        uint8_t mask = 1 << coord.x;
-        if (color & 1) pixs.br1[coord.y] |= mask; else pixs.br1[coord.y] &= ~mask;
-        if (color & 2) pixs.br2[coord.y] |= mask; else pixs.br2[coord.y] &= ~mask;
+        pixs.set_br(coord.x, coord.y, color);
+        // uint8_t mask = 1 << coord.x;
+        // if (color & 1) pixs.br1[coord.y] |= mask; else pixs.br1[coord.y] &= ~mask;
+        // if (color & 2) pixs.br2[coord.y] |= mask; else pixs.br2[coord.y] &= ~mask;
     }
 
     static Color fetch(Coord coord)
     {
-        uint8_t p1 = (pixs.br1[coord.y] >> coord.x) & 1;
-        uint8_t p2 = (pixs.br2[coord.y] >> coord.x) & 1;
-        return Color(p1 + p2*2);
+        return Color(pixs.get_br(coord.x, coord.y));
+        // uint8_t p1 = (pixs.br1[coord.y] >> coord.x) & 1;
+        // uint8_t p2 = (pixs.br2[coord.y] >> coord.x) & 1;
+        // return Color(p1 + p2*2);
     }
 
     enum CanMove {
