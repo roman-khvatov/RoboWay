@@ -2,7 +2,6 @@
 
 ## Первая смена (Понедельник, 19:00-20:00)
 
-* Наталья Мельникова
 * Maksim Snegur
 * Artem Snegur
 * DANIEL KOLBUNOV
