@@ -2834,6 +2834,77 @@
 		)
 		(uuid "ff82872b-6efd-43a6-ab8b-0a14a677e7bd")
 	)
+	(text_box "Diodes:\n	OC - BAT54C\n	OA - BAT54A\n"
+		(exclude_from_sim no)
+		(at 200.66 19.05 0)
+		(size 78.74 30.48)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(fill
+			(type none)
+		)
+		(effects
+			(font
+				(size 5 5)
+			)
+			(justify left top)
+		)
+		(uuid "70f22b43-41ca-4ecb-9beb-cdc13427a77f")
+	)
+	(text_box "R2 - 5K54 / 5K9\nR3 - 2K77 / 2K9\nR4 - 1K39 / 1K49\nR5 - 6K47 / 2K03\nR6 - 3K23 / 1K02\nR7 - 1K62 / 508R\nR8 - 550R / 1K69\nR9 - 275R / 843R"
+		(exclude_from_sim no)
+		(at 73.66 137.16 0)
+		(size 73.66 54.61)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(fill
+			(type none)
+		)
+		(effects
+			(font
+				(size 4 4)
+			)
+			(justify left top)
+		)
+		(uuid "d6d1bd65-a9c6-4ce4-a646-60b7bb4b2380")
+	)
+	(text "R2-4"
+		(exclude_from_sim no)
+		(at 190.5 74.93 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify bottom)
+		)
+		(uuid "15213fdb-7b12-4a25-b2f0-1a0ad378725f")
+	)
+	(text "R5-7"
+		(exclude_from_sim no)
+		(at 190.5 86.868 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify bottom)
+		)
+		(uuid "269e85e1-41b8-4ec5-8f6b-4b027c301510")
+	)
+	(text "R8,9"
+		(exclude_from_sim no)
+		(at 190.246 97.79 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify bottom)
+		)
+		(uuid "3ac9e332-3e4c-4715-a137-59e98b30d31e")
+	)
 	(symbol
 		(lib_id "74xx:74HC590A")
 		(at 151.13 87.63 0)
@@ -3433,7 +3504,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "4nf"
+		(property "Value" "1.0"
 			(at 106.68 118.1099 0)
 			(effects
 				(font
@@ -3784,7 +3855,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "4nf"
+		(property "Value" "1.0"
 			(at 96.52 118.1099 0)
 			(effects
 				(font
@@ -4568,6 +4639,33 @@
 				(hide yes)
 			)
 		)
+		(property "R2" "6K2"
+			(at 182.88 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "R3" "3K3"
+			(at 182.88 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "R4" "1K6"
+			(at 182.88 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "o1" output
 			(at 195.58 88.9 0)
 			(effects
@@ -4715,6 +4813,33 @@
 					(size 1.27 1.27)
 				)
 				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "R2" "5K6"
+			(at 182.88 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "R3" "2K7"
+			(at 182.88 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "R4" "1K3"
+			(at 182.88 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 				(hide yes)
 			)
 		)

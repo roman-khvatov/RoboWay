@@ -640,7 +640,7 @@
 				)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "${R4}"
 			(at 111.76 102.87 90)
 			(effects
 				(font
@@ -704,15 +704,15 @@
 		(dnp no)
 		(uuid "31edd5da-e83f-43e1-b343-b092fb0fdabc")
 		(property "Reference" "R6"
-			(at 111.76 84.074 90)
+			(at 112.014 90.17 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "R"
-			(at 111.76 85.598 90)
+		(property "Value" "${R3}"
+			(at 112.014 92.71 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -861,7 +861,7 @@
 				)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "${R2}"
 			(at 111.76 77.47 90)
 			(effects
 				(font
