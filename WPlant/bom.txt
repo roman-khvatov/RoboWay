@@ -1,0 +1,403 @@
+﻿RS485:
+
+RS485              C19631832  (4970 stock, 0.2/5, 0.15/50)  2.5M, No ESD
+UTRS485G-S08-R     C2848650   (4950 stock, 0.24/5, 0.19/50) 500K, Fail Safe, ESD 4KV      <<< 2
+AIP485BSA8.TB      C6798236   (110 stock, 0.25/5, 0.2/50)   500K, Fail Safe, ESD 15KV     <<< 1
+
+=== Plant box ====
+MCU:                        PY32F003F18P6TU
+Humidity detector:          74LV1G14 ?
+Solenoid demix:             
+    74HC595            C18164493 56K stock, 0.04/10, 0.03/100
+
+    SN74HC594D(LX)     C22374078 3K stock,  0.14/5, 0.12/50     (out reg reset instead OE)     <<<<
+
+   TPIC6A595 (350mA)   C2863342  102 stock,  2.5/1, 2.08/10
+   TPIC6B595 (150mA)   C7094     2.4K stock, 0.88/1, 0.73/10
+   TPIC6C595 (100mA)   C350572   2K stock,   0.8/1, 0.65/10
+
+Humidity input mux & power: 74HC4051 (40 Ohm) / 74LV4051A (22 Ohm) / TMUX1208 (5 Ohm)      74HC4051DRG     C19723806 (4K stock, 0.082/5, 0.065/50)
+                            74hc4052 (2 x 4:1) / TMUX1209                                  SN74HC4052D(LX) C22374065 (1.2K stock, 0.08/5, 0.06/50)  <<<<
+                                                                                           74HC4052M/TR    C507179   (12K stock, 0.1/5, 0.076/50)
+
+                                                                                           TMUX1208PWR     C494728   (198 stock, 0.63/1, 0.51/10)    8->1
+                                                                                           TMUX1209PWR     C2859874  (321 stock, 0.45/1, 0.36/10)    2 x 4->1
+
+                                                                                           CD74HCT4051M96  C406862   (2K stock, 0.32/1, 0.25/10)      <<<
+                                                                                           CD74HCT4052M96  C469908   (2K stock, 0.29/5, 0.22/50)
+
+LDO (5V):                   AP2204R-5.0TRG1 200mA                                          C156388 (17K stock, 0.082/5, 0.073/50)
+
+Screw terminal blocks:
+
+--- DB125-2.54-4P-GN-S  C918122 (36K stock, 0.33/1, 0.26/10)  4 pin, 2.54 mm pitch   | MX128-2.54-04P-GN01-Cu-Y-A C5188444 (6K stock, 0.3/5, 0.23/50)
+--- DB125-2.54-3P-GN-S  C918121 (29K stock, 0.27/5, 0.22/50)  3 pin, 2.54 mm pitch   | MX128-2.54-03P-GN01-Cu-Y-A C5188443 (790 stock, 0.22/5, 0.18/50)
+
+DB301R-3.5-3P-GN-S   C5445312 (895 stock, 0.18/5, 0.15/50) 3 pin, 3.5mm
+DB301R-3.5-2P-GN-S   C5445311 (840 stock, 0.13/5, 0.1/50)  2 pin, 3.5mm
+KF350R-3.5-3P        C474897  (745 stock, 0.19/5, 0.15/50) 3 pin
+KF350R-3.5-2P        C474896  (430 stock, 0.12/5, 0.1/50)  2 pin
+
+MOSFET (2xN):
+
+KY6802              C3029282 (2.8K in strock, 0.03/10, 0.022/100)
+SP2302DTS           C41354824 (3.8K in stock, 0.032/10, 0.025/200)
+9926A               C7431451 (32.5K in stock, 0.04/10, 0.031/100)     many different types     <<<<<
+
+========================
+Solenoid:
+
+9V/0.12A
+12V/0.22A
+3.3mm pipe dia
+========================
+
+
+
+TIM1
+
+Cnt input: TIM1_ETR, TI2 (TIM1_CH2?)
+CCP: TIM1_CH1-4
+OUT: TIM1_CH1-4, TIM1_CH(1-3)N
+
+
+TIM3
+
+Cnt input: TI2 (TIM3_CH2?)
+CCP: TIM3_CH1-4
+OUT: TIM3_CH1-4
+
+TIM14
+
+No inp
+CCP: TIM14_CH1
+OUT: TIM14_CH1
+
+TIM16/17
+
+No inp
+CCP: TIMx_CH1
+OUT: TIMx_CH1, TIMx_CH1N
+
+
+PF0               GPIO1
+    TIM14_CH1
+
+PF1
+    SPI1_NSS <<<
+
+PA0               GPIO2
+    TIM1_CH3
+
+PA1
+    SPI1_SCK    <<<
+
+PA4             <<< Capture from MUX
+    TIM14_CH1  
+    TIM3_CH3
+
+PA5                           <<< UART2 RX (input channel), TIM3 clock (input calibration)
+    TIM3_CH2     inp   <<<
+    USART2_RX          <<<
+
+PA6              GPIO3
+    TIM16_CH1
+
+PA7                            <<< UART1 TX (output channel), TIM17 output calibration clock
+    TIM17_CH1   <<<
+    USART1_TX   <<<
+
+PA12
+    SPI1_MOSI   <<<
+
+PB5             GPIO4
+    TIM3_CH2
+
+PB6
+    USART2_TX   <<<
+
+PB7
+    USART1_RX    <<<
+
+Boot0 - PA2/PA3
+
+GPIO:
+    2 - UART direction
+    1 - OE for 595
+
+595:
+    3 - Humidity MUX (select + OE)
+=============================================
+
+IEEE 802.11ah (Wi-Fi HaLow):
+    This amendment, designed for IoT devices, introduced Target Wake Time (TWT), a significant improvement allowing STAs to schedule specific wake-up times for data exchange, further enhancing energy efficiency. 
+IEEE 802.11ax (Wi-Fi 6):
+    The Wi-Fi 6 standard inherited the TWT feature from 802.11ah, making it beneficial for battery-operated devices like smartphones and sensors, enabling them to last longe
+
+
+BT + WiFi
+
+SIWG917Y121MGABA C44509713 (13 euro digikey) WiFi-6 (AlwaysOn), BLE 5.4
+
+
+===========
+Pow budget:
+
+SIWG917Y121MGABA  (8M FLASH, 2M PSRAM, 43 GPIO)
+MCU power consumption:
+    * Active current as low as 40.4 μA/MHz @ 20 MHz in lowpower mode
+    • Active current as low as 70.5 μA/MHz @ 180 MHz in high performance mode
+    • Deep sleep mode current: ~4.5 μA
+    • Voltage & frequency scaling
+    • Deep sleep mode with only timer active – with and without RAM retention
+Wireless Sub-System Power Consumption
+    • Wi-Fi 4 Standby Associated mode current: 71 μA @ 1- second beacon listen interval
+    • Wi-Fi 1 Mbps Listen current: 16.5 mA
+    • Wi-Fi LP mode Rx current: 22 mA
+    • Deep sleep current ~4.5 μA, Standby current (352 KB RAM retention) ~11 μA
+
+ULP
+
+BLE dual role
+
+---
+
+ESP32-S3 (C3)
+Low Power Management
+• Fine-resolution power control through a selection of clock frequency, duty cycle, Wi-Fi operating modes, and individual power control of internal components
+• Four power modes designed for typical scenarios: Active, Modem-sleep, Light-sleep, Deep-sleep
+• Power consumption in Deep-sleep mode is as low as 7 μA (5 μA for C3)
+• Ultra-Low-Power (ULP) coprocessors:
+    – ULP-RISC-V coprocessor
+    – ULP-FSM coprocessor
+• RTC memory remains powered on in Deep-sleep mode
+
+Active RF read - ~100mA
+Modem sleep mode - 13-100mA  (16-28 for C3)
+Light sleep (VDD_SPI and Wi-Fi are powered down, and all GPIOs are high-impedance.) - 240 μA (+200 μA for PSRAM) | 130 for C3
+Deep-sleep (RTC memory and RTC peripherals are powered up.) - 8 μA                                               | 5 for C3 (full sleep?)
+Deep-sleep (RTC memory is powered up. RTC peripherals are powered down.) - 7 μA
+Power off (CHIP_PU is set to low level. The chip is shut down.) - 1 μA
+
+ESP32-C6
+WiFi6 (with TWT)
+BLE 5.3
+
+Power Management
+• Fine-resolution power control through a selection of clock frequency, duty cycle, Wi-Fi operating modes, and individual power control of internal components
+• Four power modes designed for typical scenarios: Active, Modem-sleep, Light-sleep, Deep-sleep
+• Power consumption in Deep-sleep mode is 7 μA
+• Low-power (LP) memory remains powered on in Deep-sleep mode
+
+Active RF read
+    WiFi - 82mA
+    BLE  - 71mA
+Modem sleep - 17-38mA
+
+Light-sleep:
+    180 uA - CPU and wireless communication modules are powered down, peripheral clocks are disabled, and all GPIOs are high-impedance
+    35uA - CPU, wireless communication modules and peripherals are powered down, and all GPIOs are high-impedance
+Deep-sleep (RTC timer and LP memory are powered on) - 7 uA
+Power off - 1 uA
+
+
+
+=======================
+
+DC/DC:
+AP64352SP-13   C2071665   (6.7k IN STOCK, 0.87/1, 0.72/10)   22uA Iq (1uA shutdown)             <<<<
+AP64352QSP-13  C5248547   (3.9K in stock, 0.87/1, 0.73/10)
+=======================
+e-paper
+
+ZJYE583S08R0G01
+Size: 5.83" EPD
+Res: 648x480
+Driver: UC8179
+=======================
+AC/DC:
+
+IRM-20-12     C5278499   (409 in stock, 6.7/1, 5.8/10)
+=======================
+
+Level translator:
+
+TI TXU0104QPWRQ1 (4 ch)    C4364072 (666 stock, 0.73/1, 0.58/10)
+TI TXU0204PWR    (2+2 ch)  C4363888 (1857 stock, 0.67/1, 0.53/10)
+TI TXU0304PWR    (1+3 ch)  C4364118 (157 stock, 0.68/1, 0.55/10)
+TI TXU0304QPWRQ1 (1+3)     C4364021 (544 stock, 0.69/1, 0.55/10)
+GTXU0304TD       (1+3 ch)  C42414458 (172 stock, 0.21/1, 0.206/10)
+
+TXU0102DCUR      (2 ch)    C5217871 (1899 stock, 0.67/1, 0.54/10)      <<<<<
+
+========================
+
+INA
+
+INA180A1IDBVR(XBLW)        C45351497 (3K5 stock, 0.21/5, 0.095/50)    20V/V
+INA180A2IDBVR              C192764   (7K9 stock, 0.105/1, 0.084/50)   50V/V  <<<
+
+AD8218BRMZ  (20V/V)
+========================
+
+32KHz osc
+
+SIT1552AI-JE-DCC-32.768D   C367054   (4.4K stock, 1.13/1, 0.93/10)
+========================
+
+Buzzer
+
+PF-27N25PSQ   C2898217  (96 stock, 8.83/1)    90dB, 30mm, 12V (3-28V). 15mA @ 12V
+HNR-1407PA7.5 C22387762 (950 stock, 0.043/10) 94dB (85dB @ 5V), 14mm, 5V (1-30V), 10mA @ 5V   <<<
+PKM22EPPH4007-B0 C3011674 (16 stock, 0.67/1)  92dB, 22mm, 1.5V (15V)
+
+
+Gate driver (for buzzer)
+
+TC4427AEOA713 C20551  (28K stock, 0.61/1, 0.51/10) 2 ch, 1.5A, 18V (Icc - 0.2 mA on both 0) + NC7S02      <<<<
+SN74LVC1G02DCKR(UMW)  C7394029 (7K9 stock, 0.029/10, 0.023/100) -  NOR gate  SC-70-5
+========================
+
+Energy meter:
+
+BL0942 C2837510 (3K in stock, 0.33/5, 0.26/50) SSOP-10
+BL0942 C2909509 (10K in stock, 0.37/1, 0.296/10) TSSOP-14
+
+Pwr (?):
+LD03-23B03R2P  C19724483 (57 stock, 4.19)
+LD03-23B03R2   C46594380 (48, 4.32)              <<<<
+HAW3-220S03T2  C19724490 (79 stock, 1.5)
+
+ISO
+CA-IS3721CHS   C41409432 (4460 stock, 0.19/5, 0.15/50)   <<<
+π122U31        C471590   (11515 stock, 0.16/5, 0.13/50)
+π121U31        C471589   (18670 stock, 0.17/5, 0.14/50)
+========================
+
+DSUB right angle
+
+XDDB-1809-0816  C7498157 (3170, 0.24/5, 0.19/50) Male
+LX09-VGA09B-048 C7498156 (2395, 0.25/5, 0.2/50) Female
+========================
+
+
+
+                                   InBox   OutBox            LevelTr
+6V EN                         1
+SPI
+  CLK                         1
+  MOSI                        1
+  MISO  (Inbox only)                  1
+  CS1                         1
+  CS2 (Inbox only)                    1
+eInk (inbox only)
+  RESET (?)                           ?
+  DC                                  1
+  BUSY                                1
+Humiduty
+  3 Addr (?)                  3?
+  OE                          1
+  CNT                         1                                5->3
+RS485/Prog/Cal Freq
+  TX                          1
+  RX                          1                                5->3
+  OE                          1
+ADC
+  Motor                       2A
+  Leak detector               A
+  Acc (Outbox only)                            A
+  AccSenseEn (Outbox only)                     1
+Joystick                               
+  5 input (Inbox)                      5
+  2 i/o (Outbox)                               2
+
+                              12+3A    10      3+A
+                                       22+3A   15+2A
+
+Analog inputs:
+
+LeakDetector -> Comparator (+ BOD)
+Motor - External INA180A2IDBVR + divider -> OpAmp (buffer) + ADC
+Battery - External divider + hi side switch -> OpAmp PGA + DAC out + ADC
+=======================================
+Reserved: GPIO 47-51
+Boot (PU) - GPIO 25-30
+JTAG - GPIO 31-34
+BOOT UART - GPIO 8,9
+
+Buttons (3 pcs)
+    UULP_VBAT_GPIO_0 (4)
+    UULP_VBAT_GPIO_2 (30)
+    UULP_VBAT_GPIO_3 (29)
+
+SPI
+    CLK  - GPIO_25(b), <GPIO_53>
+    MOSI - <GPIO 11>, GPIO 26(b), GPIO 56
+    MISO - <GPIO 12>, GPIO 27(b), GPIO 57
+--    CS0  - GPIO 28 (b), GPIO_53
+    CS1  - <GPIO 10>
+    CS2  - <GPIO 15>
+
+Freq:
+    SCT_IN_0 - GPIO 25 (b), ULP_GPIO_0, <ULP_GPIO_4>
+
+UART:
+    TX    - <GPIO 7> (+ PWM)
+    RX    - <GPIO 5>, GPIO 29 (a), UPL_GPIO_4 (dac), ULP_GPIO 8
+
+
+Analog:
+    OpAmp
+        1  ULP_0, 2, <6>, 7, 8, GPIO_27 (b)
+        2  ULP_5, <11>
+        3  GPIO_29 (b)
+
+    Comp
+        1  ULP_0, <5>
+        2  ULP_2, GPIO_27 (b)
+
+
+6V EN                         ULP 7                      PD                      *
+SPI
+  CLK                         GPIO 53
+  MOSI                        GPIO 11
+  MISO  (Inbox only)          GPIO 12
+  CS1                         GPIO 10
+  CS2 (Inbox only)            GPIO 15
+594 RES                       RESET                                              *
+eInk (inbox only)
+  RESET (?)                   GPIO 56                                            *
+  DC                          GPIO 54                                            *
+  BUSY                        ULP 1                                              *
+Humiduty
+  3 Addr (?)                  ULP 0, 8, 9                                        *
+  OE                          GPIO 57                                            *
+  CNT                         ULP 4                      5->3
+RS485/Prog/Cal Freq
+  TX                          GPIO 7
+  RX                          GPIO 5                     5->3
+  OE                          GPIO 57                                            *
+ADC
+  Motor                       ULP_6
+  Leak detector               ULP_5
+  Acc (Outbox only)           ULP_11
+  AccSenseEn (Outbox only)    GPIO 6                                             *
+Joystick                               
+  3 input (Inbox)             UULP_VBAT_GPIO_0/2, GPIO 6
+  4 i/o (Outbox)              UULP_VBAT_GPIO_0/2 + GPIO 12/GPIO 15 (2 btn + 2 LED)
+32KHz                         UULP_VBAT_GPIO_3
+Buzzer                        GPIO 29, 30
+
+Free: 
+    GPIO 52, GPIO 55
+    Outbox - GPIO 56, GPIO 54, ULP 1
+    Inbox - ULP_11
+
+Reserved: GPIO 47-51
+Boot (PU) - GPIO 25-30   (25, 26)
+JTAG - GPIO 31-34
+BOOT UART - GPIO 8,9
+JTAG_TDO_SWO pull down to enter Boot Loader
+GPIO 49-51 - 100K PU resistors (to +3.3V)
+
+UULP_VBAT_GPIO_3 - External 32 KHz crystal
