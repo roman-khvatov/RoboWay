@@ -80,16 +80,16 @@ CCP: TIMx_CH1
 OUT: TIMx_CH1, TIMx_CH1N
 
 
-PF0               GPIO1
-    TIM14_CH1
+PF0               
+    USART2_TX   <<<
 
 PF1
     SPI1_NSS <<<
 
-PA0               GPIO2
+PA0               GPIO1
     TIM1_CH3
 
-PA1
+PA1                                   comp
     SPI1_SCK    <<<
 
 PA4             <<< Capture from MUX
@@ -100,7 +100,7 @@ PA5                           <<< UART2 RX (input channel), TIM3 clock (input ca
     TIM3_CH2     inp   <<<
     USART2_RX          <<<
 
-PA6              GPIO3
+PA6              GPIO2
     TIM16_CH1
 
 PA7                            <<< UART1 TX (output channel), TIM17 output calibration clock
@@ -110,16 +110,16 @@ PA7                            <<< UART1 TX (output channel), TIM17 output calib
 PA12
     SPI1_MOSI   <<<
 
-PB5             GPIO4
+PB5             GPIO3
     TIM3_CH2
 
-PB6
-    USART2_TX   <<<
+PB6  
+    comp
 
 PB7
     USART1_RX    <<<
 
-Boot0 - PA2/PA3
+Boot0 UART - PA2 - TX/PA3 - RX  (PA3 - comp)
 
 GPIO:
     2 - UART direction
