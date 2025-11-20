@@ -270,8 +270,8 @@ HAW3-220S03T2  C19724490 (79 stock, 1.5)
 
 Zener - ZMM4V7
 + Cap X2 (330 nF - ~25mA)
-    82X20069          C50198605 (1600 stock, 0.177/5)  1uF 310VAC
-    MPX105K3182X20046 C5155347  (150 stock, 0.176/5) 1uF 310VAC, pins L - 20  <<<
+    82X20069          C50198605 (1600 stock, 0.177/5)  1uF 310VAC  <<<  (H - 16)
+    MPX105K3182X20046 C5155347  (150 stock, 0.176/5) 1uF 310VAC, pins L - 20
 + TLV70433DBVR
 + Fusible resistor: FCR1206J56R0P05Z C153337 (6220 stock, 0.047/10)  250mW 56Ω 200V Fuse Resistor ±5% 1206 Chip Resistor - Surface Mount RoHS
 
@@ -297,6 +297,12 @@ DSUB right angle
 XDDB-1809-0816  C7498157 (3170, 0.24/5, 0.19/50) Male
 LX09-VGA09B-048 C7498156 (2395, 0.25/5, 0.2/50) Female
 ========================
+
+MiniFit 2 pin
+
+HC-5557-2*1A   C2845776  (23.8K, 0.094/5) Stright
+HC-5557-2*1AW  C2845786  (8.6K, 0.13/5) Right angle
+
 
 
 
