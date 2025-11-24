@@ -1,8 +1,10 @@
 ﻿RS485:
 
 RS485              C19631832  (4970 stock, 0.2/5, 0.15/50)  2.5M, No ESD
-UTRS485G-S08-R     C2848650   (4950 stock, 0.24/5, 0.19/50) 500K, Fail Safe, ESD 4KV      <<< 2
-AIP485BSA8.TB      C6798236   (110 stock, 0.25/5, 0.2/50)   500K, Fail Safe, ESD 15KV     <<< 1
+UTRS485G-S08-R     C2848650   (4950 stock, 0.24/5, 0.19/50) 500K, Fail Safe, ESD 4KV      
+AIP485BSA8.TB      C6798236   (110 stock, 0.25/5, 0.2/50)   500K, Fail Safe, ESD 15KV     
+SP485EEN-L/TR      C6855      (419K stock, 0.18/5, 0.14/50) 10M, Fail safe, ESD 15kV, 5V    <<<<<<
+SP3485EN-L/TR      C41365340  (38K stock, 0.17/5, 0.14/50) 14M, ESD 15KV, 3.3-5V
 
 === Plant box ====
 MCU:                        PY32F003F18P6TU
@@ -26,7 +28,7 @@ Humidity input mux & power: 74HC4051 (40 Ohm) / 74LV4051A (22 Ohm) / TMUX1208 (5
                                                                                            CD74HCT4051M96  C406862   (2K stock, 0.32/1, 0.25/10)      <<<
                                                                                            CD74HCT4052M96  C469908   (2K stock, 0.29/5, 0.22/50)
 
-LDO (5V):                   AP2204R-5.0TRG1 200mA                                          C156388 (17K stock, 0.082/5, 0.073/50)
+LDO (5V):                   AP2204R-5.0TRG1 200mA                                          C156388 (17K stock, 0.082/5, 0.073/50)  <<<
 
 Screw terminal blocks:
 
@@ -217,7 +219,7 @@ Driver: UC8179
 =======================
 AC/DC:
 
-IRM-20-12     C5278499   (409 in stock, 6.7/1, 5.8/10)
+IRM-20-12     C5278499   (409 in stock, 6.7/1, 5.8/10)       <<<
 =======================
 
 Level translator:
@@ -228,7 +230,8 @@ TI TXU0304PWR    (1+3 ch)  C4364118 (157 stock, 0.68/1, 0.55/10)
 TI TXU0304QPWRQ1 (1+3)     C4364021 (544 stock, 0.69/1, 0.55/10)
 GTXU0304TD       (1+3 ch)  C42414458 (172 stock, 0.21/1, 0.206/10)
 
-TXU0102DCUR      (2 ch)    C5217871 (1899 stock, 0.67/1, 0.54/10)      <<<<<
+TXU0102DCUR      (2 ch)    C5217871 (1899 stock, 0.67/1, 0.54/10)  (out of stock)
+TXU0102QDCURQ1             C5812505 (1K stock, 0.79/1, 0.63/10) <<<
 
 ========================
 
@@ -242,7 +245,7 @@ AD8218BRMZ  (20V/V)
 
 32KHz osc
 
-SIT1552AI-JE-DCC-32.768D   C367054   (4.4K stock, 1.13/1, 0.93/10)
+SIT1552AI-JE-DCC-32.768D   C367054   (4.4K stock, 1.13/1, 0.93/10)  <<<<
 ========================
 
 Buzzer
@@ -265,7 +268,7 @@ BL0942 C2909509 (10K in stock, 0.37/1, 0.296/10) TSSOP-14
 
 --- Pwr (?):
 LD03-23B03R2P  C19724483 (57 stock, 4.19)
-LD03-23B03R2   C46594380 (48, 4.32)              <<<<
+LD03-23B03R2   C46594380 (48, 4.32)
 HAW3-220S03T2  C19724490 (79 stock, 1.5)
 
 Zener - ZMM4V7
@@ -273,17 +276,17 @@ Zener - ZMM4V7
     82X20069          C50198605 (1600 stock, 0.177/5)  1uF 310VAC  <<<  (H - 16)
     MPX105K3182X20046 C5155347  (150 stock, 0.176/5) 1uF 310VAC, pins L - 20
 + TLV70433DBVR
-+ Fusible resistor: FCR1206J56R0P05Z C153337 (6220 stock, 0.047/10)  250mW 56Ω 200V Fuse Resistor ±5% 1206 Chip Resistor - Surface Mount RoHS
++ Fusible resistor: FCR1206J56R0P05Z C153337 (6220 stock, 0.047/10)  250mW 56Ω 200V Fuse Resistor ±5% 1206 Chip Resistor - Surface Mount RoHS    <<<
 
 Protective diods:
-DSK34  C727076  (500K stock, 0.0215/20)
+DSK34  C727076  (500K stock, 0.0215/20)   <<<<
 
 Shunt
-JER2512F3R060  C49164910  (25K stock, 0.028/10) 60mOhm
+JER2512F3R060  C49164910  (25K stock, 0.028/10) 60mOhm                    <<<<
 
 High resistor
 HV06W4F2004T5E  C2765786  (13600 stock, 0.0077/50) 2M, 500V, 1206
-RV1206FR-071ML  C706459   (10K, 0.0081/50) 1M, 500V, 1206, Yageo
+RV1206FR-071ML  C706459   (10K, 0.0081/50) 1M, 500V, 1206, Yageo      <<<<
 
 
 ISO
@@ -300,7 +303,7 @@ LX09-VGA09B-048 C7498156 (2395, 0.25/5, 0.2/50) Female
 
 MiniFit 2 pin
 
-HC-5557-2*1A   C2845776  (23.8K, 0.094/5) Stright
+HC-5557-2*1A   C2845776  (23.8K, 0.094/5) Stright     <<<
 HC-5557-2*1AW  C2845786  (8.6K, 0.13/5) Right angle
 
 
