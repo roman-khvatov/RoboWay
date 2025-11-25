@@ -398,30 +398,28 @@ eInk (inbox only)
   BUSY                        ULP 1                                              *
 Humiduty
   3 Addr (?)                  ULP 0, 8, 9                                        *
-  OE                          GPIO 57                                            *
+  OE                          GPIO 57                    PU                      *
   CNT                         ULP 4                      5->3
 RS485/Prog/Cal Freq
   TX                          GPIO 7
-  RX                          GPIO 5                     5->3
-  OE                          GPIO 57                                            *
+  RX                          GPIO 6                     5->3
+  OE                          [ULP_1/ULP_11]  ULP_2 ?    PU
 ADC
   Motor                       ULP_6
   Leak detector               ULP_5
   Acc (Outbox only)           ULP_11
-  AccSenseEn (Outbox only)    GPIO 6                                             *
-Joystick                               
-  3 input (Inbox)             UULP_VBAT_GPIO_0/2, GPIO 6
-  4 i/o (Outbox)              UULP_VBAT_GPIO_0/2 + GPIO 12/GPIO 15 (2 btn + 2 LED)
+  AccSenseEn (Outbox only)    GPIO 15                                            *
+Buttons                               
+  3 input                     UULP_VBAT_GPIO_0/2, GPIO 6
 32KHz                         UULP_VBAT_GPIO_3
 Buzzer                        GPIO 29, 30
+LED                           GPIO 52, 55
 
 Free: 
-    GPIO 52, GPIO 55
-    Outbox - GPIO 56, GPIO 54, ULP 1
-    Inbox - ULP_11
+    Outbox - GPIO 56, GPIO 54, 12
 
 Reserved: GPIO 47-51
-Boot (PU) - GPIO 25-30   (25, 26)
+Boot (PU) - GPIO 25-30   (25, 26) 27, 28
 JTAG - GPIO 31-34
 BOOT UART - GPIO 8,9
 JTAG_TDO_SWO pull down to enter Boot Loader

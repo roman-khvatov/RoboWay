@@ -372,7 +372,7 @@
     },
     "net_format_name": "",
     "page_layout_descr_file": "",
-    "plot_directory": "",
+    "plot_directory": ".",
     "spice_current_sheet_as_root": false,
     "spice_external_command": "spice \"%I\"",
     "spice_model_current_sheet_as_root": true,
@@ -390,6 +390,14 @@
     [
       "e5010fd4-921a-4703-b472-3554db39dd22",
       "Power"
+    ],
+    [
+      "d6f59dde-8d9e-497b-8aac-3ed2dc698191",
+      "Valves"
+    ],
+    [
+      "62d9780d-414e-4785-ace8-3a65ab7f9f82",
+      "Humidity"
     ]
   ],
   "text_variables": {}
