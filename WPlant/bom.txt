@@ -403,7 +403,7 @@ Humiduty
 RS485/Prog/Cal Freq
   TX                          GPIO 7
   RX                          GPIO 6                     5->3
-  OE                          [ULP_1/ULP_11]  ULP_2 ?    PU
+  OE                          [ULP_1/ULP_11]  ULP_2 ?    
 ADC
   Motor                       ULP_6
   Leak detector               ULP_5
