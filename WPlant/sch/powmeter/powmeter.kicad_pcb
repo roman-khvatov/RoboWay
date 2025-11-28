@@ -326,6 +326,7 @@
 			(uuid "470d0e53-fc22-49cf-822e-7ce40ae05cae")
 		)
 		(model "${KICAD8_3DMODEL_DIR}/TestPoint.3dshapes/TestPoint_Loop_D1.80mm_Drill1.0mm_Beaded.wrl"
+			(hide yes)
 			(offset
 				(xyz 0 0 0)
 			)
@@ -771,7 +772,7 @@
 		(descr "SMD rectangular pad as test Point, square 1.0mm side length")
 		(tags "test point SMD pad rectangle square")
 		(property "Reference" "TP5"
-			(at 0 -1.448 360)
+			(at 0 -1.448 0)
 			(layer "F.SilkS")
 			(hide yes)
 			(uuid "cd009173-a2e5-42de-9c66-e3b086127ef0")
@@ -783,7 +784,7 @@
 			)
 		)
 		(property "Value" "TestPoint"
-			(at 0 1.55 360)
+			(at 0 1.55 0)
 			(layer "F.Fab")
 			(uuid "5d8669b8-bf85-4ecf-a34d-17f7967cdbeb")
 			(effects
@@ -918,7 +919,7 @@
 			(uuid "5dda616f-7916-4b00-8d6c-63428640b94f")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 -1.45 360)
+			(at 0 -1.45 0)
 			(layer "F.Fab")
 			(uuid "b2dcb5c4-0f45-4a1e-8803-b54a941d8780")
 			(effects
@@ -1203,7 +1204,7 @@
 		(descr "Through hole straight pin header, 2x04, 2.54mm pitch, double rows")
 		(tags "Through hole pin header THT 2x04 2.54mm double row")
 		(property "Reference" "J3"
-			(at 1.275 -2.55 360)
+			(at 1.275 -2.55 0)
 			(layer "F.SilkS")
 			(uuid "5a141e61-0d47-4f2a-b090-a32e77f2afa8")
 			(effects
@@ -1214,7 +1215,7 @@
 			)
 		)
 		(property "Value" "PROG/SWD"
-			(at 1.27 9.95 360)
+			(at 1.27 9.95 0)
 			(layer "F.Fab")
 			(uuid "a280ded2-1c7f-489c-a6a6-d8a20ff2c8c0")
 			(effects
@@ -1538,6 +1539,7 @@
 			(uuid "edb2e8e8-7471-4648-9c43-cf028068d3c4")
 		)
 		(model "${KICAD8_3DMODEL_DIR}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_2x04_P2.54mm_Vertical.wrl"
+			(hide yes)
 			(offset
 				(xyz 0 0 0)
 			)
@@ -1982,7 +1984,7 @@
 		(uuid "2df1846a-3fbb-4c3d-b8f6-29e6f6387584")
 		(at 176.53 94.615 180)
 		(property "Reference" "U1"
-			(at 0 0 360)
+			(at 0 0 0)
 			(layer "F.SilkS")
 			(uuid "bc802ad6-0651-42b7-bd3c-dd38313a9075")
 			(effects
@@ -1993,7 +1995,7 @@
 			)
 		)
 		(property "Value" "BL0942"
-			(at 0 6.76 360)
+			(at 0 6.76 0)
 			(layer "F.Fab")
 			(uuid "8fde1687-ecdd-4198-b0f1-c932936a3b4f")
 			(effects
@@ -2004,7 +2006,7 @@
 			)
 		)
 		(property "Footprint" "easyeda2kicad:SSOP-10_L4.9-W3.9-P1.00-LS6.0-BL"
-			(at 0 0 360)
+			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "67832dcb-a237-4e01-8e8e-b86e3b6059aa")
@@ -2016,7 +2018,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 0 0 360)
+			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "f9cb14d4-8a08-4f91-b17f-d9a8d0e8b058")
@@ -2028,7 +2030,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 0 0 360)
+			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "551402c0-d46d-4643-ae85-7dcc9e59a3d9")
@@ -2141,7 +2143,7 @@
 			(uuid "628e993c-46d1-4af4-a1e5-871ddfcf378a")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 360)
+			(at 0 0 0)
 			(layer "F.Fab")
 			(uuid "67dcaa31-1ec3-48f5-b65c-2c6d9c41b67e")
 			(effects
@@ -3654,6 +3656,7 @@
 			(uuid "a081a5fa-5394-4e8d-a59f-e5d83ec7143b")
 		)
 		(model "${KICAD8_3DMODEL_DIR}/TestPoint.3dshapes/TestPoint_Loop_D2.54mm_Drill1.5mm_Beaded.wrl"
+			(hide yes)
 			(offset
 				(xyz 0 0 0)
 			)
@@ -3932,7 +3935,7 @@
 		(descr "Capacitor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal with elongated pad for handsoldering. (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
 		(tags "capacitor handsolder")
 		(property "Reference" "C11"
-			(at 3.175 0 360)
+			(at 3.175 0 0)
 			(layer "F.SilkS")
 			(uuid "cf61aa3a-cc2d-4983-a249-9d70ba475487")
 			(effects
@@ -3943,7 +3946,7 @@
 			)
 		)
 		(property "Value" "68nF"
-			(at 0 1.43 360)
+			(at 0 1.43 0)
 			(layer "F.Fab")
 			(uuid "ab480d8b-d364-4403-b851-12c034a7b868")
 			(effects
@@ -4098,7 +4101,7 @@
 			(uuid "bc645862-9a86-4420-8071-353a967a6f33")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 360)
+			(at 0 0 0)
 			(layer "F.Fab")
 			(uuid "cb16cf82-8a2a-4946-865b-742556c6e800")
 			(effects
@@ -4571,7 +4574,7 @@
 		(descr "SMD rectangular pad as test Point, square 1.0mm side length")
 		(tags "test point SMD pad rectangle square")
 		(property "Reference" "TP4"
-			(at 0 -1.448 360)
+			(at 0 -1.448 0)
 			(layer "F.SilkS")
 			(hide yes)
 			(uuid "1a455487-3d07-45e6-9924-4c73bd221119")
@@ -4583,7 +4586,7 @@
 			)
 		)
 		(property "Value" "TestPoint"
-			(at 0 1.55 360)
+			(at 0 1.55 0)
 			(layer "F.Fab")
 			(uuid "05758fd5-17b9-4cb0-a07c-50406ce06cd4")
 			(effects
@@ -4718,7 +4721,7 @@
 			(uuid "6a01a8c7-a3cf-4c82-9d7c-2f0683ec81ce")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 -1.45 360)
+			(at 0 -1.45 0)
 			(layer "F.Fab")
 			(uuid "0f7d4544-9499-43a3-bba3-5250da4ee5f5")
 			(effects
@@ -4745,7 +4748,7 @@
 		(descr "SMD rectangular pad as test Point, square 1.0mm side length")
 		(tags "test point SMD pad rectangle square")
 		(property "Reference" "TP1"
-			(at 0 -1.448 360)
+			(at 0 -1.448 0)
 			(layer "F.SilkS")
 			(hide yes)
 			(uuid "7c198f0e-cb7d-478d-ac77-459e79b9e4c0")
@@ -4757,7 +4760,7 @@
 			)
 		)
 		(property "Value" "TestPoint"
-			(at 0 1.55 360)
+			(at 0 1.55 0)
 			(layer "F.Fab")
 			(uuid "9d91b914-3ab5-49f3-831b-29b9ead3e3dd")
 			(effects
@@ -4892,7 +4895,7 @@
 			(uuid "f66bed43-131d-40a3-88da-90c089b6d84a")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 -1.45 360)
+			(at 0 -1.45 0)
 			(layer "F.Fab")
 			(uuid "b6194cf5-9d3b-432b-bc05-43f8f604eae8")
 			(effects
@@ -4917,7 +4920,7 @@
 		(uuid "9afa2e44-5704-45ff-9a5f-a6dda17539b5")
 		(at 160.175 97.79)
 		(property "Reference" "C3"
-			(at 0 -1.905 360)
+			(at 0 -1.905 0)
 			(layer "F.SilkS")
 			(uuid "dfbc182c-c86d-4469-b6f1-74cfdf4b1505")
 			(effects
@@ -4928,7 +4931,7 @@
 			)
 		)
 		(property "Value" "200x16V"
-			(at 0 4 360)
+			(at 0 4 0)
 			(layer "F.Fab")
 			(uuid "856d66f0-7273-4fb5-a748-5e6911312295")
 			(effects
@@ -4939,7 +4942,7 @@
 			)
 		)
 		(property "Footprint" "easyeda2kicad:CAP-TH_BD8.0-P3.50-D0.6-FD"
-			(at 0 0 360)
+			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "08e11c4c-bd68-4008-8e68-2077932c60b6")
@@ -4951,7 +4954,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 0 0 360)
+			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "7f874f49-7e27-4bb7-8604-f2355afd4c67")
@@ -4963,7 +4966,7 @@
 			)
 		)
 		(property "Description" "Polarized capacitor"
-			(at 0 0 360)
+			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "eb48747e-626f-42d5-ad79-700db90dd0fa")
@@ -5057,7 +5060,7 @@
 			(uuid "9b0621df-52dd-498b-bec2-c322de9df342")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 360)
+			(at 0 0 0)
 			(layer "F.Fab")
 			(uuid "e3ae25fd-2d93-463b-ab88-1469931a48d7")
 			(effects
@@ -5104,7 +5107,7 @@
 		(uuid "a2f5076e-f5e0-4b43-8a82-e4c9d6f42cc3")
 		(at 170.815 107.95 180)
 		(property "Reference" "U2"
-			(at 0 0 360)
+			(at 0 0 0)
 			(layer "F.SilkS")
 			(uuid "9f374730-c601-4d71-8f5b-d183208b7f7f")
 			(effects
@@ -5115,7 +5118,7 @@
 			)
 		)
 		(property "Value" "PY32F003F18P6TU"
-			(at 0 6.87 360)
+			(at 0 6.87 0)
 			(layer "F.Fab")
 			(uuid "dc81d56a-4996-4db4-b510-62025a51ef32")
 			(effects
@@ -5126,7 +5129,7 @@
 			)
 		)
 		(property "Footprint" "easyeda2kicad:TSSOP-20_L6.5-W4.4-P0.65-LS6.4-BL"
-			(at 0 0 360)
+			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "bfd93615-5b08-4782-8062-86316391a120")
@@ -5138,7 +5141,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 0 0 360)
+			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "b35033fe-3c31-4b74-9356-1cbe9a25081c")
@@ -5150,7 +5153,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 0 0 360)
+			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "a4aeee8a-01f3-48bc-ab0d-d11027990f73")
@@ -5263,7 +5266,7 @@
 			(uuid "79f7a7f0-2e9a-4d10-bc8a-b7b40e81bf5c")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 360)
+			(at 0 0 0)
 			(layer "F.Fab")
 			(uuid "aeb1dedc-dda0-422a-9709-6edb51756d09")
 			(effects
@@ -5472,7 +5475,7 @@
 		(descr "SMD rectangular pad as test Point, square 1.0mm side length")
 		(tags "test point SMD pad rectangle square")
 		(property "Reference" "TP2"
-			(at 0 -1.448 360)
+			(at 0 -1.448 0)
 			(layer "F.SilkS")
 			(hide yes)
 			(uuid "be7ce506-0d82-4af1-8147-0a25cbd107e1")
@@ -5484,7 +5487,7 @@
 			)
 		)
 		(property "Value" "TestPoint"
-			(at 0 1.55 360)
+			(at 0 1.55 0)
 			(layer "F.Fab")
 			(uuid "ca03954c-50f4-4c98-b8cb-a1d1adf66561")
 			(effects
@@ -5619,7 +5622,7 @@
 			(uuid "9a413797-0e8f-4ac5-80ef-496040d9e89c")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 -1.45 360)
+			(at 0 -1.45 0)
 			(layer "F.Fab")
 			(uuid "0b7eefb5-293b-4d38-b329-30d7253d2bc9")
 			(effects
@@ -6021,6 +6024,7 @@
 			(uuid "8c8b23d1-d2f9-4ca7-89c4-72a4ca548d5e")
 		)
 		(model "${KICAD8_3DMODEL_DIR}/TestPoint.3dshapes/TestPoint_Loop_D1.80mm_Drill1.0mm_Beaded.wrl"
+			(hide yes)
 			(offset
 				(xyz 0 0 0)
 			)
@@ -6201,6 +6205,7 @@
 			(uuid "bfb53ddf-a2ae-44e6-b985-c7a4b7975a86")
 		)
 		(model "${KICAD8_3DMODEL_DIR}/TestPoint.3dshapes/TestPoint_Loop_D2.54mm_Drill1.5mm_Beaded.wrl"
+			(hide yes)
 			(offset
 				(xyz 0 0 0)
 			)
@@ -6219,7 +6224,7 @@
 		(descr "SMD rectangular pad as test Point, square 1.0mm side length")
 		(tags "test point SMD pad rectangle square")
 		(property "Reference" "TP3"
-			(at 0 -1.448 360)
+			(at 0 -1.448 0)
 			(layer "F.SilkS")
 			(hide yes)
 			(uuid "ae836535-2f0b-4e3b-bc4d-3b4bc49e7a79")
@@ -6231,7 +6236,7 @@
 			)
 		)
 		(property "Value" "TestPoint"
-			(at 0 1.55 360)
+			(at 0 1.55 0)
 			(layer "F.Fab")
 			(uuid "beaf6b5f-df14-4dee-9ea4-829768205d74")
 			(effects
@@ -6366,7 +6371,7 @@
 			(uuid "e3c717da-83d5-4bc2-bf82-11fc14f47c68")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 -1.45 360)
+			(at 0 -1.45 0)
 			(layer "F.Fab")
 			(uuid "afb1391d-198e-4bfa-8685-729702943188")
 			(effects
@@ -7037,6 +7042,7 @@
 			(uuid "31693723-a3fa-4094-ae66-3f7ebc26fbde")
 		)
 		(model "${KICAD8_3DMODEL_DIR}/TestPoint.3dshapes/TestPoint_Loop_D1.80mm_Drill1.0mm_Beaded.wrl"
+			(hide yes)
 			(offset
 				(xyz 0 0 0)
 			)
@@ -7966,7 +7972,7 @@
 		(descr "Capacitor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal with elongated pad for handsoldering. (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
 		(tags "capacitor handsolder")
 		(property "Reference" "C10"
-			(at 0 1.43 360)
+			(at 0 1.43 0)
 			(layer "B.SilkS")
 			(uuid "13668e60-12c9-4553-b0c1-a58b165d71ad")
 			(effects
@@ -7978,7 +7984,7 @@
 			)
 		)
 		(property "Value" "1.0"
-			(at 0 -1.43 360)
+			(at 0 -1.43 0)
 			(layer "B.Fab")
 			(uuid "1a70eb7b-bf83-46cc-97c9-5aa376e8db04")
 			(effects
@@ -8137,7 +8143,7 @@
 			(uuid "d9139125-8da2-4e67-b4d6-83e47399cf78")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 360)
+			(at 0 0 0)
 			(layer "B.Fab")
 			(uuid "4e817613-9cbd-41df-b1f9-ca36418cae5d")
 			(effects
@@ -8418,7 +8424,7 @@
 		(descr "Capacitor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal with elongated pad for handsoldering. (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
 		(tags "capacitor handsolder")
 		(property "Reference" "C9"
-			(at 0 1.43 360)
+			(at 0 1.43 0)
 			(layer "B.SilkS")
 			(uuid "62cfb9e0-b4c0-4eb5-a039-53057435766e")
 			(effects
@@ -8430,7 +8436,7 @@
 			)
 		)
 		(property "Value" "1.0"
-			(at 0 -1.43 360)
+			(at 0 -1.43 0)
 			(layer "B.Fab")
 			(uuid "b7a0c6c0-edfa-461c-891b-d08eee809b9e")
 			(effects
@@ -8589,7 +8595,7 @@
 			(uuid "7438c1ce-a6bc-4641-8e68-5d040ba28a8c")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 360)
+			(at 0 0 0)
 			(layer "B.Fab")
 			(uuid "39f898f7-3566-4d29-925e-4e3d7e7adc7f")
 			(effects
