@@ -2156,16 +2156,6 @@
 	)
 	(wire
 		(pts
-			(xy 66.04 46.99) (xy 77.47 46.99)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "213a0ca5-314f-4765-90bf-d8407da596f9")
-	)
-	(wire
-		(pts
 			(xy 154.94 36.83) (xy 149.86 36.83)
 		)
 		(stroke
@@ -2276,7 +2266,7 @@
 	)
 	(wire
 		(pts
-			(xy 69.85 54.61) (xy 66.04 54.61)
+			(xy 69.85 54.61) (xy 67.31 54.61)
 		)
 		(stroke
 			(width 0)
@@ -2463,6 +2453,16 @@
 			(type default)
 		)
 		(uuid "67ed0bf5-56fd-4e85-a0ed-7cc43a8e694f")
+	)
+	(wire
+		(pts
+			(xy 57.15 54.61) (xy 59.69 54.61)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "68889449-ddee-4b32-9dee-6138759aa71b")
 	)
 	(wire
 		(pts
@@ -3066,6 +3066,16 @@
 	)
 	(wire
 		(pts
+			(xy 57.15 46.99) (xy 77.47 46.99)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c79f7333-fe0e-4343-aed3-832261bec8b5")
+	)
+	(wire
+		(pts
 			(xy 143.51 154.94) (xy 143.51 165.1)
 		)
 		(stroke
@@ -3133,6 +3143,16 @@
 			(type default)
 		)
 		(uuid "d32469f0-f7be-4f4c-96ac-cf7ee34700a0")
+	)
+	(wire
+		(pts
+			(xy 57.15 46.99) (xy 57.15 54.61)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d4ec41dd-9c7e-47d6-b088-54fe1d336aff")
 	)
 	(wire
 		(pts
@@ -3283,16 +3303,6 @@
 			(type default)
 		)
 		(uuid "f2687562-107f-4486-8d51-ffe8164f2a24")
-	)
-	(wire
-		(pts
-			(xy 66.04 54.61) (xy 66.04 46.99)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f4302468-a134-41d8-b418-51237eecc41b")
 	)
 	(wire
 		(pts
@@ -4528,6 +4538,74 @@
 			(project "generic"
 				(path "/71bd3f7f-463d-4a2c-bec7-ca56c2fe6cec/62d9780d-414e-4785-ace8-3a65ab7f9f82"
 					(reference "#PWR0104")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 63.5 54.61 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "4c97ff80-b661-4a23-9a0a-f469f4f1e752")
+		(property "Reference" "R50"
+			(at 63.5 48.26 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "100"
+			(at 63.5 50.8 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 63.5 56.388 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 63.5 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 63.5 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "f13a102f-7407-460d-bec4-9e3bdb2e7c7f")
+		)
+		(pin "2"
+			(uuid "4198c668-54fd-4d3f-b160-dde8081d378f")
+		)
+		(instances
+			(project "generic"
+				(path "/71bd3f7f-463d-4a2c-bec7-ca56c2fe6cec/62d9780d-414e-4785-ace8-3a65ab7f9f82"
+					(reference "R50")
 					(unit 1)
 				)
 			)
