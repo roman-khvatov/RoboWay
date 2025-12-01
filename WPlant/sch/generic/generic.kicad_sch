@@ -11624,7 +11624,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "local:CONN-TH_4"
+		(property "Footprint" "locals:CONN-TH_DB301R-3.5-4P-GN-S"
 			(at 252.73 26.67 0)
 			(effects
 				(font

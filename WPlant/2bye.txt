@@ -1,0 +1,91 @@
+﻿RS485:
+10 x  SP485EEN-L/TR      C6855  (419K stock, 0.18/5, 0.14/50) 10M, Fail safe, ESD 15kV, 5V
+
+Shift reg: (HCT not available)
+6 x   SN74HC594D(LX)     C22374078 3K stock,  0.14/5, 0.12/50     (out reg reset instead OE)
+
+Mux
+2 x CD74HCT4051M96  C406862   (2K stock, 0.32/1, 0.25/10)
+4 x SN74HC4052D(LX) C22374065 (1.2K stock, 0.08/5, 0.06/50)
+
+LDO
+6 x AP2204R-5.0TRG1 200mA C156388 (17K stock, 0.082/5, 0.073/50)
+
+Terminals
+56 x  DB301R-3.5-3P-GN-S   C5445312 (895 stock, 0.18/5, 0.15/50) 3 pin, 3.5mm
+2  x  DB301R-3.5-2P-GN-S   C5445311 (840 stock, 0.13/5, 0.1/50)  2 pin, 3.5mm
+
+JST
+60 x B2B-XH-A(LF)(SN)  C158012
+20 x B5B-XH-A(LF)(SN)  C157991
+
+50 x XHP-2 C144401
+20 x XHP-5 C144404
+
+200 x SXH-001T-P0.6 C140573
+
+4 x XAD-8Y C22378241
+4 x XAD-8AS C22378183
+50 x DL25018-T C22468129
+
+5 x XAD-12Y
+5 x XAD-12AS
+
+MOSFET
+16 x 9926A  C7431451 (32.5K in stock, 0.04/10, 0.031/100)
+
+DC/DC
+5 x AP64352SP-13   C2071665   (6.7k IN STOCK, 0.87/1, 0.72/10)   22uA Iq (1uA shutdown)
+
+Inductor
+??
+
+AC/DC:
+1 x IRM-20-12     C5278499   (409 in stock, 6.7/1, 5.8/10)
+
+Level tr:
+2 x TXU0102QDCURQ1  C5812505 (1K stock, 0.79/1, 0.63/10)
+
+DifAmp
+2 x INA180A2IDBVR  C192764   (7K9 stock, 0.105/1, 0.084/50) 50V/V
+
+Buzzer
+1 x HNR-1407PA7.5 C22387762 (950 stock, 0.043/10) 94dB (85dB @ 5V), 14mm, 5V (1-30V), 10mA @ 5V
+
+Gate driver (for buzzer)
+1 x TC4427AEOA713 C20551  (28K stock, 0.61/1, 0.51/10) 2 ch, 1.5A, 18V (Icc - 0.2 mA on both 0)
+
+Powmeter:
+1 x BL0942 C2837510 (3K in stock, 0.33/5, 0.26/50) SSOP-10
+1 x 82X20069 C50198605 (1600 stock, 0.177/5)  1uF 310VAC  (H - 16)
+1 x FCR1206J56R0P05Z C153337 (6220 stock, 0.047/10)  250mW 56Ω 200V Fuse Resistor ±5% 1206 Chip Resistor - Surface Mount RoHS
+2 x DSK34  C727076  (500K stock, 0.0215/20)
+1 x JER2512F3R060  C49164910  (25K stock, 0.028/10) 60mOhm
+2 x RV1206FR-071ML  C706459   (10K, 0.0081/50) 1M, 500V, 1206, Yageo
+1 x CA-IS3721CHS   C41409432 (4460 stock, 0.19/5, 0.15/50)
+
+DSUB rang
+1 x XDDB-1809-0816  C7498157 (3170, 0.24/5, 0.19/50) Male
+1 x LX09-VGA09B-048 C7498156 (2395, 0.25/5, 0.2/50) Female
+
+Minifit (2 pin)
+2 x HC-5557-2*1A   C2845776  (23.8K, 0.094/5) Stright
+2 x HC-5557-2*1AW  C2845786  (8.6K, 0.13/5) Right angle
+
+================================
+Preorder on JLPCB
+
+32KHz osc
+SIT1552AI-JE-DCC-32.768D   C367054   (4.4K stock, 1.13/1, 0.93/10)
+================================
+
+Inductors
+
+LQH3NPN2R2MMEL       C668451   2.2uH, 1.8A 10MHz 5.3K stock, 0.13/5           murata
+TFM322512ALMA3R3MTAA C2047622  3.3uH, 2.5A 10MHz 2K stock,   0.5/1, 0.43/10   TDK
+IHLP4040DZER5R6M01   C845079   5.6uH, 8.5A 10MHz 188 stock   0.8/1, 0.63/10   VISHAY
+IHLP4040DZER100M51   C2051765  10uH,  6.5A 10MHz 123 stock   1.8/1            VISHAY
+
+SMMS0630-100M        C128692   10uH,  5.5A 3MHz  185K stock, 0.07/5  (65mOhm)
+ZEMS0420-100M        C41413053 10uH,  2A   3MHz  45K stock   0.079/5 (200mOhm)
+MTQH322510S100MBT    C17701247 10uH   2A   ?     20K stock   0.1/5   (350mOhm)
