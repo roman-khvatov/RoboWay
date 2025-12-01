@@ -12170,7 +12170,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "local:KEY-TH_2P-L6.0-W3.5-P6.50"
+		(property "Footprint" "locals:KEY-TH_2P-L6.0-W3.5-P6.50"
 			(at 26.67 115.57 0)
 			(effects
 				(font
@@ -12444,7 +12444,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "local:KEY-TH_2P-L6.0-W3.5-P6.50"
+		(property "Footprint" "locals:KEY-TH_2P-L6.0-W3.5-P6.50"
 			(at 26.67 109.22 0)
 			(effects
 				(font
@@ -15639,7 +15639,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "easyeda2kicad:CONN-TH_XAD-12A"
 			(at 255.27 57.15 0)
 			(effects
 				(font
@@ -16911,7 +16911,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "D"
+		(property "Value" "ES3A"
 			(at 278.13 124.4599 90)
 			(effects
 				(font
@@ -17756,7 +17756,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Package_TO_SOT_SMD:SOT-23-5"
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23-5_HandSoldering"
 			(at 247.65 135.89 0)
 			(effects
 				(font
@@ -19208,7 +19208,7 @@
 				)
 			)
 		)
-		(property "Footprint" "easyeda2kicad:SC-70-5_L2.1-W1.3-P0.65-LS2.1-BL"
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23-5_HandSoldering"
 			(at 86.36 181.61 0)
 			(effects
 				(font
@@ -19786,7 +19786,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "local:KEY-TH_2P-L6.0-W3.5-P6.50"
+		(property "Footprint" "locals:KEY-TH_2P-L6.0-W3.5-P6.50"
 			(at 26.67 121.92 0)
 			(effects
 				(font

@@ -6370,7 +6370,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "local:pins4x10"
+		(property "Footprint" "locals:pins4x10"
 			(at 261.62 33.02 0)
 			(effects
 				(font
@@ -8826,7 +8826,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "easyeda2kicad:CONN-TH_HAA420A-2A"
 			(at 205.74 93.98 0)
 			(effects
 				(font

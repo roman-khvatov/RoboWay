@@ -3945,7 +3945,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "easyeda2kicad:CONN-TH_8P-P2.50_XAD-8A"
 			(at 212.09 93.98 0)
 			(effects
 				(font
@@ -4624,7 +4624,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "D"
+		(property "Value" "ES3A"
 			(at 85.09 133.3499 90)
 			(effects
 				(font
