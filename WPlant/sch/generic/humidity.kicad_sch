@@ -3889,7 +3889,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "easyeda2kicad:CONN-TH_DB301R-3.5-3P-GN-S"
 			(at 160.02 44.45 0)
 			(effects
 				(font
@@ -3962,7 +3962,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "easyeda2kicad:CONN-TH_DB301R-3.5-3P-GN-S"
 			(at 160.02 85.09 0)
 			(effects
 				(font
@@ -4032,7 +4032,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder"
 			(at 129.54 106.9848 0)
 			(effects
 				(font
@@ -4166,7 +4166,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_JST:JST_XH_B5B-XH-A_1x05_P2.50mm_Vertical"
 			(at 113.03 167.64 0)
 			(effects
 				(font
@@ -4245,7 +4245,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "easyeda2kicad:CONN-TH_DB301R-3.5-3P-GN-S"
 			(at 160.02 95.25 0)
 			(effects
 				(font
@@ -4569,7 +4569,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
 			(at 63.5 56.388 90)
 			(effects
 				(font
@@ -4639,7 +4639,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
 			(at 36.83 66.548 90)
 			(effects
 				(font
@@ -4706,7 +4706,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder"
 			(at 91.44 141.2748 0)
 			(effects
 				(font
@@ -4774,7 +4774,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
 			(at 147.32 123.698 90)
 			(effects
 				(font
@@ -4844,7 +4844,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
 			(at 36.83 64.008 90)
 			(effects
 				(font
@@ -4914,7 +4914,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "easyeda2kicad:CONN-TH_DB301R-3.5-3P-GN-S"
 			(at 160.02 74.93 0)
 			(effects
 				(font
@@ -5120,7 +5120,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "easyeda2kicad:CONN-TH_DB301R-3.5-3P-GN-S"
 			(at 160.02 34.29 0)
 			(effects
 				(font
@@ -5259,7 +5259,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "easyeda2kicad:CONN-TH_DB301R-3.5-3P-GN-S"
 			(at 160.02 54.61 0)
 			(effects
 				(font
@@ -5332,7 +5332,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "easyeda2kicad:CONN-TH_DB301R-3.5-3P-GN-S"
 			(at 160.02 64.77 0)
 			(effects
 				(font
@@ -5551,7 +5551,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
 			(at 36.83 71.628 90)
 			(effects
 				(font
@@ -5684,7 +5684,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder"
 			(at 91.44 81.5848 0)
 			(effects
 				(font
@@ -5752,7 +5752,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
 			(at 36.83 61.468 90)
 			(effects
 				(font
