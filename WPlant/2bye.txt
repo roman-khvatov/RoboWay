@@ -86,6 +86,14 @@ TFM322512ALMA3R3MTAA C2047622  3.3uH, 2.5A 10MHz 2K stock,   0.5/1, 0.43/10   TD
 IHLP4040DZER5R6M01   C845079   5.6uH, 8.5A 10MHz 188 stock   0.8/1, 0.63/10   VISHAY
 IHLP4040DZER100M51   C2051765  10uH,  6.5A 10MHz 123 stock   1.8/1            VISHAY
 
-SMMS0630-100M        C128692   10uH,  5.5A 3MHz  185K stock, 0.07/5  (65mOhm)
-ZEMS0420-100M        C41413053 10uH,  2A   3MHz  45K stock   0.079/5 (200mOhm)
-MTQH322510S100MBT    C17701247 10uH   2A   ?     20K stock   0.1/5   (350mOhm)
+SMMS0630-100M        C128692   10uH,  5.5A 3MHz  185K stock, 0.07/5  (65mOhm)       7.1x6.6     closed
+ZEMS0420-100M        C41413053 10uH,  2A   3MHz  45K stock   0.079/5 (200mOhm)      4x4         closed
+MTQH322510S100MBT    C17701247 10uH   2A   ?     20K stock   0.1/5   (350mOhm)      1210    (1MHz rated L)  closed
+
+
+10uH
+FHD4020S-100MT       C602032    3.5A 4x4            223K   0.1/10  220 mOhm max (190 typ) Isat 2.8-3.5A, Heat rate I - 2-2.35A  (1MHz rated L)     open
+XRTC322512S100MBCA   C39846661  2.2-1.8A  1210 (3.5x2.5)  25K    0.1/5   210-230 mOhm                                           (1MHz rated L)     closed    <<<<<
+
+BCIHP0420SC-100M     C2921170   1.3A  4.2x4.4       5K5    0.2/5   282mOHm  (3MHz), closed
+LQH3NPN100MJRL       C668449    1.2A  3x3           4K4    0.11/5  240mOHm  (810mA on L drop) open Murata   (1MHz rated L)

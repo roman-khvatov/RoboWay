@@ -6632,7 +6632,7 @@
 				)
 			)
 		)
-		(property "Value" "10uH"
+		(property "Value" "XRTC322512S100MBCA"
 			(at 99.06 93.98 90)
 			(effects
 				(font
@@ -6640,7 +6640,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "locals:L_1210_XRTC"
 			(at 99.06 96.52 0)
 			(effects
 				(font
@@ -6659,6 +6659,15 @@
 			)
 		)
 		(property "Description" "Inductor"
+			(at 99.06 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC Part" "C39846661"
 			(at 99.06 96.52 0)
 			(effects
 				(font
@@ -7780,7 +7789,7 @@
 				)
 			)
 		)
-		(property "Value" "2uH"
+		(property "Value" "XRTC322512S100MBCA"
 			(at 99.06 151.13 90)
 			(effects
 				(font
@@ -7788,7 +7797,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "locals:L_1210_XRTC"
 			(at 99.06 153.67 0)
 			(effects
 				(font
@@ -7807,6 +7816,15 @@
 			)
 		)
 		(property "Description" "Inductor"
+			(at 99.06 153.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC Part" "C39846661"
 			(at 99.06 153.67 0)
 			(effects
 				(font
@@ -9721,7 +9739,7 @@
 				)
 			)
 		)
-		(property "Value" "10uH"
+		(property "Value" "XRTC322512S100MBCA"
 			(at 99.06 39.37 90)
 			(effects
 				(font
@@ -9729,7 +9747,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "locals:L_1210_XRTC"
 			(at 99.06 41.91 0)
 			(effects
 				(font
@@ -9749,6 +9767,15 @@
 		)
 		(property "Description" "Inductor"
 			(at 99.06 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC Part" "C39846661"
+			(at 99.06 41.91 90)
 			(effects
 				(font
 					(size 1.27 1.27)
