@@ -1,0 +1,4 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "locals")(type "KiCad")(uri "W:/home/roman/RoboWay/WPlant/sch/local")(options "")(descr ""))
+)
