@@ -3870,7 +3870,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "easyeda2kicad:CONN-TH_8P-P2.50_XAD-8A"
+		(property "Footprint" "locals:CONN-TH_8P-P2.50_XAD-8AS"
 			(at 212.09 93.98 0)
 			(effects
 				(font

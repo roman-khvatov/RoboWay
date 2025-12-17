@@ -12084,7 +12084,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "easyeda2kicad:COMM-SMD_SIWG917Y110LGNBA"
+		(property "Footprint" "locals:COMM-SMD_SIWG917Y110LGNBA"
 			(at 152.4 148.59 0)
 			(effects
 				(font
@@ -12637,7 +12637,7 @@
 				)
 			)
 		)
-		(property "Footprint" "locals:PinHeader_2x06_P2.54mm_HorizontalAB"
+		(property "Footprint" "locals:PinHeader_2x06_P2.54mm_VerticalAB"
 			(at 41.91 81.28 0)
 			(effects
 				(font

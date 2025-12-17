@@ -5641,7 +5641,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_1206_3216Metric_Pad1.33x1.80mm_HandSolder"
+		(property "Footprint" "Capacitor_SMD:C_1210_3225Metric_Pad1.33x2.70mm_HandSolder"
 			(at 141.2748 104.14 0)
 			(effects
 				(font
@@ -5918,7 +5918,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_1206_3216Metric_Pad1.33x1.80mm_HandSolder"
+		(property "Footprint" "Capacitor_SMD:C_1210_3225Metric_Pad1.33x2.70mm_HandSolder"
 			(at 128.5748 161.29 0)
 			(effects
 				(font
@@ -7088,7 +7088,7 @@
 				)
 			)
 		)
-		(property "Footprint" "easyeda2kicad:SO-8_L4.9-W3.9-P1.27-LS6.0-BL-EP"
+		(property "Footprint" "locals:SO-8_L4.9-W3.9-P1.27-LS6.0-BL-EP"
 			(at 69.85 111.76 0)
 			(effects
 				(font
@@ -7323,7 +7323,7 @@
 				)
 			)
 		)
-		(property "Footprint" "easyeda2kicad:SO-8_L4.9-W3.9-P1.27-LS6.0-BL-EP"
+		(property "Footprint" "locals:SO-8_L4.9-W3.9-P1.27-LS6.0-BL-EP"
 			(at 69.85 57.15 0)
 			(effects
 				(font
@@ -8534,7 +8534,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_1206_3216Metric_Pad1.33x1.80mm_HandSolder"
+		(property "Footprint" "Capacitor_SMD:C_1210_3225Metric_Pad1.33x2.70mm_HandSolder"
 			(at 141.2748 49.53 0)
 			(effects
 				(font
@@ -8668,7 +8668,7 @@
 				)
 			)
 		)
-		(property "Footprint" "easyeda2kicad:SO-8_L4.9-W3.9-P1.27-LS6.0-BL-EP"
+		(property "Footprint" "locals:SO-8_L4.9-W3.9-P1.27-LS6.0-BL-EP"
 			(at 69.85 168.91 0)
 			(effects
 				(font
@@ -9446,7 +9446,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_1206_3216Metric_Pad1.33x1.80mm_HandSolder"
+		(property "Footprint" "Capacitor_SMD:C_1210_3225Metric_Pad1.33x2.70mm_HandSolder"
 			(at 128.5748 104.14 0)
 			(effects
 				(font
@@ -10062,7 +10062,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_1206_3216Metric_Pad1.33x1.80mm_HandSolder"
+		(property "Footprint" "Capacitor_SMD:C_1210_3225Metric_Pad1.33x2.70mm_HandSolder"
 			(at 128.5748 49.53 0)
 			(effects
 				(font
@@ -10403,7 +10403,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_1206_3216Metric_Pad1.33x1.80mm_HandSolder"
+		(property "Footprint" "Capacitor_SMD:C_1210_3225Metric_Pad1.33x2.70mm_HandSolder"
 			(at 141.2748 161.29 0)
 			(effects
 				(font
