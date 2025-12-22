@@ -1,0 +1,142 @@
+(footprint "hs"
+	(version 20240108)
+	(generator "pcbnew")
+	(generator_version "8.0")
+	(layer "F.Cu")
+	(property "Reference" "REF**"
+		(at 0 -0.5 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "d044b676-9b2a-48bd-b0f6-001cf16c0509")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.1)
+			)
+		)
+	)
+	(property "Value" "hs"
+		(at 0 1 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "02ffc674-c557-4f3f-8459-dea190983471")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Footprint" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "3603c79a-d4c7-4e95-8e5d-473022bcc10d")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "ee35c235-dfbb-4a10-96ba-27eb5e6cb0dd")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "589c2efa-68d5-440d-9fff-533c288dff40")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr through_hole)
+	(fp_text user "${REFERENCE}"
+		(at 0 2.5 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "50b4f9d4-38ee-41ee-8121-63f3aa0b9a27")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" smd rect
+		(at -2 75)
+		(size 0.8 150)
+		(layers "F.Cu")
+		(uuid "3f0421a2-8c75-4632-85a9-c3098d0121f3")
+	)
+	(pad "1" smd rect
+		(at -2 75)
+		(size 0.8 150)
+		(layers "B.Cu")
+		(uuid "3f15fab4-9af1-4b09-913f-8eb70ad467e2")
+	)
+	(pad "1" smd rect
+		(at 0 75.32)
+		(size 0.8 150.64)
+		(layers "F.Cu")
+		(uuid "76523204-8ea3-4927-aa82-c3de778fa541")
+	)
+	(pad "1" smd rect
+		(at 0 75.32)
+		(size 0.8 150.64)
+		(layers "B.Cu")
+		(uuid "669c86fe-9725-4750-b985-8b4374a279be")
+	)
+	(pad "1" smd rect
+		(at 2 75)
+		(size 0.8 150)
+		(layers "F.Cu")
+		(uuid "5829ffd0-1c22-4cb3-b9f7-434eb3e3a7ed")
+	)
+	(pad "1" smd rect
+		(at 2 75)
+		(size 0.8 150)
+		(layers "B.Cu")
+		(uuid "63528e31-ac7c-41aa-a4de-e3f8b7b8a83c")
+	)
+	(pad "2" smd rect
+		(at -1 75.16)
+		(size 0.8 150.32)
+		(layers "F.Cu")
+		(uuid "465491ed-05d2-4bc8-98a2-a079fb2cd10e")
+	)
+	(pad "2" smd rect
+		(at -1 75.16)
+		(size 0.8 150.32)
+		(layers "B.Cu")
+		(uuid "25f75200-0b66-42dc-9a13-f0ce1d1cb19c")
+	)
+	(pad "2" smd rect
+		(at 1 75.16)
+		(size 0.8 150.32)
+		(layers "F.Cu")
+		(uuid "fcecd3ef-965d-4c0c-8b93-4c0913992afb")
+	)
+	(pad "2" smd rect
+		(at 1 75.16)
+		(size 0.8 150.32)
+		(layers "B.Cu")
+		(uuid "a91c4406-4c52-4628-b7f7-ff8454d17278")
+	)
+)
