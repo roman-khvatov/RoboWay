@@ -7,6 +7,7 @@
 		(at 0 -0.5 0)
 		(unlocked yes)
 		(layer "F.SilkS")
+		(hide yes)
 		(uuid "d044b676-9b2a-48bd-b0f6-001cf16c0509")
 		(effects
 			(font
@@ -19,6 +20,7 @@
 		(at 0 1 0)
 		(unlocked yes)
 		(layer "F.Fab")
+		(hide yes)
 		(uuid "02ffc674-c557-4f3f-8459-dea190983471")
 		(effects
 			(font
@@ -66,7 +68,7 @@
 			)
 		)
 	)
-	(attr through_hole)
+	(attr smd)
 	(fp_text user "${REFERENCE}"
 		(at 0 2.5 0)
 		(unlocked yes)
@@ -116,6 +118,18 @@
 		(uuid "63528e31-ac7c-41aa-a4de-e3f8b7b8a83c")
 	)
 	(pad "2" smd rect
+		(at -3 74.84)
+		(size 0.8 149.68)
+		(layers "F.Cu")
+		(uuid "4b05ffd0-8e52-4821-8f99-6233d4aeff1d")
+	)
+	(pad "2" smd rect
+		(at -3 74.84)
+		(size 0.8 149.68)
+		(layers "B.Cu")
+		(uuid "94235b99-2b56-48a2-ada9-954537a59828")
+	)
+	(pad "2" smd rect
 		(at -1 75.16)
 		(size 0.8 150.32)
 		(layers "F.Cu")
@@ -138,5 +152,17 @@
 		(size 0.8 150.32)
 		(layers "B.Cu")
 		(uuid "a91c4406-4c52-4628-b7f7-ff8454d17278")
+	)
+	(pad "2" smd rect
+		(at 3 74.84)
+		(size 0.8 149.68)
+		(layers "F.Cu")
+		(uuid "2cbe1e62-2734-477a-bc44-0ba675f514d4")
+	)
+	(pad "2" smd rect
+		(at 3 74.84)
+		(size 0.8 149.68)
+		(layers "B.Cu")
+		(uuid "c7d8eeee-dd4d-4477-ad2e-2353f7300c45")
 	)
 )

@@ -1116,7 +1116,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "local:PinHeader_3"
+		(property "Footprint" "Connector_PinHeader_2.00mm:PinHeader_1x03_P2.00mm_Vertical"
 			(at 184.15 97.79 0)
 			(effects
 				(font
