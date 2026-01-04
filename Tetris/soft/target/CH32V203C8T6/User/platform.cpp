@@ -147,8 +147,10 @@ void OurPlatformInit()
 	SPI_Cmd( SPI1, ENABLE );
 
     // SPI2 init
+    SPI_SSOutputCmd(SPI2, ENABLE );
+
 	SPI_InitStructure.SPI_DataSize = SPI_DataSize_16b;
-	SPI_InitStructure.SPI_NSS = SPI_NSS_Hard;
+//	SPI_InitStructure.SPI_NSS = SPI_NSS_Hard;
 	SPI_InitStructure.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_8; // SPI2 on PB1 (at HCLK)
 	SPI_Init( SPI2, &SPI_InitStructure );
 

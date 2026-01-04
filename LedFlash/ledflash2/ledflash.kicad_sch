@@ -3913,7 +3913,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "aba7faf4-80f0-4151-98d1-ec035fdee9d8")
 		(property "Reference" "C2"
@@ -4421,6 +4421,7 @@
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Footprint" "Jumper:SolderJumper-3_P1.3mm_Open_RoundedPad1.0x1.5mm"
@@ -4544,7 +4545,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "f94af9bb-44df-4365-be3d-7a8892e536d1")
 		(property "Reference" "C5"
