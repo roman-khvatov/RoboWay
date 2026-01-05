@@ -50,6 +50,14 @@ static void dma_init()
     DMA_Init(DMA1_Channel1, &DMA_InitStructure);
 }
 
+extern "C" void SPI2_IRQHandler(void) __attribute__((interrupt("WCH-Interrupt-fast")));
+
+void SPI2_IRQHandler()
+{
+    GPIO_SetBits(GPIOB, GPIO_Pin_12);
+	(void)SPI2->DATAR;
+}
+
 void OurPlatformInit()
 {
     // ClockInit
@@ -92,9 +100,15 @@ void OurPlatformInit()
     GPIO_PinRemapConfig(GPIO_Remap_SPI1, ENABLE);
 
     // SPI2 GPIO
-    GPIO_InitStructure.GPIO_Pin   = GPIO_Pin_12|GPIO_Pin_13|GPIO_Pin_15; // CLK + CS + MOSI
+    GPIO_InitStructure.GPIO_Pin   = GPIO_Pin_13|GPIO_Pin_15; // CLK + <CS> + MOSI
     GPIO_InitStructure.GPIO_Mode  = GPIO_Mode_AF_PP;
     GPIO_Init(GPIOB, &GPIO_InitStructure);
+
+    // SPI2 CS - manual
+    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_12;
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
+    GPIO_Init(GPIOB, &GPIO_InitStructure);
+    GPIO_SetBits(GPIOB, GPIO_Pin_12);
 
     // PB10 - TIM2_CH3_2 (alt mapping)
     GPIO_InitStructure.GPIO_Pin   = GPIO_Pin_10;
@@ -147,18 +161,15 @@ void OurPlatformInit()
 	SPI_Cmd( SPI1, ENABLE );
 
     // SPI2 init
-    SPI_SSOutputCmd(SPI2, ENABLE );
+//  SPI_SSOutputCmd(SPI2, ENABLE );
 
+    SPI_InitStructure.SPI_Direction = SPI_Direction_2Lines_FullDuplex;
 	SPI_InitStructure.SPI_DataSize = SPI_DataSize_16b;
 //	SPI_InitStructure.SPI_NSS = SPI_NSS_Hard;
 	SPI_InitStructure.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_8; // SPI2 on PB1 (at HCLK)
 	SPI_Init( SPI2, &SPI_InitStructure );
 
     SPI_Cmd( SPI2, ENABLE );
-
-    // Zero SPI chans (turn off LEDs)
-    SPI1->DATAR = 0xFF;
-    SPI2->DATAR = 0;
 
     // TIM3 init (sys clock) & Int
     NVIC_InitTypeDef NVIC_InitStructure={0};
@@ -179,6 +190,17 @@ void OurPlatformInit()
     NVIC_Init(&NVIC_InitStructure);
 
     TIM_ITConfig(TIM3, TIM_IT_Update, ENABLE);
+
+    NVIC_InitStructure.NVIC_IRQChannel = SPI2_IRQn;
+    NVIC_InitStructure.NVIC_IRQChannelSubPriority =0;
+    NVIC_Init(&NVIC_InitStructure);
+
+    SPI_I2S_ITConfig(SPI2, SPI_I2S_IT_RXNE, ENABLE);
+
+    // Zero SPI chans (turn off LEDs)
+    GPIO_ResetBits(GPIOB, GPIO_Pin_12);
+    SPI1->DATAR = 0xFF;
+    SPI2->DATAR = 0;
 
     // TIM2 init (PWM)
 	TIM_TimeBaseInitStructure.TIM_Period = 0xFFFF; // On PB1 (at HCLK)
@@ -347,6 +369,7 @@ void TIM3_IRQHandler()
     {
         uint8_t* array = phase ? working_pixels.br2 : working_pixels.br1;
         row = array[col_index] | (array[col_index+8]<<8);
+        GPIO_ResetBits(GPIOB, GPIO_Pin_12);
         SPI1->DATAR = col;
         SPI2->DATAR = row;
     }
