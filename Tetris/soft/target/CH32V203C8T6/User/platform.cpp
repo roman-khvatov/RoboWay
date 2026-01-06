@@ -212,10 +212,10 @@ void OurPlatformInit()
 	TIM_OCInitStructure.TIM_OutputState = TIM_OutputState_Enable;
 	TIM_OCInitStructure.TIM_Pulse = 34734; // 1.75V on output
 	TIM_OCInitStructure.TIM_OCPolarity = TIM_OCPolarity_High;
-	TIM_OC1Init( TIM2, &TIM_OCInitStructure );
+	TIM_OC3Init( TIM2, &TIM_OCInitStructure );
 
 	TIM_CtrlPWMOutputs(TIM2, ENABLE );
-	TIM_OC1PreloadConfig( TIM2, TIM_OCPreload_Disable );
+	TIM_OC3PreloadConfig( TIM2, TIM_OCPreload_Disable );
 	TIM_ARRPreloadConfig( TIM2, ENABLE );
 	TIM_Cmd( TIM2, ENABLE );
 
@@ -408,6 +408,7 @@ void TIM3_IRQHandler()
                 cur_keys ^= changed_keys;
                 active_keys = (active_keys & ~changed_keys) | (cur_keys & changed_keys);
                 debounce = debounce_time;
+                changed_keys = 0;
             }
         }
     }
