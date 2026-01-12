@@ -58,6 +58,11 @@ void SPI2_IRQHandler()
 	(void)SPI2->DATAR;
 }
 
+static constexpr int period1 = 1125*tick_time/256-1; // On PB1 (at HCLK)
+static constexpr int period2 = 1125*3*tick_time/256-1;
+static constexpr int period3 = 1125*28*tick_time/256-1;
+
+
 void OurPlatformInit()
 {
     // ClockInit
@@ -175,11 +180,11 @@ void OurPlatformInit()
     NVIC_InitTypeDef NVIC_InitStructure={0};
     TIM_TimeBaseInitTypeDef TIM_TimeBaseInitStructure={0};
 
-    TIM_TimeBaseInitStructure.TIM_Period = 1125*tick_time/24-1; // On PB1 (at HCLK)
+    TIM_TimeBaseInitStructure.TIM_Period = period3; // On PB1 (at HCLK)
     TIM_TimeBaseInitStructure.TIM_Prescaler = 127;
     TIM_TimeBaseInitStructure.TIM_ClockDivision = TIM_CKD_DIV1;
     TIM_TimeBaseInitStructure.TIM_CounterMode = TIM_CounterMode_Up;
-    TIM_TimeBaseInit( TIM1, &TIM_TimeBaseInitStructure);
+    TIM_TimeBaseInit( TIM3, &TIM_TimeBaseInitStructure);
 
     TIM_ClearITPendingBit( TIM3, TIM_IT_Update );
 
@@ -365,6 +370,32 @@ void TIM3_IRQHandler()
     // Pixels
     uint16_t row=0;
     uint8_t col = ~(1<<col_index);
+    uint16_t nxt_period = period3;
+
+    uint16_t row2 = working_pixels.br2[col_index] | (working_pixels.br2[col_index+8]<<8);
+    uint16_t row1 = working_pixels.br1[col_index] | (working_pixels.br1[col_index+8]<<8);
+
+    switch(phase)
+    {
+        case 0: // Br - 3
+            nxt_period = period3;
+            row = row1&row2;
+            break;
+        case 1: // Br - 1
+            nxt_period = period1;
+            row = row1|row2;
+            break;
+        case 2: // Br - 2
+            nxt_period = period2;
+            row = row2;
+            break;
+        default: ;
+    }
+    TIM_SetAutoreload(TIM3, nxt_period);
+    GPIO_ResetBits(GPIOB, GPIO_Pin_12);
+    SPI1->DATAR = col;
+    SPI2->DATAR = row;
+/*
     if (phase!=2)
     {
         uint8_t* array = phase ? working_pixels.br2 : working_pixels.br1;
@@ -373,13 +404,14 @@ void TIM3_IRQHandler()
         SPI1->DATAR = col;
         SPI2->DATAR = row;
     }
+*/
     if (!debounce)
     {
         uint8_t buttons = ~GPIOA->INDR;
         changed_keys |= cur_keys ^ buttons;
     }
     // ADC
-    if (phase == 2 && request_led_voltages == LEDVoltageReq::Request && ((working_pixels.br2[0]&1) || (working_pixels.br2[8]&1)))
+    if (phase == 0 && request_led_voltages == LEDVoltageReq::Request && ((working_pixels.br2[0]&1) || (working_pixels.br2[8]&1)))
     {
         request_led_voltages = LEDVoltageReq::InProgress;
         leds_to_sample = 0;
@@ -387,7 +419,7 @@ void TIM3_IRQHandler()
         if (working_pixels.br2[8]&1) leds_to_sample |= 2;
         ADC_SoftwareStartConvCmd(ADC1, ENABLE);
     }
-    if (phase == 0 && request_led_voltages == LEDVoltageReq::InProgress)
+    if (phase == 1 && request_led_voltages == LEDVoltageReq::InProgress)
     {
         request_led_voltages = LEDVoltageReq::Ready;
         ADC_SoftwareStartConvCmd(ADC1, DISABLE);

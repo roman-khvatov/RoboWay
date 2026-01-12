@@ -10,7 +10,7 @@
 #endif
 
 
-static constexpr int tick_time = 10;  // In ms
+static constexpr int tick_time = 15;  // In ms
 
 
 struct Pixels {
