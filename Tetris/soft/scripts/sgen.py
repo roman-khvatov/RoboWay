@@ -125,10 +125,16 @@ class Parser:
                 print(spr)
 
     def print_logos(self):
+        idxs = []
         print('const uint8_t logos[] = {')
-        for logo in self.logos:
-            print(f'   {logo.logo}, /*{logo.name}*/')
+        for idx, logo in enumerate(self.logos):
+            print(f'   {logo.logo}, /*{logo.name or """--"--"""}*/')
+            if logo.name:
+                idxs.append(str(idx))
+        idxs.append(str(len(self.logos)))
         print('};')
+        print(f'const uint8_t logos_entries[] = {{{", ".join(idxs)}}};')
+
 
     def get_tetris_array(self) -> str:
         return ', '.join(str(x) for x in self.tetris_indexes)
@@ -160,6 +166,8 @@ class Parser:
                     for item in t_list:
                         self.add_sprite(item)
                 elif in_logo:
+                    if not sprite.palete:
+                        sprite.palete = self.logos[-1].palete
                     self.logos.append(sprite)
 
     def add_sprite(self, sprite) -> int:
@@ -187,6 +195,7 @@ with open('spr_defs.h', 'wt') as f:
     print(f'constexpr int total_tetris_figures = {len(spr.tetris_indexes)};', file=f)
     print('enum Logos {', file=f)
     for icon in spr.logos:
-        print(f'  Logo_{icon.name},', file=f)
+        if icon.name:
+            print(f'  Logo_{icon.name},', file=f)
     print('  LogosTotal\n};', file=f)
 

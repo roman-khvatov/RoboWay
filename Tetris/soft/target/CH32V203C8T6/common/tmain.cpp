@@ -52,12 +52,14 @@ static void ver_mix(int icon1, int icon2, uint8_t lines_first)
     action(p1 + 14, p2 + 14, pixs.br2);
 }
 
-inline void draw_icon(int icon) {ver_mix(icon, icon, 0);}
+inline void draw_icon(int icon) {ver_mix(logos_entries[icon], logos_entries[icon], 0);}
 
 static int scroll_hor(int icon, int delta)
 {
     Timer t(6 * scroll_mul);
-    int icon2 = (icon + delta+ LogosTotal) % LogosTotal;
+    int result = (icon + delta + LogosTotal) % LogosTotal;
+    int icon2 = logos_entries[result];
+    icon = logos_entries[icon];
     if (delta > 0)
     {
         for (int i = 0; i < 7; ++i)
@@ -74,13 +76,15 @@ static int scroll_hor(int icon, int delta)
             t.wait();
         }
     }
-    return icon2;
+    return result;
 }
 
 static int scroll_ver(int icon, int delta)
 {
     Timer t(14 * scroll_mul);
-    int icon2 = (icon + delta + LogosTotal) % LogosTotal;
+    int result = (icon + delta + LogosTotal) % LogosTotal;
+    int icon2 = logos_entries[result];
+    icon = logos_entries[icon];
     if (delta > 0)
     {
         for (int i = 0; i < 15; ++i)
@@ -97,7 +101,7 @@ static int scroll_ver(int icon, int delta)
             t.wait();
         }
     }
-    return icon2;
+    return result;
 }
 
 static void freeze()
@@ -109,13 +113,32 @@ static void freeze()
     }
 }
 
+static uint8_t update_icon(int game)
+{
+    Timer t(4);
+    uint8_t start_idx = logos_entries[game];
+    uint8_t end_idx = logos_entries[game+1];
+    uint8_t ico = start_idx;
+    for (;;)
+    {
+        auto key = read_key();
+        clr_keys(-1);
+        if (key & (K_Up|K_Down|K_Left|K_Right|K_Hit)) return key;
+        if (t.tick())
+        {
+            ver_mix(ico, ico, 0);
+            ++ico;
+            if (ico >= end_idx) ico = start_idx;
+        }
+    }
+}
+
 static void select_game(int& game)
 {
     draw_icon(game);
     for (;;)
     {
-        auto key = read_key();
-        clr_keys(-1);
+        auto key = update_icon(game);
         // process LED calibration !!!
         switch (key)
         {
