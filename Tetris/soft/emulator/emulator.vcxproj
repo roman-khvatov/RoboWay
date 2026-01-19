@@ -36,12 +36,12 @@
     <Import Project="$(QtMsBuild)\qt_defaults.props" />
   </ImportGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="QtSettings">
-    <QtInstall>6.8.2_msvc2022_64</QtInstall>
+    <QtInstall>6.8.3_msvc2022_64</QtInstall>
     <QtModules>core;gui;widgets</QtModules>
     <QtBuildConfig>debug</QtBuildConfig>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="QtSettings">
-    <QtInstall>6.8.2_msvc2022_64</QtInstall>
+    <QtInstall>6.8.3_msvc2022_64</QtInstall>
     <QtModules>core;gui;widgets</QtModules>
     <QtBuildConfig>release</QtBuildConfig>
   </PropertyGroup>
@@ -121,6 +121,7 @@
     <QtUic Include="tetrisemulator.ui" />
     <QtMoc Include="tetrisemulator.h" />
     <ClCompile Include="..\target\CH32V203C8T6\common\interface.cpp" />
+    <ClCompile Include="..\target\CH32V203C8T6\common\invation.cpp" />
     <ClCompile Include="..\target\CH32V203C8T6\common\snake.cpp" />
     <ClCompile Include="..\target\CH32V203C8T6\common\sprite.cpp" />
     <ClCompile Include="..\target\CH32V203C8T6\common\spr_defs.cpp" />

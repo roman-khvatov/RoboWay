@@ -58,6 +58,9 @@
     <ClCompile Include="..\target\CH32V203C8T6\common\snake.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\target\CH32V203C8T6\common\invation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\target\CH32V203C8T6\common\interface.h">

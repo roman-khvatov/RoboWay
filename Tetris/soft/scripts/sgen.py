@@ -143,6 +143,7 @@ class Parser:
         prefetch = None
         in_tetris = False
         in_logo = False
+        last_named_sprite = None
         while True:
             sprite, prefetch = load_sprite(stream, prefetch)
             if not sprite and not prefetch:
@@ -159,6 +160,13 @@ class Parser:
             if sprite:
                 if not in_logo:
                     s_idx = self.add_sprite(sprite)
+                    if not in_tetris:
+                        if sprite.name:
+                            last_named_sprite = sprite
+                        elif last_named_sprite:
+                            last_named_sprite.group_span += 1
+                            if not sprite.palete:
+                                sprite.palete = last_named_sprite.palete
                 if in_tetris:
                     self.tetris_indexes.append(s_idx)
                     t_list = gen_rotated(sprite)
@@ -173,11 +181,17 @@ class Parser:
     def add_sprite(self, sprite) -> int:
         result = len(self.sprites)
         if sprite.name:
-            self.name[sprite.name] = result
+            self.names[sprite.name] = result
         self.sprites.append(sprite)
         if sprite.palete:
             self.sprites.append(None)
         return result
+
+    def print_sprite_names(self, stream):
+        print('enum Sprites {', file=stream)
+        for nm, idx in self.names.items():
+            print(f'    Sprite_{nm} = {idx},', file=stream)
+        print('};', file=stream)
 
 
 spr = Parser(sys.argv[1])
@@ -198,4 +212,6 @@ with open('spr_defs.h', 'wt') as f:
         if icon.name:
             print(f'  Logo_{icon.name},', file=f)
     print('  LogosTotal\n};', file=f)
+    spr.print_sprite_names(f)
+
 

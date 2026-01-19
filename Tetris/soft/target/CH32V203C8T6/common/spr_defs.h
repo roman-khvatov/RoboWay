@@ -6,3 +6,6 @@ enum Logos {
   Logo_invation,
   LogosTotal
 };
+enum Sprites {
+    Sprite_platform = 0,
+};

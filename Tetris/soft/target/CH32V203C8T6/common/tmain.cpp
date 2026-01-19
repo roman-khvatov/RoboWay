@@ -9,6 +9,7 @@ static constexpr int scroll_mul = 2;
 
 void tetris_game();
 void snake_game();
+void invation_game();
 
 
 // Mix <bits_first> of 'icon1' with 'icon2'
@@ -178,7 +179,7 @@ void entry()
             {
                 case Logo_tetris: tetris_game(); break;
                 case Logo_snake: snake_game(); break;
-                //case Logo_invation: invation_game(); break;
+                case Logo_invation: invation_game(); break;
             }
             freeze();
             if (rd_key()) break;
