@@ -5623,24 +5623,21 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "3406cc8f-2cf2-4eb5-99e2-2d4cb56b3c72")
 		(property "Reference" "R50"
-			(at 162.56 27.94 90)
+			(at 156.464 35.306 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Value" "100"
-			(at 162.56 30.48 90)
+			(at 167.894 35.814 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
@@ -6101,7 +6098,7 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "1K"
 			(at 36.83 60.96 90)
 			(effects
 				(font
@@ -6307,7 +6304,7 @@
 				)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "?"
 			(at 147.32 118.11 90)
 			(effects
 				(font
@@ -6365,15 +6362,13 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "66980708-727a-4d44-baf4-2d3b33270d9e")
 		(property "Reference" "R53"
-			(at 162.56 45.72 90)
+			(at 162.306 49.53 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Value" "100"
@@ -6446,7 +6441,7 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "1K"
 			(at 36.83 58.42 90)
 			(effects
 				(font
@@ -6721,15 +6716,13 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "6fe67b9b-bb10-4639-87ac-ecd9a463cc84")
 		(property "Reference" "R55"
-			(at 162.56 55.88 90)
+			(at 162.56 59.436 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Value" "100"
@@ -6923,15 +6916,13 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "76f41135-769b-44a2-9e6d-bc839dda55ff")
 		(property "Reference" "R61"
-			(at 162.56 86.36 90)
+			(at 162.56 90.17 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Value" "100"
@@ -7574,15 +7565,13 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "a3be8469-8236-4dc8-9525-e5e85b994c76")
 		(property "Reference" "R51"
-			(at 162.56 35.56 90)
+			(at 162.814 39.116 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Value" "100"
@@ -7721,7 +7710,7 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "1K"
 			(at 36.83 66.04 90)
 			(effects
 				(font
@@ -7856,15 +7845,13 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "ba51570c-d4ce-45e3-b6c4-4ebe9c9a7c15")
 		(property "Reference" "R59"
-			(at 162.56 76.2 90)
+			(at 162.56 79.502 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Value" "100"
@@ -8058,15 +8045,13 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "c38e51f4-3a0c-4c66-82d0-4f81f6dd88da")
 		(property "Reference" "R57"
-			(at 162.56 66.04 90)
+			(at 162.56 69.85 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Value" "100"
@@ -8479,7 +8464,7 @@
 				)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "1K"
 			(at 36.83 55.88 90)
 			(effects
 				(font

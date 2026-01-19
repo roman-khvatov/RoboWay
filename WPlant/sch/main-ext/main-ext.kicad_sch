@@ -9923,7 +9923,6 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "127cdec7-2284-4728-a11c-b2dc1abdd9be")
 		(property "Reference" "#PWR092"
 			(at 196.85 26.67 0)
@@ -9935,7 +9934,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 199.39 26.6699 90)
+			(at 202.946 22.86 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11345,21 +11344,19 @@
 		(dnp no)
 		(uuid "385e79b6-1aca-450d-89bc-343a89a1a5c8")
 		(property "Reference" "R49"
-			(at 196.85 31.496 90)
+			(at 194.818 26.416 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
-		(property "Value" "R"
-			(at 201.422 31.496 90)
+		(property "Value" "1K"
+			(at 198.628 26.416 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
@@ -11547,24 +11544,21 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "3cf6cb6c-ba01-47e7-997a-878b05b189b9")
 		(property "Reference" "R22"
-			(at 190.5 106.68 90)
+			(at 188.214 116.078 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
-		(property "Value" "100K"
-			(at 190.5 109.22 90)
+		(property "Value" "510"
+			(at 192.786 116.078 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
@@ -13786,24 +13780,21 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "75ffc677-a114-4116-adf4-1d8a57448b08")
 		(property "Reference" "R39"
-			(at 15.24 165.1 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "100K"
 			(at 17.78 165.1 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
+			)
+		)
+		(property "Value" "1K"
+			(at 24.638 165.1 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
@@ -14214,7 +14205,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "10K"
 			(at 226.06 148.5899 0)
 			(effects
 				(font
@@ -14422,24 +14413,21 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "87a72f1c-77d6-4009-8295-29ee6ffc3556")
 		(property "Reference" "R21"
-			(at 190.5 99.06 90)
+			(at 187.706 109.474 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
-		(property "Value" "100K"
-			(at 190.5 101.6 90)
+		(property "Value" "510"
+			(at 192.532 109.474 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
@@ -14492,24 +14480,21 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "8900e201-eb61-409c-a3ee-99af12e52eff")
 		(property "Reference" "R36"
-			(at 78.74 140.97 90)
+			(at 78.232 144.018 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
-		(property "Value" "100K"
-			(at 78.74 143.51 90)
+		(property "Value" "10K5"
+			(at 78.486 151.384 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
@@ -14998,7 +14983,6 @@
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Value" "100K"
@@ -15007,7 +14991,6 @@
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
@@ -15261,24 +15244,21 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "a8b68944-efd0-46a4-af5f-8e2a45802797")
 		(property "Reference" "R37"
-			(at 90.17 140.97 90)
+			(at 90.17 144.272 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
-		(property "Value" "100K"
-			(at 90.17 143.51 90)
+		(property "Value" "2K"
+			(at 90.17 151.638 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
@@ -15340,7 +15320,7 @@
 				)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "1K"
 			(at 196.342 34.036 90)
 			(effects
 				(font
@@ -15688,8 +15668,8 @@
 				)
 			)
 		)
-		(property "Value" "?"
-			(at 108.204 116.84 90)
+		(property "Value" "2M"
+			(at 108.458 116.84 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16559,7 +16539,7 @@
 				)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "10K"
 			(at 232.41 133.35 90)
 			(effects
 				(font
@@ -17201,7 +17181,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "?"
+		(property "Value" "2.2"
 			(at 215.9 148.5899 0)
 			(effects
 				(font
@@ -17462,15 +17442,13 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "fcc8432c-4bba-4045-a22d-2b99b4a1483f")
 		(property "Reference" "R7"
-			(at 190.5 71.12 90)
+			(at 195.834 80.264 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Value" "100K"
