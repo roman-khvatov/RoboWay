@@ -39,6 +39,19 @@ class Invation {
     bool chk_platform();
     void fire();
     void move_platform(int delta);
+    bool has_sps();
+
+    enum GameStatus {
+        Cont,
+        Done,
+        ImmBlast,
+        Blast
+    };
+    GameStatus tick(uint8_t buttons);
+    GameStatus run_internal();
+public:
+    Invation() : t(CycleTime) {}
+    void run();
 };
 
 
@@ -49,7 +62,7 @@ void Invation::show()
         pixs.br1[i] = arena.invation.bullets[i] | arena.invation.spsheeps[i];
         pixs.br2[i] = arena.invation.bullets[i];
     }
-    spr.place(platform_pos, 14, phase);
+    spr.place(platform_pos, 15, phase);
 }
 
 void Invation::move_bullets()
@@ -88,7 +101,7 @@ bool Invation::chk_platform()
 {
     int mask = 1<<platform_pos;
     arena.invation.spsheeps[14] &= ~mask;
-    mask = 7 << (platform_pos+1);
+    mask = 7 << (platform_pos-1);
     return (arena.invation.spsheeps[15] & mask) != 0;
 }
 
@@ -104,11 +117,93 @@ void Invation::move_platform(int delta)
     int new_pp = platform_pos+delta;
     if (new_pp < 1 || new_pp > 6) return;
     int nxt_mask = 1 << new_pp;
-    if (nxt_mask & arena.invation.spsheeps[13]) {arena.invation.spsheeps[13] &= ~nxt_mask ; ++sps_eaten;}
-    if (delta == 1) nxt_mask >>= 1; else nxt_mask <<= 1;
-    if (nxt_mask & arena.invation.spsheeps[14]) {arena.invation.spsheeps[14] &= ~nxt_mask ; ++sps_eaten;}
+    if (nxt_mask & arena.invation.spsheeps[14]) 
+    {
+        arena.invation.spsheeps[14] &= ~nxt_mask;
+        pixs.br1[14] &= ~nxt_mask;
+        ++sps_eaten;
+    }
+    if (delta == 1) nxt_mask <<= 1; else nxt_mask >>= 1;
+    if (nxt_mask & arena.invation.spsheeps[15]) 
+    {
+        arena.invation.spsheeps[15] &= ~nxt_mask ; 
+        pixs.br1[15] &= ~nxt_mask;
+        ++sps_eaten;
+    }
     platform_pos = new_pp;
 }
 
+bool Invation::has_sps()
+{
+    for ( int i = 0; i < 16; ++i )
+    {
+        if (arena.invation.spsheeps[i]) return true;
+    }
+    return false;
+}
+
+Invation::GameStatus Invation::tick(uint8_t buttons)
+{
+    if (buttons & K_1) return Done;
+    if ( buttons & (K_Left | K_Right) )
+    {
+        move_platform(buttons & K_Right ? 1 : -1);
+    }
+    else if ( buttons & (K_2 | K_3) )
+    {
+        move_platform(buttons & K_3 ? 1 : -1);
+    }
+    switch ( phase )
+    {
+        case 0: 
+            if (arena.invation.spsheeps[15]) return Blast;
+            if (move_sps()) return ImmBlast; break;
+        case 1: case 3: move_bullets(); break;
+    }
+    ++phase;
+    phase &= 3;
+    return Cont;
+}
+
+Invation::GameStatus Invation::run_internal()
+{
+    GameStatus result = Cont;
+    memset(&arena.invation, 0, sizeof(arena.invation));
+    arena.invation.spsheeps[0] = bits[get_random() % bits_idx[0]] << 1;
+    while(!result)
+    {
+        auto keys = read_key();
+        clr_keys(K_1|K_2|K_3|K_Hit);
+        if ( t.tick() ) result = tick(keys); else
+        {
+            if ( keys & (K_2 | K_3) )
+            {
+                move_platform(keys & K_3 ? 1 : -1);
+            }
+            if (keys & (K_Hit|K_Up)) fire();
+        }
+        if ( level < TotalLevels-2 && sps_eaten >= LevelTreshold )
+        {
+            ++level;
+            t.reinit(CycleTime+level);
+            sps_eaten = 0;
+        }
+        if ( last_row_count >= levels[level].sps_delta )
+        {
+            arena.invation.spsheeps[0] = bits[get_random() % bits_idx[levels[level].max_sps-1]] << 1;
+            last_row_count = 0;
+        }
+        show();
+    }
+    return result;
+}
+
+void Invation::run()
+{
+    auto result = run_internal();
+}
+
 void invation_game()
-{}
+{
+    Invation().run();
+}
