@@ -3,6 +3,27 @@
 #include "timer.h"
 #include "arena.h"
 
+struct ShIdx {
+    uint16_t start;
+    uint16_t length;
+};
+
+constexpr uint16_t operator ""_sh(const char* data, size_t length)
+{
+    uint16_t result = 0;
+    uint16_t mask = 0x0101;
+    for ( int idx = 0; idx < length; ++idx, mask <<= 1 )
+    {
+        switch ( *data++ )
+        {
+            case '.': result |= mask & 0xFF; break;
+            case '+': result |= mask & 0xFF00; break;
+            case '*': result |= mask; break;
+        }
+    }
+    return result;
+}
+
 #include "spi.arr.inc"
 
 
@@ -17,14 +38,14 @@ struct LevelSetup {
 
 const LevelSetup levels[TotalLevels] = {
     {1, 5},
+    {2, 5},
     {2, 4},
-    {3, 3},
-    {4, 3},
-    {6, 1}
+    {2, 3},
+    {3, 3}
 };
 
 class Invation {
-    Timer t;
+    Timer t, t2;
     Sprite spr = Sprite_platform;
     int phase=0;
     int level = 0;
@@ -47,10 +68,12 @@ class Invation {
         ImmBlast,
         Blast
     };
-    GameStatus tick(uint8_t buttons);
+    GameStatus tick();
     GameStatus run_internal();
+
+    void final_animate(GameStatus);
 public:
-    Invation() : t(CycleTime) {}
+    Invation() : t(CycleTime), t2(CycleTime) {}
     void run();
 };
 
@@ -142,17 +165,8 @@ bool Invation::has_sps()
     return false;
 }
 
-Invation::GameStatus Invation::tick(uint8_t buttons)
+Invation::GameStatus Invation::tick()
 {
-    if (buttons & K_1) return Done;
-    if ( buttons & (K_Left | K_Right) )
-    {
-        move_platform(buttons & K_Right ? 1 : -1);
-    }
-    else if ( buttons & (K_2 | K_3) )
-    {
-        move_platform(buttons & K_3 ? 1 : -1);
-    }
     switch ( phase )
     {
         case 0: 
@@ -168,24 +182,35 @@ Invation::GameStatus Invation::tick(uint8_t buttons)
 Invation::GameStatus Invation::run_internal()
 {
     GameStatus result = Cont;
+    uint8_t perv_btn = 0;
     memset(&arena.invation, 0, sizeof(arena.invation));
     arena.invation.spsheeps[0] = bits[get_random() % bits_idx[0]] << 1;
     while(!result)
     {
         auto keys = read_key();
-        clr_keys(K_1|K_2|K_3|K_Hit);
-        if ( t.tick() ) result = tick(keys); else
+        clr_keys(K_1|K_2|K_3|K_Hit|K_Up);
+        if (keys & K_1) return Done;
+
+        uint8_t press = ~perv_btn & keys & (K_Left|K_Right);
+        if (press) t2.reset(true);
+        perv_btn = keys;
+
+        if ( keys & (K_2 | K_3) )
         {
-            if ( keys & (K_2 | K_3) )
-            {
-                move_platform(keys & K_3 ? 1 : -1);
-            }
-            if (keys & (K_Hit|K_Up)) fire();
+            move_platform(keys & K_3 ? 1 : -1);
         }
+        else if ( (keys & (K_Left|K_Right)) && t2.tick() )
+        {
+            move_platform(keys & K_Right ? 1 : -1);
+        }
+
+        if ( t.tick() ) result = tick();
+        if (keys & (K_Hit|K_Up)) fire();
         if ( level < TotalLevels-2 && sps_eaten >= LevelTreshold )
         {
             ++level;
             t.reinit(CycleTime+level);
+            t2.reinit(CycleTime+level);
             sps_eaten = 0;
         }
         if ( last_row_count >= levels[level].sps_delta )
@@ -198,9 +223,34 @@ Invation::GameStatus Invation::run_internal()
     return result;
 }
 
+void Invation::final_animate(GameStatus kind)
+{
+    auto def = sh_idxs[arena.invation.spsheeps[15] >> 1];
+    uint8_t sh_mask = 7 << (platform_pos-1);
+    for ( int idx = 0; idx < def.length; ++idx, ++def.start )
+    {
+        auto val = ships[def.start];
+        pixs.br1[15] = val & 0xFF;
+        pixs.br2[15] = val >> 8;
+        if ( sh_mask & val )
+        {
+
+        }
+        for ( ;;)
+        {
+            if (read_key() & K_1) return;
+            if (t2.tick()) break;
+        }
+    }
+    pixs.br1[15] = 0;
+    pixs.br2[15] = 0;
+}
+
+
 void Invation::run()
 {
     auto result = run_internal();
+    if (result != Done) final_animate(result);
 }
 
 void invation_game()

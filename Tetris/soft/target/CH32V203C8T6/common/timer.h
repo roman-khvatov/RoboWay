@@ -19,6 +19,11 @@ public:
         cnt = 0;
     }
 
+    void reset(bool hit_now)
+    {
+        cnt = hit_now ? max_setup : 0;
+    }
+
     bool tick()
     {
         cnt += rate_setup;
