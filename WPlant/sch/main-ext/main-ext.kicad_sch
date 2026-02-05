@@ -5,7 +5,8 @@
 	(uuid "71bd3f7f-463d-4a2c-bec7-ca56c2fe6cec")
 	(paper "A4")
 	(title_block
-		(title "Water Plant main module")
+		(title "Water Plant main module (External)")
+		(date "2026-02-05")
 		(company "RoboWay")
 	)
 	(lib_symbols
@@ -14557,7 +14558,7 @@
 				)
 			)
 		)
-		(property "Value" "0.1"
+		(property "Value" "1.0"
 			(at 55.88 97.79 90)
 			(effects
 				(font
@@ -15185,7 +15186,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "0.1"
+		(property "Value" "1.0"
 			(at 241.3 153.6699 0)
 			(effects
 				(font

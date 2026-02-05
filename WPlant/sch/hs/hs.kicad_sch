@@ -1080,6 +1080,25 @@
 		)
 		(uuid "fdb68a79-fd3f-4752-8de7-7b3e3f2f1fc0")
 	)
+	(text_box "CSensor - 270 pF (dry)\nFreq - 10 down to 1 KHz"
+		(exclude_from_sim no)
+		(at 107.95 39.37 0)
+		(size 67.31 13.97)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(fill
+			(type none)
+		)
+		(effects
+			(font
+				(size 3 3)
+			)
+			(justify left top)
+		)
+		(uuid "fe9710cc-28a7-4d8c-888b-7563b0e32d81")
+	)
 	(label "GND"
 		(at 151.13 123.19 0)
 		(fields_autoplaced yes)
@@ -1110,7 +1129,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "Conn_01x03_Pin"
+		(property "Value" "Ext"
 			(at 185.42 96.5201 0)
 			(effects
 				(font
@@ -1119,7 +1138,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Connector_PinHeader_2.00mm:PinHeader_1x03_P2.00mm_Vertical"
+		(property "Footprint" "local:con3smd"
 			(at 184.15 97.79 0)
 			(effects
 				(font
@@ -1332,7 +1351,7 @@
 				)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "820K"
 			(at 146.05 60.96 90)
 			(effects
 				(font

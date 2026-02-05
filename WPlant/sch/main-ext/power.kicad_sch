@@ -5,7 +5,8 @@
 	(uuid "94b3ce84-1fb4-4197-b106-d80f1f603433")
 	(paper "A4")
 	(title_block
-		(title "Power module")
+		(title "Power module (WPMain Ext)")
+		(date "2026-02-05")
 		(company "RoboWay")
 	)
 	(lib_symbols

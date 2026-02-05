@@ -5,7 +5,8 @@
 	(uuid "fbbcd51e-a248-4550-bfc1-bf60aff4fbb1")
 	(paper "A4")
 	(title_block
-		(title "Humidity sensors interface")
+		(title "Humidity sensors interface  (WPMain Ext)")
+		(date "2026-02-05")
 		(company "RoboWay")
 	)
 	(lib_symbols
@@ -6304,7 +6305,7 @@
 				)
 			)
 		)
-		(property "Value" "?"
+		(property "Value" "2M"
 			(at 147.32 118.11 90)
 			(effects
 				(font
