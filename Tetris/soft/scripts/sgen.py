@@ -159,7 +159,6 @@ class Parser:
                 prefetch = None
             if sprite:
                 if not in_logo:
-                    s_idx = self.add_sprite(sprite)
                     if not in_tetris:
                         if sprite.name:
                             last_named_sprite = sprite
@@ -167,6 +166,7 @@ class Parser:
                             last_named_sprite.group_span += 1
                             if not sprite.palete:
                                 sprite.palete = last_named_sprite.palete
+                    s_idx = self.add_sprite(sprite)
                 if in_tetris:
                     self.tetris_indexes.append(s_idx)
                     t_list = gen_rotated(sprite)
