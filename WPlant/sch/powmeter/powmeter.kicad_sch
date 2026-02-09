@@ -8595,7 +8595,7 @@
 				)
 			)
 		)
-		(property "Value" "DSK34_C727076"
+		(property "Value" "DSK34"
 			(at 44.45 128.27 0)
 			(effects
 				(font
@@ -9311,7 +9311,7 @@
 				)
 			)
 		)
-		(property "Value" "560"
+		(property "Value" "510"
 			(at 205.74 102.87 90)
 			(effects
 				(font
@@ -9586,7 +9586,7 @@
 				)
 			)
 		)
-		(property "Value" "560"
+		(property "Value" "510"
 			(at 208.026 101.6 90)
 			(effects
 				(font
