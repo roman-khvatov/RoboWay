@@ -47,11 +47,20 @@ const LevelSetup levels[TotalLevels] = {
 class Invation {
     Timer t, t2;
     Sprite spr = Sprite_platform;
-    int phase=0;
-    int level = 0;
-    int sps_eaten = 0;
-    int last_row_count = 0;
-    int platform_pos = 4;
+    union {
+        struct {
+            uint8_t phase;
+            uint8_t level;
+            uint8_t sps_eaten;
+            uint8_t last_row_count;
+        };
+        struct {
+            int16_t anim_sps;
+            int8_t anim_platform;
+        };
+    };
+
+    uint8_t platform_pos = 4;
 
     void show();
     void move_bullets();
@@ -72,8 +81,20 @@ class Invation {
     GameStatus run_internal();
 
     void final_animate(GameStatus);
+
+    void animate_platform();
+    void animate_sps();
+
+    void start_animate_platform();
+    void start_animate_sps();
+
 public:
-    Invation() : t(CycleTime), t2(CycleTime) {}
+    Invation() : t(CycleTime), t2(CycleTime) {
+        phase=0;
+        level = 0;
+        sps_eaten = 0;
+        last_row_count = 0;
+    }
     void run();
 };
 
@@ -225,25 +246,74 @@ Invation::GameStatus Invation::run_internal()
 
 void Invation::final_animate(GameStatus kind)
 {
-    auto def = sh_idxs[arena.invation.spsheeps[15] >> 1];
-    uint8_t sh_mask = 7 << (platform_pos-1);
-    for ( int idx = 0; idx < def.length; ++idx, ++def.start )
+    anim_sps = -1;
+    anim_platform = -1;
+    switch ( kind )
     {
-        auto val = ships[def.start];
-        pixs.br1[15] = val & 0xFF;
-        pixs.br2[15] = val >> 8;
-        if ( sh_mask & val )
-        {
-
-        }
+        case ImmBlast: start_animate_platform(); break;
+        case Blast: start_animate_sps(); break;
+        default: return;
+    }
+    while ( anim_sps != -1 || anim_platform >= 0 )
+    {
         for ( ;;)
         {
             if (read_key() & K_1) return;
             if (t2.tick()) break;
         }
+        if ( anim_sps != -1) animate_sps();
+        if ( anim_platform >= 0 ) animate_platform();
     }
-    pixs.br1[15] = 0;
-    pixs.br2[15] = 0;
+}
+
+void Invation::start_animate_platform()
+{
+    uint8_t sh_mask = 7 << (platform_pos-1);
+    pixs.br1[15] |= sh_mask;
+    pixs.br2[15] |= sh_mask;
+    anim_platform = 0;
+}
+
+void Invation::animate_platform()
+{
+    auto draw = [this](int color)
+    {
+        auto prev_row = 15-anim_platform;
+        pixs.set_br(platform_pos, prev_row, color);
+        if (platform_pos-1-anim_platform >= 0) pixs.set_br(platform_pos-1-anim_platform, prev_row, color);
+        if (platform_pos+1+anim_platform < 8) pixs.set_br(platform_pos+1+anim_platform, prev_row, color);
+    };
+    draw(0);
+    ++anim_platform;
+    if (anim_platform >= 3 ) {anim_platform=-2; return;}
+    draw(3-anim_platform);
+}
+
+void Invation::start_animate_sps()
+{
+    anim_sps = sh_idxs[arena.invation.spsheeps[15] >> 1];
+    animate_sps();
+}
+
+
+void Invation::animate_sps()
+{
+    uint8_t sh_mask = 7 << (platform_pos-1);
+    auto val = ships[anim_sps++];
+    pixs.br1[15] = val & 0xFF;
+    pixs.br2[15] = val >> 8;
+    if (anim_platform == -1)
+    {
+        if ( sh_mask & val )
+        {
+            start_animate_platform();
+        }
+        else
+        {
+            pixs.br2[15] |= sh_mask;
+        }
+    }
+    if ( val == 0 ) anim_sps = -1;
 }
 
 

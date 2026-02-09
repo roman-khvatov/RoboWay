@@ -68,6 +68,7 @@ def build_sp(value, dst):
         for item in arena:
             line += " .+*"[item]
         if line == '        ':
+            dst.append("0,")
             return
         dst.append(f'"{line}"_sh,')
         for sp in ships:
@@ -84,12 +85,12 @@ for val in range(1, 64):
         print(' '.join(ships[start:]))
 print('};')
 
-print('const ShIdx sh_idxs[] = {')
+print('const uint16_t sh_idxs[] = {')
 for idx in range(64):
     if idx not in indexes:
         print('  {},')
     else:
         start, length = indexes[idx]
-        print(f' {{{start}, {length}}},')
+        print(f' {start},')
 print('};')
 
