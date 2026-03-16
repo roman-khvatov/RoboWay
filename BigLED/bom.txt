@@ -1,11 +1,18 @@
 IRM-30-5ST
+    TDPOWER TAS50-5-W      C695935 (4, 12.1)
+    TDPOWER TLH50-23B05R2  C41371550 (13, 12.6)
 IRM-10-12
 
 TI DAC7311IDCKR      C128601 (11K stock, 0.72 per 1)
-
 
 TI TPA3111D1QPWPRQ1  C130045 (2.9K, 1.37 per 1)
 Shenzhen Nsiway Tech NS4110B C5334145 (25K , 0.37) <<<
 
 FUET FS87W08100-H34  C19191059 (87, 2.15)
+
+FB 1000 Ohm 1.5A
+    FH CBW321609U102T C113327 (268K, 0.02 per 20)
+
+P6KE6.8A   C409413  (0.1 PER 5)
+SMBJ7.0A   C224024  (0.12 per 5)  <<<
 -----------------------------------------------------------
