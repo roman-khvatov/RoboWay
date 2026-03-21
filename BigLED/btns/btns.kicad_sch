@@ -5418,7 +5418,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Package_SO:SSOP-8_2.95x2.8mm_P0.65mm"
 			(at 223.52 115.57 0)
 			(effects
 				(font
@@ -5504,7 +5504,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder"
 			(at 138.43 67.6148 0)
 			(effects
 				(font
@@ -5574,7 +5574,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "local:KEY-TH_4P-L6.0-W6.0-P4.50-LS6.50"
 			(at 45.72 140.97 0)
 			(effects
 				(font
@@ -5642,7 +5642,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Package_SO:SSOP-8_2.95x2.8mm_P0.65mm"
 			(at 223.52 91.44 0)
 			(effects
 				(font
@@ -5730,7 +5730,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "local:KEY-TH_4P-L6.0-W6.0-P4.50-LS6.50"
 			(at 130.81 171.45 0)
 			(effects
 				(font
@@ -5797,7 +5797,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"
 			(at 96.52 128.27 0)
 			(effects
 				(font
@@ -5867,7 +5867,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "local:KEY-TH_4P-L6.0-W6.0-P4.50-LS6.50"
 			(at 45.72 147.32 0)
 			(effects
 				(font
@@ -6140,7 +6140,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder"
 			(at 217.4748 40.64 0)
 			(effects
 				(font
@@ -6276,7 +6276,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder"
 			(at 100.33 110.7948 0)
 			(effects
 				(font
@@ -6344,7 +6344,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_2x03_P2.54mm_Vertical"
 			(at 134.62 133.35 0)
 			(effects
 				(font
@@ -6627,7 +6627,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_JST:JST_XH_B5B-XH-A_1x05_P2.50mm_Vertical"
 			(at 34.29 100.33 0)
 			(effects
 				(font
@@ -6706,7 +6706,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder"
 			(at 245.4148 74.93 0)
 			(effects
 				(font
@@ -6776,7 +6776,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "local:KEY-TH_4P-L6.0-W6.0-P4.50-LS6.50"
 			(at 45.72 128.27 0)
 			(effects
 				(font
@@ -6846,7 +6846,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Package_SO:SSOP-8_2.95x2.8mm_P0.65mm"
 			(at 232.41 43.18 0)
 			(effects
 				(font
@@ -6932,7 +6932,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Rotary_Encoder:RotaryEncoder_Alps_EC11E-Switch_Vertical_H20mm"
 			(at 92.71 96.774 0)
 			(effects
 				(font
@@ -7078,7 +7078,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "local:KEY-TH_4P-L6.0-W6.0-P4.50-LS6.50"
 			(at 45.72 153.67 0)
 			(effects
 				(font
@@ -7214,7 +7214,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "local:KEY-TH_4P-L6.0-W6.0-P4.50-LS6.50"
 			(at 45.72 134.62 0)
 			(effects
 				(font
@@ -7418,7 +7418,7 @@
 				)
 			)
 		)
-		(property "Footprint" "local:SDD1306"
+		(property "Footprint" "easyeda2kicad:OLED-TH_L27.8-W27.2-P2.54_C9900033791"
 			(at 255.27 86.36 0)
 			(effects
 				(font
@@ -7494,7 +7494,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
 			(at 243.332 101.6 90)
 			(effects
 				(font
@@ -7695,7 +7695,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "local:KEY-TH_4P-L6.0-W6.0-P4.50-LS6.50"
 			(at 45.72 160.02 0)
 			(effects
 				(font
@@ -7764,7 +7764,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
 			(at 236.982 101.6 90)
 			(effects
 				(font
@@ -7792,10 +7792,10 @@
 			)
 		)
 		(pin "2"
-			(uuid "6c0598f0-ea31-4b53-937f-78b4bcf16d4f")
+			(uuid "6c0598f0-ea31-4b53-937f-78b4bcf16d50")
 		)
 		(pin "1"
-			(uuid "81b92ca1-2952-4650-9b74-94eb13b51702")
+			(uuid "81b92ca1-2952-4650-9b74-94eb13b51703")
 		)
 		(instances
 			(project "btns"
