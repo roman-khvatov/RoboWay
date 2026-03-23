@@ -37,9 +37,9 @@
         "other_text_thickness": 0.153,
         "other_text_upright": false,
         "pads": {
-          "drill": 0.8,
-          "height": 1.27,
-          "width": 2.54
+          "drill": 0.0,
+          "height": 2.4,
+          "width": 3.3
         },
         "silk_line_width": 0.153,
         "silk_text_italic": false,
@@ -58,7 +58,40 @@
           "width": 0.0
         }
       ],
-      "drc_exclusions": [],
+      "drc_exclusions": [
+        [
+          "footprint_type_mismatch|135890000|80645000|dcb29c3d-b4de-4e91-8ac5-4c1dbe8d0e51|00000000-0000-0000-0000-000000000000",
+          ""
+        ],
+        [
+          "footprint_type_mismatch|159990000|72390000|80d56dff-692e-45c3-8788-f2e1a8e56d78|00000000-0000-0000-0000-000000000000",
+          ""
+        ],
+        [
+          "lib_footprint_mismatch|138430000|58445000|215284c5-73b6-41d7-aa8c-299ebb35ad83|00000000-0000-0000-0000-000000000000",
+          ""
+        ],
+        [
+          "lib_footprint_mismatch|172335000|95250000|28d925f4-b8b1-43f3-811d-90e627b2bc26|00000000-0000-0000-0000-000000000000",
+          ""
+        ],
+        [
+          "solder_mask_bridge|149535000|61680000|9cec6b91-c3eb-4bbb-ab67-5571988ac46a|0555577d-6a13-47a8-a092-4e957940a8cf",
+          ""
+        ],
+        [
+          "solder_mask_bridge|149535000|62330000|0555577d-6a13-47a8-a092-4e957940a8cf|3850f522-663c-4730-9b8c-9a7b62d8f213",
+          ""
+        ],
+        [
+          "solder_mask_bridge|151310000|62130000|45cea5e0-7af4-4e15-a0d0-426811898cad|ec682a84-2ec2-4d32-bcec-363c73f19999",
+          ""
+        ],
+        [
+          "solder_mask_bridge|151310000|62780000|cae0e1de-3c35-464e-a2e0-508267304458|45cea5e0-7af4-4e15-a0d0-426811898cad",
+          ""
+        ]
+      ],
       "meta": {
         "version": 2
       },
@@ -118,7 +151,7 @@
         "tracks_crossing": "error",
         "unconnected_items": "error",
         "unresolved_variable": "error",
-        "via_dangling": "ignore",
+        "via_dangling": "warning",
         "zones_intersect": "error"
       },
       "rules": {
