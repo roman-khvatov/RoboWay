@@ -3089,7 +3089,7 @@
 			(net 11 "Net-(J3-Pin_1)")
 			(pinfunction "1")
 			(pintype "passive")
-			(uuid "d5afb8bd-971f-4ac8-9bae-c12957ae89ad")
+			(uuid "fe7f282c-95ac-49e4-bd80-ff9e10ca0928")
 		)
 		(pad "2" thru_hole circle
 			(at -3.25 -2.25 180)
@@ -3111,18 +3111,18 @@
 			(net 17 "/B2")
 			(pinfunction "2")
 			(pintype "passive")
-			(uuid "8474e61c-47dc-4796-8007-d5343e8e3908")
+			(uuid "930cc9ee-0c5b-4adf-a63d-59acdf9e72fe")
 		)
 		(embedded_fonts no)
 		(model "${EASYEDA2KICAD}/easyeda2kicad.3dshapes/KEY-TH_4P-L6.0-W6.0-P4.50-LS6.50.wrl"
 			(offset
-				(xyz 0 -0 0)
+				(xyz 0 -0 3)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz -0 -0 -0)
 			)
 		)
 	)
@@ -3278,7 +3278,7 @@
 			(net 10 "Net-(J3-Pin_2)")
 			(pinfunction "1")
 			(pintype "passive")
-			(uuid "f195be20-9578-4c40-9201-ee633f3e1023")
+			(uuid "cd764076-1c4e-4ed1-93da-39fa12e605d8")
 		)
 		(pad "2" thru_hole circle
 			(at -3.25 -2.25 180)
@@ -3300,18 +3300,18 @@
 			(net 20 "/B6")
 			(pinfunction "2")
 			(pintype "passive")
-			(uuid "b47388ef-66d4-4a41-803e-37268c1b47ef")
+			(uuid "afb5fd40-6bec-464a-b4cb-50d418b88992")
 		)
 		(embedded_fonts no)
 		(model "${EASYEDA2KICAD}/easyeda2kicad.3dshapes/KEY-TH_4P-L6.0-W6.0-P4.50-LS6.50.wrl"
 			(offset
-				(xyz 0 -0 0)
+				(xyz 0 -0 3)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz -0 -0 -0)
 			)
 		)
 	)
@@ -3467,7 +3467,7 @@
 			(net 11 "Net-(J3-Pin_1)")
 			(pinfunction "1")
 			(pintype "passive")
-			(uuid "08ae7d60-4511-4270-8045-b30a06a80569")
+			(uuid "624ccb3b-45e8-4c6f-b493-6e527b238f79")
 		)
 		(pad "2" thru_hole circle
 			(at -3.25 -2.25 180)
@@ -3489,18 +3489,18 @@
 			(net 20 "/B6")
 			(pinfunction "2")
 			(pintype "passive")
-			(uuid "eca0cc5e-d09b-437d-a123-695e8c57c037")
+			(uuid "58878518-5553-45a1-97e5-8f4fbc9bcb98")
 		)
 		(embedded_fonts no)
 		(model "${EASYEDA2KICAD}/easyeda2kicad.3dshapes/KEY-TH_4P-L6.0-W6.0-P4.50-LS6.50.wrl"
 			(offset
-				(xyz 0 -0 0)
+				(xyz 0 -0 3)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz -0 -0 -0)
 			)
 		)
 	)
@@ -3656,7 +3656,7 @@
 			(net 11 "Net-(J3-Pin_1)")
 			(pinfunction "1")
 			(pintype "passive")
-			(uuid "98cafed1-fd68-4de3-a6b8-fdfad168cdcb")
+			(uuid "4c6d5528-4276-41cd-a7f5-4905f468d38f")
 		)
 		(pad "2" thru_hole circle
 			(at -3.25 -2.25 180)
@@ -3678,18 +3678,18 @@
 			(net 16 "/B4")
 			(pinfunction "2")
 			(pintype "passive")
-			(uuid "a85f2e37-b877-48d8-a46d-0bda69beac13")
+			(uuid "67ab1117-eadc-4180-856d-aa65152501c2")
 		)
 		(embedded_fonts no)
 		(model "${EASYEDA2KICAD}/easyeda2kicad.3dshapes/KEY-TH_4P-L6.0-W6.0-P4.50-LS6.50.wrl"
 			(offset
-				(xyz 0 -0 0)
+				(xyz 0 -0 3)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz -0 -0 -0)
 			)
 		)
 	)
@@ -3845,7 +3845,7 @@
 			(net 11 "Net-(J3-Pin_1)")
 			(pinfunction "1")
 			(pintype "passive")
-			(uuid "9dacbcd2-33c8-4565-9d5f-ae539951ebec")
+			(uuid "8812dc76-23c2-4404-ba45-a21c00179385")
 		)
 		(pad "2" thru_hole circle
 			(at -3.25 -2.25 180)
@@ -3867,18 +3867,18 @@
 			(net 15 "/B1")
 			(pinfunction "2")
 			(pintype "passive")
-			(uuid "6d09ff9f-37cf-4dd8-8978-bad73428b8ed")
+			(uuid "e01022e7-ff5c-4b00-ada1-4008002c7013")
 		)
 		(embedded_fonts no)
 		(model "${EASYEDA2KICAD}/easyeda2kicad.3dshapes/KEY-TH_4P-L6.0-W6.0-P4.50-LS6.50.wrl"
 			(offset
-				(xyz 0 -0 0)
+				(xyz 0 -0 3)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz -0 -0 -0)
 			)
 		)
 	)
@@ -4846,7 +4846,7 @@
 			(net 11 "Net-(J3-Pin_1)")
 			(pinfunction "1")
 			(pintype "passive")
-			(uuid "3f92afbc-bc3e-4699-9e9f-1e094024d5b7")
+			(uuid "ec596d2e-963f-4b08-b279-de076e2aa325")
 		)
 		(pad "2" thru_hole circle
 			(at -3.25 -2.25 180)
@@ -4868,18 +4868,18 @@
 			(net 14 "/B5")
 			(pinfunction "2")
 			(pintype "passive")
-			(uuid "a064d927-5838-4bd6-81be-d276ed5a7e1c")
+			(uuid "0408f43e-2058-4c26-b605-2362335fadb7")
 		)
 		(embedded_fonts no)
 		(model "${EASYEDA2KICAD}/easyeda2kicad.3dshapes/KEY-TH_4P-L6.0-W6.0-P4.50-LS6.50.wrl"
 			(offset
-				(xyz 0 -0 0)
+				(xyz 0 -0 3)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz -0 -0 -0)
 			)
 		)
 	)
@@ -5035,7 +5035,7 @@
 			(net 11 "Net-(J3-Pin_1)")
 			(pinfunction "1")
 			(pintype "passive")
-			(uuid "20dfeb9a-ca5d-46c5-95e8-82203e4536f3")
+			(uuid "b8129486-1bc7-4f0c-a19c-be87b2cfe05c")
 		)
 		(pad "2" thru_hole circle
 			(at -3.25 -2.25 180)
@@ -5057,18 +5057,18 @@
 			(net 18 "/B3")
 			(pinfunction "2")
 			(pintype "passive")
-			(uuid "f1c8cba0-4612-4b2e-aee9-02801dde9d1e")
+			(uuid "9981a4df-f120-4229-beb5-525e58bf6872")
 		)
 		(embedded_fonts no)
 		(model "${EASYEDA2KICAD}/easyeda2kicad.3dshapes/KEY-TH_4P-L6.0-W6.0-P4.50-LS6.50.wrl"
 			(offset
-				(xyz 0 -0 0)
+				(xyz 0 -0 3)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz -0 -0 -0)
 			)
 		)
 	)
