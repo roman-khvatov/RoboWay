@@ -150,7 +150,6 @@
 			)
 			(pin_names
 				(offset 1.016)
-				(hide yes)
 			)
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -318,7 +317,6 @@
 			)
 			(pin_names
 				(offset 1.016)
-				(hide yes)
 			)
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -1304,6 +1302,46 @@
 		)
 		(uuid "eae9526f-db98-4875-bf60-c6392a8ebacc")
 	)
+	(label "Vin"
+		(at 69.85 72.39 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "290b34d0-2ad9-416f-80c4-21cf93f555c3")
+	)
+	(label "VR1"
+		(at 87.63 72.39 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "2bc2985e-5bf7-4207-b846-76aefc812d75")
+	)
+	(label "Vout"
+		(at 147.32 72.39 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "47b41b09-160f-4070-adbb-3950663a91d7")
+	)
+	(label "Vzener"
+		(at 110.49 72.39 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "a20b5e24-c4a6-4f25-a403-8284820b79aa")
+	)
 	(symbol
 		(lib_id "Device:D_Zener")
 		(at 113.03 86.36 270)
@@ -1368,7 +1406,7 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Pins" "1=A 2=K"
+		(property "Sim.Pins" "1=K 2=A"
 			(at 113.03 86.36 0)
 			(effects
 				(font
@@ -1377,7 +1415,7 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Params" "bv=5.6 ibv=1e-3"
+		(property "Sim.Params" "bv=5.6 ibv=10e-3"
 			(at 113.03 86.36 0)
 			(effects
 				(font
@@ -1409,7 +1447,6 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "575154eb-0c2c-4e00-9a51-fed749044929")
 		(property "Reference" "R1"
 			(at 78.74 66.04 90)
@@ -1463,7 +1500,7 @@
 			)
 		)
 		(property "Sim.Pins" "1=+ 2=-"
-			(at 78.74 72.39 0)
+			(at 78.994 75.438 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1493,7 +1530,6 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "6beef7c0-a913-40a5-857b-17e6fbed4ced")
 		(property "Reference" "C1"
 			(at 100.33 64.77 90)
@@ -1539,7 +1575,7 @@
 			)
 		)
 		(property "Sim.Device" "C"
-			(at 100.33 72.39 0)
+			(at 99.314 81.534 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1547,7 +1583,7 @@
 			)
 		)
 		(property "Sim.Type" "="
-			(at 100.33 72.39 0)
+			(at 101.6 81.534 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1555,7 +1591,7 @@
 			)
 		)
 		(property "Sim.Params" "c=1e-6"
-			(at 100.33 72.39 0)
+			(at 99.822 79.502 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1563,7 +1599,7 @@
 			)
 		)
 		(property "Sim.Pins" "1=+ 2=-"
-			(at 100.33 72.39 0)
+			(at 100.33 76.962 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1679,7 +1715,6 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "749eb84c-6365-414d-8951-7404ed5aab1f")
 		(property "Reference" "C2"
 			(at 142.24 83.8199 0)
@@ -1727,7 +1762,7 @@
 			)
 		)
 		(property "Sim.Device" "C"
-			(at 138.43 85.09 0)
+			(at 136.398 82.55 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1735,7 +1770,7 @@
 			)
 		)
 		(property "Sim.Type" "="
-			(at 138.43 85.09 0)
+			(at 137.922 82.55 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1743,7 +1778,7 @@
 			)
 		)
 		(property "Sim.Params" "c=200e-6"
-			(at 138.43 85.09 0)
+			(at 138.43 90.17 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1751,7 +1786,7 @@
 			)
 		)
 		(property "Sim.Pins" "1=+ 2=-"
-			(at 138.43 85.09 0)
+			(at 138.684 87.63 0)
 			(effects
 				(font
 					(size 1.27 1.27)
