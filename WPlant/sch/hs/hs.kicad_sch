@@ -1239,6 +1239,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC Part" "C7835"
+			(at 144.78 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "5"
 			(uuid "c549a792-9cb6-4659-8f6f-9a0d3ea36901")
 		)
@@ -1386,6 +1395,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC Part" "C141684"
+			(at 146.05 64.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "a7c3c13e-66c6-4323-bcf6-01dff136d036")
 		)
@@ -1446,6 +1464,15 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 129.54 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC Part" "C15849"
 			(at 129.54 80.01 0)
 			(effects
 				(font
