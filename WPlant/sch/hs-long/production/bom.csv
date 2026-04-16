@@ -1,0 +1,6 @@
+﻿Designator,Footprint,Quantity,Value,LCSC Part #
+C1,0603,1,1.0,
+C2,hs-long,1,C_Variable,
+J1,con3smd,1,Conn_01x03_Pin,
+R1,0603,1,820K,
+U1,SOT-23-5,1,SN74LVC1G14DBV,
