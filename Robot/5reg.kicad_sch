@@ -2346,7 +2346,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "220x16V"
+		(property "Value" "470x16V"
 			(at 97.79 82.1689 0)
 			(effects
 				(font
@@ -2926,18 +2926,17 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "bddfa39d-f2ec-4586-835c-17bd6418d4a4")
 		(property "Reference" "L1"
-			(at 118.11 81.28 90)
+			(at 117.602 83.566 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "L"
-			(at 118.11 83.82 90)
+		(property "Value" "CDRH127L125NP-4R7NC (4u7)"
+			(at 110.236 89.154 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2964,6 +2963,15 @@
 		)
 		(property "Description" "Inductor"
 			(at 118.11 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "C2835875"
+			(at 118.11 86.36 90)
 			(effects
 				(font
 					(size 1.27 1.27)

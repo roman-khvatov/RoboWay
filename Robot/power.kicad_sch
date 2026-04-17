@@ -4856,6 +4856,12 @@
 		(uuid "7fb21631-afb9-4f43-bbed-9fb35e192bec")
 	)
 	(junction
+		(at 130.81 92.71)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "84afca8a-aa24-4896-bc4a-4ee7690eb593")
+	)
+	(junction
 		(at 25.4 151.13)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -5114,6 +5120,16 @@
 			(type default)
 		)
 		(uuid "0f01a1f6-8402-4d82-8b03-39b4d95f4d81")
+	)
+	(wire
+		(pts
+			(xy 130.81 92.71) (xy 133.35 92.71)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "118d2b9b-58a6-438e-a9f2-6a1a792147c6")
 	)
 	(wire
 		(pts
@@ -5384,6 +5400,16 @@
 			(type default)
 		)
 		(uuid "3c594b7a-70e2-4b59-bdce-4ca848d1164d")
+	)
+	(wire
+		(pts
+			(xy 130.81 105.41) (xy 130.81 104.14)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3df9266d-1dfc-4ed3-ab25-a9292d788e33")
 	)
 	(wire
 		(pts
@@ -5977,7 +6003,7 @@
 	)
 	(wire
 		(pts
-			(xy 129.54 92.71) (xy 133.35 92.71)
+			(xy 129.54 92.71) (xy 130.81 92.71)
 		)
 		(stroke
 			(width 0)
@@ -6294,6 +6320,16 @@
 			(type default)
 		)
 		(uuid "d9a58c25-01f5-43c8-82f8-ba35b5d7edab")
+	)
+	(wire
+		(pts
+			(xy 130.81 92.71) (xy 130.81 96.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "dc087d51-db31-472d-b246-5c26a9c11c6a")
 	)
 	(wire
 		(pts
@@ -7390,6 +7426,72 @@
 			(project "Robot"
 				(path "/c5aa62e4-5f59-48a4-ae5d-57fc70429dc3/e9eb70e2-5ab4-43f7-8ba2-9f48573f337e"
 					(reference "#FLG01")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+3.3V")
+		(at 130.81 105.41 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "35f79493-4852-434d-9e05-1df3c00d4247")
+		(property "Reference" "#PWR0100"
+			(at 130.81 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3.3V"
+			(at 130.81 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 130.81 105.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 130.81 105.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3.3V\""
+			(at 130.81 105.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "d7dba9a3-5cd3-4563-a0a6-cbe7b2c83f33")
+		)
+		(instances
+			(project "Robot"
+				(path "/c5aa62e4-5f59-48a4-ae5d-57fc70429dc3/e9eb70e2-5ab4-43f7-8ba2-9f48573f337e"
+					(reference "#PWR0100")
 					(unit 1)
 				)
 			)
@@ -9071,6 +9173,76 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:R")
+		(at 130.81 100.33 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "b643377a-5a5f-45b5-8d5e-cab304eaa332")
+		(property "Reference" "R47"
+			(at 133.35 99.0599 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "100K"
+			(at 133.35 101.5999 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 129.032 100.33 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 130.81 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 130.81 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "ab226d17-9673-4573-ac1b-0e2b3eae4fe5")
+		)
+		(pin "2"
+			(uuid "ce0b333d-a05d-459a-b4ad-5ac382526c7d")
+		)
+		(instances
+			(project "Robot"
+				(path "/c5aa62e4-5f59-48a4-ae5d-57fc70429dc3/e9eb70e2-5ab4-43f7-8ba2-9f48573f337e"
+					(reference "R47")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Transistor_FET:Q_Dual_PMOS_S1G1S2G2D2D2D1D1")
 		(at 123.19 26.67 90)
 		(unit 1)
@@ -9124,28 +9296,28 @@
 			)
 		)
 		(pin "3"
-			(uuid "a6a09b99-c5f2-47d1-abe2-7c5c79c0aafa")
+			(uuid "a6a09b99-c5f2-47d1-abe2-7c5c79c0aafb")
 		)
 		(pin "7"
-			(uuid "37ded2ff-8643-4973-815b-1e48f774a653")
+			(uuid "37ded2ff-8643-4973-815b-1e48f774a654")
 		)
 		(pin "1"
-			(uuid "1be5bbe0-6751-48c2-87a3-e859b68c93f4")
+			(uuid "1be5bbe0-6751-48c2-87a3-e859b68c93f5")
 		)
 		(pin "8"
-			(uuid "3b4ae3ab-1f3b-4cca-8711-6ffb6ee98713")
+			(uuid "3b4ae3ab-1f3b-4cca-8711-6ffb6ee98714")
 		)
 		(pin "2"
-			(uuid "90db280b-83d6-41f3-9ea3-c90e98aab172")
+			(uuid "90db280b-83d6-41f3-9ea3-c90e98aab173")
 		)
 		(pin "5"
-			(uuid "9984f182-f1ef-4a9e-b989-e63ad454b4a0")
+			(uuid "9984f182-f1ef-4a9e-b989-e63ad454b4a1")
 		)
 		(pin "6"
-			(uuid "807dfb26-f694-43aa-9e66-b36680e8d6b4")
+			(uuid "807dfb26-f694-43aa-9e66-b36680e8d6b5")
 		)
 		(pin "4"
-			(uuid "2e6f8e63-ed8d-4af7-99c3-0b0b751930b4")
+			(uuid "2e6f8e63-ed8d-4af7-99c3-0b0b751930b5")
 		)
 		(instances
 			(project "Robot"
