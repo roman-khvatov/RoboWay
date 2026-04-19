@@ -6609,7 +6609,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "011c43a1-8c38-4fcb-b814-e7774bb9f453")
-		(property "Reference" "#PWR036"
+		(property "Reference" "#PWR061"
 			(at 138.43 195.58 0)
 			(effects
 				(font
@@ -6659,7 +6659,7 @@
 		(instances
 			(project "Robot"
 				(path "/c5aa62e4-5f59-48a4-ae5d-57fc70429dc3/e9eb70e2-5ab4-43f7-8ba2-9f48573f337e"
-					(reference "#PWR036")
+					(reference "#PWR061")
 					(unit 1)
 				)
 			)
@@ -6749,7 +6749,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "071855a1-0746-4d7b-9a3a-7cdd39a939c8")
-		(property "Reference" "J8"
+		(property "Reference" "J16"
 			(at 80.01 30.4799 0)
 			(effects
 				(font
@@ -6767,7 +6767,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "locals:pins4x10"
+		(property "Footprint" "locals:TRX"
 			(at 78.74 33.02 0)
 			(effects
 				(font
@@ -6803,7 +6803,7 @@
 		(instances
 			(project "Robot"
 				(path "/c5aa62e4-5f59-48a4-ae5d-57fc70429dc3/e9eb70e2-5ab4-43f7-8ba2-9f48573f337e"
-					(reference "J8")
+					(reference "J16")
 					(unit 1)
 				)
 			)
@@ -6819,7 +6819,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "0be82569-d211-4adc-a4bf-ff491bf952a4")
-		(property "Reference" "#PWR030"
+		(property "Reference" "#PWR053"
 			(at 44.45 153.67 0)
 			(effects
 				(font
@@ -6870,7 +6870,7 @@
 		(instances
 			(project "Robot"
 				(path "/c5aa62e4-5f59-48a4-ae5d-57fc70429dc3/e9eb70e2-5ab4-43f7-8ba2-9f48573f337e"
-					(reference "#PWR030")
+					(reference "#PWR053")
 					(unit 1)
 				)
 			)
@@ -6886,7 +6886,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "0e0f561c-554a-4497-9157-18e7739c2fe8")
-		(property "Reference" "C13"
+		(property "Reference" "C17"
 			(at 95.25 156.2099 0)
 			(effects
 				(font
@@ -6940,7 +6940,7 @@
 		(instances
 			(project "Robot"
 				(path "/c5aa62e4-5f59-48a4-ae5d-57fc70429dc3/e9eb70e2-5ab4-43f7-8ba2-9f48573f337e"
-					(reference "C13")
+					(reference "C17")
 					(unit 1)
 				)
 			)
@@ -6956,7 +6956,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "1668b172-5c6a-4748-b76c-552f3aceaff9")
-		(property "Reference" "#PWR028"
+		(property "Reference" "#PWR051"
 			(at 25.4 151.13 0)
 			(effects
 				(font
@@ -7006,7 +7006,7 @@
 		(instances
 			(project "Robot"
 				(path "/c5aa62e4-5f59-48a4-ae5d-57fc70429dc3/e9eb70e2-5ab4-43f7-8ba2-9f48573f337e"
-					(reference "#PWR028")
+					(reference "#PWR051")
 					(unit 1)
 				)
 			)
@@ -7038,7 +7038,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "easyeda2kicad:SO-8_L4.9-W3.9-P1.27-LS5.9-BL"
 			(at 138.43 25.4 0)
 			(effects
 				(font
@@ -7108,7 +7108,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "239608a1-d1a1-4d4c-8076-516b3f01056b")
-		(property "Reference" "#PWR033"
+		(property "Reference" "#PWR059"
 			(at 91.44 176.53 0)
 			(effects
 				(font
@@ -7159,7 +7159,7 @@
 		(instances
 			(project "Robot"
 				(path "/c5aa62e4-5f59-48a4-ae5d-57fc70429dc3/e9eb70e2-5ab4-43f7-8ba2-9f48573f337e"
-					(reference "#PWR033")
+					(reference "#PWR059")
 					(unit 1)
 				)
 			)
@@ -7175,7 +7175,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "26df982f-7dd3-436f-aa02-96556019ce17")
-		(property "Reference" "#PWR038"
+		(property "Reference" "#PWR052"
 			(at 166.37 151.13 0)
 			(effects
 				(font
@@ -7226,7 +7226,7 @@
 		(instances
 			(project "Robot"
 				(path "/c5aa62e4-5f59-48a4-ae5d-57fc70429dc3/e9eb70e2-5ab4-43f7-8ba2-9f48573f337e"
-					(reference "#PWR038")
+					(reference "#PWR052")
 					(unit 1)
 				)
 			)
@@ -7242,7 +7242,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "27a86691-6e2a-46e8-b5d2-61236455106b")
-		(property "Reference" "#PWR037"
+		(property "Reference" "#PWR056"
 			(at 152.4 166.37 0)
 			(effects
 				(font
@@ -7293,7 +7293,7 @@
 		(instances
 			(project "Robot"
 				(path "/c5aa62e4-5f59-48a4-ae5d-57fc70429dc3/e9eb70e2-5ab4-43f7-8ba2-9f48573f337e"
-					(reference "#PWR037")
+					(reference "#PWR056")
 					(unit 1)
 				)
 			)
@@ -7309,7 +7309,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "2e5b76e8-ad4f-46b4-82c2-73d8e38d3b46")
-		(property "Reference" "#PWR054"
+		(property "Reference" "#PWR042"
 			(at 146.05 71.12 0)
 			(effects
 				(font
@@ -7359,7 +7359,7 @@
 		(instances
 			(project "Robot"
 				(path "/c5aa62e4-5f59-48a4-ae5d-57fc70429dc3/e9eb70e2-5ab4-43f7-8ba2-9f48573f337e"
-					(reference "#PWR054")
+					(reference "#PWR042")
 					(unit 1)
 				)
 			)
@@ -7375,7 +7375,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "3482e132-d194-4b57-a48b-a6c8cba47cd1")
-		(property "Reference" "#FLG01"
+		(property "Reference" "#FLG02"
 			(at 158.75 172.085 0)
 			(effects
 				(font
@@ -7425,7 +7425,7 @@
 		(instances
 			(project "Robot"
 				(path "/c5aa62e4-5f59-48a4-ae5d-57fc70429dc3/e9eb70e2-5ab4-43f7-8ba2-9f48573f337e"
-					(reference "#FLG01")
+					(reference "#FLG02")
 					(unit 1)
 				)
 			)
@@ -7441,7 +7441,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "35f79493-4852-434d-9e05-1df3c00d4247")
-		(property "Reference" "#PWR0100"
+		(property "Reference" "#PWR048"
 			(at 130.81 101.6 0)
 			(effects
 				(font
@@ -7491,7 +7491,7 @@
 		(instances
 			(project "Robot"
 				(path "/c5aa62e4-5f59-48a4-ae5d-57fc70429dc3/e9eb70e2-5ab4-43f7-8ba2-9f48573f337e"
-					(reference "#PWR0100")
+					(reference "#PWR048")
 					(unit 1)
 				)
 			)
@@ -7507,7 +7507,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "3637654f-f2bb-4cfe-8706-8a401411ca17")
-		(property "Reference" "#PWR049"
+		(property "Reference" "#PWR039"
 			(at 171.45 24.13 0)
 			(effects
 				(font
@@ -7558,7 +7558,7 @@
 		(instances
 			(project "Robot"
 				(path "/c5aa62e4-5f59-48a4-ae5d-57fc70429dc3/e9eb70e2-5ab4-43f7-8ba2-9f48573f337e"
-					(reference "#PWR049")
+					(reference "#PWR039")
 					(unit 1)
 				)
 			)
@@ -7574,7 +7574,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "366ab03e-08a5-446c-b328-382c0580c440")
-		(property "Reference" "C18"
+		(property "Reference" "C24"
 			(at 154.94 178.6381 0)
 			(effects
 				(font
@@ -7628,7 +7628,7 @@
 		(instances
 			(project "Robot"
 				(path "/c5aa62e4-5f59-48a4-ae5d-57fc70429dc3/e9eb70e2-5ab4-43f7-8ba2-9f48573f337e"
-					(reference "C18")
+					(reference "C24")
 					(unit 1)
 				)
 			)
@@ -7644,7 +7644,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "3b11e6d1-8e7f-4d73-a336-5cc80dae85da")
-		(property "Reference" "#PWR052"
+		(property "Reference" "#PWR041"
 			(at 62.23 62.23 0)
 			(effects
 				(font
@@ -7694,7 +7694,7 @@
 		(instances
 			(project "Robot"
 				(path "/c5aa62e4-5f59-48a4-ae5d-57fc70429dc3/e9eb70e2-5ab4-43f7-8ba2-9f48573f337e"
-					(reference "#PWR052")
+					(reference "#PWR041")
 					(unit 1)
 				)
 			)
@@ -7710,7 +7710,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "43a7ffe8-1565-4f92-9110-c38a052dbd83")
-		(property "Reference" "R23"
+		(property "Reference" "R29"
 			(at 118.11 96.5199 0)
 			(effects
 				(font
@@ -7728,7 +7728,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
 			(at 113.792 97.79 90)
 			(effects
 				(font
@@ -7764,7 +7764,7 @@
 		(instances
 			(project "Robot"
 				(path "/c5aa62e4-5f59-48a4-ae5d-57fc70429dc3/e9eb70e2-5ab4-43f7-8ba2-9f48573f337e"
-					(reference "R23")
+					(reference "R29")
 					(unit 1)
 				)
 			)
@@ -7780,7 +7780,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "4b4732b9-7d51-4d5d-849a-2598ef78e0be")
-		(property "Reference" "#FLG02"
+		(property "Reference" "#FLG01"
 			(at 86.36 149.225 0)
 			(effects
 				(font
@@ -7830,7 +7830,7 @@
 		(instances
 			(project "Robot"
 				(path "/c5aa62e4-5f59-48a4-ae5d-57fc70429dc3/e9eb70e2-5ab4-43f7-8ba2-9f48573f337e"
-					(reference "#FLG02")
+					(reference "#FLG01")
 					(unit 1)
 				)
 			)
@@ -7846,7 +7846,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "4df57982-ea02-4112-8f4b-b15695a817d7")
-		(property "Reference" "#PWR093"
+		(property "Reference" "#PWR040"
 			(at 248.92 48.26 0)
 			(effects
 				(font
@@ -7897,7 +7897,7 @@
 		(instances
 			(project "Robot"
 				(path "/c5aa62e4-5f59-48a4-ae5d-57fc70429dc3/e9eb70e2-5ab4-43f7-8ba2-9f48573f337e"
-					(reference "#PWR093")
+					(reference "#PWR040")
 					(unit 1)
 				)
 			)
@@ -7913,7 +7913,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "4e364568-fc33-48c9-8088-d9893007a96a")
-		(property "Reference" "R17"
+		(property "Reference" "R31"
 			(at 110.49 142.24 90)
 			(effects
 				(font
@@ -7965,7 +7965,7 @@
 		(instances
 			(project "Robot"
 				(path "/c5aa62e4-5f59-48a4-ae5d-57fc70429dc3/e9eb70e2-5ab4-43f7-8ba2-9f48573f337e"
-					(reference "R17")
+					(reference "R31")
 					(unit 1)
 				)
 			)
@@ -7981,7 +7981,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "4fe6f538-3720-4910-a4ca-3d3766a3889a")
-		(property "Reference" "U8"
+		(property "Reference" "U9"
 			(at 113.03 166.37 0)
 			(effects
 				(font
@@ -8051,7 +8051,7 @@
 		(instances
 			(project "Robot"
 				(path "/c5aa62e4-5f59-48a4-ae5d-57fc70429dc3/e9eb70e2-5ab4-43f7-8ba2-9f48573f337e"
-					(reference "U8")
+					(reference "U9")
 					(unit 1)
 				)
 			)
@@ -8067,7 +8067,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "646ab435-f017-4095-b936-1b07cf757725")
-		(property "Reference" "#PWR055"
+		(property "Reference" "#PWR043"
 			(at 170.18 71.12 0)
 			(effects
 				(font
@@ -8118,7 +8118,7 @@
 		(instances
 			(project "Robot"
 				(path "/c5aa62e4-5f59-48a4-ae5d-57fc70429dc3/e9eb70e2-5ab4-43f7-8ba2-9f48573f337e"
-					(reference "#PWR055")
+					(reference "#PWR043")
 					(unit 1)
 				)
 			)
@@ -8134,7 +8134,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "6f255b8e-d2a1-4a0e-aee9-388602258384")
-		(property "Reference" "SW1"
+		(property "Reference" "SW2"
 			(at 82.55 64.77 0)
 			(effects
 				(font
@@ -8151,7 +8151,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "locals:KEY-TH_4P-L6.0-W6.0-P4.50-LS6.50"
 			(at 82.55 67.31 0)
 			(effects
 				(font
@@ -8187,7 +8187,7 @@
 		(instances
 			(project "Robot"
 				(path "/c5aa62e4-5f59-48a4-ae5d-57fc70429dc3/e9eb70e2-5ab4-43f7-8ba2-9f48573f337e"
-					(reference "SW1")
+					(reference "SW2")
 					(unit 1)
 				)
 			)
@@ -8203,7 +8203,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "8285c6bc-d220-4d4e-b4e6-b4317b9c2a43")
-		(property "Reference" "#PWR039"
+		(property "Reference" "#PWR058"
 			(at 157.48 173.99 0)
 			(effects
 				(font
@@ -8254,7 +8254,7 @@
 		(instances
 			(project "Robot"
 				(path "/c5aa62e4-5f59-48a4-ae5d-57fc70429dc3/e9eb70e2-5ab4-43f7-8ba2-9f48573f337e"
-					(reference "#PWR039")
+					(reference "#PWR058")
 					(unit 1)
 				)
 			)
@@ -8270,7 +8270,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "83046496-d636-49f7-bb95-80f4811486a5")
-		(property "Reference" "C11"
+		(property "Reference" "C19"
 			(at 127 156.2099 0)
 			(effects
 				(font
@@ -8324,7 +8324,7 @@
 		(instances
 			(project "Robot"
 				(path "/c5aa62e4-5f59-48a4-ae5d-57fc70429dc3/e9eb70e2-5ab4-43f7-8ba2-9f48573f337e"
-					(reference "C11")
+					(reference "C19")
 					(unit 1)
 				)
 			)
@@ -8340,7 +8340,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "84619ac4-8576-41f3-8944-ec8a64bbb344")
-		(property "Reference" "#PWR057"
+		(property "Reference" "#PWR047"
 			(at 115.57 101.6 0)
 			(effects
 				(font
@@ -8390,7 +8390,7 @@
 		(instances
 			(project "Robot"
 				(path "/c5aa62e4-5f59-48a4-ae5d-57fc70429dc3/e9eb70e2-5ab4-43f7-8ba2-9f48573f337e"
-					(reference "#PWR057")
+					(reference "#PWR047")
 					(unit 1)
 				)
 			)
@@ -8406,7 +8406,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "8a6552df-ffa0-44fb-9563-17788676422f")
-		(property "Reference" "#PWR031"
+		(property "Reference" "#PWR060"
 			(at 72.39 195.58 0)
 			(effects
 				(font
@@ -8456,7 +8456,7 @@
 		(instances
 			(project "Robot"
 				(path "/c5aa62e4-5f59-48a4-ae5d-57fc70429dc3/e9eb70e2-5ab4-43f7-8ba2-9f48573f337e"
-					(reference "#PWR031")
+					(reference "#PWR060")
 					(unit 1)
 				)
 			)
@@ -8472,7 +8472,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "8a89c4e9-e7a1-47f0-ab5b-aef804beaa7c")
-		(property "Reference" "C14"
+		(property "Reference" "C18"
 			(at 107.95 155.7781 0)
 			(effects
 				(font
@@ -8526,7 +8526,7 @@
 		(instances
 			(project "Robot"
 				(path "/c5aa62e4-5f59-48a4-ae5d-57fc70429dc3/e9eb70e2-5ab4-43f7-8ba2-9f48573f337e"
-					(reference "C14")
+					(reference "C18")
 					(unit 1)
 				)
 			)
@@ -8542,7 +8542,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "8b72d49b-eb37-4a6c-9c8a-b74a82a4bc93")
-		(property "Reference" "U7"
+		(property "Reference" "U8"
 			(at 66.04 143.51 0)
 			(effects
 				(font
@@ -8612,7 +8612,7 @@
 		(instances
 			(project "Robot"
 				(path "/c5aa62e4-5f59-48a4-ae5d-57fc70429dc3/e9eb70e2-5ab4-43f7-8ba2-9f48573f337e"
-					(reference "U7")
+					(reference "U8")
 					(unit 1)
 				)
 			)
@@ -8628,7 +8628,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "8f72cf67-5def-48fd-bb99-d989e765cbc9")
-		(property "Reference" "#PWR029"
+		(property "Reference" "#PWR057"
 			(at 34.29 180.34 0)
 			(effects
 				(font
@@ -8678,7 +8678,7 @@
 		(instances
 			(project "Robot"
 				(path "/c5aa62e4-5f59-48a4-ae5d-57fc70429dc3/e9eb70e2-5ab4-43f7-8ba2-9f48573f337e"
-					(reference "#PWR029")
+					(reference "#PWR057")
 					(unit 1)
 				)
 			)
@@ -8694,7 +8694,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "9674123c-80aa-493d-a807-a7cc6eba5265")
-		(property "Reference" "C25"
+		(property "Reference" "C12"
 			(at 157.48 63.5 90)
 			(effects
 				(font
@@ -8746,7 +8746,7 @@
 		(instances
 			(project "Robot"
 				(path "/c5aa62e4-5f59-48a4-ae5d-57fc70429dc3/e9eb70e2-5ab4-43f7-8ba2-9f48573f337e"
-					(reference "C25")
+					(reference "C12")
 					(unit 1)
 				)
 			)
@@ -8762,7 +8762,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "97590f05-5588-41f0-b65f-2440b0ad1369")
-		(property "Reference" "C17"
+		(property "Reference" "C23"
 			(at 142.24 179.0699 0)
 			(effects
 				(font
@@ -8816,7 +8816,7 @@
 		(instances
 			(project "Robot"
 				(path "/c5aa62e4-5f59-48a4-ae5d-57fc70429dc3/e9eb70e2-5ab4-43f7-8ba2-9f48573f337e"
-					(reference "C17")
+					(reference "C23")
 					(unit 1)
 				)
 			)
@@ -8832,7 +8832,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "994f6b7f-9c15-45b6-bcf2-de6d443c6696")
-		(property "Reference" "J9"
+		(property "Reference" "J18"
 			(at 80.01 41.9099 0)
 			(effects
 				(font
@@ -8850,7 +8850,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Connector_JST:JST_XH_B5B-XH-A_1x05_P2.50mm_Vertical"
+		(property "Footprint" "Connector_JST:JST_XH_S5B-XH-A-1_1x05_P2.50mm_Horizontal"
 			(at 78.74 43.18 0)
 			(effects
 				(font
@@ -8895,7 +8895,7 @@
 		(instances
 			(project "Robot"
 				(path "/c5aa62e4-5f59-48a4-ae5d-57fc70429dc3/e9eb70e2-5ab4-43f7-8ba2-9f48573f337e"
-					(reference "J9")
+					(reference "J18")
 					(unit 1)
 				)
 			)
@@ -8911,7 +8911,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "9d2b8b78-90b3-4d40-9c82-b93b8fa71acc")
-		(property "Reference" "#PWR032"
+		(property "Reference" "#PWR055"
 			(at 91.44 172.72 0)
 			(effects
 				(font
@@ -8961,7 +8961,7 @@
 		(instances
 			(project "Robot"
 				(path "/c5aa62e4-5f59-48a4-ae5d-57fc70429dc3/e9eb70e2-5ab4-43f7-8ba2-9f48573f337e"
-					(reference "#PWR032")
+					(reference "#PWR055")
 					(unit 1)
 				)
 			)
@@ -8977,7 +8977,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "a74337c6-889a-4a5d-bc10-312ad9a47007")
-		(property "Reference" "C10"
+		(property "Reference" "C20"
 			(at 21.59 157.0481 0)
 			(effects
 				(font
@@ -9031,7 +9031,7 @@
 		(instances
 			(project "Robot"
 				(path "/c5aa62e4-5f59-48a4-ae5d-57fc70429dc3/e9eb70e2-5ab4-43f7-8ba2-9f48573f337e"
-					(reference "C10")
+					(reference "C20")
 					(unit 1)
 				)
 			)
@@ -9047,7 +9047,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "ac7df26a-b442-42a4-b6fe-1edff002f8d4")
-		(property "Reference" "#PWR056"
+		(property "Reference" "#PWR046"
 			(at 95.25 101.6 0)
 			(effects
 				(font
@@ -9097,7 +9097,7 @@
 		(instances
 			(project "Robot"
 				(path "/c5aa62e4-5f59-48a4-ae5d-57fc70429dc3/e9eb70e2-5ab4-43f7-8ba2-9f48573f337e"
-					(reference "#PWR056")
+					(reference "#PWR046")
 					(unit 1)
 				)
 			)
@@ -9112,7 +9112,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "ae90c51c-120a-4aef-baa9-2fac8af066d8")
-		(property "Reference" "C11"
+		(property "Reference" "C16"
 			(at 36.83 154.94 0)
 			(effects
 				(font
@@ -9166,7 +9166,7 @@
 		(instances
 			(project "Robot"
 				(path "/c5aa62e4-5f59-48a4-ae5d-57fc70429dc3/e9eb70e2-5ab4-43f7-8ba2-9f48573f337e"
-					(reference "C11")
+					(reference "C16")
 					(unit 1)
 				)
 			)
@@ -9182,7 +9182,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "b643377a-5a5f-45b5-8d5e-cab304eaa332")
-		(property "Reference" "R47"
+		(property "Reference" "R30"
 			(at 133.35 99.0599 0)
 			(effects
 				(font
@@ -9200,7 +9200,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
 			(at 129.032 100.33 90)
 			(effects
 				(font
@@ -9236,7 +9236,7 @@
 		(instances
 			(project "Robot"
 				(path "/c5aa62e4-5f59-48a4-ae5d-57fc70429dc3/e9eb70e2-5ab4-43f7-8ba2-9f48573f337e"
-					(reference "R47")
+					(reference "R30")
 					(unit 1)
 				)
 			)
@@ -9268,7 +9268,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "easyeda2kicad:SO-8_L4.9-W3.9-P1.27-LS5.9-BL"
 			(at 123.19 25.4 0)
 			(effects
 				(font
@@ -9338,7 +9338,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "b92cd2eb-6513-42f4-902b-3aaed4b74aaf")
-		(property "Reference" "#PWR034"
+		(property "Reference" "#PWR054"
 			(at 123.19 170.18 0)
 			(effects
 				(font
@@ -9388,7 +9388,7 @@
 		(instances
 			(project "Robot"
 				(path "/c5aa62e4-5f59-48a4-ae5d-57fc70429dc3/e9eb70e2-5ab4-43f7-8ba2-9f48573f337e"
-					(reference "#PWR034")
+					(reference "#PWR054")
 					(unit 1)
 				)
 			)
@@ -9404,7 +9404,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "ba07b5da-1133-4513-a6e9-ac7c62fd9add")
-		(property "Reference" "R22"
+		(property "Reference" "R28"
 			(at 97.79 96.5199 0)
 			(effects
 				(font
@@ -9422,7 +9422,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
 			(at 93.472 97.79 90)
 			(effects
 				(font
@@ -9458,7 +9458,7 @@
 		(instances
 			(project "Robot"
 				(path "/c5aa62e4-5f59-48a4-ae5d-57fc70429dc3/e9eb70e2-5ab4-43f7-8ba2-9f48573f337e"
-					(reference "R22")
+					(reference "R28")
 					(unit 1)
 				)
 			)
@@ -9474,7 +9474,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "c3a57ecf-10ad-407e-8b12-a71703b14512")
-		(property "Reference" "U6"
+		(property "Reference" "U7"
 			(at 160.02 76.1298 0)
 			(effects
 				(font
@@ -9490,7 +9490,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "easyeda2kicad:SC-70-6_L2.0-W1.3-P0.65-LS2.1-BL"
 			(at 146.05 87.63 0)
 			(effects
 				(font
@@ -9538,7 +9538,7 @@
 		(instances
 			(project "Robot"
 				(path "/c5aa62e4-5f59-48a4-ae5d-57fc70429dc3/e9eb70e2-5ab4-43f7-8ba2-9f48573f337e"
-					(reference "U6")
+					(reference "U7")
 					(unit 1)
 				)
 			)
@@ -9554,7 +9554,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "c7cb7bd2-677b-41a0-8fcd-0d19af008999")
-		(property "Reference" "#PWR050"
+		(property "Reference" "#PWR045"
 			(at 123.19 78.74 0)
 			(effects
 				(font
@@ -9604,7 +9604,7 @@
 		(instances
 			(project "Robot"
 				(path "/c5aa62e4-5f59-48a4-ae5d-57fc70429dc3/e9eb70e2-5ab4-43f7-8ba2-9f48573f337e"
-					(reference "#PWR050")
+					(reference "#PWR045")
 					(unit 1)
 				)
 			)
@@ -9696,7 +9696,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "c9d4529f-9c8e-40f9-95a6-c708642f1c61")
-		(property "Reference" "C12"
+		(property "Reference" "C22"
 			(at 76.2 179.0699 0)
 			(effects
 				(font
@@ -9750,7 +9750,7 @@
 		(instances
 			(project "Robot"
 				(path "/c5aa62e4-5f59-48a4-ae5d-57fc70429dc3/e9eb70e2-5ab4-43f7-8ba2-9f48573f337e"
-					(reference "C12")
+					(reference "C22")
 					(unit 1)
 				)
 			)
@@ -9766,7 +9766,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "ce14bc9b-73ab-4daf-acba-8b2433bbe9fb")
-		(property "Reference" "#PWR035"
+		(property "Reference" "#PWR050"
 			(at 124.46 118.11 0)
 			(effects
 				(font
@@ -9816,7 +9816,7 @@
 		(instances
 			(project "Robot"
 				(path "/c5aa62e4-5f59-48a4-ae5d-57fc70429dc3/e9eb70e2-5ab4-43f7-8ba2-9f48573f337e"
-					(reference "#PWR035")
+					(reference "#PWR050")
 					(unit 1)
 				)
 			)
@@ -9832,7 +9832,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "ce169625-b159-4ee7-9b6e-9881e99deb57")
-		(property "Reference" "C16"
+		(property "Reference" "C14"
 			(at 134.62 135.8899 0)
 			(effects
 				(font
@@ -9886,7 +9886,7 @@
 		(instances
 			(project "Robot"
 				(path "/c5aa62e4-5f59-48a4-ae5d-57fc70429dc3/e9eb70e2-5ab4-43f7-8ba2-9f48573f337e"
-					(reference "C16")
+					(reference "C14")
 					(unit 1)
 				)
 			)
@@ -9902,7 +9902,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "cfeee0be-dd01-4bca-bde9-d2bc0c708b71")
-		(property "Reference" "#PWR053"
+		(property "Reference" "#PWR049"
 			(at 146.05 111.76 0)
 			(effects
 				(font
@@ -9952,7 +9952,7 @@
 		(instances
 			(project "Robot"
 				(path "/c5aa62e4-5f59-48a4-ae5d-57fc70429dc3/e9eb70e2-5ab4-43f7-8ba2-9f48573f337e"
-					(reference "#PWR053")
+					(reference "#PWR049")
 					(unit 1)
 				)
 			)
@@ -9968,7 +9968,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "d5b7e43e-3d6a-46d9-be19-61a0a2ed7a4c")
-		(property "Reference" "C26"
+		(property "Reference" "C13"
 			(at 109.22 80.01 90)
 			(effects
 				(font
@@ -10020,7 +10020,7 @@
 		(instances
 			(project "Robot"
 				(path "/c5aa62e4-5f59-48a4-ae5d-57fc70429dc3/e9eb70e2-5ab4-43f7-8ba2-9f48573f337e"
-					(reference "C26")
+					(reference "C13")
 					(unit 1)
 				)
 			)
@@ -10037,7 +10037,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "dafe8a74-d08e-4a86-9170-f0fb0d544d0b")
-		(property "Reference" "J7"
+		(property "Reference" "J17"
 			(at 31.75 25.4 0)
 			(effects
 				(font
@@ -10053,7 +10053,7 @@
 				)
 			)
 		)
-		(property "Footprint" "easyeda2kicad:DB9-TH_LD09P33E4GV00LF"
+		(property "Footprint" "easyeda2kicad:DSUB-TH_DMS009PM000XH00"
 			(at 31.75 43.18 0)
 			(effects
 				(font
@@ -10110,7 +10110,7 @@
 		(instances
 			(project "Robot"
 				(path "/c5aa62e4-5f59-48a4-ae5d-57fc70429dc3/e9eb70e2-5ab4-43f7-8ba2-9f48573f337e"
-					(reference "J7")
+					(reference "J17")
 					(unit 1)
 				)
 			)
@@ -10126,7 +10126,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "e291d409-4e27-4729-ad3d-19ac8b5b4246")
-		(property "Reference" "U2"
+		(property "Reference" "U4"
 			(at 147.32 140.97 90)
 			(effects
 				(font
@@ -10319,7 +10319,7 @@
 		(instances
 			(project "Robot"
 				(path "/c5aa62e4-5f59-48a4-ae5d-57fc70429dc3/e9eb70e2-5ab4-43f7-8ba2-9f48573f337e"
-					(reference "U2")
+					(reference "U4")
 					(unit 4)
 				)
 			)
@@ -10335,7 +10335,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "e655f89a-efc1-4ff6-9db8-bc2fd932c5a6")
-		(property "Reference" "#PWR051"
+		(property "Reference" "#PWR044"
 			(at 64.77 72.39 0)
 			(effects
 				(font
@@ -10386,7 +10386,7 @@
 		(instances
 			(project "Robot"
 				(path "/c5aa62e4-5f59-48a4-ae5d-57fc70429dc3/e9eb70e2-5ab4-43f7-8ba2-9f48573f337e"
-					(reference "#PWR051")
+					(reference "#PWR044")
 					(unit 1)
 				)
 			)
@@ -10402,7 +10402,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "fa9be63d-9a58-4404-b55c-722357ded006")
-		(property "Reference" "R21"
+		(property "Reference" "R27"
 			(at 133.35 33.0199 0)
 			(effects
 				(font
@@ -10420,7 +10420,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
 			(at 129.032 34.29 90)
 			(effects
 				(font
@@ -10456,7 +10456,7 @@
 		(instances
 			(project "Robot"
 				(path "/c5aa62e4-5f59-48a4-ae5d-57fc70429dc3/e9eb70e2-5ab4-43f7-8ba2-9f48573f337e"
-					(reference "R21")
+					(reference "R27")
 					(unit 1)
 				)
 			)
@@ -10542,7 +10542,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "fd452767-01c8-472a-b2df-4a76838db515")
-		(property "Reference" "C10"
+		(property "Reference" "C21"
 			(at 138.43 158.75 90)
 			(effects
 				(font
@@ -10594,7 +10594,7 @@
 		(instances
 			(project "Robot"
 				(path "/c5aa62e4-5f59-48a4-ae5d-57fc70429dc3/e9eb70e2-5ab4-43f7-8ba2-9f48573f337e"
-					(reference "C10")
+					(reference "C21")
 					(unit 1)
 				)
 			)

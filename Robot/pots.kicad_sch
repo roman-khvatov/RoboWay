@@ -2180,7 +2180,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "135415ad-70f3-40cd-bff0-724021e20293")
-		(property "Reference" "R44"
+		(property "Reference" "R55"
 			(at 146.05 96.5199 90)
 			(effects
 				(font
@@ -2270,7 +2270,7 @@
 		(instances
 			(project "Robot"
 				(path "/c5aa62e4-5f59-48a4-ae5d-57fc70429dc3/7a01a313-5403-4786-9812-b769a17d4656"
-					(reference "R44")
+					(reference "R55")
 					(unit 1)
 				)
 			)
@@ -2287,7 +2287,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "1d804b33-8ed8-4ca9-86e2-a1275a400311")
-		(property "Reference" "R43"
+		(property "Reference" "R54"
 			(at 113.03 96.5199 90)
 			(effects
 				(font
@@ -2377,7 +2377,7 @@
 		(instances
 			(project "Robot"
 				(path "/c5aa62e4-5f59-48a4-ae5d-57fc70429dc3/7a01a313-5403-4786-9812-b769a17d4656"
-					(reference "R43")
+					(reference "R54")
 					(unit 1)
 				)
 			)
@@ -2393,7 +2393,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "61fe23de-dff0-4aec-89df-f4d6ac544a83")
-		(property "Reference" "C51"
+		(property "Reference" "C54"
 			(at 195.58 126.9999 0)
 			(effects
 				(font
@@ -2411,7 +2411,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder"
 			(at 190.8048 124.46 0)
 			(effects
 				(font
@@ -2447,7 +2447,7 @@
 		(instances
 			(project "Robot"
 				(path "/c5aa62e4-5f59-48a4-ae5d-57fc70429dc3/7a01a313-5403-4786-9812-b769a17d4656"
-					(reference "C51")
+					(reference "C54")
 					(unit 1)
 				)
 			)
@@ -2463,7 +2463,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "74de0529-ae7b-4d30-9c70-ad1346d94b9c")
-		(property "Reference" "C49"
+		(property "Reference" "C52"
 			(at 130.81 126.9999 0)
 			(effects
 				(font
@@ -2481,7 +2481,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder"
 			(at 126.0348 124.46 0)
 			(effects
 				(font
@@ -2517,7 +2517,7 @@
 		(instances
 			(project "Robot"
 				(path "/c5aa62e4-5f59-48a4-ae5d-57fc70429dc3/7a01a313-5403-4786-9812-b769a17d4656"
-					(reference "C49")
+					(reference "C52")
 					(unit 1)
 				)
 			)
@@ -2533,7 +2533,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "788d8612-d6b6-4ae0-a22a-9ebf2402cf71")
-		(property "Reference" "C50"
+		(property "Reference" "C53"
 			(at 161.29 126.9999 0)
 			(effects
 				(font
@@ -2551,7 +2551,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder"
 			(at 156.5148 124.46 0)
 			(effects
 				(font
@@ -2587,7 +2587,7 @@
 		(instances
 			(project "Robot"
 				(path "/c5aa62e4-5f59-48a4-ae5d-57fc70429dc3/7a01a313-5403-4786-9812-b769a17d4656"
-					(reference "C50")
+					(reference "C53")
 					(unit 1)
 				)
 			)
@@ -2603,7 +2603,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "8f0282e8-c9f4-41e9-b18c-15b6c9023fd5")
-		(property "Reference" "#PWR098"
+		(property "Reference" "#PWR0104"
 			(at 95.25 81.28 0)
 			(effects
 				(font
@@ -2654,7 +2654,7 @@
 		(instances
 			(project "Robot"
 				(path "/c5aa62e4-5f59-48a4-ae5d-57fc70429dc3/7a01a313-5403-4786-9812-b769a17d4656"
-					(reference "#PWR098")
+					(reference "#PWR0104")
 					(unit 1)
 				)
 			)
@@ -2670,7 +2670,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "9937d387-be25-4178-8480-736fc8704b8d")
-		(property "Reference" "#PWR099"
+		(property "Reference" "#PWR0106"
 			(at 127 147.32 0)
 			(effects
 				(font
@@ -2720,7 +2720,7 @@
 		(instances
 			(project "Robot"
 				(path "/c5aa62e4-5f59-48a4-ae5d-57fc70429dc3/7a01a313-5403-4786-9812-b769a17d4656"
-					(reference "#PWR099")
+					(reference "#PWR0106")
 					(unit 1)
 				)
 			)
@@ -2736,7 +2736,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "b814d83b-5f11-41a0-b388-c91e27dbc896")
-		(property "Reference" "#PWR097"
+		(property "Reference" "#PWR0103"
 			(at 120.65 68.58 0)
 			(effects
 				(font
@@ -2786,7 +2786,7 @@
 		(instances
 			(project "Robot"
 				(path "/c5aa62e4-5f59-48a4-ae5d-57fc70429dc3/7a01a313-5403-4786-9812-b769a17d4656"
-					(reference "#PWR097")
+					(reference "#PWR0103")
 					(unit 1)
 				)
 			)
@@ -2802,7 +2802,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "c3492796-0c3b-45e7-98c0-c14ddd6dcbcd")
-		(property "Reference" "R45"
+		(property "Reference" "R56"
 			(at 180.34 96.5199 90)
 			(effects
 				(font
@@ -2892,7 +2892,7 @@
 		(instances
 			(project "Robot"
 				(path "/c5aa62e4-5f59-48a4-ae5d-57fc70429dc3/7a01a313-5403-4786-9812-b769a17d4656"
-					(reference "R45")
+					(reference "R56")
 					(unit 1)
 				)
 			)
@@ -2908,7 +2908,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "d85431b2-01fc-41bb-aacd-2b619e8feb96")
-		(property "Reference" "R46"
+		(property "Reference" "R53"
 			(at 123.19 72.3899 0)
 			(effects
 				(font
@@ -2926,7 +2926,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
 			(at 118.872 73.66 90)
 			(effects
 				(font
@@ -2962,7 +2962,7 @@
 		(instances
 			(project "Robot"
 				(path "/c5aa62e4-5f59-48a4-ae5d-57fc70429dc3/7a01a313-5403-4786-9812-b769a17d4656"
-					(reference "R46")
+					(reference "R53")
 					(unit 1)
 				)
 			)
@@ -2978,7 +2978,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "e36eac62-a021-4bc1-a78e-003b98f9ae45")
-		(property "Reference" "#PWR096"
+		(property "Reference" "#PWR0105"
 			(at 120.65 119.38 0)
 			(effects
 				(font
@@ -3028,7 +3028,7 @@
 		(instances
 			(project "Robot"
 				(path "/c5aa62e4-5f59-48a4-ae5d-57fc70429dc3/7a01a313-5403-4786-9812-b769a17d4656"
-					(reference "#PWR096")
+					(reference "#PWR0105")
 					(unit 1)
 				)
 			)
@@ -3044,7 +3044,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "efde5366-86d2-41dc-a9c6-1859042b9bda")
-		(property "Reference" "C48"
+		(property "Reference" "C51"
 			(at 111.76 73.66 90)
 			(effects
 				(font
@@ -3060,7 +3060,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_1210_3225Metric_Pad1.33x2.70mm_HandSolder"
 			(at 115.57 80.3148 0)
 			(effects
 				(font
@@ -3096,7 +3096,7 @@
 		(instances
 			(project "Robot"
 				(path "/c5aa62e4-5f59-48a4-ae5d-57fc70429dc3/7a01a313-5403-4786-9812-b769a17d4656"
-					(reference "C48")
+					(reference "C51")
 					(unit 1)
 				)
 			)
