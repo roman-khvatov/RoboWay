@@ -920,332 +920,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "easyeda2kicad:RK09K1130A6S"
-			(pin_numbers
-				(hide yes)
-			)
-			(pin_names
-				(hide yes)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "R"
-				(at 0 8.89 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "RK09K1130A6S"
-				(at 0 -8.89 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" "easyeda2kicad:RES-TH_RK09K1130A6S"
-				(at 0 -11.43 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "https://www.lcsc.com/datasheet/C209770.pdf"
-				(at 0 -13.97 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Manufacturer" "ALPSALPINE(阿尔卑斯阿尔派)"
-				(at 0 -16.51 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "MPN" "RK09K1130A6S"
-				(at 0 -19.05 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "LCSC Part" "C209770"
-				(at 0 -21.59 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "Variable Resistors/Potentiometers"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "RK09K1130A6S_0_1"
-				(polyline
-					(pts
-						(xy -2.79 -1.27) (xy -2.29 -0.25)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -2.29 -0.25) (xy -1.78 -2.29)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -1.78 -2.29) (xy -1.02 -0.25)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -1.02 -0.25) (xy -0.51 -2.29)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -0.76 1.27) (xy -0.25 0.25) (xy 0.25 1.27) (xy -0.76 1.27)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type background)
-					)
-				)
-				(polyline
-					(pts
-						(xy -0.51 -2.29) (xy 0 -0.25)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -0.25 1.27) (xy -0.25 0.25)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 -0.25) (xy 0.76 -2.29)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0.76 -2.29) (xy 1.27 -0.25)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 1.27 -0.25) (xy 2.03 -2.29)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 2.03 -2.29) (xy 2.29 -1.27)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(circle
-					(center 2.54 -0.51)
-					(radius 0.25)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(pin unspecified line
-					(at -5.08 -1.27 0)
-					(length 2.54)
-					(name "3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin unspecified line
-					(at -5.08 -3.81 0)
-					(length 5.08)
-					(name "4"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "4"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin unspecified line
-					(at 0 3.81 270)
-					(length 2.54)
-					(name "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin unspecified line
-					(at 5.08 -1.27 180)
-					(length 2.54)
-					(name "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin unspecified line
-					(at 5.08 -3.81 180)
-					(length 5.08)
-					(name "5"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "5"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "power:+5V"
 			(power)
 			(pin_numbers
@@ -1492,12 +1166,6 @@
 		(uuid "3b2b046d-6db9-4409-a840-a07276b66ba5")
 	)
 	(junction
-		(at 157.48 137.16)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "3bab141b-7eb7-4382-8360-b521cc438d7a")
-	)
-	(junction
 		(at 120.65 86.36)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -1516,22 +1184,10 @@
 		(uuid "6c624898-6548-435f-91cc-4cf1087c9d15")
 	)
 	(junction
-		(at 149.86 107.95)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "744c9083-2fc1-4076-8e99-db0a01a71bf1")
-	)
-	(junction
 		(at 116.84 107.95)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "750bef6a-b2c4-4bed-adb7-437f96161a01")
-	)
-	(junction
-		(at 191.77 119.38)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "a656813c-87b3-4ddb-801d-96116078f5a9")
 	)
 	(junction
 		(at 120.65 107.95)
@@ -1544,24 +1200,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "b93fad23-23cb-4c57-89f7-c668efac3624")
-	)
-	(junction
-		(at 181.61 107.95)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "c9590e13-239c-436b-8a1d-69a39e477cd7")
-	)
-	(junction
-		(at 184.15 86.36)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "cfc23d1b-3098-4179-a4ee-f3a3becf1761")
-	)
-	(junction
-		(at 180.34 107.95)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "e1fd92b1-8799-49c2-8292-d3be54013f20")
 	)
 	(junction
 		(at 146.05 107.95)
@@ -1657,16 +1295,6 @@
 	)
 	(wire
 		(pts
-			(xy 157.48 137.16) (xy 191.77 137.16)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "44113190-b680-4712-af41-2812fdd17059")
-	)
-	(wire
-		(pts
 			(xy 146.05 90.17) (xy 146.05 107.95)
 		)
 		(stroke
@@ -1684,16 +1312,6 @@
 			(type default)
 		)
 		(uuid "4d6d0143-dc90-4caf-89e1-ae7e74db3266")
-	)
-	(wire
-		(pts
-			(xy 191.77 119.38) (xy 191.77 124.46)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "51242ad8-88cf-4d0e-881e-2e54030efb02")
 	)
 	(wire
 		(pts
@@ -1747,16 +1365,6 @@
 	)
 	(wire
 		(pts
-			(xy 184.15 107.95) (xy 184.15 102.87)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "6e67d343-a80e-4bf6-a746-4213ccec5394")
-	)
-	(wire
-		(pts
 			(xy 114.3 102.87) (xy 114.3 107.95)
 		)
 		(stroke
@@ -1784,26 +1392,6 @@
 			(type default)
 		)
 		(uuid "781ae0fd-c56b-4c96-b0c4-c10d42a98105")
-	)
-	(wire
-		(pts
-			(xy 180.34 90.17) (xy 180.34 107.95)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "788cb556-1c16-4e52-8664-b8dcb087bfc1")
-	)
-	(wire
-		(pts
-			(xy 181.61 102.87) (xy 181.61 107.95)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "79884225-03e0-44cc-81a9-7e22d619364a")
 	)
 	(wire
 		(pts
@@ -1847,16 +1435,6 @@
 	)
 	(wire
 		(pts
-			(xy 191.77 119.38) (xy 195.58 119.38)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "8ab71d54-1b0e-41b2-b1f4-1727039f8565")
-	)
-	(wire
-		(pts
 			(xy 120.65 107.95) (xy 146.05 107.95)
 		)
 		(stroke
@@ -1867,16 +1445,6 @@
 	)
 	(wire
 		(pts
-			(xy 181.61 90.17) (xy 180.34 90.17)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "8cec86f4-9d35-4f49-9eef-64095c0f5f06")
-	)
-	(wire
-		(pts
 			(xy 120.65 86.36) (xy 149.86 86.36)
 		)
 		(stroke
@@ -1884,26 +1452,6 @@
 			(type default)
 		)
 		(uuid "99cf812f-48d3-4c74-ae43-f12249e54573")
-	)
-	(wire
-		(pts
-			(xy 149.86 86.36) (xy 184.15 86.36)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "a4d192ae-e1ce-4f58-8e6e-7a1c468bd86a")
-	)
-	(wire
-		(pts
-			(xy 189.23 97.79) (xy 191.77 97.79)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "b2792840-177d-45a1-99c0-ca9746dd334a")
 	)
 	(wire
 		(pts
@@ -1957,16 +1505,6 @@
 	)
 	(wire
 		(pts
-			(xy 180.34 107.95) (xy 181.61 107.95)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c3d17fc7-58f0-4bac-b9bf-c79a9e40d174")
-	)
-	(wire
-		(pts
 			(xy 120.65 77.47) (xy 120.65 81.28)
 		)
 		(stroke
@@ -1974,26 +1512,6 @@
 			(type default)
 		)
 		(uuid "c45ef46b-c4de-45c9-90c9-3e36ba754eba")
-	)
-	(wire
-		(pts
-			(xy 191.77 97.79) (xy 191.77 119.38)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c9b4cce9-cb70-458c-9eec-abd909d163c0")
-	)
-	(wire
-		(pts
-			(xy 149.86 107.95) (xy 180.34 107.95)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d08cf533-21dc-426d-9dfe-57115d18475a")
 	)
 	(wire
 		(pts
@@ -2017,7 +1535,7 @@
 	)
 	(wire
 		(pts
-			(xy 184.15 86.36) (xy 200.66 86.36)
+			(xy 149.86 86.36) (xy 163.83 86.36)
 		)
 		(stroke
 			(width 0)
@@ -2037,16 +1555,6 @@
 	)
 	(wire
 		(pts
-			(xy 191.77 137.16) (xy 191.77 132.08)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "e7bed6ad-4e9e-4ddd-8bc1-c55fe17506bb")
-	)
-	(wire
-		(pts
 			(xy 114.3 92.71) (xy 114.3 90.17)
 		)
 		(stroke
@@ -2054,16 +1562,6 @@
 			(type default)
 		)
 		(uuid "e8f29570-94d5-4aef-a023-a6824c579888")
-	)
-	(wire
-		(pts
-			(xy 181.61 107.95) (xy 184.15 107.95)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f04c3e38-d408-4e1e-95da-1fbdb5920f17")
 	)
 	(wire
 		(pts
@@ -2105,26 +1603,6 @@
 		)
 		(uuid "f97548e7-825f-402f-ae20-b096c3f64241")
 	)
-	(wire
-		(pts
-			(xy 181.61 92.71) (xy 181.61 90.17)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f9ce72da-1c52-438e-a894-bc409b2a7e62")
-	)
-	(wire
-		(pts
-			(xy 184.15 86.36) (xy 184.15 92.71)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ff4f1edb-b7da-480a-8cd0-6dfd63e0a747")
-	)
 	(hierarchical_label "O1"
 		(shape output)
 		(at 132.08 119.38 0)
@@ -2136,20 +1614,9 @@
 		)
 		(uuid "7d644aac-e705-491c-906a-ea95caf2b244")
 	)
-	(hierarchical_label "O3"
-		(shape output)
-		(at 195.58 119.38 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "d37f7f7e-feee-4144-a36e-8bcc0884157e")
-	)
 	(hierarchical_label "Ref"
 		(shape output)
-		(at 200.66 86.36 0)
+		(at 163.83 86.36 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2378,76 +1845,6 @@
 			(project "Robot"
 				(path "/c5aa62e4-5f59-48a4-ae5d-57fc70429dc3/7a01a313-5403-4786-9812-b769a17d4656"
 					(reference "R54")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:C")
-		(at 191.77 128.27 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "61fe23de-dff0-4aec-89df-f4d6ac544a83")
-		(property "Reference" "C54"
-			(at 195.58 126.9999 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Value" "1.0"
-			(at 195.58 129.5399 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder"
-			(at 190.8048 124.46 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 191.77 128.27 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Unpolarized capacitor"
-			(at 191.77 128.27 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "d3a1b473-3b21-44be-87ca-aa776e239882")
-		)
-		(pin "1"
-			(uuid "7e972d89-e6a6-467a-9f47-ccfcde342b7f")
-		)
-		(instances
-			(project "Robot"
-				(path "/c5aa62e4-5f59-48a4-ae5d-57fc70429dc3/7a01a313-5403-4786-9812-b769a17d4656"
-					(reference "C54")
 					(unit 1)
 				)
 			)
@@ -2787,112 +2184,6 @@
 			(project "Robot"
 				(path "/c5aa62e4-5f59-48a4-ae5d-57fc70429dc3/7a01a313-5403-4786-9812-b769a17d4656"
 					(reference "#PWR0103")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "easyeda2kicad:RK09K1130A6S")
-		(at 185.42 97.79 270)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "c3492796-0c3b-45e7-98c0-c14ddd6dcbcd")
-		(property "Reference" "R56"
-			(at 180.34 96.5199 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Value" "RK09K1130A6S"
-			(at 180.34 99.0599 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" "easyeda2kicad:RES-TH_RK09K1130A6S"
-			(at 173.99 97.79 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/C209770.pdf"
-			(at 171.45 97.79 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 185.42 97.79 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "ALPSALPINE(阿尔卑斯阿尔派)"
-			(at 168.91 97.79 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "RK09K1130A6S"
-			(at 166.37 97.79 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC Part" "C209770"
-			(at 163.83 97.79 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "3"
-			(uuid "cd6b2c9a-e4e9-45ae-ab07-cbec2a8084b5")
-		)
-		(pin "4"
-			(uuid "baede450-aa8c-4319-88dd-2e6237863642")
-		)
-		(pin "2"
-			(uuid "d23fc063-0d66-4bbb-8b3d-15e116939250")
-		)
-		(pin "1"
-			(uuid "fca3ad7a-51f9-497e-ba11-e7ba93bc9dd7")
-		)
-		(pin "5"
-			(uuid "0efa3ae7-0cc8-438b-adfb-d59058d5e407")
-		)
-		(instances
-			(project "Robot"
-				(path "/c5aa62e4-5f59-48a4-ae5d-57fc70429dc3/7a01a313-5403-4786-9812-b769a17d4656"
-					(reference "R56")
 					(unit 1)
 				)
 			)
