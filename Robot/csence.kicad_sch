@@ -4,6 +4,10 @@
 	(generator_version "9.0")
 	(uuid "c20659a7-d26a-4c4e-a779-a0dca35667a1")
 	(paper "A4")
+	(title_block
+		(title "Current Sense")
+		(company "RoboWay")
+	)
 	(lib_symbols
 		(symbol "Amplifier_Current:INA180A2"
 			(pin_names

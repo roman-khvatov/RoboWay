@@ -4,6 +4,10 @@
 	(generator_version "9.0")
 	(uuid "9dda8234-49a5-4d9e-b198-9b3390969723")
 	(paper "A4")
+	(title_block
+		(title "FPGA")
+		(company "RoboWay")
+	)
 	(lib_symbols
 		(symbol "74xx:74HC245"
 			(pin_names

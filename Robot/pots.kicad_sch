@@ -4,6 +4,9 @@
 	(generator_version "9.0")
 	(uuid "07fd0c6b-0b23-4b61-b2b8-36ee4022841c")
 	(paper "A4")
+	(title_block
+		(company "RoboWay")
+	)
 	(lib_symbols
 		(symbol "Device:C"
 			(pin_numbers

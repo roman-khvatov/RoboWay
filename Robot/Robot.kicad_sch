@@ -4,6 +4,10 @@
 	(generator_version "9.0")
 	(uuid "c5aa62e4-5f59-48a4-ae5d-57fc70429dc3")
 	(paper "A4")
+	(title_block
+		(title "Main")
+		(company "RoboWay")
+	)
 	(lib_symbols
 		(symbol "Analog_ADC:ADC128D818"
 			(exclude_from_sim no)

@@ -4,6 +4,10 @@
 	(generator_version "9.0")
 	(uuid "6f9f2782-e3b9-4f21-a424-353d21bc5881")
 	(paper "A4")
+	(title_block
+		(title "Power")
+		(company "RoboWay")
+	)
 	(lib_symbols
 		(symbol "74xGxx:74LVC1G175"
 			(pin_names
