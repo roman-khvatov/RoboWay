@@ -6908,12 +6908,12 @@
 	(symbol
 		(lib_id "Diode:BAT54C")
 		(at 95.25 72.39 270)
+		(mirror x)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "029e7c6c-120d-4f46-bf2b-0397ec18618a")
 		(property "Reference" "D4"
 			(at 97.79 71.1199 90)
@@ -6934,7 +6934,7 @@
 			)
 		)
 		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
-			(at 98.425 74.295 0)
+			(at 98.425 70.485 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6944,7 +6944,7 @@
 			)
 		)
 		(property "Datasheet" "http://www.diodes.com/_files/datasheets/ds11005.pdf"
-			(at 95.25 70.358 0)
+			(at 95.25 74.422 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6981,34 +6981,32 @@
 	)
 	(symbol
 		(lib_id "Connector:Conn_01x02_Pin")
-		(at 78.74 33.02 180)
+		(at 78.74 30.48 0)
+		(mirror y)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "071855a1-0746-4d7b-9a3a-7cdd39a939c8")
 		(property "Reference" "J16"
-			(at 80.01 30.4799 0)
+			(at 78.105 25.4 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify right)
 			)
 		)
 		(property "Value" "Battery"
-			(at 80.01 33.0199 0)
+			(at 78.105 27.94 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify right)
 			)
 		)
 		(property "Footprint" "locals:TRX"
-			(at 78.74 33.02 0)
+			(at 78.74 30.48 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7017,7 +7015,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 78.74 33.02 0)
+			(at 78.74 30.48 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7026,7 +7024,7 @@
 			)
 		)
 		(property "Description" "Generic connector, single row, 01x02, script generated"
-			(at 78.74 33.02 0)
+			(at 78.74 30.48 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7256,7 +7254,7 @@
 		(lib_id "Transistor_FET:Q_Dual_PMOS_S1G1S2G2D2D2D1D1")
 		(at 138.43 26.67 270)
 		(mirror x)
-		(unit 2)
+		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
@@ -7333,7 +7331,7 @@
 			(project "Robot"
 				(path "/c5aa62e4-5f59-48a4-ae5d-57fc70429dc3/e9eb70e2-5ab4-43f7-8ba2-9f48573f337e"
 					(reference "Q1")
-					(unit 2)
+					(unit 1)
 				)
 			)
 		)
@@ -9896,7 +9894,7 @@
 	(symbol
 		(lib_id "Transistor_FET:Q_Dual_PMOS_S1G1S2G2D2D2D1D1")
 		(at 123.19 26.67 90)
-		(unit 1)
+		(unit 2)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
@@ -9974,7 +9972,7 @@
 			(project "Robot"
 				(path "/c5aa62e4-5f59-48a4-ae5d-57fc70429dc3/e9eb70e2-5ab4-43f7-8ba2-9f48573f337e"
 					(reference "Q1")
-					(unit 1)
+					(unit 2)
 				)
 			)
 		)
