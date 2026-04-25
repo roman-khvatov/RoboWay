@@ -8701,7 +8701,7 @@
 			)
 		)
 		(pin "CTRL_INT" output
-			(at 106.68 144.78 180)
+			(at 106.68 130.81 180)
 			(uuid "61071508-b25e-4c4b-9e82-69a75e927b8d")
 			(effects
 				(font
@@ -8741,7 +8741,7 @@
 			)
 		)
 		(pin "CTRL_SYN" input
-			(at 106.68 130.81 180)
+			(at 106.68 144.78 180)
 			(uuid "8d9aa9b4-e068-4b7f-9ba9-c16222329539")
 			(effects
 				(font

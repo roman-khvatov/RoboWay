@@ -4613,7 +4613,7 @@
 	)
 	(wire
 		(pts
-			(xy 191.77 81.28) (xy 199.39 81.28)
+			(xy 191.77 86.36) (xy 199.39 86.36)
 		)
 		(stroke
 			(width 0)
@@ -6533,7 +6533,7 @@
 	)
 	(wire
 		(pts
-			(xy 191.77 86.36) (xy 199.39 86.36)
+			(xy 191.77 81.28) (xy 199.39 81.28)
 		)
 		(stroke
 			(width 0)
@@ -8075,34 +8075,31 @@
 	)
 	(symbol
 		(lib_id "Device:LED")
-		(at 187.96 81.28 180)
+		(at 187.96 86.36 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "0d76ca28-7525-461b-84d5-b1fe16c9915a")
 		(property "Reference" "D1"
-			(at 189.5475 73.66 0)
+			(at 185.166 85.344 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Value" "KT-0603R"
-			(at 189.5475 76.2 0)
+			(at 188.722 90.17 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Footprint" "LED_SMD:LED_0603_1608Metric"
-			(at 187.96 81.28 0)
+			(at 187.96 86.36 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8111,7 +8108,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 187.96 81.28 0)
+			(at 187.96 86.36 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8120,7 +8117,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 187.96 81.28 0)
+			(at 187.96 86.36 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8129,7 +8126,7 @@
 			)
 		)
 		(property "MPN" "C2286"
-			(at 187.96 81.28 0)
+			(at 187.96 86.36 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8516,15 +8513,13 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "2b2f2458-f3d0-40ec-a6bc-577201a34107")
 		(property "Reference" "D2"
-			(at 189.5475 76.2 0)
+			(at 184.912 82.55 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Value" "KT-0603R"
@@ -11259,7 +11254,7 @@
 	)
 	(symbol
 		(lib_id "Device:LED")
-		(at 187.96 86.36 180)
+		(at 187.96 81.28 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -11267,7 +11262,7 @@
 		(dnp no)
 		(uuid "99b0832f-1e18-4525-975b-0d713aefeaf8")
 		(property "Reference" "D3"
-			(at 184.912 88.9 0)
+			(at 184.912 80.264 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11275,15 +11270,16 @@
 			)
 		)
 		(property "Value" "KT-0603R"
-			(at 192.024 88.9 0)
+			(at 192.024 83.82 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Footprint" "LED_SMD:LED_0603_1608Metric"
-			(at 187.96 86.36 0)
+			(at 187.96 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11292,7 +11288,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 187.96 86.36 0)
+			(at 187.96 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11301,7 +11297,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 187.96 86.36 0)
+			(at 187.96 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11310,7 +11306,7 @@
 			)
 		)
 		(property "MPN" "C2286"
-			(at 187.96 86.36 0)
+			(at 187.96 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12292,7 +12288,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 203.2 86.36 90)
+		(at 203.2 81.28 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -12301,7 +12297,7 @@
 		(fields_autoplaced yes)
 		(uuid "c68dc0dc-8aee-497c-8370-74c81cf71666")
 		(property "Reference" "R10"
-			(at 203.2 80.01 90)
+			(at 203.2 74.93 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12310,7 +12306,7 @@
 			)
 		)
 		(property "Value" "~"
-			(at 203.2 82.55 90)
+			(at 203.2 77.47 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12319,7 +12315,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
-			(at 203.2 88.138 90)
+			(at 203.2 83.058 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12328,7 +12324,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 203.2 86.36 0)
+			(at 203.2 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12337,7 +12333,7 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 203.2 86.36 0)
+			(at 203.2 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12566,7 +12562,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 203.2 81.28 90)
+		(at 203.2 86.36 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -12575,7 +12571,7 @@
 		(fields_autoplaced yes)
 		(uuid "d7827f3a-9d13-4330-9d77-82270404cd98")
 		(property "Reference" "R8"
-			(at 203.2 74.93 90)
+			(at 203.2 80.01 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12584,7 +12580,7 @@
 			)
 		)
 		(property "Value" "~"
-			(at 203.2 77.47 90)
+			(at 203.2 82.55 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12593,7 +12589,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
-			(at 203.2 83.058 90)
+			(at 203.2 88.138 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12602,7 +12598,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 203.2 81.28 0)
+			(at 203.2 86.36 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12611,7 +12607,7 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 203.2 81.28 0)
+			(at 203.2 86.36 0)
 			(effects
 				(font
 					(size 1.27 1.27)
