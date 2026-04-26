@@ -7494,10 +7494,10 @@
 			)
 		)
 		(pin "2"
-			(uuid "71f95908-f900-461e-a0fe-2f2ea0930b0f")
+			(uuid "71f95908-f900-461e-a0fe-2f2ea0930b10")
 		)
 		(pin "1"
-			(uuid "92f26dbe-760e-4ee8-aeb0-9d5c7757bb2b")
+			(uuid "92f26dbe-760e-4ee8-aeb0-9d5c7757bb2c")
 		)
 		(instances
 			(project "Robot"

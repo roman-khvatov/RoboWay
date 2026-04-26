@@ -8758,6 +8758,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" "C20345375"
+			(at 124.46 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "28"
 			(uuid "97387bc9-a05a-42db-a51d-645a675f0f0b")
 		)
