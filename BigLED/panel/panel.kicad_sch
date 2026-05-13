@@ -6686,7 +6686,7 @@
 				)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "39K"
 			(at 113.03 125.73 90)
 			(effects
 				(font
@@ -6888,7 +6888,7 @@
 				)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "39K"
 			(at 113.03 139.7 90)
 			(effects
 				(font
@@ -7322,7 +7322,7 @@
 				)
 			)
 		)
-		(property "Value" "C"
+		(property "Value" "82n"
 			(at 101.6 124.46 90)
 			(effects
 				(font
@@ -8436,7 +8436,7 @@
 				)
 			)
 		)
-		(property "Value" "C"
+		(property "Value" "82n"
 			(at 101.6 138.43 90)
 			(effects
 				(font
