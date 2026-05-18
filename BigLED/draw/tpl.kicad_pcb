@@ -12886,7 +12886,7 @@
 			(start -88 -3.5)
 			(end -76 26.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(layer "F.SilkS")
@@ -12896,7 +12896,7 @@
 			(start -77 -23)
 			(end -77 20.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(layer "F.SilkS")
@@ -12906,7 +12906,7 @@
 			(start -77 -23)
 			(end -72 -28)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(layer "F.SilkS")
@@ -12916,7 +12916,7 @@
 			(start -77 20.5)
 			(end -49 20.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(layer "F.SilkS")
@@ -12926,7 +12926,7 @@
 			(start -76 -33.5)
 			(end -88 -3.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(layer "F.SilkS")
@@ -12936,7 +12936,7 @@
 			(start -76 26.5)
 			(end -50 26.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(layer "F.SilkS")
@@ -12946,7 +12946,7 @@
 			(start -54 -28)
 			(end -72 -28)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(layer "F.SilkS")
@@ -12956,7 +12956,7 @@
 			(start -54 -28)
 			(end -49 -23)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(layer "F.SilkS")
@@ -12966,7 +12966,7 @@
 			(start -50 -33.5)
 			(end -76 -33.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(layer "F.SilkS")
@@ -12976,7 +12976,7 @@
 			(start -50 26.5)
 			(end -38 -3.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(layer "F.SilkS")
@@ -12986,7 +12986,7 @@
 			(start -49 20.5)
 			(end -49 -23)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(layer "F.SilkS")
@@ -12996,7 +12996,7 @@
 			(start -38 -3.5)
 			(end -50 -33.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(layer "F.SilkS")
@@ -13006,7 +13006,7 @@
 			(start -89 -47.5)
 			(end 62 40.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13017,7 +13017,7 @@
 			(start -36 -46.5)
 			(end 50 39.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13028,7 +13028,7 @@
 			(center -83 -3.5)
 			(end -81.500001 -3.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13039,7 +13039,7 @@
 			(center -43 -3.5)
 			(end -41.500001 -3.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13050,7 +13050,7 @@
 			(center -29.062446 -39.562446)
 			(end -26.562447 -39.562446)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13061,7 +13061,7 @@
 			(center -29.062446 32.562446)
 			(end -26.562447 32.562446)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13072,7 +13072,7 @@
 			(center -29 -15.5)
 			(end -27.500001 -15.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13083,7 +13083,7 @@
 			(center -29 -9.5)
 			(end -27.500001 -9.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13094,7 +13094,7 @@
 			(center -29 -3.5)
 			(end -27.500001 -3.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13105,7 +13105,7 @@
 			(center -29 2.5)
 			(end -27.500001 2.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13116,7 +13116,7 @@
 			(center -29 8.5)
 			(end -27.500001 8.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13127,7 +13127,7 @@
 			(center -23 -27.5)
 			(end -21.500001 -27.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13138,7 +13138,7 @@
 			(center -23 -21.5)
 			(end -21.500001 -21.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13149,7 +13149,7 @@
 			(center -23 -15.5)
 			(end -21.500001 -15.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13160,7 +13160,7 @@
 			(center -23 -9.5)
 			(end -21.500001 -9.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13171,7 +13171,7 @@
 			(center -23 -3.5)
 			(end -21.500001 -3.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13182,7 +13182,7 @@
 			(center -23 2.5)
 			(end -21.500001 2.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13193,7 +13193,7 @@
 			(center -23 8.5)
 			(end -21.500001 8.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13204,7 +13204,7 @@
 			(center -23 14.5)
 			(end -21.500001 14.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13215,7 +13215,7 @@
 			(center -23 20.5)
 			(end -21.500001 20.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13226,7 +13226,7 @@
 			(center -17 -33.5)
 			(end -15.500001 -33.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13237,7 +13237,7 @@
 			(center -17 -27.5)
 			(end -15.500001 -27.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13248,7 +13248,7 @@
 			(center -17 -21.5)
 			(end -15.500001 -21.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13259,7 +13259,7 @@
 			(center -17 -15.5)
 			(end -15.500001 -15.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13270,7 +13270,7 @@
 			(center -17 -9.5)
 			(end -15.500001 -9.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13281,7 +13281,7 @@
 			(center -17 -3.5)
 			(end -15.500001 -3.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13292,7 +13292,7 @@
 			(center -17 2.5)
 			(end -15.500001 2.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13303,7 +13303,7 @@
 			(center -17 8.5)
 			(end -15.500001 8.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13314,7 +13314,7 @@
 			(center -17 14.5)
 			(end -15.500001 14.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13325,7 +13325,7 @@
 			(center -17 20.5)
 			(end -15.500001 20.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13336,7 +13336,7 @@
 			(center -17 26.5)
 			(end -15.500001 26.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13347,7 +13347,7 @@
 			(center -11 -33.5)
 			(end -9.500001 -33.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13358,7 +13358,7 @@
 			(center -11 -27.5)
 			(end -9.500001 -27.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13369,7 +13369,7 @@
 			(center -11 -21.5)
 			(end -9.500001 -21.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13380,7 +13380,7 @@
 			(center -11 -15.5)
 			(end -9.500001 -15.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13391,7 +13391,7 @@
 			(center -11 -9.5)
 			(end -9.500001 -9.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13402,7 +13402,7 @@
 			(center -11 -3.5)
 			(end -9.500001 -3.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13413,7 +13413,7 @@
 			(center -11 2.5)
 			(end -9.500001 2.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13424,7 +13424,7 @@
 			(center -11 8.5)
 			(end -9.500001 8.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13435,7 +13435,7 @@
 			(center -11 14.5)
 			(end -9.500001 14.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13446,7 +13446,7 @@
 			(center -11 20.5)
 			(end -9.500001 20.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13457,7 +13457,7 @@
 			(center -11 26.5)
 			(end -9.500001 26.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13468,7 +13468,7 @@
 			(center -5 -39.5)
 			(end -3.500001 -39.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13479,7 +13479,7 @@
 			(center -5 -33.5)
 			(end -3.500001 -33.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13490,7 +13490,7 @@
 			(center -5 -27.5)
 			(end -3.500001 -27.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13501,7 +13501,7 @@
 			(center -5 -21.5)
 			(end -3.500001 -21.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13512,7 +13512,7 @@
 			(center -5 -15.5)
 			(end -3.500001 -15.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13523,7 +13523,7 @@
 			(center -5 -9.5)
 			(end -3.500001 -9.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13534,7 +13534,7 @@
 			(center -5 -3.5)
 			(end -3.500001 -3.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13545,7 +13545,7 @@
 			(center -5 2.5)
 			(end -3.500001 2.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13556,7 +13556,7 @@
 			(center -5 8.5)
 			(end -3.500001 8.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13567,7 +13567,7 @@
 			(center -5 14.5)
 			(end -3.500001 14.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13578,7 +13578,7 @@
 			(center -5 20.5)
 			(end -3.500001 20.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13589,7 +13589,7 @@
 			(center -5 26.5)
 			(end -3.500001 26.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13600,7 +13600,7 @@
 			(center -5 32.5)
 			(end -3.500001 32.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13611,7 +13611,7 @@
 			(center 1 -39.5)
 			(end 2.499999 -39.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13622,7 +13622,7 @@
 			(center 1 -33.5)
 			(end 2.499999 -33.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13633,7 +13633,7 @@
 			(center 1 -27.5)
 			(end 2.499999 -27.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13644,7 +13644,7 @@
 			(center 1 -21.5)
 			(end 2.499999 -21.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13655,7 +13655,7 @@
 			(center 1 -15.5)
 			(end 2.499999 -15.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13666,7 +13666,7 @@
 			(center 1 -9.5)
 			(end 2.499999 -9.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13677,7 +13677,7 @@
 			(center 1 -3.5)
 			(end 2.499999 -3.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13688,7 +13688,7 @@
 			(center 1 2.5)
 			(end 2.499999 2.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13699,7 +13699,7 @@
 			(center 1 8.5)
 			(end 2.499999 8.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13710,7 +13710,7 @@
 			(center 1 14.5)
 			(end 2.499999 14.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13721,7 +13721,7 @@
 			(center 1 20.5)
 			(end 2.499999 20.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13732,7 +13732,7 @@
 			(center 1 26.5)
 			(end 2.499999 26.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13743,7 +13743,7 @@
 			(center 1 32.5)
 			(end 2.499999 32.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13754,7 +13754,7 @@
 			(center 7 -39.5)
 			(end 8.499999 -39.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13765,7 +13765,7 @@
 			(center 7 -33.5)
 			(end 8.499999 -33.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13776,7 +13776,7 @@
 			(center 7 -27.5)
 			(end 8.499999 -27.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13787,7 +13787,7 @@
 			(center 7 -21.5)
 			(end 8.499999 -21.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13798,7 +13798,7 @@
 			(center 7 -15.5)
 			(end 8.499999 -15.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13809,7 +13809,7 @@
 			(center 7 -9.5)
 			(end 8.499999 -9.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13820,7 +13820,7 @@
 			(center 7 -3.5)
 			(end 8.499999 -3.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13831,7 +13831,7 @@
 			(center 7 -3.5)
 			(end 50 -3.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13842,7 +13842,7 @@
 			(center 7 2.5)
 			(end 8.499999 2.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13853,7 +13853,7 @@
 			(center 7 8.5)
 			(end 8.499999 8.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13864,7 +13864,7 @@
 			(center 7 14.5)
 			(end 8.499999 14.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13875,7 +13875,7 @@
 			(center 7 20.5)
 			(end 8.499999 20.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13886,7 +13886,7 @@
 			(center 7 26.5)
 			(end 8.499999 26.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13897,7 +13897,7 @@
 			(center 7 32.5)
 			(end 8.499999 32.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13908,7 +13908,7 @@
 			(center 13 -39.5)
 			(end 14.499999 -39.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13919,7 +13919,7 @@
 			(center 13 -33.5)
 			(end 14.499999 -33.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13930,7 +13930,7 @@
 			(center 13 -27.5)
 			(end 14.499999 -27.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13941,7 +13941,7 @@
 			(center 13 -21.5)
 			(end 14.499999 -21.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13952,7 +13952,7 @@
 			(center 13 -15.5)
 			(end 14.499999 -15.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13963,7 +13963,7 @@
 			(center 13 -9.5)
 			(end 14.499999 -9.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13974,7 +13974,7 @@
 			(center 13 -3.5)
 			(end 14.499999 -3.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13985,7 +13985,7 @@
 			(center 13 2.5)
 			(end 14.499999 2.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -13996,7 +13996,7 @@
 			(center 13 8.5)
 			(end 14.499999 8.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -14007,7 +14007,7 @@
 			(center 13 14.5)
 			(end 14.499999 14.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -14018,7 +14018,7 @@
 			(center 13 20.5)
 			(end 14.499999 20.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -14029,7 +14029,7 @@
 			(center 13 26.5)
 			(end 14.499999 26.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -14040,7 +14040,7 @@
 			(center 13 32.5)
 			(end 14.499999 32.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -14051,7 +14051,7 @@
 			(center 19 -39.5)
 			(end 20.499999 -39.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -14062,7 +14062,7 @@
 			(center 19 -33.5)
 			(end 20.499999 -33.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -14073,7 +14073,7 @@
 			(center 19 -27.5)
 			(end 20.499999 -27.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -14084,7 +14084,7 @@
 			(center 19 -21.5)
 			(end 20.499999 -21.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -14095,7 +14095,7 @@
 			(center 19 -15.5)
 			(end 20.499999 -15.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -14106,7 +14106,7 @@
 			(center 19 -9.5)
 			(end 20.499999 -9.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -14117,7 +14117,7 @@
 			(center 19 -3.5)
 			(end 20.499999 -3.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -14128,7 +14128,7 @@
 			(center 19 2.5)
 			(end 20.499999 2.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -14139,7 +14139,7 @@
 			(center 19 8.5)
 			(end 20.499999 8.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -14150,7 +14150,7 @@
 			(center 19 14.5)
 			(end 20.499999 14.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -14161,7 +14161,7 @@
 			(center 19 20.5)
 			(end 20.499999 20.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -14172,7 +14172,7 @@
 			(center 19 26.5)
 			(end 20.499999 26.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -14183,7 +14183,7 @@
 			(center 19 32.5)
 			(end 20.499999 32.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -14194,7 +14194,7 @@
 			(center 25 -33.5)
 			(end 26.499999 -33.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -14205,7 +14205,7 @@
 			(center 25 -27.5)
 			(end 26.499999 -27.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -14216,7 +14216,7 @@
 			(center 25 -21.5)
 			(end 26.499999 -21.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -14227,7 +14227,7 @@
 			(center 25 -15.5)
 			(end 26.499999 -15.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -14238,7 +14238,7 @@
 			(center 25 -9.5)
 			(end 26.499999 -9.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -14249,7 +14249,7 @@
 			(center 25 -3.5)
 			(end 26.499999 -3.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -14260,7 +14260,7 @@
 			(center 25 2.5)
 			(end 26.499999 2.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -14271,7 +14271,7 @@
 			(center 25 8.5)
 			(end 26.499999 8.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -14282,7 +14282,7 @@
 			(center 25 14.5)
 			(end 26.499999 14.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -14293,7 +14293,7 @@
 			(center 25 20.5)
 			(end 26.499999 20.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -14304,7 +14304,7 @@
 			(center 25 26.5)
 			(end 26.499999 26.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -14315,7 +14315,7 @@
 			(center 31 -33.5)
 			(end 32.499999 -33.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -14326,7 +14326,7 @@
 			(center 31 -27.5)
 			(end 32.499999 -27.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -14337,7 +14337,7 @@
 			(center 31 -21.5)
 			(end 32.499999 -21.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -14348,7 +14348,7 @@
 			(center 31 -15.5)
 			(end 32.499999 -15.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -14359,7 +14359,7 @@
 			(center 31 -9.5)
 			(end 32.499999 -9.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -14370,7 +14370,7 @@
 			(center 31 -3.5)
 			(end 32.499999 -3.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -14381,7 +14381,7 @@
 			(center 31 2.5)
 			(end 32.499999 2.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -14392,7 +14392,7 @@
 			(center 31 8.5)
 			(end 32.499999 8.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -14403,7 +14403,7 @@
 			(center 31 14.5)
 			(end 32.499999 14.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -14414,7 +14414,7 @@
 			(center 31 20.5)
 			(end 32.499999 20.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -14425,7 +14425,7 @@
 			(center 31 26.5)
 			(end 32.499999 26.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -14436,7 +14436,7 @@
 			(center 37 -27.5)
 			(end 38.499999 -27.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -14447,7 +14447,7 @@
 			(center 37 -21.5)
 			(end 38.499999 -21.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -14458,7 +14458,7 @@
 			(center 37 -15.5)
 			(end 38.499999 -15.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -14469,7 +14469,7 @@
 			(center 37 -9.5)
 			(end 38.499999 -9.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -14480,7 +14480,7 @@
 			(center 37 -3.5)
 			(end 38.499999 -3.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -14491,7 +14491,7 @@
 			(center 37 2.5)
 			(end 38.499999 2.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -14502,7 +14502,7 @@
 			(center 37 8.5)
 			(end 38.499999 8.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -14513,7 +14513,7 @@
 			(center 37 14.5)
 			(end 38.499999 14.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -14524,7 +14524,7 @@
 			(center 37 20.5)
 			(end 38.499999 20.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -14535,7 +14535,7 @@
 			(center 43 -15.5)
 			(end 44.499999 -15.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -14546,7 +14546,7 @@
 			(center 43 -9.5)
 			(end 44.499999 -9.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -14557,7 +14557,7 @@
 			(center 43 -3.5)
 			(end 44.499999 -3.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -14568,7 +14568,7 @@
 			(center 43 2.5)
 			(end 44.499999 2.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -14579,7 +14579,7 @@
 			(center 43 8.5)
 			(end 44.499999 8.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -14590,7 +14590,7 @@
 			(center 43.062446 -39.562446)
 			(end 45.562445 -39.562446)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -14601,7 +14601,7 @@
 			(center 43.062446 32.562446)
 			(end 45.562445 32.562446)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -14612,7 +14612,7 @@
 			(center -82 -39.5)
 			(end -79.850001 -39.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -14623,7 +14623,7 @@
 			(center -82 32.5)
 			(end -79.850001 32.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -14634,7 +14634,7 @@
 			(center -43 -39.5)
 			(end -40.850001 -39.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -14645,7 +14645,7 @@
 			(center -43 32.5)
 			(end -40.850001 32.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -14656,7 +14656,7 @@
 			(center 56 -39.5)
 			(end 58.149999 -39.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -14667,7 +14667,7 @@
 			(center 56 32.5)
 			(end 58.149999 32.5)
 			(stroke
-				(width 0)
+				(width 0.1)
 				(type default)
 			)
 			(fill no)
@@ -14791,6 +14791,16 @@
 		(layer "Eco1.User")
 		(uuid "2a493cdc-553e-4a2a-bbd9-0bdb314eba0d")
 	)
+	(gr_line
+		(start 35 35)
+		(end 55 35)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(layer "Edge.Cuts")
+		(uuid "42ba61eb-0153-4fea-85d1-2607b5dd39d3")
+	)
 	(gr_rect
 		(start 35 35)
 		(end 519 227)
@@ -14801,6 +14811,106 @@
 		(fill no)
 		(layer "Edge.Cuts")
 		(uuid "bc009065-c4c7-4a77-82b9-6d6e993040d4")
+	)
+	(gr_line
+		(start 35 227)
+		(end 55 227)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(layer "Edge.Cuts")
+		(uuid "e4e81b10-54a3-4d9a-a7e4-735bfca4e39e")
+	)
+	(gr_line
+		(start 55 -51)
+		(end 35 35)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(layer "Edge.Cuts")
+		(uuid "eba22bc1-e07b-4b62-aa0e-8a7db2746092")
+	)
+	(gr_line
+		(start 55 313)
+		(end 35 227)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(layer "Edge.Cuts")
+		(uuid "a3be60e5-c979-47ab-8e14-71de7f5b994d")
+	)
+	(gr_line
+		(start 499 -51)
+		(end 55 -51)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(layer "Edge.Cuts")
+		(uuid "42207510-b06c-4ce0-812b-d4b76964f5aa")
+	)
+	(gr_line
+		(start 499 -51)
+		(end 519 35)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(layer "Edge.Cuts")
+		(uuid "e8e9bdde-2e47-45e5-ac39-3a97adcd6240")
+	)
+	(gr_line
+		(start 499 313)
+		(end 55 313)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(layer "Edge.Cuts")
+		(uuid "9a11e5cd-351c-473b-9d68-bc877a6b49ef")
+	)
+	(gr_line
+		(start 499 313)
+		(end 519 227)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(layer "Edge.Cuts")
+		(uuid "9a44f432-44bf-42e8-9dba-71b2b409640d")
+	)
+	(gr_line
+		(start 519 35)
+		(end 499 35)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(layer "Edge.Cuts")
+		(uuid "e2e44717-6fb6-496b-a90b-841cf7639918")
+	)
+	(gr_line
+		(start 519 227)
+		(end 35 227)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(layer "Edge.Cuts")
+		(uuid "dad0e8e5-28f8-4d67-bd52-aaa42216a9b9")
+	)
+	(gr_line
+		(start 519 227)
+		(end 499 227)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(layer "Edge.Cuts")
+		(uuid "7aaa0867-3b3e-4ce5-ae2c-455eb29564ab")
 	)
 	(gr_text "38"
 		(at 38 205 0)
