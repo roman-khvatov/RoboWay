@@ -18,15 +18,15 @@
     "prototype_zone_fills": false,
     "selection_filter": {
       "dimensions": false,
-      "footprints": true,
-      "graphics": false,
+      "footprints": false,
+      "graphics": true,
       "keepouts": false,
       "lockedItems": true,
       "otherItems": false,
       "pads": false,
-      "text": true,
+      "text": false,
       "tracks": false,
-      "vias": true,
+      "vias": false,
       "zones": false
     },
     "visible_items": [
@@ -49,7 +49,9 @@
       "drc_exclusions",
       "locked_item_shadows",
       "conflict_shadows",
-      "shapes"
+      "shapes",
+      "board_outline_area",
+      "ly_points"
     ],
     "visible_layers": "ffffffff_ffffffff_fffffff7_ffffffff",
     "zone_display_mode": 0
