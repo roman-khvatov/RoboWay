@@ -51,7 +51,7 @@
 		(capping no)
 		(filling no)
 		(pcbplotparams
-			(layerselection 0x00000000_00000000_55555555_57555570)
+			(layerselection 0x00000000_00000000_55555555_57555550)
 			(plot_on_all_layers_selection 0x00000000_00000000_00000000_00000000)
 			(disableapertmacros no)
 			(usegerberextensions no)
@@ -70,7 +70,7 @@
 			(pdf_single_document no)
 			(dxfpolygonmode no)
 			(dxfimperialunits no)
-			(dxfusepcbnewfont yes)
+			(dxfusepcbnewfont no)
 			(psnegative no)
 			(psa4output no)
 			(plot_black_and_white yes)
@@ -1486,13 +1486,6 @@
 			(drill 3)
 			(layers "*.Cu" "*.Mask")
 			(uuid "51bc3512-7cd5-4e80-b454-e65308ef6054")
-		)
-		(pad "" np_thru_hole circle
-			(at 36 36)
-			(size 3 3)
-			(drill 3)
-			(layers "*.Cu" "*.Mask")
-			(uuid "f0525328-f60c-489f-9694-d1e9c4a52e27")
 		)
 		(pad "" np_thru_hole circle
 			(at 36.062446 -36.062446)
