@@ -1,0 +1,102 @@
+﻿UART format - 9600 8E2  (8E1 for forward chain)
+All serial command are idempotent (can be repeated)
+Initiator of all commands (except specialy stated) is a host
+Every command from host acknoledged by target unit
+Commands can be directed (to particular unit) or broadcast. Broadcast commands acknowledged by each unit
+On parity error -> abort futher processing and passing through (until >0.5 sym space detected)
+Answer wait time:
+    targeted cmds: 3*<unit-index> sym
+    broadcast:  1st answer - 4 sym, next answers - 2 sym
+------------------------------------------------------------
+
+Packet format:
+    <destination-unit:4 bit><current-unit:4 bit>  (Unit 0 - for broadcast)
+    <extra-data:4 bit><command: 4 bit>
+     ... data ...
+    1 sym pause
+
+Answer format:
+    <has-data:1 bit><valve/leak-status:3 bit><source-unit:4 bit>
+    ... data ...
+    1 sym pause
+
+Valve/Leak status:
+    0 - No Valves activated
+    1-4 - Appropriate Valve activated
+    5 - Reserved
+    6 - Leak detected, no Valves activated
+    7 - Leak detected, some Valve activated
+------------------------------------------------------------
+
+Packet processing:
+if <destination-unit> is 0 (broadcast)
+    increment <current-unit> and pass to next unit in chain (until >0.5 sym space will be found)
+    In parallel collect current packet. In parallel Process packet. Next ..
+    Switch output UART to 'in' direction
+    wait 0.5 sym space
+    Switch input UART to 'out' direction
+    Send Ack to host        
+    Collect answers from next Unit until >3 sym space found
+        Pass them to host, with preserving 1 sym space inside (>0.5 sym space recreated to 1 sym space)
+    Switch input UART to 'in' direction
+    wait 0.5 sym space
+    Switch output UART to 'out' direction
+elif <destination-unit> == <current-unit> (we are the target)
+    Collect current packet until >0.5 sym space. At end:
+        wait 0.5 sym space
+        Switch input UART to 'out' direction
+        Send Ack to host
+        Switch input UART to 'in' direction
+        Process packet
+else (not us)
+    increment <current-unit> and pass to next unit in chain (until >0.5 sym space will be found)
+    Switch output UART to 'in' direction
+    wait 0.5 sym space
+    Switch input UART to 'out' direction
+    Wait for answer from upper Unit up to 3*(<destination-unit>-<current-unit>)
+    Pass answer from Upper Unit to Host (up to >0.5 sym space)
+    Switch input UART to 'in' direction
+    wait 0.5 sym space
+    Switch output UART to 'out' direction
+-------------------------------------------------------------
+
+System startup process:
+
+set in/out transmiters to 'in'
+wait 50 ms
+set output trasmitter to 'out'
+Generate 10 KHZ to output transmitter
+wait 10 ms
+wait for 1->0 edge on input trasmitter
+count 1000 pulses (1->0 edge) on input transmitter, get time of 1000 pulses (by SysTickTimer)
+wait 50 ms
+Stop 10 KHZ and connect output transmitter to UART
+wait 50 ms
+goto main loop
+----------------------------------------------------------
+
+Commands:
+
+0 - Get status (NOP).
+1 - Get data.
+    Sends all accumuilated so far data. Bit <has-data> reset, but data still available to retransmit
+2 - Operate Valve. <extra-data> is a Valve to operate (1-4), or 0 to turn all Valve off
+3 - Set UART rate
+    Data 2 16bit words for boud rate of output UART for this unit and boud rate of input UART of next unit
+    Comand used non standart ack sequence:
+        Current unit send boud rate setup of next UART to next Unit in Cmd #4
+        Next Unit send Ack back and set required baud
+        This Unit got Ack from next unit:
+            Set boud rate for output uart
+            Send Ack downstream
+    Wait time downstream for this command extended by 10 sym spaces
+4 - Set this UART rate.
+    Data 16 bit of UART baud rate
+5 - Humidity sence. <extra-data> is a bitset of Sensors to run
+    Unit runs Humidity Sence cycle after this command, when all data collected it sets bit <has-data>
+    Humidity data is Freq (with fractional part of pulse, outside of cound window)
+15 - Download ARM code. Data - ARM code
+    Code dowloaded to memory
+    Send Ack
+    Run downloaded code
+-----------------------------------------------------------
