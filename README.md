@@ -34,4 +34,4 @@
 * [Программа Летнего Лагеря](docs/SCSchedule.md)
   
 
-
+* [Набор для работы с PY002/3 процессорами](https://drive.google.com/drive/folders/1a7ZjSjXQafc4AzR3q4CjSajQ3OPpxA3W?usp=sharing)
