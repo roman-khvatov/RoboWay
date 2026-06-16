@@ -42,7 +42,7 @@ AAAACCCC - Setup button. AAAA - Button index (1-13), CCCC - event setup. Button 
 00000000 - NOP (do nothing). Should be first command after power up (Panel will drive Int line on it)
 00000001 - Turn on OLED I2C interface
 00000010 - Turn off OLED I2C interface (this is default state on power up)
-00000011 - Setup AR1 and AR2 times (in next 2 bytes) in 0.1s If only one byte will follow it will be used for AR1, and AR2 wills et to 1/2 of AR1
+00000011 - Setup AR1 and AR2 times (in next 2 bytes) in 0.1s If only one byte will follow it will be used for AR1, and AR2 wills set to 1/2 of AR1
 00000100 - Request to send current state of buttons
 
 I2C output packets
