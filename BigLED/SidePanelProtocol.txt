@@ -1,0 +1,74 @@
+﻿Side panels works through I2C interface and Interrupt line.
+Side panel can be attached to one of 2 I2C addresses (TBD), attachment defined by initial level on Int line (it should be programmed as input on start).
+After first NOP input packet Int line direction switched to output. Idle level of Int line will be the same as it was at start
+Side panel also includes I2C controlled OLED, but it controlled directly from Host. Panel however can turn on and off its I2C interface. This is required because
+we have 2 identical panels with OLED, but no any devices on I2C bus can have the same address.
+
+Panel performs next activities:
+1. Scan buttons for press/release (13 pcs)
+2. Generate press/release/autorepeat/autorepeat2 packets to host
+3. Handle quadrature encoding and send data to host
+4. Accept input I2C packets with setup data and some commands
+5. Accept read request from I2C and send data packets
+
+Buttons processing
+------------------
+
+Each button can generate up to 4 different events. Host can setup a set of events in which it interested.
+Events:
+1. Button Press
+2. Autorepeat - generated after AR1 pause (value of AR1 programmable, but it is common for all buttons)
+3. Autorepeat2 - generates after AR2 pause (after Autorepeat1 event). Autorepeat2 can be repeated (or not) - it is configurable for each button
+4. Button Release
+
+Each button has 4 bit value with Event setup:
+Bit 0 - Generate Press event
+Bit 1 - Generate Release event
+Bit 2,3:
+    0 - Do not generate any Autorepeat
+    1 - Generate single Autorepeat event
+    2 - Generate single Autorepeat and than Autorepeat2 event
+    3 - Generate single Autorepeat and than recurrent Autorepeat2 events
+
+Recurrent Autorepeat2 generated only if pressed exactly 1 button. When pressed button changed Autorepeat session restarted.
+
+I2C input packet
+----------------
+
+Each byte of I2C packet represents a setup data or command (some setup can include next bytes as well).
+
+AAAACCCC - Setup button. AAAA - Button index (1-13), CCCC - event setup. Button indexes 0, 14 and 15 used for commands and other setup
+
+00000000 - NOP (do nothing). Should be first command after power up (Panel will drive Int line on it)
+00000001 - Turn on OLED I2C interface
+00000010 - Turn off OLED I2C interface (this is default state on power up)
+00000011 - Setup AR1 and AR2 times (in next 2 bytes) in 0.1s If only one byte will follow it will be used for AR1, and AR2 wills et to 1/2 of AR1
+00000100 - Request to send current state of buttons
+
+I2C output packets
+------------------
+
+Each byte of output packet represent one of:
+1. Quadrature encoder accumulated value (if not zero). It encoded in form 1XXXXXXX where XXXXXXX is a accumulated signed value in range -64 to 64.
+   Overflow of counter prohibited (value stuck to the limits). 0 value represents 64
+2. Button event. It encoded in form 00AAAAEE. Where AAAA is a button index (1-13), EE - button event: 0-Release, 1-Press, 2-Autorepeat, 3-Autorepeat2. Button indexes 0, 14 and 15 used for other commands
+3. Count of data in send buffer. Format: 01XXXXXX, where XXXXXX is a number of bytes which can be read in next I2C transaction
+5. NOP (padding where no more data to send). 00000000
+6. Buttons state. Send in 2 bytes (in BE format). High 3 bits used for data counter (same as p3, but with less bits), bits 0-12 represents current state of each button
+7. Overflow: 00000001. Send when too many buttons was pressed and button event buffer was overflowed.
+
+Data will be send in I2C read request in the following order:
+1. Button state (if it was requested by I2C command 00000100)  2 bytes
+2. Quadrature encoder value (if it not a zero)
+3. Button event (from queue)
+4. Count of data in send buffer (if 'button state' wasn't included or number of bytes is more than 6)
+5... Button events (from queue)
+... NOP (when button event queue is empty)
+
+Overflow flag can be send instead of some Button event
+
+Interrupt line
+--------------
+
+Interrupt flag will be set when system has a data to send: Quadrature encoder value is not zero or some Button events are in buffer.
+'Button state request' command will not affect Interrupt line
