@@ -37,7 +37,7 @@ I2C input packet
 
 Each byte of I2C packet represents a setup data or command (some setup can include next bytes as well).
 
-AAAACCCC - Setup button. AAAA - Button index (1-13), CCCC - event setup. Button indexes 0, 14 and 15 used for commands and other setup
+AAAACCCC - Setup button. AAAA - Button index (1-13), CCCC - event setup. Button indexes 0 and 14 used for commands and other setup. Button #15 will populate setup for all buttons.
 
 00000000 - NOP (do nothing). Should be first command after power up (Panel will drive Int line on it)
 00000001 - Turn on OLED I2C interface
