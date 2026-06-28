@@ -1,33 +1,6 @@
 /*I2C from PY32F002A*/
 
-#pragma once
-
-#include <stdint.h>
-
-#define THREAD() static void* _thread_support_cur_place; if (_thread_support_cur_place) goto *_thread_support_cur_place
-#define THREAD_WITH_DELAY() static int32_t _thread_support_delay_value; THREAD()
-
-#define YIELD() do {_thread_support_cur_place = &&cont_label; return; cont_label:;} while(0)
-#define RESTART() do {_thread_support_cur_place = NULL; return;} while(0)
-
-#define DELAY_SETUP_(ticks) (_thread_support_delay_value = (SysTick->VAL - (ticks)) & 0xFFFFFF)
-
-#define IS_DELAY_DONE() ((int32_t((_thread_support_delay_value - SysTick->VAL) & 0xFFFFFF) << 8) >= 0)
-
-#define DELAY_(ticks) do { DELAY_SETUP_(ticks); while(!IS_DELAY_DONE()) YIELD(); } while(0)
-
-
-#define MS2TICKS_(ms) ((ms)*24000)
-#define MKS2TICKS_(ms) ((ms)*24)
-
-#define DELAY_SETUP_MS(time) DELAY_SETUP_(MS2TICKS_(time))
-#define DELAY_SETUP_MKS(time) DELAY_SETUP_(MKS2TICKS_(time))
-
-#define DELAY_MS(time) DELAY_(MS2TICKS_(time))
-#define DELAY_MKS(time) DELAY_(MKS2TICKS_(time))
-
-#define WAIT(condition) while (!(condition)) YIELD()
-#define DELAY_WITH_RESTART(mks, restartCondition) do {DELAY_SETUP_MKS(mks); while(!IS_DELAY_DONE()) {if(restartCondition) DELAY_SETUP_MKS(mks); else YIELD();}} while(0)
+#include "thread.h"
 
 /*max timeout delay = 300ms*/
 
@@ -57,17 +30,17 @@ void QuadEncoder()
     THREAD_WITH_DELAY();
     for(;;)
     {
-        DELAY_WITH_RESTART(500, QuadEncoderButtons() == 3);
+        DELAY_WITH_RESTART(500_mks, QuadEncoderButtons() == 0);
 
         static uint8_t buttonState;
         
-        WAIT((buttonState = QuadEncoderButtons()) != 3);
+        WAIT((buttonState = QuadEncoderButtons()) != 0);
         
-        if(buttonState == 0) continue;
+        if(buttonState == 3) continue;
         
         SendQuadEncoderValue(buttonState == 1 ? 1 : -1);
         
-        DELAY_MS(1);            
+        DELAY(1_ms);            
     }
 }
 
@@ -115,13 +88,13 @@ void Task1()
 
         if(restartDelay)
         {
-            DELAY_SETUP_MKS(500);
+            DELAY_SETUP(500_mks);
             restartDelay = false;
         }
 
         if(error)
         {
-            DELAY_MKS(500);
+            DELAY(500_mks);
             RESTART();
         }
     }
@@ -141,13 +114,13 @@ void Task2()
     
         if(restartDelay)
         {
-            DELAY_SETUP_MKS(500);
+            DELAY_SETUP(500_mks);
             restartDelay = false;
         }
 
         if(error)
         {
-            DELAY_MKS(500);
+            DELAY(500_mks);
             RESTART();
         }
     }
@@ -168,13 +141,13 @@ void Task3()
     
         if(restartDelay)
         {
-            DELAY_SETUP_MKS(500);
+            DELAY_SETUP(500_mks);
             restartDelay = false;
         }
 
         if(error)
         {
-            DELAY_MKS(500);
+            DELAY(500_mks);
             RESTART();
         }
     }
@@ -194,13 +167,13 @@ void Task4()
         
         if(restartDelay)
         {
-            DELAY_SETUP_MKS(500);
+            DELAY_SETUP(500_mks);
             restartDelay = false;
         }
 
         if(error)
         {
-            DELAY_MKS(500);
+            DELAY(500_mks);
             RESTART();
         }
     }
@@ -221,13 +194,13 @@ void Task5()
     
         if(restartDelay)
         {
-            DELAY_SETUP_MKS(500);
+            DELAY_SETUP(500_mks);
             restartDelay = false;
         }
 
         if(error)
         {
-            DELAY_MKS(500);
+            DELAY(500_mks);
             RESTART();
         }
     }
