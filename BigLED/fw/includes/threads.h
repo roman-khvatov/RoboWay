@@ -50,6 +50,14 @@ inline constexpr unsigned operator ""_mks(unsigned long long val)
     DELAY_WITH_RESTART(ticks, ( (dif_value = value ^ (expr)),  (value ^= dif_value), dif_value)); \
     value;\
 })
+#define WAIT_WITH_TIMEOUT(ticks, condition) ({ \
+    static bool waitAborted; \
+    waitAborted = false; \
+    DELAY_SETUP(ticks); \
+    while(!IS_DELAY_DONE()) \
+    if(condition) {waitAborted = true; break;} else YIELD();\
+    waitAborted; \
+})
 
 
 /* How to use:

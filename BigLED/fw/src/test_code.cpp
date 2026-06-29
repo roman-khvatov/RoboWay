@@ -4,27 +4,21 @@
 
 /*max timeout delay = 300ms*/
 
-void ScanButtons()
+enum ButtonState
 {
-    /*code*/
-    THREAD();
-    for(;;)
-    {
-        
-    } 
-}
+    ButtonRelease,
+    ButtonPressed,
+    ButtonAutoRepeatOne,
+    ButtonAutoRepeatTwo,
+};
 
-void GeneratePackets()
-{
-    /*code*/
-    THREAD();
-    for(;;)
-    {
-        
-    }
-}
+uint8_t QuadEncoderButtons();
 
-void QuadEncoder()
+void SendQuadEncoderValue(int);
+
+void SendButton(int buttonIndex, ButtonState);
+
+void QuadEncoderTask()
 {
     /*code*/
     THREAD_WITH_DELAY();
@@ -44,166 +38,80 @@ void QuadEncoder()
     }
 }
 
-void SendPackets()
+uint16_t buttonState;
+
+void ButtonsTask()
 {
-    /*code*/
+    THREAD_WITH_DELAY();
+    for(;;)
+    {
+        uint16_t newButtonState = WAIT_STABLE(2_ms, ReadButtons());
+        for(auto index: BitScan(newButtonState &~ buttonState))
+        {
+            SendButton(index, ButtonPressed);
+        }
+        for(auto index: BitScan(~newButtonState & buttonState))
+        {
+            SendButton(index, ButtonRelease);
+        }
+        buttonState = newButtonState;    
+    }    
+}
+
+int checkOneButton()
+{
+    if(total1(buttonState) != 1) return -1;
+    return first1(buttonState);
+}
+
+#define WAIT_AUTOREPEAT(count) for(waitCounter = 0; waitCounter < count; ++waitCounter) if(WAIT_WITH_TIMEOUT(100_ms, currentButton != checkOneButton())) RESTART()
+
+void AutoRepeatTask()
+{
+    THREAD_WITH_DELAY();
+    for(;;)
+    {
+        static int currentButton;
+        currentButton = checkOneButton();
+        if(currentButton == -1) RESTART();
+        WAIT_AUTOREPEAT(AutoRepeatOne);
+        SendButton(currentButton, ButtonAutoRepeatOne);
+        for(;;)
+        {
+            WAIT_AUTOREPEAT(AutoRepeatTwo);
+            SendButton(currentButton, ButtonAutoRepeatTwo);
+        }        
+    }
+}
+
+enum I2CTaskSchedule
+{
+    Idle,
+    Read,
+    Write,
+} currentSchedule;
+
+void I2CSelectTask()
+{
     THREAD();
     for(;;)
     {
-        
+        WAIT(I2CAcceptedAddress());
+        currentSchedule = isI2CRead() ? Read : Write;
+        YIELD();
     }
 }
 
-void AcceptPackets()
+#define I2CWAIT() do {WAIT(I2CReady()); if(I2CAborted()) {currentSchedule = Idle; RESTART()};} while (0)
+
+void I2CRead()
 {
-    /*code*/
-    THREAD();
-    for(;;)
-    {
-        
-    }
-}
-
-void AcceptReadRequest()
-{
-    /*code*/
-    THREAD();
-    for(;;)
-    {
-        
-    }
-}
-
-void Task1()
-{
-    /*code*/
-
-    bool error = false;
-    bool restartDelay = false;
-
-    THREAD_WITH_DELAY();
-    for(;;)
-    {
-        ScanButtons();
-
-        if(restartDelay)
-        {
-            DELAY_SETUP(500_mks);
-            restartDelay = false;
-        }
-
-        if(error)
-        {
-            DELAY(500_mks);
-            RESTART();
-        }
-    }
-}
-
-void Task2()
-{
-    /*code*/
-
-    bool error = false;
-    bool restartDelay = false;
-
-    THREAD_WITH_DELAY();
-    for(;;)
-    {
-        GeneratePackets();
     
-        if(restartDelay)
-        {
-            DELAY_SETUP(500_mks);
-            restartDelay = false;
-        }
-
-        if(error)
-        {
-            DELAY(500_mks);
-            RESTART();
-        }
-    }
 }
 
-void Task3()
+void I2CWrite()
 {
-    /*code*/
 
-    bool error = false;
-    bool restartDelay = false;
-
-    THREAD_WITH_DELAY();
-    for(;;)
-    {              
-        QuadEncoder();
-        SendPackets();
-    
-        if(restartDelay)
-        {
-            DELAY_SETUP(500_mks);
-            restartDelay = false;
-        }
-
-        if(error)
-        {
-            DELAY(500_mks);
-            RESTART();
-        }
-    }
-}
-
-void Task4()
-{
-    /*code*/
-
-    bool error = false;
-    bool restartDelay = false;
-
-    THREAD_WITH_DELAY();
-    for(;;)
-    {
-        AcceptPackets();
-        
-        if(restartDelay)
-        {
-            DELAY_SETUP(500_mks);
-            restartDelay = false;
-        }
-
-        if(error)
-        {
-            DELAY(500_mks);
-            RESTART();
-        }
-    }
-}
-
-void Task5()
-{
-    /*code*/
-
-    bool error = false;
-    bool restartDelay = false;
-
-    THREAD_WITH_DELAY();
-    for(;;)
-    {
-        AcceptReadRequest();
-        SendPackets();
-    
-        if(restartDelay)
-        {
-            DELAY_SETUP(500_mks);
-            restartDelay = false;
-        }
-
-        if(error)
-        {
-            DELAY(500_mks);
-            RESTART();
-        }
-    }
 }
 
 void main()
@@ -214,10 +122,14 @@ void main()
     /*run tasks*/
     for(;;)
     {
-        Task1();
-        Task2();
-        Task3();
-        Task4();
-        Task5();
+        QuadEncoderTask();
+        ButtonsTask();
+        AutoRepeatTask();
+        if(currentSchedule == Idle) I2CSelectTask();
+        switch(currentSchedule)
+        {
+            case Read: I2CRead(); break;
+            case Write: I2CWrite(); break;
+        }            
     }
 }
