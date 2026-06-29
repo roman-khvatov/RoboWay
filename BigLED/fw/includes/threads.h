@@ -18,28 +18,28 @@
 
 inline constexpr unsigned operator ""_ms(long double val)  
 {
-    auto constexpr result = SYSTICK_FREQ/(val*1000);
-    static_assert( ((unsigned long long)result) < 0x7FFFFF, "Can't generate so long delay (23 bits of SysTick counter allowed for wait constant)");
+    auto constexpr result = SYSTICK_FREQ*val*1000+0.5;
+    static_assert( (unsigned long long)result < 0x7FFFFF, "Can't generate so long delay (23 bits of SysTick counter allowed for wait constant)");
     return unsigned(result);
 }
 inline constexpr unsigned operator ""_mks(long double val) 
 {
-    auto constexpr result = SYSTICK_FREQ/(val);
-    static_assert( ((unsigned long long)result) < 0x7FFFFF, "Can't generate so long delay (23 bits of SysTick counter allowed for wait constant)");
-    return unsigned(SYSTICK_FREQ/(val));
+    auto constexpr result = SYSTICK_FREQ*val+0.5;
+    static_assert( (unsigned long long)result < 0x7FFFFF, "Can't generate so long delay (23 bits of SysTick counter allowed for wait constant)");
+    return unsigned(result);
 }
 inline constexpr unsigned operator ""_ms(unsigned long long val)  
 {
-    auto constexpr result = SYSTICK_FREQ/(val*1000);
-    static_assert( ((unsigned long long)result) < 0x7FFFFF, "Can't generate so long delay (23 bits of SysTick counter allowed for wait constant)");
+    auto constexpr result = SYSTICK_FREQ*val*1000;
+    static_assert( result < 0x7FFFFF, "Can't generate so long delay (23 bits of SysTick counter allowed for wait constant)");
     return unsigned(result);
 }
 
 inline constexpr unsigned operator ""_mks(unsigned long long val) 
 {
-    auto constexpr result = SYSTICK_FREQ/(val);
-    static_assert( ((unsigned long long)result) < 0x7FFFFF, "Can't generate so long delay (23 bits of SysTick counter allowed for wait constant)");
-    return unsigned(SYSTICK_FREQ/(val));
+    auto constexpr result = SYSTICK_FREQ*val;
+    static_assert( result < 0x7FFFFF, "Can't generate so long delay (23 bits of SysTick counter allowed for wait constant)");
+    return unsigned(result);
 }
 
 #define WAIT(condition) while (!(condition)) YIELD()
