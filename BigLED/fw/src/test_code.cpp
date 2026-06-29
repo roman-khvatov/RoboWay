@@ -106,7 +106,7 @@ void I2CSelectTask()
 
 void I2CRead()
 {
-    
+        
 }
 
 void I2CWrite()
