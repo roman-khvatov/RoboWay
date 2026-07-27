@@ -102,16 +102,26 @@ void I2CSelectTask()
     }
 }
 
-#define I2CWAIT() do {WAIT(I2CReady()); if(I2CAborted()) {currentSchedule = Idle; RESTART()};} while (0)
+#define I2CREAD()       ( {WAIT(I2CReadReady());  if(I2CAborted()) {currentSchedule = Idle; RESTART()}; I2CReadData();} )
+#define I2CWRITE(data) do {WAIT(I2CWriteReady()); if(I2CAborted()) {currentSchedule = Idle; RESTART()}; I2CWriteData(data);} while (0)
+
+/*t_uint8 for byte data? get byte, write to variable, read from variable, execute commands / setup data based on byte count, write data*/
 
 void I2CRead()
 {
-        
+    for(;;)
+    {
+        uint8_t cmd = I2CREAD();
+
+    }        
 }
 
 void I2CWrite()
 {
-
+    for(;;)
+    {
+        I2CWRITE();
+    }
 }
 
 void main()
