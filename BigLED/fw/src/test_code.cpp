@@ -105,24 +105,73 @@ void I2CSelectTask()
 #define I2CREAD()       ( {WAIT(I2CReadReady());  if(I2CAborted()) {currentSchedule = Idle; RESTART()}; I2CReadData();} )
 #define I2CWRITE(data) do {WAIT(I2CWriteReady()); if(I2CAborted()) {currentSchedule = Idle; RESTART()}; I2CWriteData(data);} while (0)
 
-/*t_uint8 for byte data? get byte, write to variable, read from variable, execute commands / setup data based on byte count, write data*/
-
 void I2CRead()
 {
+    THREAD();
     for(;;)
     {
         uint8_t cmd = I2CREAD();
 
+        switch(cmd)
+        {
+            case 0: EnableInterrupt(); break;
+            case 1: TurnOLEDOn(); break;
+            case 2: TurnOLEDOff(); break;
+            case 3: {
+                ButtonAutoRepeatOne = I2CREAD();
+                ButtonAutoRepeatTwo = ButtonAutoRepeatOne / 2;
+                ButtonAutoRepeatTwo = I2CREAD();
+            } break;
+            case 4: requestButtonState = true; break;
+            default: {
+                uint8_t ButtonIndex = (cmd >> 4) & 15;
+                uint8_t ButtonSetup = cmd & 15;
+                if(ButtonIndex == 0 || ButtonIndex == 14) break;
+                if(ButtonIndex != 15)
+                {
+                    ButtonsSetup[ButtonIndex-1] = ButtonSetup;
+                }
+                else
+                {
+                    for(int i = 1; i < 14; i++)
+                    {
+                        ButtonSetup[i] = ButtonSetup;                                                
+                    }
+                }    
+            } break;
+        }
     }        
 }
 
 void I2CWrite()
 {
+    THREAD();
     for(;;)
     {
+        static uint16_t tmp;
+        static uint8_t counter;
+        counter = 0;
+        if(requestButtonState)
+        {
+            requestButtonState = false;
+            tmp = buttonState;
+            counter = GetTotalButtons(7);
+            tmp |= counter << 12;
+            I2CWRITE(tmp);
+            I2CWRITE(tmp >> 8);
+        }
+        int8_t QuadValue = GetQuadEncValue();
+        if(QuadValue != 0)
+        {
+            ClearQuadEncValue();
+            I2CWRITE(QuadValue | 0x80);
+        }
+        GetPressedButtons();
         I2CWRITE();
     }
 }
+
+
 
 void main()
 {

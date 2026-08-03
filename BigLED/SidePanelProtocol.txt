@@ -50,7 +50,7 @@ I2C output packets
 
 Each byte of output packet represent one of:
 1. Quadrature encoder accumulated value (if not zero). It encoded in form 1XXXXXXX where XXXXXXX is a accumulated signed value in range -64 to 64.
-   Overflow of counter prohibited (value stuck to the limits). 0 value represents 64
+   Overflow of counter prohibited (value stuck to the limits). 0 value represents 64    
 2. Button event. It encoded in form 00AAAAEE. Where AAAA is a button index (1-13), EE - button event: 0-Release, 1-Press, 2-Autorepeat, 3-Autorepeat2. Button indexes 0, 14 and 15 used for other commands
 3. Count of data in send buffer. Format: 01XXXXXX, where XXXXXX is a number of bytes which can be read in next I2C transaction
 5. NOP (padding where no more data to send). 00000000
