@@ -158,7 +158,7 @@ void I2CWriteTask()
         if(QuadValue != 0)
         {
             ClearQuadEncValue();
-            I2CWRITE( (QuadValue & 0x7F) | 0x80);
+            I2CWRITE( QuadValue | 0x80);
         }
         I2CWRITE(GetButtonFromQueue());
         ...

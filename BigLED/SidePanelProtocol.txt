@@ -61,7 +61,8 @@ Data will be send in I2C read request in the following order:
 1. Button state (if it was requested by I2C command 00000100)  2 bytes
 2. Quadrature encoder value (if it not a zero)
 3. Button event (from queue)
-4. Count of data in send buffer (if 'button state' wasn't included or number of bytes is more than 6)
+4. Count of data in send buffer (if 'button state' wasn't included or number of bytes is more than 6). If 'button state' was included than number of buttons, reported in it will be substracted
+   from this couter (before send)
 5... Button events (from queue)
 ... NOP (when button event queue is empty)
 
