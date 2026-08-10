@@ -161,7 +161,12 @@ void I2CWriteTask()
             I2CWRITE( QuadValue | 0x80);
         }
         I2CWRITE(GetButtonFromQueue());
-        ...
+        uint8_t ButtonCounter = GetTotalButtons(64+counter);
+        if(ButtonCounter > counter && ButtonCounter > 1)
+        {
+            I2CWRITE(ButtonCounter-counter-1);
+        }
+        for(;;) I2CWRITE(GetButtonFromQueue()); 
     }
 }
 
