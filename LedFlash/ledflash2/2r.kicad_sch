@@ -126,10 +126,10 @@
 				)
 			)
 		)
-		(symbol "Diode:BAT54C"
+		(symbol "Diode:BAT54A"
+			(pin_numbers hide)
 			(pin_names
-				(offset 1.016)
-			)
+				(offset 1.016) hide)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -142,7 +142,7 @@
 					(justify left)
 				)
 			)
-			(property "Value" "BAT54C"
+			(property "Value" "BAT54A"
 				(at -6.35 3.175 0)
 				(effects
 					(font
@@ -162,7 +162,7 @@
 				)
 			)
 			(property "Datasheet" "http://www.diodes.com/_files/datasheets/ds11005.pdf"
-				(at -2.032 0 0)
+				(at -3.048 0 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -170,7 +170,7 @@
 					(hide yes)
 				)
 			)
-			(property "Description" "dual schottky barrier diode, common cathode"
+			(property "Description" "schottky barrier diode"
 				(at 0 0 0)
 				(effects
 					(font
@@ -179,7 +179,7 @@
 					(hide yes)
 				)
 			)
-			(property "ki_keywords" "schottky diode common cathode"
+			(property "ki_keywords" "schottky diode"
 				(at 0 0 0)
 				(effects
 					(font
@@ -197,7 +197,79 @@
 					(hide yes)
 				)
 			)
-			(symbol "BAT54C_0_1"
+			(symbol "BAT54A_0_1"
+				(polyline
+					(pts
+						(xy -4.445 1.27) (xy -4.445 1.016)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -3.81 -1.27) (xy -3.81 1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -3.81 -1.27) (xy -3.175 -1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -3.81 0) (xy -1.27 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -3.81 1.27) (xy -4.445 1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -3.175 -1.27) (xy -3.175 -1.016)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
 				(polyline
 					(pts
 						(xy -1.905 0) (xy 1.905 0)
@@ -212,7 +284,7 @@
 				)
 				(polyline
 					(pts
-						(xy -1.905 1.27) (xy -1.905 1.016)
+						(xy 1.27 0) (xy 3.81 0)
 					)
 					(stroke
 						(width 0)
@@ -224,7 +296,7 @@
 				)
 				(polyline
 					(pts
-						(xy -1.27 -1.27) (xy -0.635 -1.27)
+						(xy 3.175 -1.27) (xy 3.175 -1.016)
 					)
 					(stroke
 						(width 0)
@@ -236,7 +308,7 @@
 				)
 				(polyline
 					(pts
-						(xy -1.27 0) (xy -3.81 0)
+						(xy 3.81 -1.27) (xy 3.175 -1.27)
 					)
 					(stroke
 						(width 0)
@@ -248,7 +320,7 @@
 				)
 				(polyline
 					(pts
-						(xy -1.27 1.27) (xy -1.905 1.27)
+						(xy 3.81 -1.27) (xy 3.81 1.27)
 					)
 					(stroke
 						(width 0)
@@ -260,7 +332,7 @@
 				)
 				(polyline
 					(pts
-						(xy -1.27 1.27) (xy -1.27 -1.27)
+						(xy 3.81 1.27) (xy 4.445 1.27)
 					)
 					(stroke
 						(width 0)
@@ -272,7 +344,7 @@
 				)
 				(polyline
 					(pts
-						(xy -0.635 -1.27) (xy -0.635 -1.016)
+						(xy 4.445 1.27) (xy 4.445 1.016)
 					)
 					(stroke
 						(width 0)
@@ -284,7 +356,7 @@
 				)
 				(polyline
 					(pts
-						(xy 0.635 -1.27) (xy 0.635 -1.016)
+						(xy -1.905 1.27) (xy -1.905 -1.27) (xy -3.81 0) (xy -1.905 1.27)
 					)
 					(stroke
 						(width 0)
@@ -296,79 +368,7 @@
 				)
 				(polyline
 					(pts
-						(xy 1.27 -1.27) (xy 0.635 -1.27)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 1.27 1.27) (xy 1.27 -1.27)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 1.27 1.27) (xy 1.905 1.27)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 1.905 1.27) (xy 1.905 1.016)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 3.81 0) (xy 1.27 0)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -3.175 -1.27) (xy -3.175 1.27) (xy -1.27 0) (xy -3.175 -1.27)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 3.175 -1.27) (xy 3.175 1.27) (xy 1.27 0) (xy 3.175 -1.27)
+						(xy 1.905 1.27) (xy 1.905 -1.27) (xy 3.81 0) (xy 1.905 1.27)
 					)
 					(stroke
 						(width 0)
@@ -390,7 +390,7 @@
 					)
 				)
 			)
-			(symbol "BAT54C_1_1"
+			(symbol "BAT54A_1_1"
 				(pin passive line
 					(at -7.62 0 0)
 					(length 3.81)
@@ -691,7 +691,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Diode:BAT54C")
+		(lib_id "Diode:BAT54A")
 		(at 165.1 113.03 90)
 		(unit 1)
 		(exclude_from_sim no)

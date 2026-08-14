@@ -1924,7 +1924,7 @@
 				)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "6K2"
 			(at 0 1.43 90)
 			(layer "F.Fab")
 			(uuid "d3fb33f6-ab9d-4aaf-86a9-390036238dc4")
@@ -2137,7 +2137,7 @@
 				)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "560R"
 			(at 0 1.43 90)
 			(layer "F.Fab")
 			(uuid "263512a3-ea8c-4902-a2db-a9ccf6a778af")
@@ -2409,6 +2409,7 @@
 				)
 			)
 		)
+		(property ki_fp_filters "LED* LED_SMD:* LED_THT:*")
 		(path "/dbca77dd-6d8f-4f0d-83f8-a35799b43c09")
 		(sheetname "Root")
 		(sheetfile "ledflash.kicad_sch")
@@ -2550,8 +2551,8 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net 16 "/2r/o")
-			(pinfunction "1")
-			(pintype "unspecified")
+			(pinfunction "BA")
+			(pintype "passive")
 			(uuid "991ce8b0-44ce-4ffd-b7bd-6e3c7617e118")
 		)
 		(pad "2" thru_hole rect
@@ -2561,8 +2562,8 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net 17 "Net-(JP1-C)")
-			(pinfunction "+")
-			(pintype "unspecified")
+			(pinfunction "K")
+			(pintype "passive")
 			(uuid "6cdd1898-abd3-4707-b5f3-950f4675ebf3")
 		)
 		(pad "3" thru_hole oval
@@ -2572,8 +2573,8 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net 11 "/3r1/o1")
-			(pinfunction "3")
-			(pintype "unspecified")
+			(pinfunction "GA")
+			(pintype "passive")
 			(uuid "10b6ccf9-c0ab-4142-bd56-510be0ac2167")
 		)
 		(pad "4" thru_hole oval
@@ -2583,8 +2584,8 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net 4 "/3r/o1")
-			(pinfunction "4")
-			(pintype "unspecified")
+			(pinfunction "RA")
+			(pintype "passive")
 			(uuid "ae670185-6bb4-40cb-94cf-1945a878919f")
 		)
 		(model "C:/Users/RomanKhvatov/Documents/Kicad/easyeda2kicad/easyeda2kicad.3dshapes/LED-TH_4P-BD5.8-P1.30-RGB.wrl"
@@ -2829,7 +2830,7 @@
 				)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "270R"
 			(at 0 1.43 90)
 			(layer "F.Fab")
 			(uuid "c90273c1-15b7-486d-9780-acd5449963c5")
@@ -3572,7 +3573,7 @@
 				)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "1K3"
 			(at 0 1.43 90)
 			(layer "F.Fab")
 			(uuid "ff317353-e2bc-4135-bce2-8e6d321109de")
@@ -4144,7 +4145,7 @@
 				)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "5K6"
 			(at 0 1.43 90)
 			(layer "F.Fab")
 			(uuid "d9c4a803-7129-48eb-af0b-c9a042306400")
@@ -4406,7 +4407,7 @@
 		(path "/aba7faf4-80f0-4151-98d1-ec035fdee9d8")
 		(sheetname "Root")
 		(sheetfile "ledflash.kicad_sch")
-		(attr through_hole)
+		(attr through_hole dnp)
 		(fp_line
 			(start -0.61 -0.82)
 			(end -0.61 -1.61)
@@ -5062,7 +5063,7 @@
 		(path "/f94af9bb-44df-4365-be3d-7a8892e536d1")
 		(sheetname "Root")
 		(sheetfile "ledflash.kicad_sch")
-		(attr through_hole)
+		(attr through_hole dnp)
 		(fp_line
 			(start -2.250241 -1.839)
 			(end -1.620241 -1.839)
@@ -6536,7 +6537,7 @@
 				)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "3K3"
 			(at 0 1.43 90)
 			(layer "F.Fab")
 			(uuid "1b6adb03-15ac-4a5e-a4a0-83a528be515e")
@@ -6749,7 +6750,7 @@
 				)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "2K7"
 			(at 0 1.43 90)
 			(layer "F.Fab")
 			(uuid "1bb60521-1dfd-4ef2-a85e-7c5307cfae4d")
@@ -6962,7 +6963,7 @@
 				)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "1K6"
 			(at 0 1.43 90)
 			(layer "F.Fab")
 			(uuid "67b5302b-d123-4c39-9361-044c77644af4")
@@ -7395,7 +7396,7 @@
 				(justify mirror)
 			)
 		)
-		(property "Value" "4nf"
+		(property "Value" "1.0"
 			(at 0 -1.43 90)
 			(layer "B.Fab")
 			(uuid "68128e0c-607e-4f74-bfac-6e02e640545d")
@@ -7614,7 +7615,7 @@
 				(justify mirror)
 			)
 		)
-		(property "Value" "4nf"
+		(property "Value" "1.0"
 			(at 0 -1.43 0)
 			(layer "B.Fab")
 			(uuid "97fab084-7211-49c2-bfe1-de8235d8aa7e")
