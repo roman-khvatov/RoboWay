@@ -2853,10 +2853,10 @@
 		)
 		(uuid "70f22b43-41ca-4ecb-9beb-cdc13427a77f")
 	)
-	(text_box "R2 - 5K54 / 5K9\nR3 - 2K77 / 2K9\nR4 - 1K39 / 1K49\nR5 - 6K47 / 2K03\nR6 - 3K23 / 1K02\nR7 - 1K62 / 508R\nR8 - 550R / 1K69\nR9 - 275R / 843R"
+	(text_box "R2 - 5K54 / 5K9  / 20K\nR3 - 2K77 / 2K9  / 5K1\nR4 - 1K39 / 1K49 / 1K2\nR5 - 6K47 / 2K03 / 20K\nR6 - 3K23 / 1K02 / 5K1\nR7 - 1K62 / 508R / 1K2\nR8 - 550R / 1K69 / 3K3\nR9 - 275R / 843R / 820"
 		(exclude_from_sim no)
-		(at 73.66 137.16 0)
-		(size 73.66 54.61)
+		(at 54.61 137.16 0)
+		(size 92.71 54.61)
 		(stroke
 			(width 0)
 			(type default)
