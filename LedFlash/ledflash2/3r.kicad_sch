@@ -1105,7 +1105,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "BAT54C"
+		(property "Value" "BAT54A"
 			(at 124.46 97.7899 90)
 			(effects
 				(font
@@ -1256,7 +1256,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "BAT54C"
+		(property "Value" "BAT54A"
 			(at 124.46 73.6599 90)
 			(effects
 				(font
