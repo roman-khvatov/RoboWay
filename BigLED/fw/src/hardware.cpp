@@ -49,6 +49,7 @@ void EnableInterrupt()
 // Signal interrupt (turn it on or off)
 void SignalInterrupt(bool activate)
 {
+    if (!IntActivated) return;
     if(activate == IntActiveHigh)
     {
         LL_GPIO_SetOutputPin(PORT_INT, PIN_INT);
