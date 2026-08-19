@@ -31,19 +31,25 @@
 #define PORT_QUAD_PRESS GPIOB
 #define PIN_QUAD_PRESS LL_GPIO_PIN_6
 
+static bool IntActiveHigh = true;
+static bool IntActivated = false;
+
 // Initialize all hardware
 void hardware_init();
 
 // Engage Int line - turn it to output and set appropriate Int level
 void EnableInterrupt()
 {
+    if (IntActivated) return;
     LL_GPIO_SetPinMode(PORT_INT, PIN_INT, LL_GPIO_MODE_OUTPUT);    
+    IntActivated = true;
+    SignalInterrupt(false);
 }
 
 // Signal interrupt (turn it on or off)
 void SignalInterrupt(bool activate)
 {
-    if(activate)
+    if(activate == IntActiveHigh)
     {
         LL_GPIO_SetOutputPin(PORT_INT, PIN_INT);
     }    
