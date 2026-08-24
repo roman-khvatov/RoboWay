@@ -1799,370 +1799,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Diode:BAT54C"
-			(pin_numbers
-				(hide yes)
-			)
-			(pin_names
-				(offset 1.016)
-				(hide yes)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "D1"
-				(at -4.572 -2.032 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "BAT54C"
-				(at 5.08 -2.032 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
-				(at -7.62 15.24 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Datasheet" "http://www.diodes.com/_files/datasheets/ds11005.pdf"
-				(at 1.27 9.906 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Description" "dual schottky barrier diode, common cathode"
-				(at 1.27 12.446 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_keywords" "schottky diode common cathode"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_fp_filters" "SOT?23*"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(symbol "BAT54C_0_1"
-				(polyline
-					(pts
-						(xy -3.81 4.445) (xy -1.27 4.445) (xy -2.54 2.54) (xy -3.81 4.445)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -3.81 2.54) (xy -3.81 1.905)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -3.81 1.905) (xy -3.556 1.905)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -2.54 2.54) (xy -2.54 5.08)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -2.54 2.54) (xy -2.54 0) (xy -1.27 0)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -1.905 0) (xy 1.905 0)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -1.27 3.175) (xy -1.524 3.175)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -1.27 2.54) (xy -3.81 2.54)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -1.27 2.54) (xy -1.27 3.175)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(circle
-					(center 0 0)
-					(radius 0.254)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(polyline
-					(pts
-						(xy 1.27 3.175) (xy 1.524 3.175)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 1.27 2.54) (xy 1.27 3.175)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 1.27 2.54) (xy 3.81 2.54)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 2.54 5.08) (xy 2.54 2.54)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 2.54 2.54) (xy 2.54 0) (xy 1.27 0)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 3.81 4.445) (xy 1.27 4.445) (xy 2.54 2.54) (xy 3.81 4.445)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 3.81 2.54) (xy 3.81 1.905)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 3.81 1.905) (xy 3.556 1.905)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "BAT54C_1_1"
-				(pin passive line
-					(at -2.54 8.89 270)
-					(length 3.81)
-					(name ""
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 2.54 8.89 270)
-					(length 3.81)
-					(name ""
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 0 -5.08 90)
-					(length 5.08)
-					(name ""
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "Mechanical:MountingHole"
 			(pin_names
 				(offset 1.016)
@@ -4193,12 +3829,6 @@
 		(uuid "1f78c849-7dac-42c9-9299-5b14dd293bca")
 	)
 	(junction
-		(at 83.82 40.64)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "39b5a6ae-8f1a-4a52-b795-a9a80b52f910")
-	)
-	(junction
 		(at 113.03 129.54)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -4211,22 +3841,10 @@
 		(uuid "47e08f31-df66-4138-9f0f-914ee1133704")
 	)
 	(junction
-		(at 116.84 43.18)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "509fa648-bc88-4a72-88aa-0817400149d7")
-	)
-	(junction
 		(at 179.07 123.19)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "6d5f74e9-9818-4f3e-889f-2264624ab36f")
-	)
-	(junction
-		(at 106.68 46.99)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "6edb27e7-5301-4c80-82e1-e953acaf0638")
 	)
 	(junction
 		(at 116.84 52.07)
@@ -4241,10 +3859,10 @@
 		(uuid "7464c985-418f-4f7e-995b-24bcd27b2c86")
 	)
 	(junction
-		(at 119.38 46.99)
+		(at 90.17 30.48)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "80e2f682-3d54-4b92-b39f-739f10400a06")
+		(uuid "7a027071-1683-4970-b96e-4451b4ab2a18")
 	)
 	(junction
 		(at 116.84 25.4)
@@ -4301,12 +3919,6 @@
 		(uuid "cc892887-4efd-4535-8402-dd6d62c15729")
 	)
 	(junction
-		(at 90.17 30.48)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "d25d9536-c0fd-470e-8881-ac74656678a1")
-	)
-	(junction
 		(at 90.17 25.4)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -4323,18 +3935,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "ee90ad42-30da-474d-9783-2a9dbf086810")
-	)
-	(junction
-		(at 114.3 38.1)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "ee9471f5-d1f9-4416-a0a8-e9899cac84e6")
-	)
-	(junction
-		(at 62.23 31.75)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "f34b05af-4869-4ae6-980f-412f3143136c")
 	)
 	(junction
 		(at 153.67 129.54)
@@ -4502,16 +4102,6 @@
 	)
 	(wire
 		(pts
-			(xy 90.17 30.48) (xy 90.17 31.75)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "1d17e843-9aa7-4b2a-a7f4-048ecd6cbf20")
-	)
-	(wire
-		(pts
 			(xy 113.03 129.54) (xy 113.03 132.08)
 		)
 		(stroke
@@ -4589,16 +4179,6 @@
 			(type default)
 		)
 		(uuid "32c58a23-896d-477e-a92d-577083a16ca6")
-	)
-	(wire
-		(pts
-			(xy 106.68 52.07) (xy 106.68 46.99)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "3401b535-ab72-418c-ab84-4e1278e6c370")
 	)
 	(wire
 		(pts
@@ -4692,23 +4272,13 @@
 	)
 	(wire
 		(pts
-			(xy 116.84 25.4) (xy 116.84 43.18)
+			(xy 116.84 25.4) (xy 116.84 52.07)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
 		(uuid "3f2a4289-2cde-4f11-ba07-dc3f9b40c1de")
-	)
-	(wire
-		(pts
-			(xy 104.14 38.1) (xy 114.3 38.1)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "3f6e2738-e4d5-40db-88b7-6fa6af2463e3")
 	)
 	(wire
 		(pts
@@ -4752,16 +4322,6 @@
 	)
 	(wire
 		(pts
-			(xy 90.17 49.53) (xy 83.82 49.53)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "4a5f01b8-621b-4560-8804-ecfa191e3c27")
-	)
-	(wire
-		(pts
 			(xy 181.61 78.74) (xy 203.2 78.74)
 		)
 		(stroke
@@ -4792,16 +4352,6 @@
 	)
 	(wire
 		(pts
-			(xy 78.74 40.64) (xy 83.82 40.64)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "5275f6f5-a7ef-42ae-ae99-0224ebecf69a")
-	)
-	(wire
-		(pts
 			(xy 110.49 78.74) (xy 96.52 78.74)
 		)
 		(stroke
@@ -4829,16 +4379,6 @@
 			(type default)
 		)
 		(uuid "572ca76c-61fd-4407-8e51-b57b3b161e71")
-	)
-	(wire
-		(pts
-			(xy 116.84 43.18) (xy 116.84 52.07)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "5d151507-6985-41d5-b092-783831357702")
 	)
 	(wire
 		(pts
@@ -4882,17 +4422,7 @@
 	)
 	(wire
 		(pts
-			(xy 119.38 46.99) (xy 119.38 49.53)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "60d26a5e-eb07-480f-a17f-1c1d7ede0f4d")
-	)
-	(wire
-		(pts
-			(xy 114.3 30.48) (xy 114.3 38.1)
+			(xy 114.3 30.48) (xy 114.3 54.61)
 		)
 		(stroke
 			(width 0)
@@ -5012,7 +4542,7 @@
 	)
 	(wire
 		(pts
-			(xy 62.23 31.75) (xy 90.17 31.75)
+			(xy 83.82 30.48) (xy 90.17 30.48)
 		)
 		(stroke
 			(width 0)
@@ -5162,16 +4692,6 @@
 	)
 	(wire
 		(pts
-			(xy 62.23 40.64) (xy 68.58 40.64)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "956fa44c-a3c7-4387-b93b-4814c400a4d6")
-	)
-	(wire
-		(pts
 			(xy 158.75 123.19) (xy 149.86 123.19)
 		)
 		(stroke
@@ -5202,7 +4722,7 @@
 	)
 	(wire
 		(pts
-			(xy 119.38 20.32) (xy 119.38 46.99)
+			(xy 119.38 20.32) (xy 119.38 49.53)
 		)
 		(stroke
 			(width 0)
@@ -5322,16 +4842,6 @@
 	)
 	(wire
 		(pts
-			(xy 83.82 49.53) (xy 83.82 40.64)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ae8a237e-8349-4766-b990-062b1f075e19")
-	)
-	(wire
-		(pts
 			(xy 116.84 102.87) (xy 116.84 93.98)
 		)
 		(stroke
@@ -5422,16 +4932,6 @@
 	)
 	(wire
 		(pts
-			(xy 106.68 46.99) (xy 119.38 46.99)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "bd062e11-a6bb-4a34-9d8f-bcbbc1e1a265")
-	)
-	(wire
-		(pts
 			(xy 90.17 20.32) (xy 90.17 25.4)
 		)
 		(stroke
@@ -5492,16 +4992,6 @@
 	)
 	(wire
 		(pts
-			(xy 53.34 31.75) (xy 62.23 31.75)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c517bb36-d578-4e60-ab7b-513383d56d6e")
-	)
-	(wire
-		(pts
 			(xy 90.17 25.4) (xy 95.25 25.4)
 		)
 		(stroke
@@ -5519,16 +5009,6 @@
 			(type default)
 		)
 		(uuid "ca3ffc6e-335b-453b-9e30-54221f974c56")
-	)
-	(wire
-		(pts
-			(xy 114.3 38.1) (xy 114.3 54.61)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "cb480eb5-c96e-4ca6-b706-46cfdfc2ab84")
 	)
 	(wire
 		(pts
@@ -5579,16 +5059,6 @@
 			(type default)
 		)
 		(uuid "d192ca35-7cf2-4874-9275-505cdf63a9bd")
-	)
-	(wire
-		(pts
-			(xy 62.23 31.75) (xy 62.23 40.64)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d204b3dc-88cb-4173-8440-ff17f4291c9f")
 	)
 	(wire
 		(pts
@@ -5672,16 +5142,6 @@
 	)
 	(wire
 		(pts
-			(xy 104.14 43.18) (xy 116.84 43.18)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "e7c520a2-6501-4e91-8d77-38e2c215aa9a")
-	)
-	(wire
-		(pts
 			(xy 96.52 71.12) (xy 119.38 71.12)
 		)
 		(stroke
@@ -5689,16 +5149,6 @@
 			(type default)
 		)
 		(uuid "e7ed596f-24a5-422a-8c94-f14b524f7ff0")
-	)
-	(wire
-		(pts
-			(xy 83.82 40.64) (xy 90.17 40.64)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ea0b051c-24d3-4da3-9cd6-e3ac35f7d813")
 	)
 	(wire
 		(pts
@@ -5782,16 +5232,6 @@
 	)
 	(wire
 		(pts
-			(xy 104.14 52.07) (xy 106.68 52.07)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f5f506fd-9ff5-4430-b1ff-72bd09a6c96f")
-	)
-	(wire
-		(pts
 			(xy 124.46 142.24) (xy 124.46 146.05)
 		)
 		(stroke
@@ -5799,16 +5239,6 @@
 			(type default)
 		)
 		(uuid "f8f16b58-8133-4cdd-a0e6-19d5e6f55e51")
-	)
-	(wire
-		(pts
-			(xy 104.14 46.99) (xy 106.68 46.99)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "fb582372-3edb-4bbd-b99d-4904648a0d1d")
 	)
 	(wire
 		(pts
@@ -6328,7 +5758,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 53.34 31.75 270)
+		(at 83.82 30.48 270)
 		(mirror x)
 		(unit 1)
 		(body_style 1)
@@ -6340,7 +5770,7 @@
 		(fields_autoplaced yes)
 		(uuid "17808380-3d66-4664-b68d-6a6e257ecb17")
 		(property "Reference" "#PWR091"
-			(at 46.99 31.75 0)
+			(at 77.47 30.48 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6351,7 +5781,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 49.53 31.7499 90)
+			(at 80.01 30.4799 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6362,7 +5792,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 53.34 31.75 0)
+			(at 83.82 30.48 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6373,7 +5803,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 53.34 31.75 0)
+			(at 83.82 30.48 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6384,7 +5814,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 53.34 31.75 0)
+			(at 83.82 30.48 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6520,7 +5950,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
 			(at 128.27 53.848 90)
 			(hide yes)
 			(show_name no)
@@ -6602,7 +6032,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Button_Switch_THT:SW_PUSH_6mm_H13mm"
 			(at 100.33 25.4 0)
 			(hide yes)
 			(show_name no)
@@ -6684,7 +6114,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "easyeda2kicad:CAP-TH_BD5.0-P2.00-D0.8-FD"
 			(at 100.0252 142.24 0)
 			(hide yes)
 			(show_name no)
@@ -6766,7 +6196,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
 			(at 114.808 135.89 90)
 			(hide yes)
 			(show_name no)
@@ -7038,7 +6468,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_2x06_P2.54mm_Vertical"
 			(at 218.44 76.2 0)
 			(hide yes)
 			(show_name no)
@@ -7303,7 +6733,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder"
 			(at 149.86 110.7948 0)
 			(hide yes)
 			(show_name no)
@@ -7779,89 +7209,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Diode:BAT54C")
-		(at 95.25 40.64 270)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "6beb42fc-87ea-4fbb-be5b-81e61f59b84a")
-		(property "Reference" "D4"
-			(at 102.87 40.64 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "BAT54C"
-			(at 90.932 36.83 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
-			(at 110.49 33.02 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Datasheet" "http://www.diodes.com/_files/datasheets/ds11005.pdf"
-			(at 105.156 41.91 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "dual schottky barrier diode, common cathode"
-			(at 107.696 41.91 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "cbc0ad85-6f2d-49bc-b58c-5e95d323c4a2")
-		)
-		(pin "2"
-			(uuid "bf3dcac3-88e2-465b-8acf-7d42370249a4")
-		)
-		(pin "3"
-			(uuid "9903abd5-d4c0-448d-bd57-684b712bfc16")
-		)
-		(instances
-			(project "but1"
-				(path "/3fccefda-7ccd-43bf-9cc8-1b3ed5e282ca"
-					(reference "D4")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:R")
 		(at 116.84 113.03 180)
 		(unit 1)
@@ -7895,7 +7242,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
 			(at 118.618 113.03 90)
 			(hide yes)
 			(show_name no)
@@ -8122,7 +7469,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
 			(at 128.27 56.388 90)
 			(hide yes)
 			(show_name no)
@@ -8171,90 +7518,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Diode:BAT54C")
-		(at 95.25 49.53 270)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "91d1bb43-8774-4ac1-965f-3c286c7ca040")
-		(property "Reference" "D5"
-			(at 102.616 49.784 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "BAT54C"
-			(at 93.218 54.61 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
-			(at 110.49 41.91 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Datasheet" "http://www.diodes.com/_files/datasheets/ds11005.pdf"
-			(at 105.156 50.8 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "dual schottky barrier diode, common cathode"
-			(at 107.696 50.8 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "f428e809-86d6-4b9a-aec8-cda0e42a5041")
-		)
-		(pin "2"
-			(uuid "a99e56e5-6da1-4c65-9639-9e4195cf2346")
-		)
-		(pin "3"
-			(uuid "a22a3a09-fc5e-40f0-9121-74f100e72e0a")
-		)
-		(instances
-			(project "but1"
-				(path "/3fccefda-7ccd-43bf-9cc8-1b3ed5e282ca"
-					(reference "D5")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Mechanical:MountingHole")
 		(at 242.57 52.07 0)
 		(unit 1)
@@ -8288,7 +7551,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "MountingHole:MountingHole_3mm"
 			(at 242.57 52.07 0)
 			(hide yes)
 			(show_name no)
@@ -8364,7 +7627,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Button_Switch_THT:SW_PUSH_6mm_H13mm"
 			(at 100.33 20.32 0)
 			(hide yes)
 			(show_name no)
@@ -8444,7 +7707,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical"
 			(at 96.52 102.87 0)
 			(hide yes)
 			(show_name no)
@@ -8526,7 +7789,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Button_Switch_THT:SW_PUSH_6mm_H13mm"
 			(at 100.33 15.24 0)
 			(hide yes)
 			(show_name no)
@@ -8685,7 +7948,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
 			(at 195.58 98.298 90)
 			(hide yes)
 			(show_name no)
@@ -8764,7 +8027,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder"
 			(at 134.9248 133.35 0)
 			(hide yes)
 			(show_name no)
@@ -8922,7 +8185,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
 			(at 165.1 138.938 90)
 			(hide yes)
 			(show_name no)
@@ -8971,88 +8234,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Switch:SW_Push")
-		(at 73.66 40.64 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "c5335d64-1c3d-480b-8156-f7fa32850f1a")
-		(property "Reference" "SW4"
-			(at 73.66 33.02 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "SW_Push"
-			(at 73.66 35.56 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 73.66 35.56 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 73.66 35.56 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Push button switch, generic, two pins"
-			(at 73.66 40.64 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "2"
-			(uuid "a1cc112d-9de9-4cb6-be58-57eb7633bee7")
-		)
-		(pin "1"
-			(uuid "587e0297-e39a-4996-8bd0-36dff6add4b7")
-		)
-		(instances
-			(project "but1"
-				(path "/3fccefda-7ccd-43bf-9cc8-1b3ed5e282ca"
-					(reference "SW4")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:R")
 		(at 162.56 123.19 90)
 		(unit 1)
@@ -9084,7 +8265,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
 			(at 162.56 124.968 90)
 			(hide yes)
 			(show_name no)
@@ -9242,7 +8423,7 @@
 				)
 			)
 		)
-		(property "Footprint" "locals:CONN-TH_XAD-12AS"
+		(property "Footprint" "but:CONN-TH_XAD-12AS"
 			(at 91.44 76.2 0)
 			(hide yes)
 			(show_name no)
@@ -9354,7 +8535,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
 			(at 128.27 51.308 90)
 			(hide yes)
 			(show_name no)
@@ -9477,82 +8658,6 @@
 			(project "but1"
 				(path "/3fccefda-7ccd-43bf-9cc8-1b3ed5e282ca"
 					(reference "#PWR085")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Mechanical:MountingHole")
-		(at 242.57 59.69 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "f0f0d313-ea6b-4ad3-b886-74e4e8b87a1b")
-		(property "Reference" "H2"
-			(at 245.11 58.4199 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "MountingHole"
-			(at 245.11 60.9599 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" ""
-			(at 242.57 59.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 242.57 59.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Mounting Hole without connection"
-			(at 242.57 59.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(instances
-			(project "but1"
-				(path "/3fccefda-7ccd-43bf-9cc8-1b3ed5e282ca"
-					(reference "H2")
 					(unit 1)
 				)
 			)

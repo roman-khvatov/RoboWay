@@ -2376,6 +2376,16 @@
 		)
 		(uuid "342cd8df-3c3d-44d1-ad7f-4b90d3cc81c0")
 	)
+	(label "GND"
+		(at 127 123.19 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "689b9ae8-86ee-4e65-a9c1-b339d8d2fa6f")
+	)
 	(label "W1"
 		(at 152.4 91.44 0)
 		(effects
@@ -2430,7 +2440,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Button_Switch_THT:SW_PUSH_6mm_H13mm"
 			(at 101.6 83.82 0)
 			(hide yes)
 			(show_name no)
@@ -2473,6 +2483,82 @@
 			(project "but-ext-2"
 				(path "/44ee3f62-13f6-4236-babe-1fe6b14f82df"
 					(reference "SW3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Mechanical:MountingHole")
+		(at 240.03 115.57 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "32297359-1e60-4cb9-bba6-f4310be22a45")
+		(property "Reference" "H2"
+			(at 242.57 114.2999 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "MountingHole"
+			(at 242.57 116.8399 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "MountingHole:MountingHole_3mm"
+			(at 240.03 115.57 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 240.03 115.57 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Mounting Hole without connection"
+			(at 240.03 115.57 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(instances
+			(project "but-ext-2"
+				(path "/44ee3f62-13f6-4236-babe-1fe6b14f82df"
+					(reference "H2")
 					(unit 1)
 				)
 			)
@@ -2682,7 +2768,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Button_Switch_THT:SW_PUSH_6mm_H13mm"
 			(at 101.6 74.93 0)
 			(hide yes)
 			(show_name no)
@@ -2876,7 +2962,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "MountingHole:MountingHole_3mm"
 			(at 240.03 109.22 0)
 			(hide yes)
 			(show_name no)
@@ -2950,7 +3036,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_2x06_P2.54mm_Vertical"
 			(at 207.01 104.14 0)
 			(hide yes)
 			(show_name no)
@@ -3059,7 +3145,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Button_Switch_THT:SW_PUSH_6mm_H13mm"
 			(at 101.6 93.98 0)
 			(hide yes)
 			(show_name no)
@@ -3507,7 +3593,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Button_Switch_THT:SW_PUSH_6mm_H13mm"
 			(at 101.6 66.04 0)
 			(hide yes)
 			(show_name no)
@@ -3586,7 +3672,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x08_P2.54mm_Vertical"
 			(at 180.34 106.68 0)
 			(hide yes)
 			(show_name no)
