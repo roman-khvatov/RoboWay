@@ -5599,7 +5599,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "easyeda2kicad:SMD_BD5.6-D4.1"
+		(property "Footprint" "but:SMD_BD5.6-D4.1"
 			(at 241.3 49.53 0)
 			(hide yes)
 			(show_name no)
@@ -6358,7 +6358,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "easyeda2kicad:SMD_BD5.6-D4.1"
+		(property "Footprint" "but:SMD_BD5.6-D4.1"
 			(at 241.3 41.91 0)
 			(hide yes)
 			(show_name no)
@@ -6894,7 +6894,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "easyeda2kicad:SOT-23_L2.9-W1.3-P1.90-LS2.4-BR"
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
 			(at 121.92 163.83 0)
 			(hide yes)
 			(show_name no)
@@ -7067,7 +7067,7 @@
 				)
 			)
 		)
-		(property "Footprint" "easyeda2kicad:SOT-23-3_L3.0-W1.7-P0.95-LS2.9-BR"
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
 			(at 111.76 130.81 0)
 			(hide yes)
 			(show_name no)
