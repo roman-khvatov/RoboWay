@@ -20,7 +20,7 @@ GPIO_52                 LED1                           GPIO Out
 GPIO_55                 LED2                           GPIO Out
 
 GPIO_6                  RS485 RX (to CPU)              UART 1 RX (PullUp?)   [mode 6]
-GPIO_7                  RS485 TX (from CPU)            UART 1 TX             [mode 6]
+GPIO_7                  RS485 TX (from CPU)            UART 1 TX             [mode 6]    (on extentions calibrate: PWM_0H [mode 10])
 ULP_GPIO_2              RS485 OE                       GPIO Out
 
 GPIO_8                  PROG RX                        GPIO In PullUp
@@ -31,11 +31,11 @@ GPIO_12       SPI MISO               Spare             SSI_MST_DATA1 (MOSI!) / G
 GPIO_53                 SPI CLK                        SSI_MST_CS0 ???  (52: SSI_MST_CLK!)             <<< swap with LED1       [mode 3]
 GPIO_10                 Valves ~CS                     SSI_MST_CS1                                                              [mode 3]
 
-ULP_GPIO_11   Spare                  Acc Sence      GPIO In PullUp / analog -     <<< Move to GPIO_29
+ULP_GPIO_11   Spare (TF Card select?)   Acc Sence      GPIO In PullUp / analog -     <<< Move to GPIO_29
 
  >> GPIO_29    TopGPIO_4  OPAMP3_IN[1]   [mode 14]
 
-GPIO_29       Buzzer                /Spare/         SCT_OUT_0 / GPIO In PullUp                                                  [mode 9]
+GPIO_29       Buzzer                /Not-Spare/     SCT_OUT_0 / TopGPIO_4                                                       [mode 9]
 GPIO_30       Buzzer ~EN             Spare          GPIO Out / GPIO In PullUp
 
 GPIO_15       eInk ~CS               Spare          SSI_MST_CS2 / SPIO In PullUp                                                [mode 3]
