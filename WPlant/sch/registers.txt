@@ -23,17 +23,17 @@ GPIO_6                  RS485 RX (to CPU)              UART 1 RX (PullUp?)   [mo
 GPIO_7                  RS485 TX (from CPU)            UART 1 TX             [mode 6]    (on extentions calibrate: PWM_0H [mode 10])
 ULP_GPIO_2              RS485 OE                       GPIO Out
 
-GPIO_8                  PROG RX                        GPIO In PullUp
-GPIO_9                  PROG TX                        GPIO In PullUp
+GPIO_8                  PROG RX                        ULP UART RX [mode 9] [ulp mode 3]
+GPIO_9                  PROG TX                        ULP UART TX [mode 9] [ulp mode 3]
 
 GPIO_11                 SPI MOSI                       SSI_MST_DATA0 (MISO!) / GPIO In                 <<< swap                 [mode 3]    (Ext: swap in cable to ExtBut board)
-GPIO_12       SPI MISO               Spare             SSI_MST_DATA1 (MOSI!) / GPIO In PullUp          <<< swap                 [mode 3]
+GPIO_12       SPI MISO              /Spare/            SSI_MST_DATA1 (MOSI!) / GPIO In PullUp          <<< swap                 [mode 3]
 GPIO_53                 SPI CLK                        SSI_MST_CS0 ???  (52: SSI_MST_CLK!)             <<< swap with LED1       [mode 3]
 GPIO_10                 Valves ~CS                     SSI_MST_CS1                                                              [mode 3]
 
-ULP_GPIO_11   Spare (TF Card select?)   Acc Sence      GPIO In PullUp / analog -     <<< Move to GPIO_29
+ULP_GPIO_11   /Spare/ (TF Card select?) Acc Sence      GPIO In PullUp / analog -     <<< Move to GPIO_29
 
- >> GPIO_29    TopGPIO_4  OPAMP3_IN[1]   [mode 14]
+ >> GPIO_29    TopGPIO_4  [mode 14]   OPAMP3_IN[1]
 
 GPIO_29       Buzzer                /Not-Spare/     SCT_OUT_0 / TopGPIO_4                                                       [mode 9]
 GPIO_30       Buzzer ~EN             Spare          GPIO Out / GPIO In PullUp
@@ -44,7 +44,7 @@ GPIO_54       eInk DC                Spare          GPIO Out / SPIO In PullUp
 GPIO_56       eInk ~Reset            Spare          GPIO Out / SPIO In PullUp
 
 
-GPIO_28                 Spare
+GPIO_28                 Spare    <<< used for LED1
 GPIO_46                 Spare
 
 
@@ -55,3 +55,27 @@ GPIO_48 - X
 GPIO_49 - X
 GPIO_50 - X
 GPIO_51 - X
+
+ADC Ref - AUX LDO (1.6-2.8V)
+
+=================================== WireStrap =========================================================
+LED1 - R21 (GPIO_52) - Remove R21, connect GPIO_52 (pin 25) to GPIO_53 (pin 18)/CLK. Set GPIO_53 to In
+LED1 (former R21 left pin) -> R21 -> GPIO_28 (pin 48, TP)  Set to Out
+
+
+MainInt
+-------
+
+eInkExt socket:
+1 - TF Select - ULP_GPIO_11 (pin 5, TP)
+2 - MOSI - GPIO_11 (pin 58, left pin of R34), remove R34
+
+Swap wires eInkExt.2 <-> eInk-Buttons.10 (in cable)
+
+MainExt
+-------
+
+Connect GPIO_29 (pin 29, TP) to ULP_GPIO_11 (pin 5). Set ULP_GPIO_11 to AnalogInput [mode 7]
+Connect GPIO_11 (pin 58, MOSI) to GPIO_12 (pin 56, TP). Set GPIO_12 to In
+
+
