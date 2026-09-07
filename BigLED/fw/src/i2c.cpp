@@ -45,6 +45,7 @@ Recieving:
 */
 
 static bool isCurentlyI2CReading;
+static bool isAborted;
 
 bool I2CAcceptedAddress()
 {
@@ -63,52 +64,65 @@ bool I2CAcceptedAddress()
 bool isI2CRead()
 {
     //request recieved is a read request 
+    
+    
     return isCurentlyI2CReading;
 }
 
 bool I2CWriteReady()
 {
+    isAborted = false;
     //ready to send data for a write request sent by host
-    if() return true;
-    else return false;
+    if(LL_I2C_IsActiveFlag_TXE(I2C1) || LL_I2C_IsActiveFlag_BTF(I2C1)) return true;
+    if(LL_I2C_IsActiveFlag_AF(I2C1))
+    {
+        LL_I2C_ClearFlag_AF(I2C1);
+        isAborted = true;
+        return true;
+    }
+    if(LL_I2C_IsActiveFlag_OVR(I2C1) || LL_I2C_IsActiveFlag_BERR(I2C1))
+    {
+        isAborted = true;
+        I2CInit();
+        return true;        
+    }
+    return false;
 }
 
 bool I2CReadReady()
 {
+    isAborted = false
     //ready to send data for a read request sent by host
-    if() return true;
-    else return false;
+    if(LL_I2C_IsActiveFlag_RXNE(I2C1) || LL_I2C_IsActiveFlag_BTF(I2C1)) return true;
+    if(LL_I2C_IsActiveFlag_STOP(I2C1))
+    {
+        LL_I2C_ClearFlag_STOP(I2C1);
+        isAborted = true;
+        return true;    
+    }
+    if(LL_I2C_IsActiveFlag_OVR(I2C1) || LL_I2C_IsActiveFlag_AF(I2C1) || LL_I2C_IsActiveFlag_BERR(I2C1))
+    {
+        isAborted = true;
+        I2CInit();
+        return true;
+    }
+    return false;
 }
 
 bool I2CAborted()
 {
     //connection with host has stopped or an error occurred
-    if() return true;
-    else return false;
+    return isAborted;
 }
 
 uint8_t I2CReadData()
 {
     //returns read data if I2CReadReady is true
-    if(I2CReadReady)
-    {
-        
-    }
-    else
-    {
-
-    }
+    return LL_I2C_ReceiveData8(I2C1);
 }
 
 void I2CWriteData(uint8_t data)
 {
     //returns write data if I2CWriteReady is true
-    if(I2CWriteReady)
-    {
-        
-    }
-    else
-    {
-
-    }
+    LL_I2C_TransmitData8(I2C1, data);
 }

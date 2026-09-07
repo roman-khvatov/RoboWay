@@ -2,7 +2,7 @@
 
 ///////////////// Low level Hardware interface
 
-#define PIN_INT LL_GPIO_PIN_5
+#define PIN_INT LL_GPIO_PIN_5          //input
 #define PORT_INT GPIOA
 #define PIN_ENABLE_OLED LL_GPIO_PIN_6
 #define PORT_ENABLE_OLED GPIOA
@@ -24,18 +24,116 @@
 #define PORT_BTN_6 GPIOA
 
 #define PORT_SCAN_1 GPIOA
-#define PIN_SCAN_1 LL_GPIO_PIN_13
+#define PIN_SCAN_1 LL_GPIO_PIN_13 
 #define PORT_SCAN_2 GPIOA
 #define PIN_SCAN_2 LL_GPIO_PIN_14
 
 #define PORT_QUAD_PRESS GPIOB
 #define PIN_QUAD_PRESS LL_GPIO_PIN_6
 
+#define I2CAddress1 0x55
+#define I2CAddress2 0x56
+
 static bool IntActiveHigh = true;
 static bool IntActivated = false;
 
+static void APP_SystemClockConfig(void);
+static void APP_GPIOConfig(void);
+
+static void APP_SystemClockConfig(void)
+{
+  LL_RCC_HSI_Enable();
+  while(LL_RCC_HSI_IsReady() != 1);
+
+  LL_RCC_SetAHBPrescaler(LL_RCC_SYSCLK_DIV_1);
+  LL_RCC_SetSysClkSource(LL_RCC_SYS_CLKSOURCE_HSISYS);
+  while(LL_RCC_GetSysClkSource() != LL_RCC_SYS_CLKSOURCE_STATUS_HSISYS);
+
+  LL_RCC_SetAPB1Prescaler(LL_RCC_APB1_DIV_1);
+  LL_Init1msTick(8000000);
+  LL_SetSystemCoreClock(8000000);
+}
+
+
+static void APP_GPIOConfig(void)
+{
+  // PA0
+  LL_IOP_GRP1_EnableClock(LL_IOP_GRP1_PERIPH_GPIOA | LL_IOP_GRP1_PERIPH_GPIOB | LL_IOP_GRP1_PERIPH_GPIOF);
+  LL_GPIO_SetPinMode(PORT_INT, PIN_INT, LL_GPIO_MODE_INPUT);
+  LL_GPIO_ResetOutputPin(PORT_ENABLE_OLED, PIN_ENABLE_OLED);
+  LL_GPIO_SetPinMode(PORT_ENABLE_OLED, PIN_ENABLE_OLED, LL_GPIO_MODE_OUTPUT);
+  LL_GPIO_SetPinMode(PORT_QUAD_ENC_A, PIN_QUAD_ENC_A, LL_GPIO_MODE_INPUT);
+  LL_GPIO_SetPinMode(PORT_QUAD_ENC_B, PIN_QUAD_ENC_B, LL_GPIO_MODE_INPUT);
+  LL_GPIO_SetPinMode(PORT_BTN_1, PIN_BTN_1, LL_GPIO_MODE_INPUT);
+  LL_GPIO_SetPinMode(PORT_BTN_2, PIN_BTN_2, LL_GPIO_MODE_INPUT);
+  LL_GPIO_SetPinMode(PORT_BTN_3, PIN_BTN_3, LL_GPIO_MODE_INPUT);
+  LL_GPIO_SetPinMode(PORT_BTN_4, PIN_BTN_4, LL_GPIO_MODE_INPUT);
+  LL_GPIO_SetPinMode(PORT_BTN_5, PIN_BTN_5, LL_GPIO_MODE_INPUT);
+  LL_GPIO_SetPinMode(PORT_BTN_6, PIN_BTN_6, LL_GPIO_MODE_INPUT);
+  LL_GPIO_SetPinMode(PORT_SCAN_1, PIN_SCAN_1, LL_GPIO_MODE_INPUT);
+  LL_GPIO_SetPinMode(PORT_SCAN_2, PIN_SCAN_2, LL_GPIO_MODE_INPUT);
+  LL_GPIO_SetPinMode(PORT_QUAD_PRESS, PIN_QUAD_PRESS, LL_GPIO_MODE_INPUT);
+
+  LL_GPIO_SetPinPull(PORT_QUAD_ENC_A, PIN_QUAD_ENC_A, LL_GPIO_PULL_DOWN);
+  LL_GPIO_SetPinPull(PORT_QUAD_ENC_B, PIN_QUAD_ENC_B, LL_GPIO_PULL_DOWN);
+  LL_GPIO_SetPinPull(PORT_BTN_1, PIN_BTN_1, LL_GPIO_PULL_DOWN);
+  LL_GPIO_SetPinPull(PORT_BTN_2, PIN_BTN_2, LL_GPIO_PULL_DOWN);
+  LL_GPIO_SetPinPull(PORT_BTN_3, PIN_BTN_3, LL_GPIO_PULL_DOWN);
+  LL_GPIO_SetPinPull(PORT_BTN_4, PIN_BTN_4, LL_GPIO_PULL_DOWN);
+  LL_GPIO_SetPinPull(PORT_BTN_5, PIN_BTN_5, LL_GPIO_PULL_DOWN);
+  LL_GPIO_SetPinPull(PORT_BTN_6, PIN_BTN_6, LL_GPIO_PULL_DOWN);
+  LL_GPIO_SetPinPull(PORT_QUAD_PRESS, PIN_QUAD_PRESS, LL_GPIO_PULL_DOWN);
+
+  IntActiveHigh = LL_GPIO_IsInputPinSet(PORT_INT, PIN_INT);
+  if(IntActiveHigh) LL_GPIO_SetPinMode(PORT_INT, PIN_INT, LL_GPIO_MODE_OUTPUT);
+  else LL_GPIO_ResetOutput(PORT_INT, PIN_INT); LL_GPIO_SetPinMode(PORT_INT, PIN_INT, LL_GPIO_MODE_OUTPUT); LL_GPIO_SetPinMode(, LL_GPIO_MODE_ALTERNATE);
+}
+
+static void I2CInit(void)
+{
+  LL_GPIO_InitTypeDef GPIO_InitStruct = {0};
+
+  LL_APB1_GRP1_EnableClock(LL_APB1_GRP1_PERIPH_I2C1);
+
+  // PF1 SCL
+  GPIO_InitStruct.Pin = LL_GPIO_PIN_1;
+  GPIO_InitStruct.Mode = LL_GPIO_MODE_ALTERNATE;
+  GPIO_InitStruct.Speed = LL_GPIO_SPEED_FREQ_HIGH;
+  GPIO_InitStruct.OutputType = LL_GPIO_OUTPUT_OPENDRAIN;
+  GPIO_InitStruct.Pull = LL_GPIO_PULL_UP;
+  GPIO_InitStruct.Alternate = LL_GPIO_AF_12;
+  LL_GPIO_Init(GPIOF, &GPIO_InitStruct);
+
+  // PF0 SDA
+  GPIO_InitStruct.Pin = LL_GPIO_PIN_0;
+  GPIO_InitStruct.Alternate = LL_GPIO_AF_12;
+  LL_GPIO_Init(GPIOF, &GPIO_InitStruct);
+
+  LL_APB1_GRP1_ForceReset(LL_APB1_GRP1_PERIPH_I2C1);
+  LL_APB1_GRP1_ReleaseReset(LL_APB1_GRP1_PERIPH_I2C1);
+
+  LL_I2C_InitTypeDef I2C_InitStruct;
+  /*
+   * Clock speed:
+   * - standard = 100khz
+   * - fast     = 400khz
+  */
+  I2C_InitStruct.ClockSpeed      = LL_I2C_MAX_SPEED_FAST;
+  I2C_InitStruct.DutyCycle       = LL_I2C_DUTYCYCLE_16_9;
+  I2C_InitStruct.OwnAddress1     = IntActiveHigh ? I2CAddress1 : I2CAddress2;
+  I2C_InitStruct.TypeAcknowledge = LL_I2C_ASK;
+  LL_I2C_Init(I2C1, &I2C_InitStruct);
+}
+
 // Initialize all hardware
-void hardware_init();
+void hardware_init()
+{
+    //init buttons
+    //seperate init i2c
+    APP_SystemClockConfig();
+    APP_GPIOConfig();
+    I2CInit();    
+}
 
 // Engage Int line - turn it to output and set appropriate Int level
 void EnableInterrupt()
