@@ -10,7 +10,7 @@ ULP_GPIO_0              Humidity A0                    GPIO Out
 ULP_GPIO_8              Humidity A1                    GPIO Out
 ULP_GPIO_9              Humidity A2                    GPIO Out
 GPIO_57                 Humidity ~OE                   GPIO Out
-ULP_GPIO_4              Humidity FREQ in               Timer 0 /SCT_IN_0/ (PullDown?)    [mode 9]
+ULP_GPIO_4              Humidity FREQ in               SCT_IN_0           (PullDown?)    [mode 9]     SCT (State Configurable Timer)
 
 ULP_GPIO_5              Leak detector                  Analog - AGPIO_5  OPAMP2_IN[1]    [mode 7]
 ULP_GPIO_6              Motor Current                  Analog - AGPIO_6  ADCP[3]         [mode 7]
@@ -31,11 +31,11 @@ GPIO_12       SPI MISO              /Spare/            SSI_MST_DATA1 (MOSI!) / G
 GPIO_53                 SPI CLK                        SSI_MST_CS0 ???  (52: SSI_MST_CLK!)             <<< swap with LED1       [mode 3]
 GPIO_10                 Valves ~CS                     SSI_MST_CS1                                                              [mode 3]
 
-ULP_GPIO_11   /Spare/ (TF Card select?) Acc Sence      GPIO In PullUp / analog -     <<< Move to GPIO_29
+ULP_GPIO_11   /Spare/ (TF Card select) Acc Sence       GPIO In PullUp / analog -     <<< Move to GPIO_29
 
  >> GPIO_29    TopGPIO_4  [mode 14]   OPAMP3_IN[1]
 
-GPIO_29       Buzzer                /Not-Spare/     SCT_OUT_0 / TopGPIO_4                                                       [mode 9]
+GPIO_29       Buzzer                /Not-Spare/     SCT_OUT_0 / TopGPIO_4                                                       [mode 9]     SCT (State Configurable Timer)
 GPIO_30       Buzzer ~EN             Spare          GPIO Out / GPIO In PullUp
 
 GPIO_15       eInk ~CS               Spare          SSI_MST_CS2 / SPIO In PullUp                                                [mode 3]
@@ -79,3 +79,7 @@ Connect GPIO_29 (pin 29, TP) to ULP_GPIO_11 (pin 5). Set ULP_GPIO_11 to AnalogIn
 Connect GPIO_11 (pin 58, MOSI) to GPIO_12 (pin 56, TP). Set GPIO_12 to In
 
 
+------
+
+Add pull ups on BUT1,2
+Add series resistor to BUT1
