@@ -1,4 +1,8 @@
-﻿#pragma once
+﻿#include <stdint.h>
+
+#include <py32f0xx_ll_i2c.h>
+
+#include "i2c.h"
 
 /*
 
@@ -91,7 +95,7 @@ bool I2CWriteReady()
 
 bool I2CReadReady()
 {
-    isAborted = false
+    isAborted = false;
     //ready to send data for a read request sent by host
     if(LL_I2C_IsActiveFlag_RXNE(I2C1) || LL_I2C_IsActiveFlag_BTF(I2C1)) return true;
     if(LL_I2C_IsActiveFlag_STOP(I2C1))

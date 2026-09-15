@@ -1,4 +1,12 @@
-﻿#include "hardware.h"
+﻿#include <stdint.h>
+
+#include <py32f0xx_ll_gpio.h>
+#include <py32f0xx_ll_i2c.h>
+#include <py32f0xx_ll_bus.h>
+#include <py32f0xx_ll_utils.h>
+#include <py32f0xx_ll_rcc.h>
+
+#include "hardware.h"
 
 ///////////////// Low level Hardware interface
 
@@ -62,8 +70,8 @@ static void APP_GPIOConfig(void)
   LL_GPIO_SetPinMode(PORT_INT, PIN_INT, LL_GPIO_MODE_INPUT);
   LL_GPIO_ResetOutputPin(PORT_ENABLE_OLED, PIN_ENABLE_OLED);
   LL_GPIO_SetPinMode(PORT_ENABLE_OLED, PIN_ENABLE_OLED, LL_GPIO_MODE_OUTPUT);
-  LL_GPIO_SetPinMode(PORT_QUAD_ENC_A, PIN_QUAD_ENC_A, LL_GPIO_MODE_INPUT);
-  LL_GPIO_SetPinMode(PORT_QUAD_ENC_B, PIN_QUAD_ENC_B, LL_GPIO_MODE_INPUT);
+  LL_GPIO_SetPinMode(PORT_QUAD_ENC, PIN_QUAD_ENC_A, LL_GPIO_MODE_INPUT);
+  LL_GPIO_SetPinMode(PORT_QUAD_ENC, PIN_QUAD_ENC_B, LL_GPIO_MODE_INPUT);
   LL_GPIO_SetPinMode(PORT_BTN_1, PIN_BTN_1, LL_GPIO_MODE_INPUT);
   LL_GPIO_SetPinMode(PORT_BTN_2, PIN_BTN_2, LL_GPIO_MODE_INPUT);
   LL_GPIO_SetPinMode(PORT_BTN_3, PIN_BTN_3, LL_GPIO_MODE_INPUT);
@@ -74,8 +82,8 @@ static void APP_GPIOConfig(void)
   LL_GPIO_SetPinMode(PORT_SCAN_2, PIN_SCAN_2, LL_GPIO_MODE_INPUT);
   LL_GPIO_SetPinMode(PORT_QUAD_PRESS, PIN_QUAD_PRESS, LL_GPIO_MODE_INPUT);
 
-  LL_GPIO_SetPinPull(PORT_QUAD_ENC_A, PIN_QUAD_ENC_A, LL_GPIO_PULL_DOWN);
-  LL_GPIO_SetPinPull(PORT_QUAD_ENC_B, PIN_QUAD_ENC_B, LL_GPIO_PULL_DOWN);
+  LL_GPIO_SetPinPull(PORT_QUAD_ENC, PIN_QUAD_ENC_A, LL_GPIO_PULL_DOWN);
+  LL_GPIO_SetPinPull(PORT_QUAD_ENC, PIN_QUAD_ENC_B, LL_GPIO_PULL_DOWN);
   LL_GPIO_SetPinPull(PORT_BTN_1, PIN_BTN_1, LL_GPIO_PULL_DOWN);
   LL_GPIO_SetPinPull(PORT_BTN_2, PIN_BTN_2, LL_GPIO_PULL_DOWN);
   LL_GPIO_SetPinPull(PORT_BTN_3, PIN_BTN_3, LL_GPIO_PULL_DOWN);
@@ -86,10 +94,11 @@ static void APP_GPIOConfig(void)
 
   IntActiveHigh = LL_GPIO_IsInputPinSet(PORT_INT, PIN_INT);
   if(IntActiveHigh) LL_GPIO_SetPinMode(PORT_INT, PIN_INT, LL_GPIO_MODE_OUTPUT);
-  else LL_GPIO_ResetOutput(PORT_INT, PIN_INT); LL_GPIO_SetPinMode(PORT_INT, PIN_INT, LL_GPIO_MODE_OUTPUT); LL_GPIO_SetPinMode(, LL_GPIO_MODE_ALTERNATE);
+  else LL_GPIO_ResetOutputPin(PORT_INT, PIN_INT); 
+  LL_GPIO_SetPinMode(PORT_INT, PIN_INT, LL_GPIO_MODE_OUTPUT);
 }
 
-static void I2CInit(void)
+void I2CInit()
 {
   LL_GPIO_InitTypeDef GPIO_InitStruct = {0};
 
@@ -121,7 +130,7 @@ static void I2CInit(void)
   I2C_InitStruct.ClockSpeed      = LL_I2C_MAX_SPEED_FAST;
   I2C_InitStruct.DutyCycle       = LL_I2C_DUTYCYCLE_16_9;
   I2C_InitStruct.OwnAddress1     = IntActiveHigh ? I2CAddress1 : I2CAddress2;
-  I2C_InitStruct.TypeAcknowledge = LL_I2C_ASK;
+  I2C_InitStruct.TypeAcknowledge = LL_I2C_ACK;
   LL_I2C_Init(I2C1, &I2C_InitStruct);
 }
 
@@ -175,7 +184,7 @@ void TurnOLEDOff()
 // Return 2 bits of A/B signals of QEncoder
 uint8_t QuadEncoderButtons()
 {
-    return LL_GPIO_ReadInputPort(PORT_QUAD_ENC) & (QUAD_ENC_PIN_B | QUAD_ENC_PIN_A);
+    return LL_GPIO_ReadInputPort(PORT_QUAD_ENC) & (PIN_QUAD_ENC_B | PIN_QUAD_ENC_A);
 }
 
 uint16_t Combine()

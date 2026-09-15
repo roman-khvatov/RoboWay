@@ -1,44 +1,52 @@
 ﻿#pragma once
 
 #include <stdint.h>
+#include <stddef.h>
+
+#include <py32f0xx.h>
+
+#define _LABEL2(arg) cont_label##arg
+#define _LABEL1(arg) _LABEL2(arg)
+#define _LABEL _LABEL1(__LINE__)
+
 
 #define THREAD() static void* _thread_support_cur_place; if (_thread_support_cur_place) goto *_thread_support_cur_place
 #define THREAD_WITH_DELAY() static int32_t _thread_support_delay_value; THREAD()
 
-#define YIELD() do {_thread_support_cur_place = &&cont_label; return; cont_label:;} while(0)
+#define YIELD() do {_thread_support_cur_place = &&_LABEL; return; _LABEL:;} while(0)
 #define RESTART() do {_thread_support_cur_place = NULL; return;} while(0)
 
 #define DELAY_SETUP(ticks) (_thread_support_delay_value = (SysTick->VAL - (ticks)) & 0xFFFFFF)
 
 #define IS_DELAY_DONE() ((int32_t((_thread_support_delay_value - SysTick->VAL) & 0xFFFFFF) << 8) >= 0)
 
-#define DELAY(ticks) do { DELAY_SETUP_(ticks); while(!IS_DELAY_DONE()) YIELD(); } while(0)
+#define DELAY(ticks) do { DELAY_SETUP(ticks); while(!IS_DELAY_DONE()) YIELD(); } while(0)
 
 #define SYSTICK_FREQ 24 // SysTick frequency (in MHZ)
 
 inline constexpr unsigned operator ""_ms(long double val)  
 {
-    auto constexpr result = SYSTICK_FREQ*val*1000+0.5;
-    static_assert( (unsigned long long)result < 0x7FFFFF, "Can't generate so long delay (23 bits of SysTick counter allowed for wait constant)");
+    const auto result = SYSTICK_FREQ*val*1000+0.5;
+//    static_assert( (unsigned long long)result < 0x7FFFFF, "Can't generate so long delay (23 bits of SysTick counter allowed for wait constant)");
     return unsigned(result);
 }
 inline constexpr unsigned operator ""_mks(long double val) 
 {
-    auto constexpr result = SYSTICK_FREQ*val+0.5;
-    static_assert( (unsigned long long)result < 0x7FFFFF, "Can't generate so long delay (23 bits of SysTick counter allowed for wait constant)");
+    const auto result = SYSTICK_FREQ*val+0.5;
+//    static_assert( (unsigned long long)result < 0x7FFFFF, "Can't generate so long delay (23 bits of SysTick counter allowed for wait constant)");
     return unsigned(result);
 }
 inline constexpr unsigned operator ""_ms(unsigned long long val)  
 {
-    auto constexpr result = SYSTICK_FREQ*val*1000;
-    static_assert( result < 0x7FFFFF, "Can't generate so long delay (23 bits of SysTick counter allowed for wait constant)");
+    const auto result = SYSTICK_FREQ*val*1000;
+//    static_assert( result < 0x7FFFFF, "Can't generate so long delay (23 bits of SysTick counter allowed for wait constant)");
     return unsigned(result);
 }
 
 inline constexpr unsigned operator ""_mks(unsigned long long val) 
 {
-    auto constexpr result = SYSTICK_FREQ*val;
-    static_assert( result < 0x7FFFFF, "Can't generate so long delay (23 bits of SysTick counter allowed for wait constant)");
+    const auto result = SYSTICK_FREQ*val;
+//    static_assert( result < 0x7FFFFF, "Can't generate so long delay (23 bits of SysTick counter allowed for wait constant)");
     return unsigned(result);
 }
 

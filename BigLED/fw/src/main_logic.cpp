@@ -1,6 +1,10 @@
 /*I2C from PY32F002A*/
 
-#include "thread.h"
+#include <stdint.h>
+#include <stddef.h>
+
+#include "threads.h"
+#include "bit_utils.h"
 #include "btn_queue.h"
 #include "i2c.h"
 #include "hardware.h"
@@ -35,11 +39,11 @@ void ButtonsTask()
     for(;;)
     {
         uint16_t newButtonState = WAIT_STABLE(2_ms, ReadButtons());
-        for(auto index: BitScan(newButtonState &~ buttonState))
+        for(auto index: BitsScan(newButtonState &~ buttonState))
         {
             SendButton(index, ButtonPressed);
         }
-        for(auto index: BitScan(~newButtonState & buttonState))
+        for(auto index: BitsScan(~newButtonState & buttonState))
         {
             SendButton(index, ButtonRelease);
         }
@@ -60,6 +64,7 @@ uint8_t AutoRepeatTwo = 5;
 
 void AutoRepeatTask()
 {
+    static int waitCounter;
     THREAD_WITH_DELAY();
     for(;;)
     {
@@ -67,7 +72,7 @@ void AutoRepeatTask()
         currentButton = checkOneButton();
         if(currentButton == -1) RESTART();
         WAIT_AUTOREPEAT(AutoRepeatOne+1);
-        SendButton(currentButton, AutoRepeatOne);
+        SendButton(currentButton, ButtonAutoRepeatOne);
         for(;;)
         {
             WAIT_AUTOREPEAT(AutoRepeatTwo+1);
@@ -94,8 +99,8 @@ void I2CSelectTask()
     }
 }
 
-#define I2CREAD()       ( {WAIT(I2CReadReady());  if(I2CAborted()) {currentSchedule = Idle; RESTART()}; I2CReadData();} )
-#define I2CWRITE(data) do {WAIT(I2CWriteReady()); if(I2CAborted()) {currentSchedule = Idle; RESTART()}; I2CWriteData(data);} while (0)
+#define I2CREAD()       ( {WAIT(I2CReadReady());  if(I2CAborted()) {currentSchedule = Idle; RESTART();}; I2CReadData();} )
+#define I2CWRITE(data) do {WAIT(I2CWriteReady()); if(I2CAborted()) {currentSchedule = Idle; RESTART();}; I2CWriteData(data);} while (0)
 
 bool requestButtonState;
 
@@ -154,17 +159,17 @@ void I2CWriteTask()
             I2CWRITE(tmp);
             I2CWRITE(tmp >> 8);
         }
-        int8_t QuadValue = GetQuadEncValue();
-        if(QuadValue != 0)
+        tmp = GetQuadEncValue();
+        if(tmp != 0)
         {
             ClearQuadEncValue();
-            I2CWRITE( QuadValue | 0x80);
+            I2CWRITE( tmp | 0x80);
         }
         I2CWRITE(GetButtonFromQueue());
-        uint8_t ButtonCounter = GetTotalButtons(64+counter);
-        if(ButtonCounter > counter && ButtonCounter > 1)
+        tmp = GetTotalButtons(64+counter);
+        if(tmp > counter && tmp > 1)
         {
-            I2CWRITE(ButtonCounter-counter-1);
+            I2CWRITE(tmp-counter-1);
         }
         for(;;) I2CWRITE(GetButtonFromQueue()); 
     }
@@ -172,7 +177,7 @@ void I2CWriteTask()
 
 
 
-void main()
+int main()
 {
     /*initialisations*/
     hardware_init();
@@ -188,6 +193,7 @@ void main()
         {
             case Read: I2CReadTask(); break;
             case Write: I2CWriteTask(); break;
+            default: ;
         }            
     }
 }

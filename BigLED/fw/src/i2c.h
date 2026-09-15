@@ -9,3 +9,5 @@ bool I2CAborted();
 
 uint8_t I2CReadData();
 void I2CWriteData(uint8_t data);
+
+void I2CInit(); // Placed in hardware.h
