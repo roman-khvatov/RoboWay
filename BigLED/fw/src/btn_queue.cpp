@@ -1,4 +1,6 @@
-﻿#include "btn_queue.h"
+﻿#include <stdint.h>
+
+#include "btn_queue.h"
 
 int8_t current_quadenc_value;
 
@@ -61,7 +63,7 @@ uint8_t GetTotalButtons(uint8_t max_value)
     }
     else
     {
-        return Size_PTR
+        return Size_PTR;
     }
 }
 
