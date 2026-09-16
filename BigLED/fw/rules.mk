@@ -52,7 +52,7 @@ TGT_CPPFLAGS	?= $(ARCH_FLAGS) $(DEBUG_FLAGS) $(OPT) -std=c++20 $(addprefix -D, $
 # ASM flags
 TGT_ASFLAGS	?= $(ARCH_FLAGS) $(DEBUG_FLAGS) $(OPT) -Wa,--warn
 # LD flags
-TGT_LDFLAGS	?= $(ARCH_FLAGS) -specs=nano.specs -specs=nosys.specs -lc \
+TGT_LDFLAGS	?= $(ARCH_FLAGS) -specs=nosys.specs -specs=nano.specs -lc \
 				-Wl,-Map=$(BDIR)/$(PROJECT).map \
 				-Wl,--gc-sections \
 				-Wl,--print-memory-usage

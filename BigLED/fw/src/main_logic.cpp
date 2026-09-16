@@ -197,3 +197,13 @@ int main()
         }            
     }
 }
+
+// Empty stubs to silence linker (functions will be discarded in any case)
+extern "C" {
+ __attribute__((naked)) void _close() {}
+ __attribute__((naked)) void _lseek() {}
+ __attribute__((naked)) void _read() {}
+ __attribute__((naked)) void _write() {}
+
+}
+

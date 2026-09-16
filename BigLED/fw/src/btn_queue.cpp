@@ -1,6 +1,7 @@
 ﻿#include <stdint.h>
 
 #include "btn_queue.h"
+#include "hardware.h"
 
 int8_t current_quadenc_value;
 
@@ -16,6 +17,8 @@ void SendQuadEncoderValue(int delta)
     {
         current_quadenc_value = -64;
     }
+    if (current_quadenc_value) SignalInterrupt(true);    
+
 }
 
 // Return current QEncode value
@@ -28,6 +31,7 @@ int8_t GetQuadEncValue()
 void ClearQuadEncValue()
 {
     current_quadenc_value = 0;        
+    if (!GetTotalButtons(1)) SignalInterrupt(false);    
 }
 /////////////////////////////////////////////////////////////////////////////
 uint8_t ButtonsSetup[13]; // Setup of events of interest (bitset of ButtonState for each button)
@@ -50,7 +54,8 @@ void SendButton(int buttonIndex, ButtonState state)
         else
         {
             ButtonsBuffer[(Read_PTR + 63) &63] = 1;
-        }    
+        }
+        SignalInterrupt(true);    
     }    
 }
 
@@ -76,6 +81,7 @@ uint8_t GetButtonFromQueue()
     Read_PTR++;
     Read_PTR &= 63;
     Size_PTR--;
+    if (Size_PTR == 0 && current_quadenc_value == 0) SignalInterrupt(false);    
     return result;
 }
 

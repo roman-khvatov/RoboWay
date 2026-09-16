@@ -58,7 +58,12 @@ static void APP_SystemClockConfig(void)
   while(LL_RCC_GetSysClkSource() != LL_RCC_SYS_CLKSOURCE_STATUS_HSISYS);
 
   LL_RCC_SetAPB1Prescaler(LL_RCC_APB1_DIV_1);
-  LL_Init1msTick(8000000);
+
+//  LL_Init1msTick(8000000);
+  SysTick->LOAD  = 0xFFFFFFul;
+  SysTick->VAL   = 0UL;
+  SysTick->CTRL  = SysTick_CTRL_CLKSOURCE_Msk | SysTick_CTRL_ENABLE_Msk;
+
   LL_SetSystemCoreClock(8000000);
 }
 
@@ -67,6 +72,8 @@ static void APP_GPIOConfig(void)
 {
   // PA0
   LL_IOP_GRP1_EnableClock(LL_IOP_GRP1_PERIPH_GPIOA | LL_IOP_GRP1_PERIPH_GPIOB | LL_IOP_GRP1_PERIPH_GPIOF);
+  LL_APB1_GRP1_EnableClock(LL_APB1_GRP1_PERIPH_I2C1);
+
   LL_GPIO_SetPinMode(PORT_INT, PIN_INT, LL_GPIO_MODE_INPUT);
   LL_GPIO_ResetOutputPin(PORT_ENABLE_OLED, PIN_ENABLE_OLED);
   LL_GPIO_SetPinMode(PORT_ENABLE_OLED, PIN_ENABLE_OLED, LL_GPIO_MODE_OUTPUT);
@@ -78,8 +85,12 @@ static void APP_GPIOConfig(void)
   LL_GPIO_SetPinMode(PORT_BTN_4, PIN_BTN_4, LL_GPIO_MODE_INPUT);
   LL_GPIO_SetPinMode(PORT_BTN_5, PIN_BTN_5, LL_GPIO_MODE_INPUT);
   LL_GPIO_SetPinMode(PORT_BTN_6, PIN_BTN_6, LL_GPIO_MODE_INPUT);
+
+  LL_GPIO_SetOutputPin(PORT_SCAN_1, PIN_SCAN_1);
+  LL_GPIO_SetOutputPin(PORT_SCAN_2, PIN_SCAN_2);
   LL_GPIO_SetPinMode(PORT_SCAN_1, PIN_SCAN_1, LL_GPIO_MODE_INPUT);
   LL_GPIO_SetPinMode(PORT_SCAN_2, PIN_SCAN_2, LL_GPIO_MODE_INPUT);
+
   LL_GPIO_SetPinMode(PORT_QUAD_PRESS, PIN_QUAD_PRESS, LL_GPIO_MODE_INPUT);
 
   LL_GPIO_SetPinPull(PORT_QUAD_ENC, PIN_QUAD_ENC_A, LL_GPIO_PULL_DOWN);
@@ -92,17 +103,7 @@ static void APP_GPIOConfig(void)
   LL_GPIO_SetPinPull(PORT_BTN_6, PIN_BTN_6, LL_GPIO_PULL_DOWN);
   LL_GPIO_SetPinPull(PORT_QUAD_PRESS, PIN_QUAD_PRESS, LL_GPIO_PULL_DOWN);
 
-  IntActiveHigh = LL_GPIO_IsInputPinSet(PORT_INT, PIN_INT);
-  if(IntActiveHigh) LL_GPIO_SetPinMode(PORT_INT, PIN_INT, LL_GPIO_MODE_OUTPUT);
-  else LL_GPIO_ResetOutputPin(PORT_INT, PIN_INT); 
-  LL_GPIO_SetPinMode(PORT_INT, PIN_INT, LL_GPIO_MODE_OUTPUT);
-}
-
-void I2CInit()
-{
   LL_GPIO_InitTypeDef GPIO_InitStruct = {0};
-
-  LL_APB1_GRP1_EnableClock(LL_APB1_GRP1_PERIPH_I2C1);
 
   // PF1 SCL
   GPIO_InitStruct.Pin = LL_GPIO_PIN_1;
@@ -118,6 +119,14 @@ void I2CInit()
   GPIO_InitStruct.Alternate = LL_GPIO_AF_12;
   LL_GPIO_Init(GPIOF, &GPIO_InitStruct);
 
+  IntActiveHigh = LL_GPIO_IsInputPinSet(PORT_INT, PIN_INT);
+  if(IntActiveHigh) LL_GPIO_SetPinMode(PORT_INT, PIN_INT, LL_GPIO_MODE_OUTPUT);
+  else LL_GPIO_ResetOutputPin(PORT_INT, PIN_INT); 
+  LL_GPIO_SetPinMode(PORT_INT, PIN_INT, LL_GPIO_MODE_OUTPUT);
+}
+
+void I2CInit()
+{
   LL_APB1_GRP1_ForceReset(LL_APB1_GRP1_PERIPH_I2C1);
   LL_APB1_GRP1_ReleaseReset(LL_APB1_GRP1_PERIPH_I2C1);
 
