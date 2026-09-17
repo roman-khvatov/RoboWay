@@ -138,6 +138,8 @@ ifeq ($(FLASH_PROGRM),jlink)
 else ifeq ($(FLASH_PROGRM),pyocd)
 	$(PYOCD_EXE) erase -t $(PYOCD_DEVICE) --chip --config $(TOP)/Misc/pyocd.yaml
 	$(PYOCD_EXE) load $< -t $(PYOCD_DEVICE) --config $(TOP)/Misc/pyocd.yaml
+else ifeq ($(FLASH_PROGRM),puyaisp)
+	puyaisp.exe -f $(BDIR)/$(PROJECT).bin
 else
 	@echo "FLASH_PROGRM is invalid\n"
 endif

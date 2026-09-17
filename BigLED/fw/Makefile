@@ -24,8 +24,8 @@ USE_FREERTOS	?= n
 USE_DSP			?= n
 # Build with Waveshare e-paper lib, y:yes, n:no
 USE_EPAPER		?= n
-# Programmer, jlink or pyocd
-FLASH_PROGRM	?= pyocd
+# Programmer, jlink or pyocd or puyaisp (pip install puyaisp)
+FLASH_PROGRM	?= puyaisp
 
 ##### Toolchains #######
 
