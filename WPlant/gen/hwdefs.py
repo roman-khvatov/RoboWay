@@ -1,6 +1,21 @@
-﻿class Entity:
+﻿
+K = 1000
+M = K*K
+
+####################################################
+class Entity:
     def __init__(self, **kwargs):
         self.__dir__.update(kwargs)
+
+class Item:
+    pass
+
+class List:
+    def __init__(self, default: Optional[Entity], *args):
+        self.default: Entity = default
+        if default is not None:
+            args = [default]+args
+        self.list: list[Entity] = args
 
 Input = Entity()
 Output = Entity()
@@ -9,28 +24,21 @@ Pulldown = Entity()
 FreeRun = Entity()
 InCount = Entity()
 
-class List:
-    def __init__(self, default: Entity, *args):
-        self.default = default
-        if default is not None:
-            args = [default]+args
-        self.list = args
+Gnd = Item()
 
-class AnyPin:
+class AnyPin(Item):
+    name: str
+    index: int
+
+    default: Optional[bool]
     
     def set(self, value: bool):
         pass
 
-    def connect(self, pin: Self):
+    def connect(self, pin: Item):
         pass
 
-
-Gnd = AnyPin()
-
 class UulpPin(AnyPin):
-    name: str
-    index: int
-
     pin_mode: List = List(None, Input, Output)
 
 class Pin(UulpPin):
@@ -41,73 +49,73 @@ class Pin(UulpPin):
 class UlpPin(Pin):
     pass
 
-class SCT:
+class SCT(Item):
     name: str
 
     mode: List = List(None, FreeRun, InCount)    
-    input: Optional[AnyPin]
-    output: Optional[AnyPin]
+    input: Optional[Item]
+    output: Optional[Item]
 
 class SsiMst:
     name: str
 
     clock: int
-    mosi: Optional[AnyPin]
-    miso: Optional[AnyPin]
-    clk: AnyPin
-    cs0: Optional[AnyPin]
-    cs1: Optional[AnyPin]
-    cs2: Optional[AnyPin]
-    cs3: Optional[AnyPin]
+    mosi: Optional[Item]
+    miso: Optional[Item]
+    clk: Item
+    cs0: Optional[Item]
+    cs1: Optional[Item]
+    cs2: Optional[Item]
+    cs3: Optional[Item]
 
 class PinsGroup:
     name: str
 
-    pins: list[AnyPin]
+    pins: list[Item]
 
-class Opamp:
+class Opamp(Item):
     name: str
     index: int
 
-    inp: AnyPin
-    inm: AnyPin
+    inp: Item
+    inm: Item
 
-class Resistor:
+class Resistor(Item):
     name: str
     index: int
 
-    left: AnyPin
-    right: AnyPin
+    left: Item
+    right: Item
 
-class Scaller:
+class Scaller(Item):
     name: str
 
 class Uart:
     name: str
     index: int
     
-    rx: Optional[AnyPin]
-    tx: Optional[AnyPin]
+    rx: Optional[Item]
+    tx: Optional[Item]
 
     mode: str
 
 class UlpUart(Uart):
     pass
 
-class Dac:
+class Dac(Item):
     name: str
     index: int
 
 class Adc:
     name: str
 
-    inp: list[AnyPin]
-    ref: AnyPin
+    inp: list[Item]
+    ref: Item
 
-class AuxLDO:
+class AuxLDO(Item):
     name: str
 
-class PWM:
+class PWM(Item):
     name: str
     index: int
 
@@ -116,11 +124,11 @@ class PWM:
 
 ####################################################
 
-class Promise(AnyPin):
+class Promise(Item):
     def __init__(self):
         pass
 
-    def set(self, pin: AnyPin):
+    def set(self, pin: Item):
         pass
 
 class Alternative:

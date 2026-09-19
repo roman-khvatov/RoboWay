@@ -34,9 +34,9 @@ def get_definitions(bool IntModule):
     spi_cs1 = pin('#ValvesCS', 10, Output)
 
     if IntModule:
-        ssi_mst('SPI', clock='10M', mosi=spi_mosi, miso=spi_miso, clk=spi_clk, cs1=spi_cs1, cs2=spi_cs2)
+        ssi_mst('SPI', clock=10*M, mosi=spi_mosi, miso=spi_miso, clk=spi_clk, cs1=spi_cs1, cs2=spi_cs2)
     else:
-        ssi_mst('SPI', clock='10M', mosi=spi_mosi, clk=spi_clk, cs1=spi_cs1)
+        ssi_mst('SPI', clock=10*M, mosi=spi_mosi,                clk=spi_clk, cs1=spi_cs1)
 
         with Promise() as res:
             opamp3 = opamp(3, inp=pin('#AccSence', 29), inm=res)
@@ -49,6 +49,9 @@ def get_definitions(bool IntModule):
         buzzer = pin(29, Output)
         en = pin(30, Output)
         with AlternativeGroup('TimerMode'):
+            with Alternative('Off'): # First alternative is default
+                buzzer.set(False)
+                en.set(False)
             with Alternative('BuzzerActive'):
                 sct('SCT', output=buzzer, mode=FreeRun)
                 en.set(True)
@@ -56,16 +59,14 @@ def get_definitions(bool IntModule):
                 sct('SCT', input=hum_in, mode=InCount)
                 buzzer.set(False)
                 en.set(False)
-            with Alternative('Off'):
-                buzzer.set(False)
-                en.set(False)
 
         ulp_pin('eInkBUSY', 1, Input)
         pin('eInkDC', 54, Output)
         pin('eInkReset', 56, Output)
+        ulp_pin('TFSelect', 11, Output)
     else:
         ulp_pin('AccSenceEN', 1, Output)
         sct('SCT', input=hum_in, mode=InCount)
 
-    with Alternative('FreqCalibrate'):
-        uart485_tx.connect(pwm(0, Freq='10K', D=50))
+    with Alternative('!FreqCalibrate'): # BiStable alternative - can be turned on and off
+        uart485_tx.connect(pwm(0, Freq=10*K, D=50))
