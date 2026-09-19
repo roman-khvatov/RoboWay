@@ -9,7 +9,7 @@ def get_definitions(bool IntModule):
 
     hum_in = ulp_pin(4, Input, Pulldown)
 
-    with promise() as res:
+    with Promise() as res:
         opamp2 = opamp(2, inp=ulp_pin('#LeakDetector', 5), inm=res)
         res.set(resistor('OPAMP2_RES', 2, left=Gnd, right=opamp2))
     comp(1, inp=opamp2, inm=scaler('SCALER'))
@@ -20,7 +20,8 @@ def get_definitions(bool IntModule):
     pin('LED1', 28, Output, Strength=12)
     pin('LED2', 55, Output, Strength=12)
 
-    uart('RS485', 1, rx=pin(6, Input, Pullup), tx=pin(7, Output), mode='9600 8P1')
+    uart485_tx = pin(7, Output)
+    uart('RS485', 1, rx=pin(6, Input, Pullup), tx=uart485_tx, mode='9600 8P1')
     ulp_pin('RS485_OE', 2, Output)
 
     ulp_uart('DBG_UART', rx=pin(8, Input), tx=pin(9, Input), mode='9600 8N1')
@@ -37,12 +38,12 @@ def get_definitions(bool IntModule):
     else:
         ssi_mst('SPI', clock='10M', mosi=spi_mosi, clk=spi_clk, cs1=spi_cs1)
 
-        with promise() as res:
+        with Promise() as res:
             opamp3 = opamp(3, inp=pin('#AccSence', 29), inm=res)
             res.set(resistor('OPAMP3_RES', 3, left=dac('DAC3V'), right=opamp3))
         adc_inputs.append(opamp3)
 
-    adc('ADC', in=adc_inputs, ref=aux_ldo('AUX_LDO'))
+    adc('ADC', inp=adc_inputs, ref=aux_ldo('AUX_LDO'))
 
     if IntModule:
         buzzer = pin(29, Output)
@@ -59,8 +60,12 @@ def get_definitions(bool IntModule):
                 buzzer.set(False)
                 en.set(False)
 
-        upl_pin('eInkBUSY', 1, Input)
+        ulp_pin('eInkBUSY', 1, Input)
         pin('eInkDC', 54, Output)
         pin('eInkReset', 56, Output)
     else:
-        upl_pin('AccSenceEN', 1, Output)
+        ulp_pin('AccSenceEN', 1, Output)
+        sct('SCT', input=hum_in, mode=InCount)
+
+    with Alternative('FreqCalibrate'):
+        uart485_tx.connect(pwm(0, Freq='10K', D=50))
