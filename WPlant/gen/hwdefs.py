@@ -1,100 +1,55 @@
-﻿
+﻿from typing import *
+from hwfw import *
+
 K = 1000
 M = K*K
 
-####################################################
-class Entity:
-    def __init__(self, **kwargs):
-        self.__dir__.update(kwargs)
-
-class Item:
-    def __init__(self, *args, **kwargs):
-        if args and isinstance(args[0], str):   # 'name' arg
-            assert hasattr(self, 'name')
-            self.name = args.pop(0)
-        if args and isinstance(args[0], int):   # 'index' arg
-            assert hasattr(self, 'index')
-            self.index = args.pop(0)
-
-        raw_args = {}
-        assigned = set()
-        to_assign = set()
-        for var_name, var_type in self.__class__.__annotations__.items():
-            if var_type is List:
-                l = getattr(self, var_name)
-                for item in l.list:
-                    assert item not in raw_args
-                    raw_args[item] = var_name
-                if l.default is None:
-                    to_assign.add(var_name)
-                else:
-                    setattr(self, var_name, l.default)
-
-        for arg in args:
-            assert arg in raw_args
-            name = raw_args[arg]
-            assert name not in assigned
-            assigned.add(name)
-            setattr(self, name, arg)
-            to_assign.discard(name)
-
-        assert not to_assign
-
-        for name, val in kwargs.items():
-            assert hasattr(self, name)
-            if isinstance(val, Wire):
-                val.append_ref_place(self, name)
-            else:
-                setattr(self, name, val)
-
-            
-
-class List:
-    def __init__(self, *args, /, default: Optional[Entity] =None):
-        self.default: Entity = default
-        self.list: list[Entity] = args
-
-Input = Entity()
-Output = Entity()
-Pullup = Entity()
-Pulldown = Entity()
-FreeRun = Entity()
-InCount = Entity()
+Input = Entity('Input')
+Output = Entity('Output')
+Pullup = Entity('Pullup')
+Pulldown = Entity('Pulldown')
+FreeRun = Entity('FreeRun')
+InCount = Entity('InCount')
+AltFunc = Entity('AltFunc')
 
 Gnd = Item()
 
 class AnyPin(Item):
-    name: str
+    name: str = ''
     index: int
 
     default: Optional[bool]
     
-    def set(self, value: bool):
-        pass
-
-    def connect(self, pin: Item):
+    def __lshift__(self, value: bool):
         pass
 
 class UulpPin(AnyPin):
-    pin_mode: List = List(Input, Output)
+    pin_mode: Optional[List] = List(Input, Output, AltFunc)  # AltFunc mode deduced automatically from connection
+    alt_connection: Optional[Item] = None
+
+    def set_alt_mode(self, who: Item):
+        self.pin_mode = AltFunc
+        self.alt_connection = who
 
 class Pin(UulpPin):
-    pullups: List = List(Pullup, Pulldown)
+    pullups: Optional[List] = List(Pullup, Pulldown)
 
-    Strength: Optional[int]  # UlpPin ?
+    strength: Optional[int]  # UlpPin ?
 
 class UlpPin(Pin):
     pass
 
 class Sct(Item):
-    name: str
+    name: str = ''
 
     mode: List = List(FreeRun, InCount)    
     input: Optional[Item]
     output: Optional[Item]
 
-class SsiMst:
-    name: str
+    _auto_connect = ['input', 'output']
+
+class SsiMst(Item):
+    name: str = ''
 
     clock: int
     mosi: Optional[Item]
@@ -105,30 +60,45 @@ class SsiMst:
     cs2: Optional[Item]
     cs3: Optional[Item]
 
-class PinsGroup:
+    _auto_connect = ['mosi', 'miso', 'clk', 'cs0', 'cs1', 'cs2', 'cs3']
+
+class PinsGroup(Item):
     name: str
 
     pins: list[Item]
 
 class Opamp(Item):
-    name: str
+    name: str = ''
     index: int
 
     inp: Item
     inm: Item
 
+    _auto_connect = ['inp', 'inm']
+
+class Comp(Item):
+    name: str = ''
+    index: int
+
+    inp: Item
+    inm: Item
+
+    _auto_connect = ['inp', 'inm']
+
 class Resistor(Item):
-    name: str
+    name: str = ''
     index: int
 
     left: Item
     right: Item
 
-class Scaller(Item):
-    name: str
+    _auto_connect = ['left', 'right']
 
-class Uart:
-    name: str
+class Scaller(Item):
+    name: str = ''
+
+class Uart(Item):
+    name: str = ''
     index: int
     
     rx: Optional[Item]
@@ -136,46 +106,33 @@ class Uart:
 
     mode: str
 
+    _auto_connect = ['rx', 'tx']
+
+
 class UlpUart(Uart):
     pass
 
 class Dac(Item):
-    name: str
-    index: int
+    name: str = ''
 
-class Adc:
-    name: str
+class Adc(Item):
+    name: str = ''
 
     inp: list[Item]
     ref: Item
 
+    def _post_init(self):
+        self.connect_flds(self.ref, *self.inp)
+
 class AuxLdo(Item):
-    name: str
+    name: str = ''
 
 class Pwm(Item):
-    name: str
+    name: str = ''
     index: int
 
     Freq: int
     D: int
+    output: Optional[Item]
 
-####################################################
-
-class Wire(Item):
-    def __init__(self):
-        self.places = []
-
-    def set(self, pin: Item):
-        for tgt, name in self.places:
-            setattr(tgt, name, pin)
-
-    def append_ref_place(self, target: Item, name: str):
-        self.places.append((target, name))
-
-class Alternative:
-    def __init__(self, name: str):
-        pass
-
-class AlternativeGroup:
-    def __init__(self, name: str):
-        pass
+    _auto_connect = ['output']

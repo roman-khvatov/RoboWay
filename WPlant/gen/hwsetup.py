@@ -1,4 +1,6 @@
-def get_definitions(bool IntModule):
+from hwdefs import *
+
+def get_definitions(IntModule: bool):
     UulpPin('BTN1', 0, Input)
     UulpPin('BTN2', 2, Input)                
     Pin('BTN3', 27, Input, Pullup)
@@ -11,14 +13,14 @@ def get_definitions(bool IntModule):
 
     with Wire() as res:
         opamp2 = Opamp(2, inp=UlpPin('#LeakDetector', 5), inm=res)
-        res.set(Resistor('OPAMP2_RES', 2, left=Gnd, right=opamp2))
+        res << Resistor('OPAMP2_RES', 2, left=Gnd, right=opamp2)
     Comp(1, inp=opamp2, inm=Scaller('SCALER'))
 
     adc_inputs = [UlpPin(6)]
     UlpPin('EN9V', 7, Output)
 
-    Pin('LED1', 28, Output, Strength=12)
-    Pin('LED2', 55, Output, Strength=12)
+    Pin('LED1', 28, Output, strength=12)
+    Pin('LED2', 55, Output, strength=12)
 
     uart485_tx = Pin(7, Output)
     Uart('RS485', 1, rx=Pin(6, Input, Pullup), tx=uart485_tx, mode='9600 8P1')
@@ -40,7 +42,7 @@ def get_definitions(bool IntModule):
 
         with Wire() as res:
             opamp3 = Opamp(3, inp=Pin('#AccSence', 29), inm=res)
-            res.set(Resistor('OPAMP3_RES', 3, left=Dac('DAC3V'), right=opamp3))
+            res << Resistor('OPAMP3_RES', 3, left=Dac('DAC3V'), right=opamp3)
         adc_inputs.append(opamp3)
 
     Adc('ADC', inp=adc_inputs, ref=AuxLdo('AUX_LDO'))
@@ -48,17 +50,17 @@ def get_definitions(bool IntModule):
     if IntModule:
         buzzer = Pin(29, Output)
         en = Pin(30, Output)
-        with AlternativeGroup('TimerMode'):
-            with Alternative('Off'): # First alternative is default
-                buzzer.set(False)
-                en.set(False)
-            with Alternative('BuzzerActive'):
-                Sct('SCT', output=buzzer, mode=FreeRun)
-                en.set(True)
-            with Alternate('HumMeasure'):
-                Sct('SCT', input=hum_in, mode=InCount)
-                buzzer.set(False)
-                en.set(False)
+        # Switch Alternative: TimerMode can be Off/BuzzerActive/HumMeasure
+        with Alternative('TimerMode:Off'): # First alternative is default
+            buzzer << False
+            en << False
+        with Alternative('TimerMode:BuzzerActive'):
+            Sct('SCT', output=buzzer, mode=FreeRun)
+            en << True
+        with Alternative('TimerMode:HumMeasure'):
+            Sct('SCT', input=hum_in, mode=InCount)
+            buzzer << False
+            en << False
 
         UlpPin('eInkBUSY', 1, Input)
         Pin('eInkDC', 54, Output)
@@ -69,4 +71,9 @@ def get_definitions(bool IntModule):
         Sct('SCT', input=hum_in, mode=InCount)
 
     with Alternative('!FreqCalibrate'): # BiStable alternative - can be turned on and off
-        uart485_tx.connect(Pwm(0, Freq=10*K, D=50))
+        Pwm(0, Freq=10*K, D=50, output=uart485_tx)
+
+with Holder():
+    get_definitions(True)
+with Holder():
+    get_definitions(False)
