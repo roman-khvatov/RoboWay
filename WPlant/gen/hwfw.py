@@ -50,6 +50,15 @@ class Item:
             assert 'index' in ann
             self.index = args.pop(0)
 
+        def set_attr(var_name: str, val):
+            setattr(self, var_name, val)
+            if isinstance(val, (list, tuple)):
+                for val1 in val:
+                    if hasattr(val1, 'set_alt_mode'):
+                        val1.set_alt_mode(self)
+            elif hasattr(val, 'set_alt_mode'):
+                val.set_alt_mode(self)
+
         raw_args = {}
         assigned = set()
         to_assign = set()
@@ -74,14 +83,14 @@ class Item:
         for arg in args:
             if isinstance(arg, list):
                 assert list_arg, f'List argument not expected'
-                setattr(self, list_arg, arg)
+                set_attr(list_arg, arg)
                 list_arg = None
             else:
                 assert arg in raw_args, f'Unnamed arg "{arg}" not found in possible arguments: {"/".join(str(x) for x in raw_args.keys())}'
                 name = raw_args[arg]
                 assert name not in assigned
                 assigned.add(name)
-                setattr(self, name, arg)
+                set_attr(name, arg)
                 to_assign.discard(name)
 
         for name, val in kwargs.items():
@@ -90,7 +99,7 @@ class Item:
                 val.append_ref_place(self, name)
                 setattr(self, name, None)
             else:
-                setattr(self, name, val)
+                set_attr(name, val)
                 to_assign.discard(name)
 
         assert not to_assign, f'Not assigned: {to_assign}'
@@ -98,24 +107,10 @@ class Item:
         if Holder.root:
             Holder.root.register(self)
 
-        ac = getattr(self, '_auto_connect', None)
-        if ac:
-            self.connect(*ac)
         self._post_init()
 
     def _post_init(self):
         pass
-
-    def connect(self, *flds):
-        for fld in flds:
-            pin = getattr(self, fld)
-            if pin and hasattr(pin, 'set_alt_mode'):
-                pin.set_alt_mode(self)
-
-    def connect_flds(self, *flds):
-        for pin in flds:
-            if pin and hasattr(pin, 'set_alt_mode'):
-                pin.set_alt_mode(self)
 
 class List:
     def __init__(self, *args, default: Optional[Entity] =None):
@@ -126,6 +121,8 @@ class Wire(Item):
     def __lshift__(self, pin: Item):
         for tgt, name in self.places:
             setattr(tgt, name, pin)
+            if hasattr(pin, 'set_alt_mode'):
+                pi.set_alt_mode(tgt)
 
     def append_ref_place(self, target: Item, name: str):
         self.places.append((target, name))

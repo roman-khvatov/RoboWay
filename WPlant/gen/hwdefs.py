@@ -46,8 +46,6 @@ class Sct(Item):
     input: Optional[Item]
     output: Optional[Item]
 
-    _auto_connect = ['input', 'output']
-
 class SsiMst(Item):
     name: str = ''
 
@@ -59,8 +57,6 @@ class SsiMst(Item):
     cs1: Optional[Item]
     cs2: Optional[Item]
     cs3: Optional[Item]
-
-    _auto_connect = ['mosi', 'miso', 'clk', 'cs0', 'cs1', 'cs2', 'cs3']
 
 class PinsGroup(Item):
     name: str
@@ -74,8 +70,6 @@ class Opamp(Item):
     inp: Item
     inm: Item
 
-    _auto_connect = ['inp', 'inm']
-
 class Comp(Item):
     name: str = ''
     index: int
@@ -83,16 +77,12 @@ class Comp(Item):
     inp: Item
     inm: Item
 
-    _auto_connect = ['inp', 'inm']
-
 class Resistor(Item):
     name: str = ''
     index: int
 
     left: Item
     right: Item
-
-    _auto_connect = ['left', 'right']
 
 class Scaller(Item):
     name: str = ''
@@ -105,8 +95,6 @@ class Uart(Item):
     tx: Optional[Item]
 
     mode: str
-
-    _auto_connect = ['rx', 'tx']
 
 
 class UlpUart(Uart):
@@ -121,9 +109,6 @@ class Adc(Item):
     inp: list[Item]
     ref: Item
 
-    def _post_init(self):
-        self.connect_flds(self.ref, *self.inp)
-
 class AuxLdo(Item):
     name: str = ''
 
@@ -134,5 +119,3 @@ class Pwm(Item):
     Freq: int
     D: int
     output: Optional[Item]
-
-    _auto_connect = ['output']
