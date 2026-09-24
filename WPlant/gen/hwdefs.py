@@ -70,6 +70,8 @@ class SsiMst(Item):
 class PinsGroup(Item):
     name: str
 
+    _no_pins_change = True
+
     pins: list[Item]
 
 class Opamp(Item):

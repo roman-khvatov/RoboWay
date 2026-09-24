@@ -72,7 +72,7 @@ class Holder:
             for item in self.actions:
                 print(f'{ident}    {item}', file=fstream)
         if self.nested:
-            print(f'{ident} ++ Nested Alternativrs ++', file=fstream)
+            print(f'{ident} ++ Nested Alternatives ++', file=fstream)
             for item in self.nested:
                 item.dump(fstream,ident + '    ')
                  
@@ -95,11 +95,10 @@ class Item:
 
         def set_attr(var_name: str, val):
             setattr(self, var_name, val)
-            # Our list arguments now exists only in PinsGroup. But this class do not change Pins mode
-            #if isinstance(val, (list, tuple)):
-            #    for val1 in val:
-            #        self.alt_connect(val1, var_name)
-            if hasattr(val, 'set_alt_mode'):
+            if isinstance(val, (list, tuple)) and not hasattr(self, '_no_pins_change'):
+                for idx, val1 in enumerate(val):
+                    self.alt_connect(val1, f'{var_name}:{idx}')
+            elif hasattr(val, 'set_alt_mode'):
                 self.alt_connect(val, var_name)
 
         raw_args = {}
