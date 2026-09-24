@@ -73,7 +73,13 @@ def get_definitions(IntModule: bool):
     with Alternative('!FreqCalibrate'): # BiStable alternative - can be turned on and off
         Pwm(0, Freq=10*K, D=50, output=uart485_tx)
 
-with Holder():
+import sys
+
+with Holder() as h:
     get_definitions(True)
-with Holder():
+    print('===== IntModule ========')
+    h.dump(sys.stdout)
+with Holder() as h:
     get_definitions(False)
+    print('===== ExtModule ========')
+    h.dump(sys.stdout)

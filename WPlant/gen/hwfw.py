@@ -1,4 +1,5 @@
 ﻿from typing import *
+from dataclasses import dataclass
 
 class Entity:
     def __init__(self, name: str, **kwargs):
@@ -8,22 +9,35 @@ class Entity:
     def __str__(self) -> str:
         return self.name
 
+@dataclass
+class AltConnection:
+    alt_from: 'Item'
+    alt_to: 'Item'
+    name: str
+
+    def __str__(self) -> str:
+        return f'{self.alt_from} => {self.alt_to}:{self.name}'
+
 class Holder:
     root: Self = None
 
     def __init__(self):
         self.items : list['Item'] =  []
         self.nested : list[Self] = []
+        self.alts : list[AltConnection] = []
+        self.actions : list = []
 
     def __enter__(self):
         self.parent = self.root
-        self.__class__.root = self
+        Holder.root = self
         self._past_enter()
         return self
 
     def __exit__(self, *_):
         self._before_exit()
         self.__class__.root = self.parent
+        for item in self.items:
+            item.active = False
 
     def _past_enter(self):
         pass
@@ -36,8 +50,37 @@ class Holder:
     def register_nested(self, item: Self):
         self.nested.append(item)
 
+    def record_alt_connection(self, alt_from: 'Item', alt_to: 'Item', alt_name: str):
+        self.alts.append(AltConnection(alt_from, alt_to, alt_name))
+
+    def record_action(self, action):
+        self.actions.append(action)
+
+    def dump(self, fstream, ident: str=''):
+        if hasattr(self, 'name'):
+            print(f'{ident}*** {self.name} ***', file=fstream)
+            ident += '   '
+        for item in self.items:
+            if str(item) and item.string:
+                print(f'{ident}{item} = {item.string}', file=fstream)
+        if self.alts:
+            print(f'{ident} -- Alternative connections --', file=fstream)
+            for item in self.alts:
+                print(f'{ident}    {item}', file=fstream)
+        if self.actions:
+            print(f'{ident} ** Actions **', file=fstream)
+            for item in self.actions:
+                print(f'{ident}    {item}', file=fstream)
+        if self.nested:
+            print(f'{ident} ++ Nested Alternativrs ++', file=fstream)
+            for item in self.nested:
+                item.dump(fstream,ident + '    ')
+                 
+
 class Item:
     def __init__(self, *args, **kwargs):
+        self.owner = Holder.root
+        self.active = True
         ann = self.__class__.__annotations__.copy()
         for sc in self.__class__.__mro__:
             if hasattr(sc, '__annotations__'):
@@ -52,12 +95,12 @@ class Item:
 
         def set_attr(var_name: str, val):
             setattr(self, var_name, val)
-            if isinstance(val, (list, tuple)):
-                for val1 in val:
-                    if hasattr(val1, 'set_alt_mode'):
-                        val1.set_alt_mode(self)
-            elif hasattr(val, 'set_alt_mode'):
-                val.set_alt_mode(self)
+            # Our list arguments now exists only in PinsGroup. But this class do not change Pins mode
+            #if isinstance(val, (list, tuple)):
+            #    for val1 in val:
+            #        self.alt_connect(val1, var_name)
+            if hasattr(val, 'set_alt_mode'):
+                self.alt_connect(val, var_name)
 
         raw_args = {}
         assigned = set()
@@ -84,9 +127,14 @@ class Item:
             if isinstance(arg, list):
                 assert list_arg, f'List argument not expected'
                 set_attr(list_arg, arg)
+                for a in arg:
+                    if isinstance(a, Item):
+                        assert a.active, f"{a} is out of scope - can't connect"
                 list_arg = None
             else:
                 assert arg in raw_args, f'Unnamed arg "{arg}" not found in possible arguments: {"/".join(str(x) for x in raw_args.keys())}'
+                if isinstance(arg, Item):
+                    assert arg.active, f"{arg} is out of scope - can't connect"
                 name = raw_args[arg]
                 assert name not in assigned
                 assigned.add(name)
@@ -95,6 +143,8 @@ class Item:
 
         for name, val in kwargs.items():
             assert name in ann
+            if isinstance(val, Item):
+                assert val.active, f"{val} is out of scope - can't connect"
             if isinstance(val, Wire):
                 val.append_ref_place(self, name)
                 setattr(self, name, None)
@@ -109,8 +159,37 @@ class Item:
 
         self._post_init()
 
+    def __str__(self) -> str:
+        """ Returns short definition of Item """
+        if hasattr(self, 'name') and self.name:
+            result = self.name
+        else:
+            result = self.__class__.__name__
+        if hasattr(self, 'index'):
+            result += f':{self.index}'
+        return result    
+
+    @property
+    def string(self) -> str:
+        """ Full represetation of this class """
+        args = []
+        for name, val in self.__dict__.items():
+            if name in ('name', 'index', 'owner', 'active') or val is None:
+                continue
+            if isinstance(val, (list, tuple)):
+                val = str([str(x) for x in val])
+            args.append(f'{name}={val}')
+        return f'{self.__class__.__name__}({", ".join(args)})'
+
+
     def _post_init(self):
         pass
+
+    def alt_connect(self, alt_from: Self, alt_name: str):
+        if alt_from.owner is not self.owner:
+            self.owner.record_alt_connection(alt_from, self, alt_name)
+        elif hasattr(alt_from, 'set_alt_mode'):
+            alt_from.set_alt_mode(self, alt_name)
 
 class List:
     def __init__(self, *args, default: Optional[Entity] =None):
@@ -121,8 +200,7 @@ class Wire(Item):
     def __lshift__(self, pin: Item):
         for tgt, name in self.places:
             setattr(tgt, name, pin)
-            if hasattr(pin, 'set_alt_mode'):
-                pi.set_alt_mode(tgt)
+            tgt.alt_connect(pin, name)
 
     def append_ref_place(self, target: Item, name: str):
         self.places.append((target, name))
@@ -133,6 +211,13 @@ class Wire(Item):
 
     def __exit__(self, *_):
         self.places = []
+
+    def __str__(self) -> str:
+        return ''
+
+    @property
+    def string(self) -> None:
+        return None
 
 class Alternative(Holder):
     def __init__(self, name: str):

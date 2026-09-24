@@ -14,6 +14,14 @@ AltFunc = Entity('AltFunc')
 
 Gnd = Item()
 
+@dataclass
+class PinSet:
+    pin: 'AnyPin'
+    value: bool
+
+    def __str__(self):
+        return f'{self.pin} <= {self.value}'
+
 class AnyPin(Item):
     name: str = ''
     index: int
@@ -21,15 +29,16 @@ class AnyPin(Item):
     default: Optional[bool]
     
     def __lshift__(self, value: bool):
-        pass
+        self.owner.root.record_action(PinSet(self, value))
 
 class UulpPin(AnyPin):
     pin_mode: Optional[List] = List(Input, Output, AltFunc)  # AltFunc mode deduced automatically from connection
     alt_connection: Optional[Item] = None
 
-    def set_alt_mode(self, who: Item):
+    def set_alt_mode(self, who: Item, name: str):
         self.pin_mode = AltFunc
         self.alt_connection = who
+        self.alt_connection_name = name
 
 class Pin(UulpPin):
     pullups: Optional[List] = List(Pullup, Pulldown)
