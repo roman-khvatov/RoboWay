@@ -6,8 +6,10 @@ M = K*K
 
 Input = Entity('Input')
 Output = Entity('Output')
+HiZ = Entity('HiZ')
 Pullup = Entity('Pullup')
 Pulldown = Entity('Pulldown')
+Repeater = Entity('Repeater')
 FreeRun = Entity('FreeRun')
 InCount = Entity('InCount')
 AltFunc = Entity('AltFunc')
@@ -25,11 +27,41 @@ class PinSet:
 class AnyPin(Item):
     name: str = ''
     index: int
+    pin_mode: Optional[List] = List(Input, Output, AltFunc)  # AltFunc mode deduced automatically from connection
+    alt_connection: Optional[Item] = None
 
     default: Optional[bool]
+
+    def alt_mode_mux(self, who: Item, name: str):
+        return find_mux_chain2(f'{self._port()}_{self.index}', who.get_canonical_name(name)).get_mux_string()
+
+    @property
+    def default_mux(self) -> str:
+        return self.mux or self.get_setup_lines_base()[0]
+
+    def set_alt_mode(self, who: Item, name: str):
+        assert self.pin_mode != AltFunc, f'Pin {self} already connected'
+        self.pin_mode = AltFunc
+        self.alt_connection = who
+        self.alt_connection_name = name
+        self.mux = self.alt_mode_mux()
     
     def __lshift__(self, value: bool):
         self.owner.root.record_action(PinSet(self, value))
+
+    def _port(self) -> str:
+        assert False
+
+    @property
+    def _direction(self) -> str:
+        return 'GPIO_OUTPUT' if self.pin_mode is Output else 'GPIO_INPUT'
+
+    @property
+    def setup_lines(self) -> list[str]:
+        return self.get_setup_lines()
+
+    def get_setup_lines_base(self) -> list[str]:
+        return [f'sl_gpio_set_configuration(sl_si91x_gpio_pin_config_t{{.port_pin={{.port={self._port()}, .pin={self.index}}}, .direction={self._direction}}});']
 
 """
 Common for all:
@@ -68,13 +100,23 @@ Common Pins setup:
 """
 
 class UulpPin(AnyPin):
-    pin_mode: Optional[List] = List(Input, Output, AltFunc)  # AltFunc mode deduced automatically from connection
-    alt_connection: Optional[Item] = None
+    def _port(self) -> str:
+        return 'SL_GPIO_UULP_PORT'
 
-    def set_alt_mode(self, who: Item, name: str):
-        self.pin_mode = AltFunc
-        self.alt_connection = who
-        self.alt_connection_name = name
+    @property
+    def setup_lines(self) -> list[str]:
+        return self.get_setup_lines_base() + [
+            '{',
+            '    static const uulp_pad_config_t cfg = {',
+           f'        .gpio_padnum = {self.index},',
+            '        .mode = NPSS_GPIO_PIN_MUX_MODE0,',    # No other modes used in our HW
+           f'        .receiver = {'GPIO_RECEIVER_EN' if self.pin_mode is Input else 'GPIO_RECEIVER_DS'},',
+           f'        .direction = {self._direction},',
+           f'        .output = {'GPIO_PIN_SET' if self.default else 'GPIO_PIN_CLEAR'},'
+            '        .pad_select = GPIO_PAD_M4,',
+            '        .polarity = GPIO_POLARITY_0};',
+            '    sl_si91x_gpio_driver_set_uulp_pad_configuration(&cfg);',
+            '}']
 
 """
     UULP Pins setup
@@ -87,20 +129,62 @@ class UulpPin(AnyPin):
     sl_status_t sl_si91x_gpio_driver_set_uulp_pad_configuration (uulp_pad_config_t * pad_config) [[ or sl_si91x_gpio_set_uulp_pad_configuration ]]
       uulp_pad_config_t:
           uint8_t gpio_padnum;                 ///< UULP GPIO pin number
-          sl_si91x_uulp_npss_mode_t mode;      ///< UULP GPIO mode
-          sl_si91x_gpio_receiver_t receiver;   ///< UULP GPIO PAD receiver
-          sl_si91x_gpio_direction_t direction; ///< UULP GPIO direction of PAD
-          sl_si91x_gpio_pin_value_t output;    ///< UULP GPIO value driven on PAD
-          sl_si91x_gpio_uulp_pad_t pad_select; ///< UULP GPIO PAD selection
-          sl_si91x_gpio_polarity_t polarity;   ///< UULP GPIO Polarity
+          sl_si91x_uulp_npss_mode_t mode;      ///< UULP GPIO mode               <mode - mux>
+          sl_si91x_gpio_receiver_t receiver;   ///< UULP GPIO PAD receiver       <reciever enable>
+          sl_si91x_gpio_direction_t direction; ///< UULP GPIO direction of PAD   <in/out>
+          sl_si91x_gpio_pin_value_t output;    ///< UULP GPIO value driven on PAD <for mode=0>
+          sl_si91x_gpio_uulp_pad_t pad_select; ///< UULP GPIO PAD selection       <mcu=0, nwp=0>
+          sl_si91x_gpio_polarity_t polarity;   ///< UULP GPIO Polarity            <wakeup polarity - 0 if low, 1 if high>
 
 
 """
 
 class Pin(UulpPin):
-    pullups: Optional[List] = List(Pullup, Pulldown)
+    pullups: Optional[List] = List(Pullup, Pulldown, Repeater)
+    strength: Optional[int]
+    schmitt: Optional[bool]
+    pad_pos: Optional[bool]
 
-    strength: Optional[int]  # UlpPin ?
+    def _port(self) -> str:
+        return 'SL_GPIO_PORT_A'
+
+    @property
+    def setup_lines(self) -> list[str]:
+        E = self._ext()
+        result = self.get_setup_lines_base()
+        if self.pullups is not None:
+            if self.pullups is Pullup:
+                mode = 'GPIO_PULLUP'
+            elif self.pullups is Pulldown:
+                mode = 'GPIO_PULLDOWN'
+            elif self.pullups is Repeater:
+                mode = 'GPIO_REPEATER'
+            elif self.pullups is HiZ:
+                mode = 'GPIO_HZ'
+            else:
+                assert False, self.pullups
+            result.append(f'sl_si91x_gpio_driver_select{E}_pad_driver_disable_state({self.index}, {mode});')
+        if self.schmitt is not None:
+            result.append(f'sl_si91x_gpio_driver_select{E}_pad_schmitt_trigger({self.index}, {'GPIO_SCHMITT_TRIG_EN' if self.schmitt else 'GPIO_SCHMITT_TRIG_DIS'});')
+        if self.strength is not None:
+            mode = {
+                2: 'GPIO_TWO_MILLI_AMPS',
+                4: 'GPIO_FOUR_MILLI_AMPS',
+                8: 'GPIO_EIGHT_MILLI_AMPS',
+                12: 'GPIO_TWELVE_MILLI_AMPS'
+            }.get(self.strength)
+            assert mode, f'Unsupported driver strength: {self.strength} (Allowed 2/4/8/12)'
+            result.append(f'sl_si91x_gpio_driver_select{E}_pad_driver_strength({self.index}, {mode});')
+        if self.pad_pos is not None:
+            result.append(f'sl_si91x_gpio_driver_enable{E}_pad_power_on_start({self.index}, {'GPIO_POS_EN' if self.pad_pos else 'GPIO_POS_DIS'});')
+        return result + self._setup_mux(self.pin_mode, self.alt_connection, self.alt_connection_name)
+
+    def _ext(self) -> str:
+        return ''
+
+    def _setup_mux(self, pin_mode: Entity, alt_connection: Item, alt_connection_name: str) -> list[str]:
+        " pin_mode + alt_connection + alt_connection_name => sl_gpio_driver_set_pin_mode "
+        return []
 
 """
     HP Pins:
@@ -128,7 +212,25 @@ class Pin(UulpPin):
 """
 
 class UlpPin(Pin):
-    pass
+    slew_rate_high: Optional[bool]
+
+    def _port(self) -> str:
+        return 'SL_GPIO_ULP_PORT'
+
+    def _ext(self) -> str:
+        return '_ulp'
+
+    @property
+    def setup_lines(self) -> list[str]:
+        result = super().setup_lines
+        if self.slew_rate_high is not None:
+            result.append(f'sl_si91x_gpio_driver_select_ulp_pad_slew_rate({self.index}, {'GPIO_SR_HIGH' if self.slew_rate_high else 'GPIO_SR_LOW'});')
+        return result
+
+    def _setup_mux(self, pin_mode: Entity, alt_connection: Item) -> list[str]:
+        " pin_mode + alt_connection => sl_gpio_driver_set_pin_mode "
+        return []
+
 
 """
     ULP pins:
@@ -152,10 +254,16 @@ ULP <-> HP modes:
 
 class Sct(Item):
     name: str = ''
+    index: int = 0
 
     mode: List = List(FreeRun, InCount)    
     input: Optional[Item]
     output: Optional[Item]
+
+    _canonical = {
+        'input': 'SCT_IN_{index}',
+        'output': 'SCT_OUT_{index}'
+    }
 
 class SsiMst(Item):
     name: str = ''
@@ -168,6 +276,17 @@ class SsiMst(Item):
     cs1: Optional[Item]
     cs2: Optional[Item]
     cs3: Optional[Item]
+
+    _canonical = {
+        'clk': 'SSI_MST_CLK',
+        'mosi': 'SSI_MST_DATA0',
+        'miso': 'SSI_MST_DATA1',
+        'cs0': 'SSI_MST_CS0',
+        'cs1': 'SSI_MST_CS1',
+        'cs2': 'SSI_MST_CS2',
+        'cs3': 'SSI_MST_CS3',
+    }
+
 
 class PinsGroup(Item):
     name: str
@@ -183,12 +302,22 @@ class Opamp(Item):
     inp: Item
     inm: Item
 
+    _canonical = {
+        'inp': 'OPAMP{index}_IN',
+        'inm': 'OPAMP{index}_IN',
+   }
+
 class Comp(Item):
     name: str = ''
     index: int
 
     inp: Item
     inm: Item
+
+    _canonical = {
+        'inp': 'COMP{index}_P',
+        'inm': 'COMP{index}_N',
+   }
 
 class Resistor(Item):
     name: str = ''
@@ -200,18 +329,26 @@ class Resistor(Item):
 class Scaller(Item):
     name: str = ''
 
-class Uart(Item):
+class UlpUart(Item):
     name: str = ''
-    index: int
     
     rx: Optional[Item]
     tx: Optional[Item]
 
     mode: str
 
+    _canonical = {
+        'rx': 'ULP_UART_RX',
+        'tx': 'ULP_UART_TX',
+    }
 
-class UlpUart(Uart):
-    pass
+class Uart(UlpUart):
+    index: int
+
+    _canonical = {
+        'rx': 'UART{index}_RX',
+        'tx': 'UART{index}_TX',
+    }
 
 class Dac(Item):
     name: str = ''
@@ -220,7 +357,11 @@ class Adc(Item):
     name: str = ''
 
     inp: list[Item]
-    ref: Item
+    ref: Item         # ???
+
+    _canonical = {
+        'inp': 'ADCP'
+    }
 
 class AuxLdo(Item):
     name: str = ''
@@ -232,3 +373,7 @@ class Pwm(Item):
     Freq: int
     D: int
     output: Optional[Item]
+
+    _canonical = {
+        'output': ('PWM_{index}L', 'PWM_{index}H')
+    }

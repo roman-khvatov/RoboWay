@@ -18,6 +18,14 @@ class AltConnection:
     def __str__(self) -> str:
         return f'{self.alt_from} => {self.alt_to}:{self.name}'
 
+    @property
+    def mux_setup(self) -> str:
+        return self.alt_from.alt_mode_mux(self.alt_to, self.name)
+
+    @property
+    def mux_reset(self) -> str:
+        return self.alt_from.default_mux
+        
 class Holder:
     root: Self = None
 
@@ -35,7 +43,7 @@ class Holder:
 
     def __exit__(self, *_):
         self._before_exit()
-        self.__class__.root = self.parent
+        Holder.root = self.parent
         for item in self.items:
             item.active = False
 
@@ -43,6 +51,18 @@ class Holder:
         pass
     def _before_exit(self):
         pass
+
+    @property
+    def alt_muxes_setup(self) -> list[str]:
+        return [x.mux_setup for x in self.alts]
+
+    @property
+    def alt_muxes_reset(self) -> list[str]:
+        return [x.mux_reset for x in self.alts]
+
+    def alt_muxes_group_setup(self, group_of_mutexes: list[Self]) -> list[str]:
+        " Group of Holder mux setup/reset (this group setup with automatic reset of all listed in other groups but not in this one) "
+        TODO !!!
 
     def register(self, item: 'Item'):
         self.items.append(item)
@@ -81,6 +101,7 @@ class Item:
     def __init__(self, *args, **kwargs):
         self.owner = Holder.root
         self.active = True
+        self.mux : Optional[str] = None
         ann = self.__class__.__annotations__.copy()
         for sc in self.__class__.__mro__:
             if hasattr(sc, '__annotations__'):
@@ -189,6 +210,12 @@ class Item:
             self.owner.record_alt_connection(alt_from, self, alt_name)
         elif hasattr(alt_from, 'set_alt_mode'):
             alt_from.set_alt_mode(self, alt_name)
+
+    def get_canonical_name(self, pin_name: str) -> str|tuple[str]:
+        result = self._canonical[pin_name]
+        if isinstance(result, str):
+            return result.format(**self.__dict__)
+        return tuple(x.format(**self.__dict__) for x in result)
 
 class List:
     def __init__(self, *args, default: Optional[Entity] =None):
