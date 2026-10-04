@@ -24,6 +24,10 @@ class PinSet:
     def __str__(self):
         return f'{self.pin} <= {self.value}'
 
+    @property
+    def c_code(self) -> str:
+        return self.pin.get_c_code_for_pin_set(self.value)
+
 class AnyPin(Item):
     name: str = ''
     index: int
@@ -32,8 +36,12 @@ class AnyPin(Item):
 
     default: Optional[bool]
 
+    def get_c_code_for_pin_set(self, value: bool) -> str:
+        # Temporary !
+        return f'set_pin_value({self}, {value});'
+
     def alt_mode_mux(self, who: Item, name: str):
-        return find_mux_chain2(f'{self._port()}_{self.index}', who.get_canonical_name(name)).get_mux_string()
+        return find_mux_chain2(f'{self._port()[1]}_{self.index}', who.get_canonical_name(name)).get_mux_string()
 
     @property
     def default_mux(self) -> str:
@@ -44,12 +52,12 @@ class AnyPin(Item):
         self.pin_mode = AltFunc
         self.alt_connection = who
         self.alt_connection_name = name
-        self.mux = self.alt_mode_mux()
+        self.mux = self.alt_mode_mux(who, name)
     
     def __lshift__(self, value: bool):
         self.owner.root.record_action(PinSet(self, value))
 
-    def _port(self) -> str:
+    def _port(self) -> tuple[str]:
         assert False
 
     @property
@@ -61,7 +69,7 @@ class AnyPin(Item):
         return self.get_setup_lines()
 
     def get_setup_lines_base(self) -> list[str]:
-        return [f'sl_gpio_set_configuration(sl_si91x_gpio_pin_config_t{{.port_pin={{.port={self._port()}, .pin={self.index}}}, .direction={self._direction}}});']
+        return [f'sl_gpio_set_configuration(sl_si91x_gpio_pin_config_t{{.port_pin={{.port={self._port()[0]}, .pin={self.index}}}, .direction={self._direction}}});']
 
 """
 Common for all:
@@ -100,8 +108,8 @@ Common Pins setup:
 """
 
 class UulpPin(AnyPin):
-    def _port(self) -> str:
-        return 'SL_GPIO_UULP_PORT'
+    def _port(self) -> tuple[str]:
+        return ('SL_GPIO_UULP_PORT', 'UULP_VBAT_GPIO')
 
     @property
     def setup_lines(self) -> list[str]:
@@ -112,7 +120,7 @@ class UulpPin(AnyPin):
             '        .mode = NPSS_GPIO_PIN_MUX_MODE0,',    # No other modes used in our HW
            f'        .receiver = {'GPIO_RECEIVER_EN' if self.pin_mode is Input else 'GPIO_RECEIVER_DS'},',
            f'        .direction = {self._direction},',
-           f'        .output = {'GPIO_PIN_SET' if self.default else 'GPIO_PIN_CLEAR'},'
+           f'        .output = {'GPIO_PIN_SET' if self.default else 'GPIO_PIN_CLEAR'},',
             '        .pad_select = GPIO_PAD_M4,',
             '        .polarity = GPIO_POLARITY_0};',
             '    sl_si91x_gpio_driver_set_uulp_pad_configuration(&cfg);',
@@ -145,8 +153,8 @@ class Pin(UulpPin):
     schmitt: Optional[bool]
     pad_pos: Optional[bool]
 
-    def _port(self) -> str:
-        return 'SL_GPIO_PORT_A'
+    def _port(self) -> tuple[str]:
+        return ('SL_GPIO_PORT_A', 'GPIO')
 
     @property
     def setup_lines(self) -> list[str]:
@@ -177,7 +185,9 @@ class Pin(UulpPin):
             result.append(f'sl_si91x_gpio_driver_select{E}_pad_driver_strength({self.index}, {mode});')
         if self.pad_pos is not None:
             result.append(f'sl_si91x_gpio_driver_enable{E}_pad_power_on_start({self.index}, {'GPIO_POS_EN' if self.pad_pos else 'GPIO_POS_DIS'});')
-        return result + self._setup_mux(self.pin_mode, self.alt_connection, self.alt_connection_name)
+        if self.alt_connection:
+            result += self._setup_mux(self.pin_mode, self.alt_connection, self.alt_connection_name)
+        return result
 
     def _ext(self) -> str:
         return ''
@@ -214,8 +224,8 @@ class Pin(UulpPin):
 class UlpPin(Pin):
     slew_rate_high: Optional[bool]
 
-    def _port(self) -> str:
-        return 'SL_GPIO_ULP_PORT'
+    def _port(self) -> tuple[str]:
+        return ('SL_GPIO_ULP_PORT', 'ULP_GPIO')
 
     def _ext(self) -> str:
         return '_ulp'
@@ -227,7 +237,7 @@ class UlpPin(Pin):
             result.append(f'sl_si91x_gpio_driver_select_ulp_pad_slew_rate({self.index}, {'GPIO_SR_HIGH' if self.slew_rate_high else 'GPIO_SR_LOW'});')
         return result
 
-    def _setup_mux(self, pin_mode: Entity, alt_connection: Item) -> list[str]:
+    def _setup_mux(self, pin_mode: Entity, alt_connection: Item, alt_connection_name: str) -> list[str]:
         " pin_mode + alt_connection => sl_gpio_driver_set_pin_mode "
         return []
 
@@ -254,7 +264,7 @@ ULP <-> HP modes:
 
 class Sct(Item):
     name: str = ''
-    index: int = 0
+    index: int
 
     mode: List = List(FreeRun, InCount)    
     input: Optional[Item]
@@ -264,6 +274,10 @@ class Sct(Item):
         'input': 'SCT_IN_{index}',
         'output': 'SCT_OUT_{index}'
     }
+
+    # Temporary!
+    def get_setup(self) -> list[str]:
+        return []
 
 class SsiMst(Item):
     name: str = ''
@@ -287,6 +301,10 @@ class SsiMst(Item):
         'cs3': 'SSI_MST_CS3',
     }
 
+    # Temporary!
+    def get_setup(self) -> list[str]:
+        return []
+
 
 class PinsGroup(Item):
     name: str
@@ -295,6 +313,9 @@ class PinsGroup(Item):
 
     pins: list[Item]
 
+    def get_setup(self) -> list[str]:
+        return []
+    
 class Opamp(Item):
     name: str = ''
     index: int
@@ -306,6 +327,10 @@ class Opamp(Item):
         'inp': 'OPAMP{index}_IN',
         'inm': 'OPAMP{index}_IN',
    }
+
+    # Temporary!
+    def get_setup(self) -> list[str]:
+        return []
 
 class Comp(Item):
     name: str = ''
@@ -319,6 +344,10 @@ class Comp(Item):
         'inm': 'COMP{index}_N',
    }
 
+    # Temporary!
+    def get_setup(self) -> list[str]:
+        return []
+
 class Resistor(Item):
     name: str = ''
     index: int
@@ -326,8 +355,16 @@ class Resistor(Item):
     left: Item
     right: Item
 
+    # Temporary!
+    def get_setup(self) -> list[str]:
+        return []
+
 class Scaller(Item):
     name: str = ''
+
+    # Temporary!
+    def get_setup(self) -> list[str]:
+        return []
 
 class UlpUart(Item):
     name: str = ''
@@ -342,6 +379,10 @@ class UlpUart(Item):
         'tx': 'ULP_UART_TX',
     }
 
+    # Temporary!
+    def get_setup(self) -> list[str]:
+        return []
+
 class Uart(UlpUart):
     index: int
 
@@ -350,8 +391,16 @@ class Uart(UlpUart):
         'tx': 'UART{index}_TX',
     }
 
+    # Temporary!
+    def get_setup(self) -> list[str]:
+        return []
+
 class Dac(Item):
     name: str = ''
+
+    # Temporary!
+    def get_setup(self) -> list[str]:
+        return []
 
 class Adc(Item):
     name: str = ''
@@ -363,8 +412,16 @@ class Adc(Item):
         'inp': 'ADCP'
     }
 
+    # Temporary!
+    def get_setup(self) -> list[str]:
+        return []
+
 class AuxLdo(Item):
     name: str = ''
+
+    # Temporary!
+    def get_setup(self) -> list[str]:
+        return []
 
 class Pwm(Item):
     name: str = ''
@@ -377,3 +434,7 @@ class Pwm(Item):
     _canonical = {
         'output': ('PWM_{index}L', 'PWM_{index}H')
     }
+
+    # Temporary!
+    def get_setup(self) -> list[str]:
+        return []

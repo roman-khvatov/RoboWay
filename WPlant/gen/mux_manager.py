@@ -1,7 +1,7 @@
 ﻿import re
 
 from dataclasses import dataclass
-from typing import Optional
+from typing import *
 from mux_data import MUX_TABLE
 
 @dataclass
@@ -30,7 +30,7 @@ class MuxSet:
             case 'ANALOG':                return self.parent.get_mux_string()
 
 def find_mux_chain(gpio_from: str, hw_to: str) -> Optional[MuxSet]:
-    root_nm, root_pin = gpio_from.rpartition('_')
+    root_nm, _, root_pin = gpio_from.rpartition('_')
     root_pin = int(root_pin)
     assert root_nm in MUX_TABLE, f'Unknown PIN type {root_nm}'
     root_entry = MUX_TABLE[root_nm][gpio_from]
@@ -38,10 +38,10 @@ def find_mux_chain(gpio_from: str, hw_to: str) -> Optional[MuxSet]:
         return MuxSet(root_nm, root_pin, root_entry[hw_to])
     nested = []
     for name, idx in root_entry.items():
-        if mtch := re.match(r'^(.*)\[(\d+)\]$', hw_to):
-            return MuxSet(root_nm, root_pin, idx, int(mtch.group(1))
-        if mtch := re.match(r'^(SOCPERH_ON_ULP_GPIO|ULPPERH_ON_SOC_GPIO|AGPIO|TopGPIO)_(\d+)$', hw_to):
-            nested.append(mtch.groups() + [name, idx])
+        if mtch := re.match(r'^(.*)\[(\d+)\]$', name):
+            return MuxSet(root_nm, root_pin, idx, int(mtch.group(1)))
+        if mtch := re.match(r'^(SOCPERH_ON_ULP_GPIO|ULPPERH_ON_SOC_GPIO|AGPIO|TopGPIO)_(\d+)$', name):
+            nested.append(mtch.groups() + (name, idx))
     assert nested, f'No MUX from {gpio_from} to {hw_to}'
     for nst_root, nst_idx, root_name, root_idx in nested:
         nst_idx = int(nst_idx)
@@ -64,15 +64,15 @@ def find_mux_chain2(gpio_from: str, hw_to: str|tuple[str]) -> MuxSet:
             return result            
     assert False, f'No MUX from {gpio_from} to {hw_to}'
 
-def _chk(arr: list[str|tuple[str]], hw_to: str) -> Optional[int|False]:
+def _chk(arr: list[str|tuple[str]], hw_to: str) -> Optional[int|bool]:
     for item in arr:
         if isinstance(item, tuple):
             if (result := _chk(item, hw_to)) is not False:
                 return result
         elif item == hw_to:
             return None
-        elif mtch := re.match(r'^(.*)\[(\d+)\]$', name):
+        elif mtch := re.match(fr'^{hw_to}\[(\d+)\]$', item):
                 return int(mtch.group(1))
-        elif mtch := re.match(r'^(.*)(\d)$', name):
+        elif mtch := re.match(fr'^{hw_to}(\d)$', item):
             return int(mtch.group(1))
     return False

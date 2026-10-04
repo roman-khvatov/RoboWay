@@ -26,8 +26,8 @@ ULP_GPIO_2              RS485 OE                       GPIO Out
 GPIO_8                  PROG RX                        ULP UART RX [mode 9] [ulp mode 3]
 GPIO_9                  PROG TX                        ULP UART TX [mode 9] [ulp mode 3]
 
-GPIO_11                 SPI MOSI                       SSI_MST_DATA0 (MISO!) / GPIO In                 <<< swap                 [mode 3]    (Ext: swap in cable to ExtBut board)
-GPIO_12       SPI MISO              /Spare/            SSI_MST_DATA1 (MOSI!) / GPIO In PullUp          <<< swap                 [mode 3]
+GPIO_11                 SPI MOSI                       SSI_MST_DATA0 (MOSI) / GPIO In                                           [mode 3]    (Ext: swap in cable to ExtBut board)
+GPIO_12       SPI MISO              /Spare/            SSI_MST_DATA1 (MISO) / GPIO In PullUp                                    [mode 3]
 GPIO_53                 SPI CLK                        SSI_MST_CS0 ???  (52: SSI_MST_CLK!)             <<< swap with LED1       [mode 3]
 GPIO_10                 Valves ~CS                     SSI_MST_CS1                                                              [mode 3]
 
@@ -68,15 +68,12 @@ MainInt
 
 eInkExt socket:
 1 - TF Select - ULP_GPIO_11 (pin 5, TP)
-2 - MOSI - GPIO_11 (pin 58, left pin of R34), remove R34
-
-Swap wires eInkExt.2 <-> eInk-Buttons.10 (in cable)
+2 - MISO - GPIO_12 (pin ??, right pin of R34), remove R34
 
 MainExt
 -------
 
 Connect GPIO_29 (pin 29, TP) to ULP_GPIO_11 (pin 5). Set ULP_GPIO_11 to AnalogInput [mode 7]
-Connect GPIO_11 (pin 58, MOSI) to GPIO_12 (pin 56, TP). Set GPIO_12 to In
 
 
 ------

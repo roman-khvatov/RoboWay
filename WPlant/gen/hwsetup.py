@@ -28,9 +28,9 @@ def get_definitions(IntModule: bool):
 
     UlpUart('DBG_UART', rx=Pin(8, Input), tx=Pin(9, Input), mode='9600 8N1')
 
-    spi_mosi = Pin(12, Output)
+    spi_mosi = Pin(11, Output)
     if IntModule:
-        spi_miso = Pin(11, Input)
+        spi_miso = Pin(12, Input)
         spi_cs2 = Pin('#eInkCS', 15, Output)
     spi_clk = Pin(52, Output)
     spi_cs1 = Pin('#ValvesCS', 10, Output)
@@ -55,10 +55,10 @@ def get_definitions(IntModule: bool):
             buzzer << False
             en << False
         with Alternative('TimerMode:BuzzerActive'):
-            Sct('SCT', output=buzzer, mode=FreeRun)
+            Sct('SCT', 0, output=buzzer, mode=FreeRun)
             en << True
         with Alternative('TimerMode:HumMeasure'):
-            Sct('SCT', input=hum_in, mode=InCount)
+            Sct('SCT', 0, input=hum_in, mode=InCount)
             buzzer << False
             en << False
 
@@ -68,7 +68,7 @@ def get_definitions(IntModule: bool):
         UlpPin('TFSelect', 11, Output)
     else:
         UlpPin('AccSenceEN', 1, Output)
-        Sct('SCT', input=hum_in, mode=InCount)
+        Sct('SCT', 0, input=hum_in, mode=InCount)
 
     with Alternative('!FreqCalibrate'): # BiStable alternative - can be turned on and off
         Pwm(0, Freq=10*K, D=50, output=uart485_tx)
@@ -79,7 +79,9 @@ with Holder() as h:
     get_definitions(True)
     print('===== IntModule ========')
     h.dump(sys.stdout)
+    h.generate_c_code(sys.stdout)
 with Holder() as h:
     get_definitions(False)
     print('===== ExtModule ========')
     h.dump(sys.stdout)
+    h.generate_c_code(sys.stdout)

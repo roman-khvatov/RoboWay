@@ -1,6 +1,8 @@
 ﻿from typing import *
 from dataclasses import dataclass
 
+from mux_manager import *
+
 class Entity:
     def __init__(self, name: str, **kwargs):
         self.name = name
@@ -32,6 +34,7 @@ class Holder:
     def __init__(self):
         self.items : list['Item'] =  []
         self.nested : list[Self] = []
+        self.nested_switches : dict[str, dict[str, Self]] = {}
         self.alts : list[AltConnection] = []
         self.actions : list = []
 
@@ -62,13 +65,81 @@ class Holder:
 
     def alt_muxes_group_setup(self, group_of_mutexes: list[Self]) -> list[str]:
         " Group of Holder mux setup/reset (this group setup with automatic reset of all listed in other groups but not in this one) "
-        TODO !!!
+        all_items : dict[str, 'Item'] = {}
+        for group in group_of_mutexes:
+            for item in group.items:
+                all_items[str(item)] = item
+            for item in group.alts:
+                all_items[str(item.alt_from)] = item.alt_from
+        result = [item.mux_setup for item in self.alts]
+        result += self.get_setup()
+        for item in self.alts:
+            all_items.pop(str(item.alt_from))
+        for item in self.items:
+            all_items.pop(str(item), None)
+        for item in all_items.values():
+            for attrn in ('hw_reset', 'default_mux', 'mux_reset'):
+                if dmux := getattr(item, attrn, None):
+                    result.append(dmux)
+        result += [item.c_code for item in self.actions]
+        return result
+
+    @staticmethod
+    def switch_function_name(name: str) -> str:
+        return f'hw_switch_{name}'
+
+    def get_setup(self) -> list[str]:
+        result = []
+        for item in self.items:
+            result.append(f'// {item}')
+            result += item.get_setup()
+        for name, val in self.nested_switches.items():            
+            result.append(f'// Default for {self.switch_function_name(name)}')
+            result.append(f'{self.switch_function_name(name)}({name}::{list(val)[0]});')
+        return result
+
+    def generate_c_code(self, fstream):
+        print('void hw_setup()\n{', file=fstream)
+        for item in self.get_setup():
+            print('    ' + item, file=fstream)
+        print('}', file=fstream)
+
+        for mux_name, mux_body in self.nested_switches.items():
+            print(f'void {self.switch_function_name(mux_name)}({mux_name} selector)\n{{\n    switch(selector)\n    {{', file=fstream)
+            all_items = list(mux_body.values())
+            for sel_name, sel_body in mux_body.items():
+                print(f'        case {mux_name}::{sel_name}:\n            {{', file=fstream)
+                for item in sel_body.alt_muxes_group_setup(all_items):
+                    print('                ' + item, file=fstream)
+                print('                break;\n            }', file=fstream)
+            print('    }\n}', file=fstream)
+
+        for item in self.nested:
+            nm = item.name
+            if nm.startswith('!'):
+                # on-off mode
+                print(f'void enable_{nm[1:]}(bool on)\n{{\n    if (on)\n    {{', file=fstream)
+                for line in item.alt_muxes_setup:
+                    print('        ' + line, file=fstream)
+                print('    }\n    else\n    {', file=fstream)
+                for line in item.alt_muxes_reset:
+                    print('        ' + line, file=fstream)
+                print('    }\n}', file=fstream)
+            else:
+                print(f'void set_{nm}()\n{{', file=fstream)
+                for line in item.alt_muxes_setup:
+                    print('    ' + line, file=fstream)
+                print('    }\n}', file=fstream)
 
     def register(self, item: 'Item'):
         self.items.append(item)
 
     def register_nested(self, item: Self):
-        self.nested.append(item)
+        if ':' in item.name:
+            sw_name, _, sw_case = item.name.partition(':')
+            self.nested_switches.setdefault(sw_name, {})[sw_case] = item
+        else:
+            self.nested.append(item)
 
     def record_alt_connection(self, alt_from: 'Item', alt_to: 'Item', alt_name: str):
         self.alts.append(AltConnection(alt_from, alt_to, alt_name))
@@ -95,8 +166,12 @@ class Holder:
             print(f'{ident} ++ Nested Alternatives ++', file=fstream)
             for item in self.nested:
                 item.dump(fstream,ident + '    ')
+        for sw_name, sw_body in self.nested_switches.items():
+            print(f'{ident} ++ Switch {sw_name} ++', file=fstream)
+            for case_name, case_body in sw_body.items():
+                print(f'{ident}  ++ Case {case_name} ++', file=fstream)
+                case_body.dump(fstream,ident + '      ')
                  
-
 class Item:
     def __init__(self, *args, **kwargs):
         self.owner = Holder.root
@@ -194,7 +269,7 @@ class Item:
         """ Full represetation of this class """
         args = []
         for name, val in self.__dict__.items():
-            if name in ('name', 'index', 'owner', 'active') or val is None:
+            if name in ('name', 'index', 'owner', 'active', 'mux') or val is None:
                 continue
             if isinstance(val, (list, tuple)):
                 val = str([str(x) for x in val])
@@ -212,10 +287,19 @@ class Item:
             alt_from.set_alt_mode(self, alt_name)
 
     def get_canonical_name(self, pin_name: str) -> str|tuple[str]:
-        result = self._canonical[pin_name]
+        nm = pin_name
+        if ':' in nm:
+            nm = nm.partition(':')[0]
+        result = self._canonical[nm]
         if isinstance(result, str):
             return result.format(**self.__dict__)
         return tuple(x.format(**self.__dict__) for x in result)
+
+    def get_setup(self) -> list[str]:
+        result = self.setup_lines
+        if self.mux:
+            result.append(self.mux)
+        return result
 
 class List:
     def __init__(self, *args, default: Optional[Entity] =None):
@@ -230,6 +314,9 @@ class Wire(Item):
 
     def append_ref_place(self, target: Item, name: str):
         self.places.append((target, name))
+
+    def get_setup(self) -> list[str]:
+        return []
 
     def __enter__(self):
         self.places = []
