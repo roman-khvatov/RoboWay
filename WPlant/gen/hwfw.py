@@ -80,6 +80,8 @@ class Holder:
         for item in all_items.values():
             for attrn in ('hw_reset', 'default_mux', 'mux_reset'):
                 if dmux := getattr(item, attrn, None):
+                    if attrn == 'hw_reset':
+                        result.append(f'// {item}')
                     result.append(dmux)
         result += [item.c_code for item in self.actions]
         return result

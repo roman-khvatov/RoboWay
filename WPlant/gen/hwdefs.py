@@ -37,8 +37,8 @@ class AnyPin(Item):
     default: Optional[bool]
 
     def get_c_code_for_pin_set(self, value: bool) -> str:
-        # Temporary !
-        return f'set_pin_value({self}, {value});'
+        func = 'set' if value else 'clear'
+        return f'sl_gpio_{func}_pin_output({self._port()[0]}, {self.index})'
 
     def alt_mode_mux(self, who: Item, name: str):
         return find_mux_chain2(f'{self._port()[1]}_{self.index}', who.get_canonical_name(name)).get_mux_string()
@@ -269,15 +269,68 @@ class Sct(Item):
     mode: List = List(FreeRun, InCount)    
     input: Optional[Item]
     output: Optional[Item]
+    Freq: Optional[int]
 
     _canonical = {
         'input': 'SCT_IN_{index}',
         'output': 'SCT_OUT_{index}'
     }
 
-    # Temporary!
     def get_setup(self) -> list[str]:
-        return []
+        result = [
+            'RSI_CLK_CtClkConfig(M4CLK, SCT_CLOCK_SOURCE, SCT_CLOCK_DIV_FACT, ENABLE_STATIC_CLK);',
+            f'RSI_CT_SetControl(CT, SL_COUNTER{self.index}_SOFT_RESET_ENABLE|SL_COUNTER{self.index}_PERIODIC_ENABLE|SL_COUNTER{self.index}_TRIGGER_ENABLE|SL_COUNTER{self.index}_UP_DIRECTION);',
+        ]
+        if self.mode is FreeRun:
+            assert self.Freq, 'CT in FreeRun mode must have Freq setup'
+            div = 16000000 // self.Freq
+            result.append(f'sl_si91x_config_timer_set_match_count(SL_COUNTER_16BIT, SL_COUNTER_{self.index}, {div});')
+            result.append(f'RSI_CT_OCUConfigSet(CT, SL_COUNTER{self.index}_OCU_OUTPUT_ENABLE|SL_OCU_OUTPUT{self.index}_TOGGLE_HIGH|SL_OCU_OUTPUT{self.index}_TOGGLE_LOW);')
+            result.append(f'RSI_CT_OCUHighLowToggleSelect(CT, 0, {self.index}, 2);')
+            result.append(f'RSI_CT_OCUHighLowToggleSelect(CT, 1, {self.index}, 3);')
+            result.append(f'{{ OCU_PARAMS_T p{{.CompareVal1_{self.index} = {div // 2}, .CompareVal2_{self.index} = {div}}}; RSI_CT_WFGComapreValueSet(CT, {self.index}, &p);}}')
+            result.append(f'sl_si91x_config_timer_select_action_event(INCREMENT, SL_NO_EVENT, SL_NO_EVENT);')
+        else:
+            result.append(f'sl_si91x_config_timer_set_match_count(SL_COUNTER_16BIT, SL_COUNTER_{self.index}, 0xFFFF);')
+            ev0, ev1 = 'SL_EVENT0_RISING_EDGE', 'SL_NO_EVENT'
+            if self.index:
+                ev0, ev1 = ev1, ev0
+            result.append(f'sl_si91x_config_timer_select_action_event(INCREMENT, {ev0}, {ev1});')
+        return result
+
+    @property
+    def hw_reset(self) -> str:
+        return 'sl_si91x_config_timer_deinit();'
+
+"""
+
+FreeRun:
+    To enable periodic mode where counter re-runs after match value was reached, set PERIODIC_EN_COUNTER_x_FRM_REG in
+        CT_GEN_CTRL_SET_REG register.
+
+    a. Enable up direction.
+        i. Write COUNTER_x_UP_DOWN in CT_GEN_CTRL_SET_REG register.
+    b. Disable down direction
+        i. Write COUNTER_x_UP_DOWN in CT_GEN_CTRL_RESET_REG register.
+    c. Write peak value to COUNTER_x_MATCH in CT_MATCH_REG register.
+    e. Select the start signals either from input events by setting START_COUNTER_x_EVENT_SEL in CT_START_COUNTER_
+        EVENT_SEL Register or from software triggers.
+
+OCU:
+    a. To create simple signals:
+        i. Set which OCU trigger should make output_x high by configuring MAKE_OUTPUT_x_HIGH_SEL in
+            CT_OCU_CTRL_REG register.
+        ii. Set which OCU trigger should make output_x low by configuring MAKE_OUTPUT_x_LOW_SEL in CT_OCU_CTRL_REG
+            register.
+    3. Set the compare values on which OCU triggers happen
+        a. Configure OCU_COMPARE_0_REG and OCU_COMPARE_1_REG in CT_OCU_COMPARE_REG for counter 0 and in
+            CT_OCU_COMPARE2_REG register for counter 1
+
+Increment:
+    CT_INCREMENT_COUNTER_EVENT_SEL register
+       INCREMENT_COUNTER_0_EVENT_SEL :  1 -  EVE_0_RE Event 0 Rising Edge
+                                        0 -  NONE     No event selected
+"""
 
 class SsiMst(Item):
     name: str = ''

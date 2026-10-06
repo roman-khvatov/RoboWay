@@ -55,7 +55,7 @@ def get_definitions(IntModule: bool):
             buzzer << False
             en << False
         with Alternative('TimerMode:BuzzerActive'):
-            Sct('SCT', 0, output=buzzer, mode=FreeRun)
+            Sct('SCT', 0, output=buzzer, mode=FreeRun, Freq=1*K)
             en << True
         with Alternative('TimerMode:HumMeasure'):
             Sct('SCT', 0, input=hum_in, mode=InCount)
