@@ -354,9 +354,14 @@ class SsiMst(Item):
         'cs3': 'SSI_MST_CS3',
     }
 
-    # Temporary!
     def get_setup(self) -> list[str]:
-        return []
+        return [
+            'sl_si91x_ssi_init(SL_SSI_PRIMARY_ACTIVE, &ssi_handle);',
+            '{',
+            '    static sl_ssi_control_config_t cfg{.bit_width=8, .device_mode=SL_SSI_MASTER_ACTIVE, .clock_mode=SL_SSI_PERIPHERAL_CPOL0_CPHA0, .baud_rate=10000000, .transfer_mode=SL_SSI_PRIMARY_SINGLE_LINE_MODE};',
+            '    sl_si91x_ssi_set_configuration(ssi_handle, &cfg, 0);',
+            '}'
+        ]
 
 
 class PinsGroup(Item):
