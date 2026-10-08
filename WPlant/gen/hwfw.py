@@ -93,8 +93,9 @@ class Holder:
     def get_setup(self) -> list[str]:
         result = []
         for item in self.items:
-            result.append(f'// {item}')
-            result += item.get_setup()
+            if its := item.get_setup():
+                result.append(f'// {item}')
+                result += its
         for name, val in self.nested_switches.items():            
             result.append(f'// Default for {self.switch_function_name(name)}')
             result.append(f'{self.switch_function_name(name)}({name}::{list(val)[0]});')

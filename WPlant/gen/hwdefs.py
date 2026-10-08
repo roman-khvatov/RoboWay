@@ -1,4 +1,6 @@
-﻿from typing import *
+﻿import sys
+
+from typing import *
 from hwfw import *
 
 K = 1000
@@ -495,13 +497,59 @@ class Resistor(Item):
     def get_setup(self) -> list[str]:
         return []
 
+    _R1_ENC = [0, 20, 60, 140]
+    _R2_ENC = [20, 30, 40, 60, 120, 250, 500, 1000]
+
     @property
     def R1(self) -> int:
-        pass
+        try:
+            return self._R1_ENC.index(self.r1)
+        except ValueError:
+            print(f"ERROR ({self}): Can't use {self.r1}K as R1 resistor value. Available values: {self._R1_ENC}", file=sys.stderr)
+            return 0
 
     @property
     def R2(self) -> int:
-        pass
+        try:
+            return self._R2_ENC.index(self.r2)
+        except ValueError:
+            print(f"ERROR ({self}): Can't use {self.r2}K as R2 resistor value. Available values: {self._R2_ENC}", file=sys.stderr)
+            return 0
+
+    def shot(self) -> Self:
+        self.k1 = 0
+        self.k2 = 1000
+        return self
+
+    def set_div(self, K: Optional[float] = None, Vin: Optional[float] = None, Vout: Optional[float] = None) -> Self:
+        # K is R1/(R1+R2)
+        if K is None:
+            K = Vout/Vin
+        # 1/K = 1 + R2/R1 => R1 = R2/(1/K-1)
+        nK = 1/K - 1
+        best_k = None
+        for r2 in self._R2_ENC:
+            r1 = r2/nK
+            if r1 > 160:
+                continue
+            if r1 < 10:
+                continue
+            if r1 <= 40:
+                r1 = 20
+            elif r1 <= 100:
+                r1 = 60
+            else:
+                r1 = 140
+            real_k = r1/(r1+r2)
+            if best_k is None or abs(real_k-K) <= abs(best_k-K):
+                best_k = K
+                best_r1 = r1
+                best_r2 = r2
+        assert best_k is not None, f"Can't find R1/R2 for K={K}"
+        self.r1 = best_r1
+        self.r2 = best_r2
+        return self
+
 
 
 class Comp(Item):
