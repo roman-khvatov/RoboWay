@@ -18,6 +18,12 @@ AltFunc = Entity('AltFunc')
 
 Gnd = Item()
 
+GLOBAL_INIT = [
+    'sl_gpio_driver_init();',
+    'sl_si91x_analog_comparator_init();',
+    'sl_si91x_opamp_init();',
+]
+
 @dataclass
 class PinSet:
     pin: 'AnyPin'
@@ -386,8 +392,39 @@ class PinsGroup(Item):
 
     def get_setup(self) -> list[str]:
         return []
-    
-class Opamp(Item):
+
+class AnalogItem(Item):
+    _analog = True
+
+    @classmethod
+    def con_to_str(cls, item: Item) -> str:
+        if isinstance(item, Dac):
+            return 'DAC'
+        if item is Gnd:
+            return 'GND'
+        if isinstance(item, Resistor):
+            return f'OPAMP{item.index}_RESTAP'
+        if isinstance(item, Opamp):
+            return f'OPAMP{item.index}_OUT'
+        if isinstance(item, Scaller):
+            return 'REFERENCE_SCALER_OUT'
+        assert False, f'Invalid input to {cls.__name__}: {item}'
+
+    def cvt_to_index(self, input: Item, input_name: str, mux: list[dict[str, int]]) -> tuple[int, Optional[Item]]:
+        result2 = False
+        if hasattr(input, 'alt_mode_mux_raw'):
+            result1 = input.alt_mode_mux_raw(self, input.alt_connection_name).variant
+        else:
+            m = mux[self.index-1]
+            name = self.con_to_str(input)
+            assert name in m, f'{self}: Connection of {input_name} ({name}) not valid. Valid are: {list(m.keys())}'
+            result1 = m[name]
+            if name == f'OPAMP{self.index}_RESTAP':
+                result2 = input
+        return  result1, result2
+
+        
+class Opamp(AnalogItem):
     name: str = ''
     index: int
 
@@ -398,69 +435,42 @@ class Opamp(Item):
         'inp': 'OPAMP{index}_IN',
         'inm': 'OPAMP{index}_IN',
     }
-    _analog = True
 
     def get_setup(self) -> list[str]:
         res_tap_item = None
 
-        def cvt_to_index(input: Item, input_name: str, mux: list[dict[str, int]]) -> tuple[int, Optional[Item]]:
-            result2 = False
-            if hasattr(input, 'alt_mode_mux_raw'):
-                result1 = input.alt_mode_mux_raw(self, input.alt_connection_name).variant
-            else:
-                m = mux[self.index-1]
-                name = self._con_to_str(input)
-                assert name in m, f'{self}: Connection of {input_name} ({name}) not valid. Valid are: {list(m.keys())}'
-                result1 = m[name]
-                if name == f'OPAMP{self.index}_RESTAP':
-                    result2 = input
-            return  result1, result2
-
-        sel_inp_mux, en1 = cvt_to_index(self.inp, 'inp', self._INP_C)
-        sel_inm_mux, en2 = cvt_to_index(self.inm, 'inm', self._INM_C)
+        sel_inp_mux, en1 = self.cvt_to_index(self.inp, 'inp', self._INP_C)
+        sel_inm_mux, en2 = self.cvt_to_index(self.inm, 'inm', self._INM_C)
         res_tap_item = en1 or en2
 
         result = [
-            'sl_si91x_opamp_init();',
             '{',
            f'    static OPAMP_CONFIG_T cfg{{.opamp{self.index} = {{',
-           f'            opamp{self.index}_dyn_en = 0,',
-           f'            opamp{self.index}_sel_p_mux = {sel_inp_mux},',
-           f'            opamp{self.index}_sel_n_mux = {sel_inm_mux},',
-           f'            opamp{self.index}_lp_mode = 0,']
+           f'            .opamp{self.index}_dyn_en = 0,',
+           f'            .opamp{self.index}_sel_p_mux = {sel_inp_mux},',
+           f'            .opamp{self.index}_sel_n_mux = {sel_inm_mux},',
+           f'            .opamp{self.index}_lp_mode = 0,']
         if res_tap_item:
             r1 = res_tap_item.R1
             r2 = res_tap_item.R2
-            res_mux_sel = cvt_to_index(res_tap_item.left, 'R1', self._R1_C)[0]
-            res_to_out_vdd = cvt_to_index(res_tap_item.right, 'R2', self._R2_C)[0]
+            res_mux_sel = self.cvt_to_index(res_tap_item.left, 'R1', self._R1_C)[0]
+            res_to_out_vdd = self.cvt_to_index(res_tap_item.right, 'R2', self._R2_C)[0]
             result += [
 
-           f'            opamp{self.index}_r1_sel = {r1},',
-           f'            opamp{self.index}_r2_sel = {r2},',
-           f'            opamp{self.index}_en_res_bank = 1,',
-           f'            opamp{self.index}_res_mux_sel = {res_mux_sel},',
-           f'            opamp{self.index}_res_to_out_vdd = {res_to_out_vdd}']
+           f'            .opamp{self.index}_r1_sel = {r1},',
+           f'            .opamp{self.index}_r2_sel = {r2},',
+           f'            .opamp{self.index}_en_res_bank = 1,',
+           f'            .opamp{self.index}_res_mux_sel = {res_mux_sel},',
+           f'            .opamp{self.index}_res_to_out_vdd = {res_to_out_vdd}']
         return result + [
-           f'            opamp{self.index}_out_mux_en = 0',
-           f'            opamp{self.index}_out_mux_sel = 0',
-           f'            opamp{self.index}_enable = 1'
+           f'            .opamp{self.index}_out_mux_en = 0,',
+           f'            .opamp{self.index}_out_mux_sel = 0,',
+           f'            .opamp{self.index}_enable = 1'
             '        }',
             '    };',
            f'    RSI_OPAMP1_Config(OPAMP, {self.index}, &cfg);',
             '}'
         ]
-
-    @staticmethod
-    def _con_to_str(item: Item) -> str:
-        if isinstance(item, Dac):
-            return 'DAC'
-        if item is Gnd:
-            return 'GND'
-        if isinstance(item, Resistor):
-            return f'OPAMP{item.index}_RESTAP'
-        if isinstance(item, Opamp):
-            return f'OPAMP{item.index}_OUT'
-        assert False, f'Invalid input to OpAmp: {item}'
 
     _INP_C = [
         {'DAC': 6, 'OPAMP1_RESTAP': 7, 'GND': 8},
@@ -483,7 +493,7 @@ class Opamp(Item):
         {'OPAMP3_OUT': 0, 'VDD': 1}
     ]
 
-class Resistor(Item):
+class Resistor(AnalogItem):
     name: str = ''
     index: int
 
@@ -491,8 +501,6 @@ class Resistor(Item):
     right: Item
     r1: Optional[int]
     r2: Optional[int]
-
-    _analog = True
 
     def get_setup(self) -> list[str]:
         return []
@@ -552,27 +560,57 @@ class Resistor(Item):
 
 
 
-class Comp(Item):
+class Comp(AnalogItem):
     name: str = ''
     index: int
 
     inp: Item
     inm: Item
+    hyst: int = 0
+    filter: bool = False
 
     _canonical = {
         'inp': 'COMP{index}_P',
         'inm': 'COMP{index}_N',
-   }
-    _analog = True
+    }
 
-    # Temporary!
     def get_setup(self) -> list[str]:
-        return []
+        h = {0: 0, 60: 1, 90: 3}.get(self.hyst)
+        assert h is not None, f'Invalid hysterisis to {self} - {self.hyst}. Only 0/60/90 (vM) allowed'
+        sel_inp_mux = self.cvt_to_index(self.inp, 'inp', self._INx_CC)[0]
+        sel_inm_mux = self.cvt_to_index(self.inm, 'inm', self._INx_CC)[0]
+        for sel, pin, nm in ((sel_inp_mux, self.inp, 'inp'), (sel_inm_mux, self.inm, 'inm')):
+            if sel <= 1:
+                result = pin.alt_mode_mux_raw(self, pin.alt_connection_name).full_name
+                assert result.strtswith(f'COMP{self.index}_{nm[2].upper()}'), f'Wrong COMP connection for {self}, pin {pin} - {result}'
+        return [
+            f'RSI_COMP_Config(AUX_ADC_DAC_COMP, SL_COMPARATOR_{self.index}, {self._INP_NAMES[sel_inp_mux]}, {self._INP_NAMES[sel_inm_mux]}, {h}, {1 if self.filter else 0});'
+        ]
 
-class Scaller(Item):
+    _INx_C = {'DAC': 2, 'REFERENCE_BUFFER_OUT': 3, 'REFERENCE_SCALER_OUT': 4, 'RES_BANK_OUT': 5, 'OPAMP1_OUT': 6, 'OPAMP2_OUT': 7, 'OPAMP3_OUT': 8}
+    _INx_CC = [_INx_C, _INx_C]
+
+    _INP_NAMES = [
+        'SL_COMPARATOR_EXTERNAL_GPIO_INPUT_0',
+        'SL_COMPARATOR_EXTERNAL_GPIO_INPUT_1',
+        'SL_COMPARATOR_INPUT_FROM_DAC_OUTPUT',
+        'SL_COMPARATOR_INPUT_FROM_REF_BUFFER_OUTPUT',
+        'SL_COMPARATOR_INPUT_FROM_REF_SCALER_OUTPUT',
+        'SL_COMPARATOR_INPUT_FROM_RES_BANK_OUTPUT',
+        'SL_COMPARATOR_INPUT_FROM_OPAMP1_OUTPUT',
+        'SL_COMPARATOR_INPUT_FROM_OPAMP2_OUTPUT',
+        'SL_COMPARATOR_INPUT_FROM_OPAMP3_OUTPUT',
+    ]
+
+"""
+    RSI_COMP_ResBank(AUX_ADC_DAC_COMP, (uint16_t)threshold_value);
+    RSI_COMP_ReferenceScaler(AUX_ADC_DAC_COMP, (uint16_t)scale_factor_value);
+    
+
+"""
+
+class Scaller(AnalogItem):
     name: str = ''
-
-    _analog = True
 
     # Temporary!
     def get_setup(self) -> list[str]:

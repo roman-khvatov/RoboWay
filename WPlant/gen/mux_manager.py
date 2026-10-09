@@ -11,6 +11,7 @@ class MuxSet:
     mux_mode: int       # Mode of appropriate MUX
     variant: Optional[int] = None
     parent: Optional[Self] = None
+    full_name: Optional[str] = None
 
     def __str__(self) -> str:
         result = f'{self.mux_name}:{self.mux_pin_idx} => {self.mux_mode}'
@@ -52,7 +53,7 @@ def find_mux_chain(gpio_from: str, hw_to: str) -> Optional[MuxSet]:
         parent = MuxSet(root_name, root_pin, root_idx)
         match_result = _chk(nst, hw_to)
         if match_result is not False:
-            return MuxSet(nn, nst_idx, -1, match_result, parent=parent)
+            return MuxSet(nn, nst_idx, -1, match_result, parent=parent, full_name=nst)
     
 def find_mux_chain2(gpio_from: str, hw_to: str|tuple[str]) -> MuxSet:
     if isinstance(hw_to, tuple):
