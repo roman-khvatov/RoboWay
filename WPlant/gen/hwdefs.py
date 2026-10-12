@@ -583,9 +583,19 @@ class Comp(AnalogItem):
             if sel <= 1:
                 result = pin.alt_mode_mux_raw(self, pin.alt_connection_name).full_name
                 assert result.strtswith(f'COMP{self.index}_{nm[2].upper()}'), f'Wrong COMP connection for {self}, pin {pin} - {result}'
-        return [
+        result = [
             f'RSI_COMP_Config(AUX_ADC_DAC_COMP, SL_COMPARATOR_{self.index}, {self._INP_NAMES[sel_inp_mux]}, {self._INP_NAMES[sel_inm_mux]}, {h}, {1 if self.filter else 0});'
         ]
+        sc = None
+        if isinstance(self.inp, Scaller):
+            sc = self.inp
+        elif isinstance(self.inm, Scaller):
+            sc = self.inm
+        if sc:
+            val = int(sc.voltage*10+0.5)
+            assert 1 <= val <= 11, f'Invalid Scaler voltage: {sc.voltage}. Valid range - 0.1 till 1.1'
+            result.append(f'RSI_COMP_ReferenceScaler(AUX_ADC_DAC_COMP, {val});')
+        return result
 
     _INx_C = {'DAC': 2, 'REFERENCE_BUFFER_OUT': 3, 'REFERENCE_SCALER_OUT': 4, 'RES_BANK_OUT': 5, 'OPAMP1_OUT': 6, 'OPAMP2_OUT': 7, 'OPAMP3_OUT': 8}
     _INx_CC = [_INx_C, _INx_C]
@@ -604,13 +614,67 @@ class Comp(AnalogItem):
 
 """
     RSI_COMP_ResBank(AUX_ADC_DAC_COMP, (uint16_t)threshold_value);
-    RSI_COMP_ReferenceScaler(AUX_ADC_DAC_COMP, (uint16_t)scale_factor_value);
-    
-
 """
 
 class Scaller(AnalogItem):
     name: str = ''
+    voltage: float = 0
+
+    def get_setup(self) -> list[str]:
+        return []
+
+class AuxLdo(Item):
+    name: str = ''
+    voltage: float = None
+    initialized: bool = False
+    self: Self = None
+
+    def get_setup(self) -> list[str]:
+        if self.initialized:
+            return []
+        self.initialized = True
+        if self.voltage > 2.8:
+            self.voltage = 3.3
+        assert self.voltage, f'AuxLDO voltage is not set!'
+        return [f'RSI_AUX_RefVoltageConfig(AUX_ADC_DAC_COMP, {self.voltage}f);']
+
+    def _post_init(self):
+        AuxLdo.self = self
+
+class Dac(Item):
+    name: str = ''
+    voltage: Optional[float] = None
+
+    def get_setup(self) -> list[str]:
+        assert AuxLdo.self, f'AuxLdo should be instantiated to use DAC module'
+        result = []
+        if not AuxLdo.initialized:
+            result = AuxLdo.self.get_setup()
+        result += [
+            'sl_si91x_dac_init(&dac_clock_config);',
+            'DAC_Init(1, 10000, NULL);'
+        ]
+        if self.voltage is not None:
+            ref = AuxLdo.self.voltage
+            assert 5*ref/36 <= self.voltage <= 31*ref/36, f'DAC output ({self.voltage}) out of range: {5*ref/36:.2} - {31*ref/36:.2}'
+            val = self.voltage-5*ref/36
+            val = int(val*1023/(26*ref/36)+0.5)
+            result.append(f'{{static uint16_t value = {val}; DAC_WriteData(1, &value, 1);}}')
+        return result
+
+"""
+#define SL_SI91X_DAC 1
+"""
+
+class Adc(Item):
+    name: str = ''
+
+    inp: list[Item]
+    ref: Item         # ???
+
+    _canonical = {
+        'inp': 'ADCP'
+    }
 
     # Temporary!
     def get_setup(self) -> list[str]:
@@ -640,34 +704,6 @@ class Uart(UlpUart):
         'rx': 'UART{index}_RX',
         'tx': 'UART{index}_TX',
     }
-
-    # Temporary!
-    def get_setup(self) -> list[str]:
-        return []
-
-class Dac(Item):
-    name: str = ''
-
-    # Temporary!
-    def get_setup(self) -> list[str]:
-        return []
-
-class Adc(Item):
-    name: str = ''
-
-    inp: list[Item]
-    ref: Item         # ???
-
-    _canonical = {
-        'inp': 'ADCP'
-    }
-
-    # Temporary!
-    def get_setup(self) -> list[str]:
-        return []
-
-class AuxLdo(Item):
-    name: str = ''
 
     # Temporary!
     def get_setup(self) -> list[str]:

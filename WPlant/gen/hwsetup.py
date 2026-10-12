@@ -14,7 +14,7 @@ def get_definitions(IntModule: bool):
     with Wire() as res:
         opamp2 = Opamp(2, inp=UlpPin('#LeakDetector', 5), inm=res)
         res << Resistor('OPAMP2_RES', 2, left=Gnd, right=opamp2).set_div(K=0.5)
-    Comp(1, inp=opamp2, inm=Scaller('SCALER'))
+    Comp(1, inp=opamp2, inm=Scaller('SCALER', voltage=1.1))
 
     adc_inputs = [UlpPin(6)]
     UlpPin('EN9V', 7, Output)
@@ -42,10 +42,10 @@ def get_definitions(IntModule: bool):
 
         with Wire() as res:
             opamp3 = Opamp(3, inp=Pin('#AccSence', 29), inm=res)
-            res << Resistor('OPAMP3_RES', 3, left=Dac('DAC3V'), right=opamp3).set_div(K=0.5)
+            res << Resistor('OPAMP3_RES', 3, left=Dac('DAC3V', voltage=2.5), right=opamp3).set_div(K=0.5)
         adc_inputs.append(opamp3)
 
-    Adc('ADC', inp=adc_inputs, ref=AuxLdo('AUX_LDO'))
+    Adc('ADC', inp=adc_inputs, ref=AuxLdo('AUX_LDO', voltage=3.3))
 
     if IntModule:
         buzzer = Pin(29, Output)
