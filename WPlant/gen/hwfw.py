@@ -101,7 +101,21 @@ class Holder:
             result.append(f'{self.switch_function_name(name)}({name}::{list(val)[0]});')
         return result
 
+    def get_globals(self) -> list[str]:
+        result = []
+        for item in self.items:
+            if hasattr(item, 'get_global_defs'):
+                result += item.get_global_defs()
+        for nst in self.nested:
+            result += nst.get_globals()
+        for nst_sw in self.nested_switches.values():
+            for n in nst_sw.values():
+                result += n.get_globals()
+        return result
+
     def generate_c_code(self, fstream):
+        for gl in self.get_globals():
+            print(gl, file=fstream)
         print('void hw_setup()\n{', file=fstream)
         for item in self.get_setup():
             print('    ' + item, file=fstream)

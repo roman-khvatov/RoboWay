@@ -636,6 +636,8 @@ class AuxLdo(Item):
         if self.voltage > 2.8:
             self.voltage = 3.3
         assert self.voltage, f'AuxLDO voltage is not set!'
+        if Adc.self:
+            return Adc.self.get_setup()
         return [f'RSI_AUX_RefVoltageConfig(AUX_ADC_DAC_COMP, {self.voltage}f);']
 
     def _post_init(self):
@@ -666,19 +668,76 @@ class Dac(Item):
 #define SL_SI91X_DAC 1
 """
 
-class Adc(Item):
+class Adc(AnalogItem):
     name: str = ''
 
     inp: list[Item]
-    ref: Item         # ???
+    ref: Item
+    avg_samples: int = 1
+    samp_rate: int = 1000000
 
     _canonical = {
         'inp': 'ADCP'
     }
 
-    # Temporary!
+    self: Self = None
+    initialized: bool = False
+
     def get_setup(self) -> list[str]:
-        return []
+        if self.initialized:
+            return []
+        self.initialized = True
+        return [f'sl_si91x_adc_init(ADCChConfig, sl_adc_config_t{{SL_ADC_STATIC_MODE, 1}}, {self.ref.voltage});']
+
+    def get_global_defs(self) -> list[str]:
+        inp_list = self._get_inp_list()
+        return [
+            'sl_adc_channel_config_t ADCChConfig {',
+           f'    .sampling_rate = {{{self.samp_rate}}},',
+           f'    .pos_inp_sel = {{{inp_list[0]}}},',
+           f'    .num_of_samples = {{{self.avg_samples}}}',
+            '};',
+           f'const uint8_t ADCInpSel[] = {{{','.join(inp_list)}}};'
+        ]
+
+    def _get_inp_list(self) -> list[str]:
+        result = []
+        self.index = 1 # for cvt_to_index
+        for idx, inp in enumerate(self.inp):
+            result.append(str(self.cvt_to_index(inp, f'inp[{idx}]', self._INP_C)[0]))
+        return result
+
+
+    def _post_init(self):
+        Adc.self = self
+
+    _INP_C = [
+        {'OPAMP1_OUT': 0x14, 'OPAMP2_OUT': 0x15, 'OPAMP3_OUT': 0x16, 'TEMP': 0x17, 'DAC': 0x18}
+    ]
+
+"""
+Use only 1 channel and override pos_inp_sel[0] for each channel
+
+sl_status_t sl_si91x_adc_init(sl_adc_channel_config_t adc_channel_config, sl_adc_config_t adc_config, float vref_value)
+    struct sl_adc_channel_config_t {
+      uint8_t channel;
+      uint8_t input_type[16];      0 - SE, 1- differential
+      uint32_t sampling_rate[16];
+      uint8_t pos_inp_sel[16];
+      uint8_t neg_inp_sel[16];
+      float opamp_gain[16];
+      int16_t *rx_buf[16];         // Pointer to in data buffer
+      uint16_t num_of_samples[16]; // Number of samples in 1 integration
+      uint32_t chnl_ping_address[16];
+      uint32_t chnl_pong_address[16];
+    };
+    struct adc_config{
+      uint8_t operation_mode;  = SL_ADC_STATIC_MODE
+      uint8_t num_of_channel_enable; // Number of channel enable for ADC operation
+    };
+  -- also setup AuxLDO => AuxLDO working setup should be placed AFTER this one (if it not connected to 'ref' pin)
+sl_status_t sl_si91x_adc_set_channel_configuration(sl_adc_channel_config_t adc_channel_config, sl_adc_config_t adc_config)  <<< setup for channel (runtime)
+"""
 
 class UlpUart(Item):
     name: str = ''
