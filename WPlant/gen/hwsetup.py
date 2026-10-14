@@ -23,7 +23,7 @@ def get_definitions(IntModule: bool):
     Pin('LED2', 55, Output, strength=12)
 
     uart485_tx = Pin(7, Output)
-    Uart('RS485', 1, rx=Pin(6, Input, Pullup), tx=uart485_tx, mode='9600 8P1')
+    Uart('RS485', 1, rx=Pin(6, Input, Pullup), tx=uart485_tx, mode='9600 8E1')
     UlpPin('RS485_OE', 2, Output)
 
     UlpUart('DBG_UART', rx=Pin(8, Input), tx=Pin(9, Input), mode='9600 8N1')

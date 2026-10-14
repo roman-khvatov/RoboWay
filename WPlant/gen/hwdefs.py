@@ -461,13 +461,12 @@ class Opamp(AnalogItem):
            f'            .opamp{self.index}_r2_sel = {r2},',
            f'            .opamp{self.index}_en_res_bank = 1,',
            f'            .opamp{self.index}_res_mux_sel = {res_mux_sel},',
-           f'            .opamp{self.index}_res_to_out_vdd = {res_to_out_vdd}']
+           f'            .opamp{self.index}_res_to_out_vdd = {res_to_out_vdd},']
         return result + [
            f'            .opamp{self.index}_out_mux_en = 0,',
            f'            .opamp{self.index}_out_mux_sel = 0,',
-           f'            .opamp{self.index}_enable = 1'
-            '        }',
-            '    };',
+           f'            .opamp{self.index}_enable = 1',
+            '    }};',
            f'    RSI_OPAMP1_Config(OPAMP, {self.index}, &cfg);',
             '}'
         ]
@@ -752,9 +751,37 @@ class UlpUart(Item):
         'tx': 'ULP_UART_TX',
     }
 
-    # Temporary!
     def get_setup(self) -> list[str]:
-        return []
+        mtch = re.match(r'(\d+)\s+(\d)(\w)(\d)$', self.mode)
+        assert mtch, f'Invalid UART {self} mode: "{self.mode}". Expected <baud> <bits><parity><stop> (example: 9600 8N1, or 115200 8P2)'
+        baud, bits, parity, stops = mtch.groups()
+        allowed_b = ('300', '600', '1200', '2400', '4800', '9600', '19200', '38400', '57600', '115200', '230400', '460800', '921600')
+        assert baud in allowed_b, f'Invalid baudrate {baud}. Expected one of {allowed_b}'
+        assert bits in '5678', f'Invalid bits count {bits}. Expected number between 5 and 8'
+        assert parity.upper() in 'NEO', f'Invalid parity symbol {parity}. Expected one of N/E/O'
+        assert stops in '12', f'Invalid number of stop bits {stops}. Expected 1 or 2'
+        parity = {'N': 'NO', 'E': 'EVEN', 'O': 'ODD'}[parity.upper()]
+        return [
+            f'sl_si91x_usart_init({self._uart_id}, &uart_{self._uart_id}_handle);',
+             '{',
+             '    static sl_si91x_usart_control_config_t cfg {',
+            f'        .baudrate = BAUD_RATE_{baud},',
+             '        .mode = SL_USART_MODE_ASYNCHRONOUS,',
+            f'        .parity = SL_USART_{parity}_PARITY,',
+            f'        .stopbits = SL_USART_STOP_BITS_{stops},',
+             '        .hwflowcontrol = SL_USART_FLOW_CONTROL_NONE,',
+            f'        .databits = SL_USART_DATA_BITS_{bits}',
+             '    };',
+            f'    sli_si91x_usart_set_non_uc_configuration(uart_{self._uart_id}_handle, &cfg);',
+            '}'
+        ]
+
+    def get_global_defs(self) -> list[str]:
+        return [f'sl_usart_handle_t uart_{self._uart_id}_handle;']
+
+    @property
+    def _uart_id(self) -> str:
+        return 'ULPUART'
 
 class Uart(UlpUart):
     index: int
@@ -764,9 +791,9 @@ class Uart(UlpUart):
         'tx': 'UART{index}_TX',
     }
 
-    # Temporary!
-    def get_setup(self) -> list[str]:
-        return []
+    @property
+    def _uart_id(self) -> str:
+        return ['USART_0', 'UART_1'][self.index]
 
 class Pwm(Item):
     name: str = ''
