@@ -114,9 +114,10 @@ class Holder:
         return result
 
     def generate_c_code(self, fstream):
+        print('// Globals', file=fstream)
         for gl in self.get_globals():
             print(gl, file=fstream)
-        print('void hw_setup()\n{', file=fstream)
+        print('\nvoid hw_setup()\n{', file=fstream)
         for item in self.get_setup():
             print('    ' + item, file=fstream)
         print('}', file=fstream)
