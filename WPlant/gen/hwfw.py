@@ -137,11 +137,16 @@ class Holder:
             if nm.startswith('!'):
                 # on-off mode
                 print(f'void enable_{nm[1:]}(bool on)\n{{\n    if (on)\n    {{', file=fstream)
+                for nested_item in item.items:
+                    for line in nested_item.get_setup():
+                        print('        ' + line, file=fstream)
                 for line in item.alt_muxes_setup:
                     print('        ' + line, file=fstream)
                 print('    }\n    else\n    {', file=fstream)
                 for line in item.alt_muxes_reset:
                     print('        ' + line, file=fstream)
+                for nested_item in item.items:
+                    print('        ' + nested_item.hw_reset(), file=fstream)
                 print('    }\n}', file=fstream)
             else:
                 print(f'void set_{nm}()\n{{', file=fstream)

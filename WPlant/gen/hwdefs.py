@@ -799,14 +799,31 @@ class Pwm(Item):
     name: str = ''
     index: int
 
-    Freq: int
-    D: int
+    Freq: int = 1000
+    D: int = 50
     output: Optional[Item]
 
     _canonical = {
         'output': ('PWM_{index}L', 'PWM_{index}H')
     }
 
-    # Temporary!
+    def get_global_defs(self) -> list[str]:
+        return [
+           f'sl_pwm_config_t pwm_cfg_{self.index} {{',
+           f'   .channel = SL_CHANNEL_{self.index+1},',
+           f'   .frequency = {self.Freq},',
+            '   .is_mode = SL_MODE_INDEPENDENT,',
+           f'   .duty_cycle = {self.D},',
+            '   .base_timer_mode = SL_FREE_RUN_MODE,',
+            '   .channel_timer_selection = SL_BASE_TIMER_EACH_CHANNEL',
+            '};',
+        ]
+
     def get_setup(self) -> list[str]:
-        return []
+        return [
+            'RSI_CLK_PeripheralClkEnable(M4CLK, PWM_CLK, ENABLE_STATIC_CLK);',
+           f'sl_si91x_pwm_set_configuration(&pwm_cfg_{self.index});',
+        ]
+
+    def hw_reset(self) -> str:
+        return f'sl_si91x_pwm_stop(SL_CHANNEL_{self.index+1});'
