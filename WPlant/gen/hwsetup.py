@@ -77,11 +77,17 @@ import sys
 
 with Holder() as h:
     get_definitions(True)
-    print('===== IntModule ========')
+    print('===== IntModule ========\n/*')
     h.dump(sys.stdout)
+    print('*/\n== Header ==')
+    h.generate_h_code(sys.stdout)
+    print('== Code ==')
     h.generate_c_code(sys.stdout)
 with Holder() as h:
     get_definitions(False)
-    print('===== ExtModule ========')
+    print('===== ExtModule ========\n/*')
     h.dump(sys.stdout)
+    print('*/\n== Header ==')
+    h.generate_h_code(sys.stdout)
+    print('== Code ==')
     h.generate_c_code(sys.stdout)

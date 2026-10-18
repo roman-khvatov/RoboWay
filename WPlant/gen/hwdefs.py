@@ -393,6 +393,19 @@ class PinsGroup(Item):
     def get_setup(self) -> list[str]:
         return []
 
+    def get_global_defs(self) -> list[str]:
+        result = [f'void {self.name}(int value)', '{']
+        for idx, item in enumerate(self.pins):
+            result += [
+               f'    if (value & {1<<idx}) sl_gpio_set_pin_output({item._port()[0]}, {item.index});',
+               f'    else           sl_gpio_clear_pin_output({item._port()[0]}, {item.index});'
+            ]
+        return result + ['}']
+
+    def get_global_header(self) -> list[str]:
+        return [f'void {self.name}(int value);']
+
+
 class AnalogItem(Item):
     _analog = True
 
@@ -699,6 +712,12 @@ class Adc(AnalogItem):
            f'const uint8_t ADCInpSel[] = {{{','.join(inp_list)}}};'
         ]
 
+    def get_global_header(self) -> list[str]:
+        return [
+            'extern sl_adc_channel_config_t ADCChConfig;',
+           f'extern const uint8_t ADCInpSel[];'
+        ]
+
     def _get_inp_list(self) -> list[str]:
         result = []
         self.index = 1 # for cvt_to_index
@@ -779,6 +798,9 @@ class UlpUart(Item):
     def get_global_defs(self) -> list[str]:
         return [f'sl_usart_handle_t uart_{self._uart_id}_handle;']
 
+    def get_global_header(self) -> list[str]:
+        return [f'extern sl_usart_handle_t uart_{self._uart_id}_handle;']
+
     @property
     def _uart_id(self) -> str:
         return 'ULPUART'
@@ -818,6 +840,9 @@ class Pwm(Item):
             '   .channel_timer_selection = SL_BASE_TIMER_EACH_CHANNEL',
             '};',
         ]
+
+    def get_global_header(self) -> list[str]:
+        return [f'extern sl_pwm_config_t pwm_cfg_{self.index};']
 
     def get_setup(self) -> list[str]:
         return [

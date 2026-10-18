@@ -113,6 +113,27 @@ class Holder:
                 result += n.get_globals()
         return result
 
+    def get_h_code(self) -> list[str]:
+        result = []
+        for item in self.items:
+            if hasattr(item, 'get_global_header'):
+                result += item.get_global_header()
+        for item in self.nested:
+            nm = item.name
+            if nm.startswith('!'):
+                # on-off mode
+                result.append(f'void enable_{nm[1:]}(bool);')
+            result += item.get_h_code()
+        for mux_name, nest in self.nested_switches.items():
+            result.append(f'void {self.switch_function_name(mux_name)}({mux_name} selector);')
+            for item in nest.values():
+                result += item.get_h_code()
+        return list(set(result))
+
+    def generate_h_code(self, fstream):
+        for line in sorted(self.get_h_code()):
+            print(line, file=fstream)
+
     def generate_c_code(self, fstream):
         print('// Globals', file=fstream)
         for gl in self.get_globals():
