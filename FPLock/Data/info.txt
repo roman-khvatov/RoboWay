@@ -1,0 +1,290 @@
+﻿Lock Torque - 0.156 N*m
+Motor (17HS4023)
+    Torque - 14 N*cm / 0.14 N*m  (Holding T - > 0.13 N*m)
+    Current - 1.0A
+    Voltage - 12V
+Clutch (TMC-2.5S-24)
+    Torque - 0.35 N*m
+    traction rotation resistance - 0.0003 N.m
+    Voltage - 24V
+    Current - 0.115A
+
+-----------------
+Hall sensor
+
+Infineon TLE493DW2B6A0HTSA1  C3715872  (636, 1.9/1, 1.6/10)   135mT (100-150), sensivity 15mT (11-21), I2C
+ALLEGRO A1335LLETR-T         C2655192  (104  2.73/1, 2.33/10) 300-1500G (30-150mT), support OFF-AXIS APPLICATIONS, I2C/SPI
+
+ams AS5600-ASOT              C499458   (48K, 1.1/1, 1.004/10) 30-90mT                 <<<<
+NOVOSENSE MT6701CT-STD-R     C3003196  (4800 1.31/1, 1.062/10) 20-100mT   3D
+
+Linear (analog)                                                                  2-4mA, SO-23
+    HAL9303RSO         C42387471 (30K, 0.14/5) sensivity - 4.1mV/GS (max 500GS)         (zero level - 1/3 Vcc)
+    HAL403SO           C42387470 (18K, 0.09/5) sensivity - 4.1mV/GS (max 500GS)         (zero level - 1/2 Vcc)   <<<<
+    HAL49ESO           C7420984  (17K, 0.11/5) sensivity - 2mV/GS (max 1000GS)          (zero level - 1/2 Vcc)
+    DRV5055A1QDBZR     C962987   (19K, 0.52/1) sensivity - 6mV/GS (max 220GS)           (zero level - 1/2 Vcc)
+    DRV5055A4QDBZR     C266123   (9K, 0.64/1)  sensivity - 0.75mV/GS (max 1760GS)       (zero level - 1/2 Vcc)
+    SS49E              C85697    (11K, 0.55/1) sensivity - 1.4mV/GS (max 1000) 6-10mA   (zero level - 1/2 Vcc?)  TO-92S
+    SS39ET             C126669   (7K, 0.37/5)  sensivity - 1.4mV/GS (max 1000) 6-10mA   (zero level - 1/2 Vcc?)
+
+Magnets:
+(by A1335LLETR)
+    Meterial         Diameter (mm)     Thinkness (mm)
+ Neodymium (bonded)      15                4
+ Neodymium (sintered)    10                4       <<< recomended               10x5    *
+ Neodymium (sintered)     8                3
+ Neodymium / SmCo         6               2.5
+
+
+NFC Antena - 2uH   ???
+
+Module:
+ME54BS01 (nRF54L15)    *
+    Sleep I = 3.5uA
+    BLE RX = 3.4mA
+    BLE TX = 10mA
+    CPU full = 2.6mA
+
+LDO -> 3.3V   (Iq ~ 3uA, I ~ 50mA)
+    JSMSEMI HT7533 30V  C5296738  (193K, 0.036/10, 0.0285/100) Iq 2-3uA, Iout - 100mA, Vdrop = 0.15V, Prec - 3%
+    JTD JTD7533-40V     C49308287 (74K, 0.0275/20, 0.0216/200) Iq 1.5-3uA Iout - 70-100mA, Vdrop - 60mV
+    TWGMC HT7533        C5279052  (154K, 0.0375/20, 0.0298/200)
+    LR LR8341A-T33      C2829465  (45K, 0.05/10, 0.04/100)     Iq 2-5uA, Iout - 100mA, Vdrop < 0.9V, 
+
+    AAT3221IGV-3.3      Iq - 1.1-2.5uA, Iout - 150mA, Vdrop - 0.2V (~ 100mV @ 50mA )             *
+
+Boost DC/DC  
+    3-4 => 12V (1A)
+TI TPS61088RHLR C87357 (2780, 1.0766/1, 0.956/10) Isw - 10A, Vout max - 12.6V, Vin min - 2.7V, Iq - 1-3mA (with disconnected FB divider?), F - up to 2.2MHz ! VQFN package, PCBA required !
+Advanced Analog Technology FP6296XR-G1 C133888 (18K, 0.711/1, 0.5582/10) Isw - 10A, Vout max - 13V, Vin min  - 2.7V, Iq - 1uA, F - 400KHz (SOP-8) <<<
+
+    12 => 24V (0.2A)
+
+MSKSEMI MS7208ABC   C49375258 (5K, 0.17/5) 4A Inductor peak current, 2.5-24V -> 28V (max), 1.2MHz (18V Iout ~ 500mA)  <<<
+DIODES AP3012KTR-E1 C460356/C102618 (52K, 0.1977/5, 0.159/50) 500mA, 2.6-16 => 29V. 1.5MHz
+
+Stepper driver
+    A3979SLPTRT  *  (power switch on Vdd ?  Iq - 20uA)
+    Current Sense R ~ 0R2  (0.1-0.2)
+    0R2
+        JER2512F2R220  C49164922  (23K, 0.0557/5) 0.22 1% 2512  <<<
+
+Ref 2.5V (for stepper)
+    6206-25  SOT-23/SOT-23-3  ~ 0.013/50                          <<<
+
+LiOn(LiPol?) charger
+TI BQ24092DGQR  C133237 (1883, 0.72/1, 0.59/10) Fast charge - 1A  (linear)
+
+MAX77789EWX+T C23275790 (6, 6.65/1) Switcher. 14V max, BC1.2, 3A   BumpWPL chip
+MAX77751AEFG+ C7454321  (10, 5.27/1) Switcher. 14V max, BC1.2, 3A  QFN
+BQ25640VDLR   C54959153 (48, 5.2/1) Switcher. 18V max, BC1.2, 5A   QFN
+BQ25690RBAR   C53283868 (3K, 3.6/1, 3.19/10) Switcher. 34V max, 3A, No USB detection (require external circuitry) QFN
+BQ25308RTER   C35847766 (2531, 0.99/1, 0.88/10) Switcher. 17 (24)V max. 3A. No USB detection (just charger). QFN
+BQ25620RYKR   C6164243  (205, 2.69/1) Switcher. 18V, 3A. USB-C Detection (no PD, no BC) QFN
+BQ25611DRTWR  C2892871  (2267, 1.45/1) Switcher. 13.5V. 3A. USB-C Detection (no PD, no BC) QFN
+BQ25303JRTER  C2842775  (3818, 1.22/1) Switcher. 17V, 3A. Standalone QFN
+BQ25300RTER   C2763848  (163, 1.2/1) Switcher. 17V, 3A. Standalone QFN
+BQ25611DRTWR  C2892871  (2267, 1.44/1) Switcher. 13.5V. 3A. USB-C Detection (no PD, no BC) QFN
+BQ25601RTWR   C468236   (5K, 1.12/1) Switcher. 13.5V. 3A. Auto detect USB BC1.2, SDP, CDP, DCP and non-standard adaptors  QFN
+BQ25606RGER   C374063   (8K, 2.1/1) Switcher. 13.5V. 3A. Auto detect USB SDP, DCP and non-standard adaptors  QFN
+BQ24296MRGER  C130450   (4K, 1.5/1) Switcher. 5V. 3A. No USB, QFN
+BQ24295RGER   C165144   (2208, 0.67/1) Switcher. 5V. 3A. USB charger (power down port?) QFN
+
+IP5356M_LBZ_CB  C46550232  (3K, 1.01/1) Switcher. USB-PD, 12V max, 5A QFN          (Charge current can't be set)
+
+IP2315          C2764357 (4458, 0.98/1) Switcher. USB-PD, 12V max, 4.8A (Adjustable) QFN    (Iq - 200uA)     PCBA !!!                   <<<<
+
+Thermistor - B=4100  (100K)
+    WHQ0104F410020-2 C53184511  (385, 0.0887/5) ThHole                                                                 <<<
+
+2 color LED (red/green)
+    Chau Light ZSRG-1608C-06-Z4 C7420558  (19K, 0.0161/50) 0603  Vf - 2.4V;3.3V, Lum - 70mcd~150mcd;550mcd~850mcd (R/G)
+    XL-524SURSYGC               C55338566 (860, 0.0456/10) d5  Vf - 2.4V               50-400; 100-500  (R/YG)         <<<
+    XL-524SURUGC                C55338564 (850, 0.0456/10) d5  Vf 2.4/3.4              500-1500; 1800-3500 (R/G)       <<<
+    XL-524SURUBW                C55338563 (1000, 0.0423/10) d5 Vf 2.4/3.4              100-700; 400-1200 (R/B)
+    XL-524SURUBC                C55338562 (1000, 0.0423/10) d5 Vf 2.4/3.4              100-700; 400-1200 (R/B)
+
+Inductors:
+    Charger
+        2.2uH, Isat > 5.1A (13.5A), 500KHz
+        Cin  3.6uF, 1.23A RMS ???
+        Cout -12.3 uF         ???
+        diode - 30BQ060
+
+        22x25V            * 1210
+        220x25V Low ESR
+            PA35V220M6x12  C46550432  (255K, 0.17/5) 220x35  (6.3mm X 12mm)
+            PA25V220M6x8   C46550441  (77K, 0.12/5) 220x25 (6.3mm X 8mm)      <<<<
+
+        DH0650H-2R2M           C41407094  (995, 0.11/5) 8/10A, 10mOhm     smd 7.1x6.6         <<<<   PCBA ?
+        CDRH10D68RT125NP-2R2NC C171592    (728, 0.65/1) 7.5/10A, 7.1mOhm  smd 10.2x10.2
+        YPRH105R-2R2M          C514826    (720, 0.26/5) 9.25/7.5A, 8mOhm  smd 10.2x10.2
+
+    3->12V
+        4.8uH, Isat - 6.4A, 400KHz
+        diode - 1.5A  *         30BQ060
+        Cin - 428uF   ???
+        Cout - 38uF   ???
+
+        APZBX0650M4R9     C54623426  (998, 0.31/1) 6.5A, 16mOhm       smd 7x6.9                  <<<    PCBA ?
+        APZBX1250M4R8     C54623473  (500, 0.43/1) 11/13A, 11.55mOhm  smd 13x12.8
+
+
+    12->24V
+        22uH, Isat > 1.13A (0.72A), 1.2MHz
+        diode - 300mA  *        10BQ060
+        Cin - 100uF    ???
+        Cout - 3.1uF   ???
+
+        ZEMS0420-220M   C41438718  (49K, 0.091/5)   1.5/2A,   510mOhm, smd 4.4x4.2 (3MHz)
+        SMMS0530-220M   C2842153   (34K, 0.15/5)    1.8/2A,   400mOhm, smd 5.5x5.2 (3MHz)
+        PSTMAA252012-220MB C45385210 (21K, 0.076/5) 1.2A,     800mOhm, 1008 (2.5x2) (1MHz)
+        SRG0420-220-M  C53462921   (19K, 0.13/5)    1.2/1.3A, 500mOhm, smd 4.6x4.1 (5MHz)
+        IHLP2020CZER220M11 C845002 (18K, 0.48/1)    2.12/1.61 260mOhm  2020 (5x5)  (1MHz) Vishay, discontinued
+        CYN5040-22UH  C2879700     (17K, 0.11/5)    1.4/1.8A, 129mOhm  smd 5x5     (1-5MHz)       <<<<<     PCBA
+        AFE303015S220MBT C41347821 (9K7, 0.14/5)    1.2/1.6A  580mOhm, smd 3x3     (1MHz)
+        PCT303015-220-M C55544558  (8K, 0.19/5)     1.2/1.6A  700mOhm  smd 3x3     (1MHz)
+        SLF7055T-220M1R7-3PF C138497 (1525, 0.322/5) 2/1.7A,   77mOhm  smd 7x7     (10MHz) TDK
+        SM7850-270MT C2972086      (905, 0.05/5)    1.3/1.75A 107mOhm  smd 7.8x7   (1MHz)
+
+
+
+
+LiOn(LiPol?) battery  *
+    EAN / GTIN              097338662691
+    Weight - g              75
+    Brand                   Keeppower
+    Model                   P2160C
+    Size                    21700
+    Battery chemistry 	    Li-ion
+    Voltage 	            3.6V
+    Min. capacity - mAh 	5900
+    Typ. capacity - mAh 	6000
+    Battery version	        Button top
+    Discharge current - A 	12
+    Circuit protection   	Protected
+    Height - mm	            74.6
+    Diameter in mm 	        22.2 
+
+    Model:                  P2160C
+    Nominal Capacity:       6000mAh
+    Minimum Capacity:       5900mAh
+    Nominal Voltage:        3.6V
+    Charging Method:        CC-CV
+    Standard Charging/Discharging Current: 1.2A
+    Maximum Charging Current: 3A
+    Maximum Discharging Current: 12A
+    In Built Safety Circuitry
+    Protection Circuit (Against over charge, over discharge, over current and short-circuit.)
+    4.20V maximum voltage and 2.50V cut-off voltage
+    Over 500 charge-discharge cycles
+    Weight:                 75.0g
+    Dimensions: （D）22.2*（L）75.0mm(±0.2mm)
+    Temperature
+        Charge:     0 to +45° C
+        Discharge:  -20 to +60° C
+        Storage:    -20 to +50° C
+
+
+
+Battery holder                 *
+
+Buzzer/Speaker                 
+    SFN55-XH2.54  C50387184  (20, 0.84)  D - 54mm, 100dB @10cm (12V)    <<<<
+    SFN55-PH2.0   C50387183  (9, 0.84)   D - 54mm, 100dB (12V)          or this
+
+
+Buzzer driver/Speaker Amp      ?
+
+Capacitive sensor on keyhole   *
+
+RGB LED                        *
+
+SD card for open/close log     *
+
+P ch MOSFET for 3V power switch (>4A)
+     D2PACK
+    30P06       C18164395  (23K, 0.21/5) RdsOn @4.5V 30.4-39  Vth - 1-2.5 (1.8)
+    AOD409(ES)  C49108743  (6K, 0.23/5)  RdsOn @4.5V 31-38    Vth - 1.1-2.1 (1.6)
+    AOD425A-VB  C557965    (105, 0.47/1) RdsOn @4.5  25             1-2.5
+
+     SO8
+    Si4435DDY   C10491 (+ a lot of others)  (9K, 0.26/5) RdsOn @4.5V 28-35  Vth 1-3 (SO8)
+    AO4407A     C16072 (+ a lot of others)  (14K, 0.31/5) RdsOn @5V 27-38   Vth 1.7-3 (SOIC8)
+    AO4407A(ES) C42412319                   (40K, 0.1/5) RdsOn @4.5 14-17   Vth 1-2 (SOIC8)         <<<
+    AO4407A     C2841482                    (90K, 0.13/5)  ---"---"---"---
+
+N ch MOSFET for 24V clutch switch     
+    IRLL2705PBF   *
+
+LL4148-GS08  C68883  (486K, 0.015/5) <<<<
+
+=============
+Ext button:
+
+NFC antenna  ???
+
+Battery holder for 3xAA battery   *
+==============
+
+Power budget:
+                         Iq             I
+nRF54L15                3.5uA         ~15mA
+LED                       -             5mA
+IP2315                  60-100uA        -
+MS7208ABC                1uA            2mA                            <<< switched power
+FP6296XR-G1              1uA            4mA                            <<< switched power
+AAT3221IGV-3.3          2.5uA                Out: 150mA
+A3979SLPTRT             20uA           12mA                            <<< switched power
+6206-25                  6uA           ~2mA                            <<< switched power
+AS5600-ASOT             1.5mA          6.5mA   (OTP burn - 100mA)      <<< switched power
+TLV493DA1B6HTSA2        0.1uA          3.7mA                           <<< switched power
+SD card                 50-200uA       60mA                            <<< switched power      up to 110mA !!! (separate LDO ? TIM6050-33)   *
+SpkrDriver              100uA           2mA (12V)                      <<< switched power
+Q300                                   1.5mA                           <<< switched power
+
+Total                 66-106uA         116mA
+
+
+CPU Pins (19 total):
+
+Spkr PWM - 2  PWM
+LED        3  GPIO
+I2C        2  I2C
+NFC        2  NFC     P1.02 P1.03
+SPI (SD)   4  SPI
+PwrSw      1  GPIO
+Step/Dir   2  GPIO + Freq
+Clutch     1  GPIO
+DoorSense  1  ADC      P1.04 P1.05 P1.06 P1.11 P1.12 P1.13 P1.14 
+Touch      1  GPIO
+
+Button  -  connect to Dir via resistor
+
+Total     19
+===================================================================
+To buy:
+
+ams AS5600-ASOT    C499458   (48K, 1.1/1, 1.004/10) 30-90mT
+HAL403SO           C42387470 (18K, 0.09/5) sensivity - 4.1mV/GS (max 500GS)         (zero level - 1/2 Vcc)
+FP6296XR-G1        C133888 (18K, 0.711/1, 0.5582/10) Isw - 10A, Vout max - 13V, Vin min  - 2.7V, Iq - 1uA, F - 400KHz (SOP-8)
+MSKSEMI MS7208ABC  C49375258 (5K, 0.17/5) 4A Inductor peak current, 2.5-24V -> 28V (max), 1.2MHz (18V Iout ~ 500mA)
+JER2512F2R220      C49164922  (23K, 0.0557/5) 0.22 1% 2512                                                                        2 pcs
+6206-25            C42443425         SOT-23/SOT-23-3  ~ 0.013/50                         
+WHQ0104F410020-2   C53184511  (385, 0.0887/5) ThHole
+XL-524SURSYGC      C55338566 (860, 0.0456/10) d5  Vf - 2.4V               50-400; 100-500  (R/YG)
+XL-524SURUGC       C55338564 (850, 0.0456/10) d5  Vf 2.4/3.4              500-1500; 1800-3500 (R/G)
+PA25V220M6x8       C46550441  (77K, 0.12/5) 220x25 (6.3mm X 8mm)                                                                  4 pcs
+DH0650H-2R2M       C41407094  (995, 0.11/5) 8/10A, 10mOhm     smd 7.1x6.6
+APZBX0650M4R9      C54623426  (998, 0.31/1) 6.5A, 16mOhm       smd 7x6.9
+SFN55-XH2.54       C50387184  (20, 0.84)  D - 54mm, 100dB @10cm (12V)
+    SFN55-PH2.0        C50387183  (9, 0.84)   D - 54mm, 100dB (12V)          or this
+AO4407A(ES)        C42412319  (40K, 0.1/5) RdsOn @4.5 14-17   Vth 1-2 (SOIC8)
+LL4148-GS08        C68883  (486K, 0.015/5)                                                                                        a lot of
+ 51K1              C54830596
+ 21K5              C2933169
+ 2K55              C2933178
+
+PCBA - ordered:
+IP2315             C2764357 (4458, 0.98/1) Switcher. USB-PD, 12V max, 4.8A (Adjustable) QFN    (Iq - 200uA)
+CYN5040-22UH       C2879700 (17K, 0.11/5)    1.4/1.8A, 129mOhm  smd 5x5     (1-5MHz)

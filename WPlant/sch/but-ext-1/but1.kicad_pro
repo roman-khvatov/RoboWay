@@ -511,6 +511,7 @@
       "pin_to_pin": "warning",
       "power_pin_not_driven": "error",
       "same_local_global_label": "warning",
+      "same_local_global_power": "warning",
       "similar_label_and_power": "warning",
       "similar_labels": "warning",
       "similar_power": "warning",
@@ -576,8 +577,8 @@
     "meta": {
       "version": 5
     },
-    "net_colors": null,
-    "netclass_assignments": null,
+    "net_colors": {},
+    "netclass_assignments": {},
     "netclass_patterns": [
       {
         "netclass": "Power",
@@ -741,7 +742,7 @@
         "uuid": "3fccefda-7ccd-43bf-9cc8-1b3ed5e282ca"
       }
     ],
-    "used_designators": "#PWR84-100,R1-8,J1-4,J8,U1-3,C1-3,Card1,SW1-4,Q1-2,D4-5,H1-2",
+    "used_designators": "#PWR84-100,C1-3,Card1,D4-5,H1-2,J1-4,J8,Q1-2,R1-8,SW1-4,U1-3",
     "variants": []
   },
   "sheets": [
