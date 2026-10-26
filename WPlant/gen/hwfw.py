@@ -113,8 +113,9 @@ class Holder:
                 result += n.get_globals()
         return result
 
-    def get_h_code(self) -> list[str]:
+    def get_h_code(self) -> tuple[list[str], list[str]]:
         result = []
+        result2 = []
         for item in self.items:
             if hasattr(item, 'get_global_header'):
                 result += item.get_global_header()
@@ -123,15 +124,26 @@ class Holder:
             if nm.startswith('!'):
                 # on-off mode
                 result.append(f'void enable_{nm[1:]}(bool);')
-            result += item.get_h_code()
+            r1, r2=item.get_h_code()
+            result += r1
+            result2 += r2
         for mux_name, nest in self.nested_switches.items():
+            result2.append(f'enum class {mux_name} {{')            
+            for it_name in nest.keys():
+                result2.append(f'  {it_name},')
+            result2.append('};')
             result.append(f'void {self.switch_function_name(mux_name)}({mux_name} selector);')
             for item in nest.values():
-                result += item.get_h_code()
-        return list(set(result))
+                r1, r2=item.get_h_code()
+                result += r1
+                result2 += r2
+        return list(set(result)), result2
 
     def generate_h_code(self, fstream):
-        for line in sorted(self.get_h_code()):
+        r1, r2=self.get_h_code()
+        for line in r2:
+            print(line, file=fstream)
+        for line in sorted(r1):
             print(line, file=fstream)
 
     def generate_c_code(self, fstream):

@@ -46,7 +46,7 @@ class AnyPin(Item):
 
     def get_c_code_for_pin_set(self, value: bool) -> str:
         func = 'set' if value else 'clear'
-        return f'sl_gpio_{func}_pin_output({self._port()[0]}, {self.index})'
+        return f'sl_gpio_{func}_pin_output({self._port()[0]}, {self.index});'
 
     def alt_mode_mux_raw(self, who: Item, name: str):
         return find_mux_chain2(f'{self._port()[1]}_{self.index}', who.get_canonical_name(name))
@@ -122,13 +122,13 @@ Common Pins setup:
 
 class UulpPin(AnyPin):
     def _port(self) -> tuple[str]:
-        return ('SL_GPIO_UULP_PORT', 'UULP_VBAT_GPIO')
+        return ('sl_gpio_port_t(SL_GPIO_UULP_PORT)', 'UULP_VBAT_GPIO')
 
     @property
     def setup_lines(self) -> list[str]:
         return self.get_setup_lines_base() + [
             '{',
-            '    static const uulp_pad_config_t cfg = {',
+            '    static uulp_pad_config_t cfg = {',
            f'        .gpio_padnum = {self.index},',
             '        .mode = NPSS_GPIO_PIN_MUX_MODE0,',    # No other modes used in our HW
            f'        .receiver = {'GPIO_RECEIVER_EN' if self.pin_mode is Input else 'GPIO_RECEIVER_DS'},',
@@ -167,7 +167,7 @@ class Pin(UulpPin):
     pad_pos: Optional[bool]
 
     def _port(self) -> tuple[str]:
-        return ('SL_GPIO_PORT_A', 'GPIO')
+        return ('sl_gpio_port_t(SL_GPIO_PORT_A)', 'GPIO')
 
     @property
     def setup_lines(self) -> list[str]:
@@ -241,7 +241,7 @@ class UlpPin(Pin):
     slew_rate_high: Optional[bool]
 
     def _port(self) -> tuple[str]:
-        return ('SL_GPIO_ULP_PORT', 'ULP_GPIO')
+        return ('sl_gpio_port_t(SL_GPIO_ULP_PORT)', 'ULP_GPIO')
 
     def _ext(self) -> str:
         return '_ulp'
@@ -378,7 +378,7 @@ class SsiMst(Item):
             'sl_si91x_ssi_init(SL_SSI_PRIMARY_ACTIVE, &ssi_handle);',
             '{',
             '    static sl_ssi_control_config_t cfg{.bit_width=8, .device_mode=SL_SSI_MASTER_ACTIVE, .clock_mode=SL_SSI_PERIPHERAL_CPOL0_CPHA0, .baud_rate=10000000, .transfer_mode=SL_SSI_PRIMARY_SINGLE_LINE_MODE};',
-            '    sl_si91x_ssi_set_configuration(ssi_handle, &cfg, 0);',
+            '    sl_si91x_ssi_set_configuration(ssi_handle, &cfg, SSI_SLAVE_0);',
             '}'
         ]
 
@@ -477,7 +477,6 @@ class Opamp(AnalogItem):
            f'            .opamp{self.index}_res_to_out_vdd = {res_to_out_vdd},']
         return result + [
            f'            .opamp{self.index}_out_mux_en = 0,',
-           f'            .opamp{self.index}_out_mux_sel = 0,',
            f'            .opamp{self.index}_enable = 1',
             '    }};',
            f'    RSI_OPAMP1_Config(OPAMP, {self.index}, &cfg);',

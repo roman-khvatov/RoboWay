@@ -73,8 +73,25 @@ def get_definitions(IntModule: bool):
     with Alternative('!FreqCalibrate'): # BiStable alternative - can be turned on and off
         Pwm(0, Freq=10*K, D=50, output=uart485_tx)
 
-import sys
+def write(mode: bool, suf: str):
+    with Holder() as h:
+        get_definitions(mode)
+        with open(f'dump.{suf}.txt', 'wt') as f:
+            h.dump(f)
+        with open(f'hwdef.{suf}.h', 'wt') as f:
+            print('#pragma once', file=f)
+            print('#include "common_hwdefs.h"', file=f)
+            h.generate_h_code(f)
+        with open(f'hwdef.{suf}.cpp', 'wt') as f:
+            print(f'#include "hwdef.{suf}.h"', file=f)
+            h.generate_c_code(f)
 
+write(False, 'ext')
+write(True, 'int')
+
+
+"""
+import sys
 with Holder() as h:
     get_definitions(True)
     print('===== IntModule ========\n/*')
@@ -91,3 +108,4 @@ with Holder() as h:
     h.generate_h_code(sys.stdout)
     print('== Code ==')
     h.generate_c_code(sys.stdout)
+"""

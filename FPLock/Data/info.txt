@@ -195,6 +195,8 @@ Buzzer/Speaker
 
 
 Buzzer driver/Speaker Amp      ?
+    IXDN604SIATR  C2676944
+
 
 Capacitive sensor on keyhole   *
 
@@ -288,3 +290,5 @@ LL4148-GS08        C68883  (486K, 0.015/5)                                      
 PCBA - ordered:
 IP2315             C2764357 (4458, 0.98/1) Switcher. USB-PD, 12V max, 4.8A (Adjustable) QFN    (Iq - 200uA)
 CYN5040-22UH       C2879700 (17K, 0.11/5)    1.4/1.8A, 129mOhm  smd 5x5     (1-5MHz)
+=============================
+Gear - PA12-HP Nylon

@@ -39,7 +39,8 @@
 #define PORT_QUAD_PRESS GPIOB
 #define PIN_QUAD_PRESS LL_GPIO_PIN_6
 
-#define I2CAddress1 0x55
+// 7 bit, shifted (bits 7..1 taken in account, bit 0 is 0)
+#define I2CAddress1 0x54
 #define I2CAddress2 0x56
 
 static bool IntActiveHigh = true;
