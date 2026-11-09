@@ -52,7 +52,7 @@ inline constexpr unsigned operator ""_mks(unsigned long long val)
 }
 
 #define WAIT(condition) while (!(condition)) YIELD()
-#define DELAY_WITH_RESTART(ticks, restartCondition) do {DELAY_SETUP(ticks); while(!IS_DELAY_DONE()) {if(restartCondition) DELAY_SETUP(ticks); else YIELD();}} while(0)
+#define DELAY_WITH_RESTART(ticks, restartCondition) do {DELAY_SETUP(ticks); while(!IS_DELAY_DONE()) {if(restartCondition) DELAY_SETUP(ticks); YIELD();}} while(0)
 #define WAIT_STABLE(ticks, expr) ({ \
     static unsigned value = 0; \
     unsigned dif_value; \

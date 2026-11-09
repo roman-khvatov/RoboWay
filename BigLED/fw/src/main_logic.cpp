@@ -17,7 +17,7 @@ void QuadEncoderTask()
     THREAD_WITH_DELAY();
     for(;;)
     {
-        DELAY_WITH_RESTART(500_mks, QuadEncoderButtons() == 0);
+        DELAY_WITH_RESTART(500_mks, QuadEncoderButtons() != 0);
 
         static uint8_t buttonState;
         
@@ -176,6 +176,8 @@ void I2CWriteTask()
 }
 
 
+void gen();
+
 
 int main()
 {
@@ -195,6 +197,7 @@ int main()
             case Write: I2CWriteTask(); break;
             default: ;
         }            
+        gen();
     }
 }
 

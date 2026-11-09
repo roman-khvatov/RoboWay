@@ -29,7 +29,7 @@ FLASH_PROGRM	?= puyaisp
 
 ##### Toolchains #######
 
-ARM_TOOLCHAIN	?= Z:/mingw-w64-x86_64-arm-none-eabi/bin/
+ARM_TOOLCHAIN	?= C:/Users/RomanKhvatov/Documents/home/arm-gnu-toolchain-15.2.rel1-mingw-w64-x86_64-arm-none-eabi/bin/
 
 # path to JLinkExe
 JLINKEXE		?= /opt/SEGGER/JLink/JLinkExe

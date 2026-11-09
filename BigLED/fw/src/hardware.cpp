@@ -68,12 +68,29 @@ static void APP_SystemClockConfig(void)
   LL_SetSystemCoreClock(8000000);
 }
 
+void gen()
+{
+    volatile int i;
+
+    for(;;)
+    {
+        LL_GPIO_ResetOutputPin(GPIOA, LL_GPIO_PIN_2);
+        for(i=0; i<10000; ++i) ;
+        LL_GPIO_SetOutputPin(GPIOA, LL_GPIO_PIN_2);
+        for(i=0; i<10000; ++i) ;
+    }
+}
 
 static void APP_GPIOConfig(void)
 {
   // PA0
   LL_IOP_GRP1_EnableClock(LL_IOP_GRP1_PERIPH_GPIOA | LL_IOP_GRP1_PERIPH_GPIOB | LL_IOP_GRP1_PERIPH_GPIOF);
   LL_APB1_GRP1_EnableClock(LL_APB1_GRP1_PERIPH_I2C1);
+
+  // Debug ///////////////
+  LL_GPIO_SetPinMode(GPIOA, LL_GPIO_PIN_2, LL_GPIO_MODE_OUTPUT);
+  LL_GPIO_ResetOutputPin(GPIOA, LL_GPIO_PIN_2); 
+  ////////////////////////
 
   LL_GPIO_SetPinMode(PORT_INT, PIN_INT, LL_GPIO_MODE_INPUT);
   LL_GPIO_ResetOutputPin(PORT_ENABLE_OLED, PIN_ENABLE_OLED);
